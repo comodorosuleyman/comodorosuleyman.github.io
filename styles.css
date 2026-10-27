@@ -61,7 +61,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .scene a.zone:hover, .scene a.zone:focus-visible, .scene a.zone.lit { opacity: 1; }
 
 /* sous-pages encadrées (video, audio, contact, agenda, codex) */
-.frame-page { position: relative; width: min(96vw, 1100px); aspect-ratio: 6994 / 9882; margin: 2.5rem auto 1rem; background: url(cadre.jpg?v=3) center / 100% 100% no-repeat; }
+.frame-page { position: relative; width: min(96vw, 1100px); aspect-ratio: 6994 / 9882; margin: 2.5rem auto 1rem; background: url(cadre.jpg?v=4) center / 100% 100% no-repeat; }
 /* le cartouche : bande vide entre les deux filets ornés en haut du cadre */
 .frame-title { position: absolute; left: 3.58%; top: 4.68%; width: 88.65%; height: 5.26%; display: flex; align-items: center; justify-content: center; }
 .frame-title img { max-width: 100%; max-height: 100%; object-fit: contain; }
