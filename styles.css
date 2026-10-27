@@ -119,7 +119,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .stage-node { width: 82px; height: 82px; border-radius: 50%; background: #f0d5c2; border: 1px solid #bbb; display: flex; align-items: center; justify-content: center; font-size: .78rem; line-height: 1.2; text-align: center; }
 .stage-audience { margin: 1rem 0 0; font-size: .8rem; color: #999; border-top: 1px solid #ddd; padding-top: .6rem; }
 @media (min-width: 640px) { .rider-grid { grid-template-columns: 1.3fr 1fr; align-items: start; } }
-.press-byline { text-align: right; color: #555; font-style: italic; }
+.press-byline { text-align: right; color: #555; font-style: italic; font-size: .8rem; margin: 1.5rem 0 0; }
 .argumentum-page .back-link img { height: 30px; width: auto; }
 
 /* page video : dessin de télé avec le lien youtube inséré dans l'écran */
