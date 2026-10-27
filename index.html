@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comodoro Süleyman</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="home">
+<h1 class="visually-hidden">Comodoro Süleyman</h1>
+<div class="scene">
+  <img src="accueil.jpg" alt="Ink drawing: impossible stairways and architecture, with the words Video, Audio, Contact(us), Agenda, Codex and Argumentum">
+
+  <!-- mots dessinés à la main + forme rouge associée (porte, ouverture, rectangle...), dispersés dans l'illustration -->
+  <!-- chaque zone est une image pré-calculée (forme exacte de l'encre rouge à cet endroit, en rouge plus clair) -->
+  <a class="zone" data-word="video" href="video.html" style="left:22.65%; top:17.87%; width:13.94%; height:28.96%; background-image:url(glow-video.png);"><span class="visually-hidden">Video</span></a>
+  <a class="zone" data-word="audio" href="audio.html" style="left:45.73%; top:13.56%; width:15.68%; height:36.35%; background-image:url(glow-audio.png);"><span class="visually-hidden">Audio</span></a>
+  <a class="zone" data-word="contact" href="contact.html" style="left:57.93%; top:18.49%; width:27.44%; height:28.34%; background-image:url(glow-contact.png);"><span class="visually-hidden">Contact</span></a>
+  <a class="zone" data-word="agenda" href="agenda.html" style="left:73.61%; top:12.02%; width:22.65%; height:22.49%; background-image:url(glow-agenda.png);"><span class="visually-hidden">Agenda</span></a>
+  <a class="zone" data-word="codex" href="codex.html" style="left:45.30%; top:63.16%; width:17.42%; height:32.04%; background-image:url(glow-codex.png);"><span class="visually-hidden">Codex</span></a>
+  <a class="zone" data-word="argumentum" href="argumentum.html" style="left:74.04%; top:50.52%; width:12.63%; height:38.20%; background-image:url(glow-argumentum.png);"><span class="visually-hidden">Argumentum</span></a>
+
+  <!-- liste de boutons rouges en bas à droite -->
+  <a class="zone" data-word="audio" href="audio.html" style="left:87.89%; top:65.68%; width:9.02%; height:5.05%; background-image:url(glow-btn-audio.png);"><span class="visually-hidden">Audio</span></a>
+  <a class="zone" data-word="video" href="video.html" style="left:87.59%; top:71.91%; width:8.71%; height:4.56%; background-image:url(glow-btn-video.png);"><span class="visually-hidden">Video</span></a>
+  <a class="zone" data-word="codex" href="codex.html" style="left:87.63%; top:76.09%; width:10.50%; height:5.18%; background-image:url(glow-btn-codex.png);"><span class="visually-hidden">Codex</span></a>
+  <a class="zone" data-word="argumentum" href="argumentum.html" style="left:85.37%; top:80.72%; width:14.50%; height:4.93%; background-image:url(glow-btn-argumentum.png);"><span class="visually-hidden">Argumentum</span></a>
+  <a class="zone" data-word="agenda" href="agenda.html" style="left:85.41%; top:85.03%; width:14.42%; height:3.70%; background-image:url(glow-btn-agenda.png);"><span class="visually-hidden">Agenda</span></a>
+  <a class="zone" data-word="contact" href="contact.html" style="left:86.67%; top:88.72%; width:13.20%; height:5.24%; background-image:url(glow-btn-contact.png);"><span class="visually-hidden">Contact</span></a>
+</div>
+<script>
+(function () {
+  var zones = document.querySelectorAll('.zone[data-word]');
+  function setLit(word, on) {
+    zones.forEach(function (z) {
+      if (z.dataset.word === word) z.classList.toggle('lit', on);
+    });
+  }
+  zones.forEach(function (z) {
+    z.addEventListener('mouseenter', function () { setLit(z.dataset.word, true); });
+    z.addEventListener('mouseleave', function () { setLit(z.dataset.word, false); });
+    z.addEventListener('focus', function () { setLit(z.dataset.word, true); });
+    z.addEventListener('blur', function () { setLit(z.dataset.word, false); });
+  });
+})();
+</script>
+</body>
+</html>
