@@ -168,10 +168,10 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 
 /* page video : dessin de télé (réduit) avec le lien youtube inséré dans
    l'écran, suivi du dessin des trois oiseaux. */
-.tv-wrap { position: relative; width: min(18.33%, 120px); margin: 0 auto; container-type: inline-size; }
+.tv-wrap { position: relative; width: min(18.33%, 120px); margin: 0; align-self: flex-end; container-type: inline-size; }
 .tv-drawing { display: block; width: 100%; height: auto; }
 /* font-size en cqw (relatif à la largeur de .tv-wrap, pas du viewport) :
    le texte reste à l'échelle de l'écran de télé quelle que soit sa taille. */
-.tv-link { position: absolute; left: 16%; top: 41.9%; width: 45.8%; height: 20%; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.05; font-size: 7.5cqw; overflow: hidden; overflow-wrap: anywhere; }
-.video-art { display: block; width: min(85%, 540px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.tv-link { position: absolute; left: 16%; top: 41.9%; width: 45.8%; height: 20%; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1; font-size: 3cqw; overflow: hidden; overflow-wrap: anywhere; }
+.video-art { display: block; width: min(85%, 540px); height: auto; margin: 0; align-self: flex-end; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .comodoro-art { display: block; width: min(60%, 340px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
