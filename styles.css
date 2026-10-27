@@ -36,9 +36,23 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      défilante avec des icônes de taille uniforme. */
   nav.menu { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: .6rem .8rem; gap: .5rem; }
   nav.menu a { flex: none; }
-  nav.menu a img, nav.menu a[href="index.html"] img { height: 38px; filter: grayscale(1) contrast(10) brightness(1.1); }
+  nav.menu a img, nav.menu a[href="index.html"] img { height: 38px; }
   nav.menu a[href="index.html"] { margin-right: 0; }
   body:has(nav.menu) { padding-bottom: 64px; }
+}
+
+@media (max-width: 640px) {
+  /* les cartouches encrées contiennent quelques traits/taches qui ne font
+     pas partie du mot (bavures, soulignés, marques parasites) : une fois
+     réduits en noir et blanc pur, ces traits ressortent en blanc. On les
+     rogne pour ne garder que l'écriture, sans toucher aux images d'origine
+     (toujours utilisées telles quelles sur la version ordinateur). */
+  .mobile-badges a img[src^="titre-audio"] { clip-path: inset(32% 0 22% 0); }
+  .mobile-badges a img[src^="titre-video"] { clip-path: inset(36% 10% 0 0); }
+  .mobile-badges a img[src^="titre-codex"] { clip-path: inset(32% 9% 0 0); }
+  .mobile-badges a img[src^="titre-argumentum"] { clip-path: inset(21% 0 31% 0); }
+  .mobile-badges a img[src^="titre-agenda"] { clip-path: inset(0 22% 0 0); }
+  .mobile-badges a img[src^="titre-contact"] { clip-path: inset(0 0 37% 0); }
 }
 
 /* page d'accueil : image interactive */
