@@ -127,8 +127,15 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .argumentum-page .download-arrow { height: clamp(40px, 16vw, 112px); width: auto; flex-shrink: 0; }
 .argumentum-page .eyes-icon { display: block; margin: 0 auto 1.8rem; height: 60px; width: auto; }
 
-.presskit { text-align: left; max-width: 668px; margin: 2.5rem 0; display: flex; flex-direction: column; gap: 1.8rem; }
-.presskit article + article { padding-top: 1.8rem; border-top: 1px solid #ddd; }
+.presskit { text-align: left; max-width: 1000px; margin: 2.5rem 0; }
+/* presse (programme, bio, version courte) à gauche, fiche technique à droite,
+   comme deux colonnes de journal ; empilées sur petit écran. */
+.presskit-cols { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+@media (min-width: 760px) {
+  .presskit-cols { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+.press-col { display: flex; flex-direction: column; gap: 1.8rem; }
+.press-col article + article { padding-top: 1.8rem; border-top: 1px solid #ddd; }
 .presskit h3 { margin: 0 0 .6rem; font-size: 1.05rem; letter-spacing: .08em; text-transform: uppercase; color: var(--rouge); }
 .presskit p { margin: 0 0 .7rem; line-height: 1.55; color: #222; }
 .presskit em { font-style: italic; }
