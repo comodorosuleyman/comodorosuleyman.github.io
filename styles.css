@@ -7,6 +7,19 @@ body.home .scene { width: auto; max-width: 100vw; max-height: 100vh; aspect-rati
 body.home .scene img { height: 100%; }
 .visually-hidden { position: absolute; left: -9999px; }
 
+/* accueil mobile : affiche en fond + badges fixes en bas à droite */
+.scene-mobile { display: none; }
+
+@media (max-width: 640px) {
+  body.home .scene { display: none; }
+  .scene-mobile { display: block; position: fixed; inset: 0; }
+  .scene-mobile .poster-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .mobile-badges { position: fixed; right: .8rem; bottom: .8rem; z-index: 10; display: flex; flex-direction: column; align-items: flex-end; gap: .55rem; }
+  .mobile-badges a { display: block; text-decoration: none; transition: opacity .2s ease; }
+  .mobile-badges a img { height: 34px; width: auto; display: block; }
+  .mobile-badges a:hover, .mobile-badges a:focus-visible { opacity: .7; }
+}
+
 /* menu de secours (mobile, accessibilité, référencement) : les mêmes badges que les cartouches.
    Fixe en bas d'écran sur les pages secondaires, toujours accessible. */
 nav.menu { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: #f0d5c2; box-shadow: 0 -2px 8px rgba(0,0,0,.15); display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .6rem; padding: 1rem; }
@@ -33,6 +46,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .frame-content-top { justify-content: flex-start; padding-top: 2rem; }
 .frame-content p { color: #333; font-size: 1.05rem; margin: 0; }
 .content-link { font-family: Arial, Helvetica, sans-serif; color: var(--rouge); font-weight: 700; text-decoration: none; font-size: clamp(1rem, 4.8vw, 1.6rem); overflow-wrap: anywhere; }
+.phone { font-family: Arial, Helvetica, sans-serif; }
 
 .frame-content embed { width: 100%; max-width: 500px; height: clamp(220px, 60vw, 420px); border: 1px solid #ccc; }
 .content-link:hover, .content-link:focus-visible { color: #000; }
