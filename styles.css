@@ -129,7 +129,13 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .argumentum-page img { max-width: 100%; height: auto; }
 .argumentum-page img.manuscript { width: 100%; max-width: none; margin-left: 0; display: block; margin-bottom: 0; }
 .press-sub { margin: 0 0 .6rem; color: #777; font-size: .92rem; }
-.presskit-download { text-align: left; margin: 9rem 0 0; padding-left: 0; display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; }
+/* même grille que .presskit-cols plus bas, pour que chaque bouton reste
+   aligné avec le paragraphe auquel il correspond (Press Kit / Programme
+   note à gauche, Technical Rider / fiche technique à droite). */
+.presskit-download { text-align: left; max-width: 1000px; margin: 9rem 0 0; padding-left: 0; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 760px) {
+  .presskit-download { grid-template-columns: 1fr 1fr; }
+}
 .presskit-download a { display: inline-flex; align-items: flex-start; gap: .5rem; white-space: nowrap; font-size: clamp(1.3rem, 6vw, 2rem); }
 .argumentum-page .download-arrow { height: clamp(40px, 16vw, 112px); width: auto; flex-shrink: 0; }
 
