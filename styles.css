@@ -31,14 +31,11 @@ nav.menu a[href="index.html"] { margin-right: auto; }
 nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 
 @media (max-width: 640px) {
-  /* le bandeau wrappait sur plusieurs lignes et devenait assez haut pour
-     cacher le bas du contenu des pages : on le fige sur une seule ligne
-     défilante avec des icônes de taille uniforme. */
-  nav.menu { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: .6rem .8rem; gap: .5rem; }
-  nav.menu a { flex: none; }
-  nav.menu a img, nav.menu a[href="index.html"] img { height: 38px; }
-  nav.menu a[href="index.html"] { margin-right: 0; }
-  body:has(nav.menu) { padding-bottom: 64px; }
+  /* le bandeau (inchangé, forme et couleurs d'origine) peut s'étaler sur
+     plusieurs lignes sur un petit écran ; on réserve assez de place en bas
+     de page pour qu'il ne cache jamais le contenu, quel que soit le nombre
+     de lignes sur lesquelles il s'étale. */
+  body:has(nav.menu) { padding-bottom: 300px; }
 }
 
 @media (max-width: 640px) {
