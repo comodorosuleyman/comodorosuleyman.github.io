@@ -61,6 +61,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      inaccessible au scroll. On aligne en haut pour pouvoir toujours
      tout faire défiler, du premier au dernier élément. */
   .frame-content { justify-content: flex-start; padding-top: .8rem; padding-bottom: .8rem; }
+  /* les navigateurs mobiles n'ont pas de lecteur PDF pour <embed> : la zone
+     reste vide/noire. On la masque et on mise sur le lien d'ouverture. */
+  .frame-content embed { display: none; }
 }
 .frame-content-top { justify-content: flex-start; padding-top: 2rem; }
 .frame-content p { color: #333; font-size: 1.05rem; margin: 0; }
