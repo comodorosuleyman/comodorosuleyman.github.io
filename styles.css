@@ -168,8 +168,10 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 
 /* page video : dessin de télé (réduit) avec le lien youtube inséré dans
    l'écran, suivi du dessin des trois oiseaux. */
-.tv-wrap { position: relative; width: min(55%, 360px); margin: 0 auto; }
+.tv-wrap { position: relative; width: min(13.75%, 90px); margin: 0 auto; container-type: inline-size; }
 .tv-drawing { display: block; width: 100%; height: auto; }
-.tv-link { position: absolute; left: 16%; top: 41.9%; width: 45.8%; height: 20%; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.2; font-size: clamp(0.5rem, 2.6vw, 1.5rem); overflow-wrap: anywhere; }
+/* font-size en cqw (relatif à la largeur de .tv-wrap, pas du viewport) :
+   le texte reste à l'échelle de l'écran de télé quelle que soit sa taille. */
+.tv-link { position: absolute; left: 16%; top: 41.9%; width: 45.8%; height: 20%; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.05; font-size: 7.5cqw; overflow: hidden; overflow-wrap: anywhere; }
 .video-art { display: block; width: min(85%, 540px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .comodoro-art { display: block; width: min(45%, 260px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
