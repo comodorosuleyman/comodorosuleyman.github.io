@@ -110,7 +110,10 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .frame-content embed { width: 100%; max-width: 500px; height: clamp(220px, 60vw, 420px); border: 1px solid #ccc; }
 
 .social-link { display: inline-flex; align-items: center; gap: .55rem; }
-.contact-art { width: 100%; max-width: 460px; height: auto; margin-top: 1rem; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+/* centré dans l'espace libre sous les liens jusqu'au bas du cadre,
+   pas juste collé sous Facebook (marges auto = centrage dans l'espace
+   restant du conteneur flex, qui a une hauteur fixe via inset:13%). */
+.contact-art { width: 100%; max-width: 600px; height: auto; margin: auto 0; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .social-icon { height: 1em; width: 1em; flex-shrink: 0; }
 
 /* le panneau du lecteur Bandcamp reste blanc (imposé par la plateforme
