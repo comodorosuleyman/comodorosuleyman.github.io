@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://comodorosuleyman-sys.github.io/sitemap.xml
