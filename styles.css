@@ -46,7 +46,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .frame-content-top { justify-content: flex-start; padding-top: 2rem; }
 .frame-content p { color: #333; font-size: 1.05rem; margin: 0; }
 .content-link { font-family: Arial, Helvetica, sans-serif; color: var(--rouge); font-weight: 700; text-decoration: none; font-size: clamp(1rem, 4.8vw, 1.6rem); overflow-wrap: anywhere; }
-.phone { font-family: Arial, Helvetica, sans-serif; }
+.phone { font-family: Arial, Helvetica, sans-serif; color: var(--rouge); font-weight: 700; font-size: clamp(1rem, 4.8vw, 1.6rem); }
 
 .frame-content embed { width: 100%; max-width: 500px; height: clamp(220px, 60vw, 420px); border: 1px solid #ccc; }
 .content-link:hover, .content-link:focus-visible { color: #000; }
