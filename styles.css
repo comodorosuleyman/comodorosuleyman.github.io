@@ -110,6 +110,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .frame-content embed { width: 100%; max-width: 500px; height: clamp(220px, 60vw, 420px); border: 1px solid #ccc; }
 
 .social-link { display: inline-flex; align-items: center; gap: .55rem; }
+.contact-art { width: 100%; max-width: 340px; height: auto; margin-top: 1rem; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .social-icon { height: 1em; width: 1em; flex-shrink: 0; }
 
 /* le panneau du lecteur Bandcamp reste blanc (imposé par la plateforme
