@@ -54,7 +54,14 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* le cartouche : bande vide entre les deux filets ornés en haut du cadre */
 .frame-title { position: absolute; left: 3.58%; top: 4.68%; width: 88.65%; height: 5.26%; display: flex; align-items: center; justify-content: center; }
 .frame-title img { max-width: 100%; max-height: 100%; object-fit: contain; }
-.frame-content { position: absolute; inset: 13%; overflow: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; text-align: center; }
+.frame-content { position: absolute; inset: 13%; overflow: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; text-align: center; }
+@media (max-width: 640px) {
+  /* sur petit écran, le contenu dépasse souvent la zone du cadre ; en le
+     centrant (justify-content:center) le début du contenu devenait
+     inaccessible au scroll. On aligne en haut pour pouvoir toujours
+     tout faire défiler, du premier au dernier élément. */
+  .frame-content { justify-content: flex-start; padding-top: .8rem; padding-bottom: .8rem; }
+}
 .frame-content-top { justify-content: flex-start; padding-top: 2rem; }
 .frame-content p { color: #333; font-size: 1.05rem; margin: 0; }
 .content-link { font-family: Arial, Helvetica, sans-serif; color: var(--rouge); font-weight: 700; text-decoration: none; font-size: clamp(1rem, 4.8vw, 1.6rem); overflow-wrap: anywhere; }
