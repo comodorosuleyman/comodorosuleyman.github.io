@@ -60,6 +60,27 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .scene a.zone { position: absolute; display: block; background-size: 100% 100%; background-repeat: no-repeat; opacity: 0; transition: opacity .2s ease; }
 .scene a.zone:hover, .scene a.zone:focus-visible, .scene a.zone.lit { opacity: 1; }
 
+/* les images de survol ne sont utiles que sur la version ordinateur (la
+   scène est masquée sur mobile) : en les déclarant seulement ici, dans un
+   @media qui ne s'applique pas sur petit écran, le navigateur ne les
+   télécharge pas du tout sur mobile (contrairement à un style="background-
+   image:..." inline, qui serait toujours téléchargé même si masqué). */
+@media (min-width: 641px) {
+  .scene a.zone[data-glow="glow-video.png"] { background-image: url(glow-video.png); }
+  .scene a.zone[data-glow="glow-audio.png"] { background-image: url(glow-audio.png); }
+  .scene a.zone[data-glow="glow-contact.png"] { background-image: url(glow-contact.png); }
+  .scene a.zone[data-glow="glow-agenda.png"] { background-image: url(glow-agenda.png); }
+  .scene a.zone[data-glow="glow-codex.png"] { background-image: url(glow-codex.png); }
+  .scene a.zone[data-glow="glow-argumentum.png"] { background-image: url(glow-argumentum.png); }
+  .scene a.zone[data-glow="glow-comodoro.png"] { background-image: url(glow-comodoro.png); }
+  .scene a.zone[data-glow="glow-btn-audio.png"] { background-image: url(glow-btn-audio.png); }
+  .scene a.zone[data-glow="glow-btn-video.png"] { background-image: url(glow-btn-video.png); }
+  .scene a.zone[data-glow="glow-btn-codex.png"] { background-image: url(glow-btn-codex.png); }
+  .scene a.zone[data-glow="glow-btn-argumentum.png"] { background-image: url(glow-btn-argumentum.png); }
+  .scene a.zone[data-glow="glow-btn-agenda.png"] { background-image: url(glow-btn-agenda.png); }
+  .scene a.zone[data-glow="glow-btn-contact.png"] { background-image: url(glow-btn-contact.png); }
+}
+
 /* sous-pages encadrées (video, audio, contact, agenda, codex) */
 .frame-page { position: relative; width: min(96vw, 1100px); aspect-ratio: 6994 / 9882; margin: 2.5rem auto 1rem; background: url(cadre.jpg?v=4) center / 100% 100% no-repeat; }
 /* le cartouche : bande vide entre les deux filets ornés en haut du cadre */
