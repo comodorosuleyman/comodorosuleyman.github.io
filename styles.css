@@ -109,6 +109,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 
 .frame-content embed { width: 100%; max-width: 500px; height: clamp(220px, 60vw, 420px); border: 1px solid #ccc; }
 
+.social-link { display: inline-flex; align-items: center; gap: .55rem; }
+.social-icon { height: 1em; width: 1em; flex-shrink: 0; }
+
 /* le panneau du lecteur Bandcamp reste blanc (imposé par la plateforme
    dès que la liste des titres est affichée) ; on l'encadre pour que ça
    ressemble à une fiche posée sur la page plutôt qu'à un bloc qui dépareille. */
