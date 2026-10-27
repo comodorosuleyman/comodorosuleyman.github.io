@@ -114,9 +114,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    ressemble à une fiche posée sur la page plutôt qu'à un bloc qui dépareille. */
 .bandcamp-player { border-radius: 6px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .content-link:hover, .content-link:focus-visible { color: #000; }
-.back-link { position: fixed; top: .8rem; left: .8rem; z-index: 10; display: inline-block; text-decoration: none; background: #f0d5c2; padding: .3rem .5rem; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
-.back-link img { height: 30px; width: auto; display: block; transition: opacity .2s ease; }
-.back-link:hover img, .back-link:focus-visible img { opacity: .6; }
 
 /* page argumentum : la colonne fait toute la largeur du manuscrit (1100px max) ;
    le texte courant (programme, bio, press kit...) reste calé sur son bord
@@ -146,7 +143,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .stage-audience { margin: 1rem 0 0; font-size: .8rem; color: #999; border-top: 1px solid #ddd; padding-top: .6rem; }
 @media (min-width: 640px) { .rider-grid { grid-template-columns: 1.3fr 1fr; align-items: start; } }
 .press-byline { text-align: right; color: #555; font-style: italic; font-size: .8rem; margin: 1.5rem 0 0; }
-.argumentum-page .back-link img { height: 30px; width: auto; }
 
 /* page video : dessin de télé avec le lien youtube inséré dans l'écran */
 .tv-wrap { position: relative; width: min(95%, 680px); margin: 0 auto; }
