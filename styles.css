@@ -157,7 +157,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 @media (min-width: 640px) { .rider-grid { grid-template-columns: 1.3fr 1fr; align-items: start; } }
 .press-byline { text-align: right; color: #555; font-style: italic; font-size: .8rem; margin: 1.5rem 0 0; }
 
-/* page video : dessin de télé avec le lien youtube inséré dans l'écran */
-.tv-wrap { position: relative; width: min(95%, 680px); margin: 0 auto; }
+/* page video : dessin de télé (réduit) avec le lien youtube inséré dans
+   l'écran, suivi du dessin des trois oiseaux. */
+.tv-wrap { position: relative; width: min(55%, 360px); margin: 0 auto; }
 .tv-drawing { display: block; width: 100%; height: auto; }
 .tv-link { position: absolute; left: 16%; top: 41.9%; width: 45.8%; height: 20%; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.2; font-size: clamp(0.5rem, 2.6vw, 1.5rem); overflow-wrap: anywhere; }
+.video-art { display: block; width: min(70%, 420px); height: auto; margin: 0 auto; }
