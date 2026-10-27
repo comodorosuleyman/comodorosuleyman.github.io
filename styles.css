@@ -18,6 +18,11 @@ body.home .scene img { height: 100%; }
   .mobile-badges { position: fixed; right: .8rem; bottom: .8rem; z-index: 10; display: flex; flex-direction: column; align-items: flex-end; gap: .55rem; }
   .mobile-badges a { display: block; text-decoration: none; transition: opacity .2s ease; }
   .mobile-badges a img { height: 44px; width: auto; display: block; filter: grayscale(1) contrast(10) brightness(1.1); }
+  /* le badge du nom de l'artiste est un détourage rouge/noir (pas un
+     rectangle plein) : le filtre noir et blanc des autres badges le rend
+     invisible sur le fond quasi noir de l'accueil, on garde ses couleurs
+     d'origine éclairies pour qu'il reste lisible. */
+  .mobile-badges a.comodoro-badge img { height: 62px; filter: brightness(2.6) saturate(1.6); }
   .mobile-badges a:hover, .mobile-badges a:focus-visible { opacity: .7; }
 }
 
