@@ -173,5 +173,5 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* font-size en cqw (relatif à la largeur de .tv-wrap, pas du viewport) :
    le texte reste à l'échelle de l'écran de télé quelle que soit sa taille. */
 .tv-link { position: absolute; left: 16%; top: 41.9%; width: 45.8%; height: 20%; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1; font-size: 3cqw; overflow: hidden; overflow-wrap: anywhere; }
-.video-art { display: block; width: min(85%, 540px); height: auto; margin: 0; align-self: flex-end; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.video-art { display: block; width: min(85%, 540px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .comodoro-art { display: block; width: min(52%, 300px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
