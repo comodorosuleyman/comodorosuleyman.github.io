@@ -250,9 +250,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    margin:0 auto) pour que la télé, alignée à gauche dans cette rangée,
    tombe exactement sur le bord gauche du cadre des oiseaux. */
 .video-top-row { width: 100%; max-width: min(85%, 540px); margin: 0 auto; display: flex; align-items: flex-end; justify-content: flex-start; gap: 1.2rem; }
-.video-figures { display: block; width: min(40%, 270px); height: auto; flex-shrink: 0; }
+.video-figures { display: block; width: min(40%, 270px); height: auto; flex-shrink: 0; transform: scaleX(-1); }
 .tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(27.5%, 180px); margin: 0; flex-shrink: 0; }
-.tv-drawing { display: block; width: 100%; height: auto; }
+/* miroir, mais la boîte .tv-wrap garde sa position (bord gauche calé sur
+   celui du dessin des oiseaux) : seul le dessin à l'intérieur est inversé. */
+.tv-drawing { display: block; width: 100%; height: auto; transform: scaleX(-1); }
 .tv-caption { font-size: clamp(.55rem, 2.2vw, .85rem); text-align: center; line-height: 1.25; }
 .video-art { box-sizing: border-box; display: block; width: auto; max-width: min(85%, 540px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .comodoro-art { box-sizing: border-box; display: block; width: min(52%, 300px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
