@@ -93,7 +93,14 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* le cartouche : bande vide entre les deux filets ornés en haut du cadre */
 .frame-title { position: absolute; left: 3.58%; top: 4.68%; width: 88.65%; height: 5.26%; display: flex; align-items: center; justify-content: center; }
 .frame-title img { max-width: 100%; max-height: 100%; object-fit: contain; }
-.frame-content { position: absolute; inset: 13%; overflow: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; text-align: center; container-type: inline-size; }
+/* scrollbar-gutter:stable both-edges - quand le contenu dépasse en hauteur
+   (fréquent sur téléphone) et qu'une scrollbar verticale apparaît, elle
+   grignote la largeur utilisable d'un seul côté (droite) ; sans ça,
+   align-items:center centre les enfants par rapport à cette largeur
+   amputée, pas par rapport à la boîte visible entière, et tout paraît
+   décalé à gauche. Réserver l'espace des deux côtés garde le centrage
+   correct, scrollbar visible ou non. */
+.frame-content { position: absolute; inset: 13%; overflow: auto; scrollbar-gutter: stable both-edges; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; text-align: center; container-type: inline-size; }
 .codex-art-mobile { box-sizing: border-box; display: none; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 @media (max-width: 640px) {
   /* sur petit écran, le contenu dépasse souvent la zone du cadre ; en le
@@ -137,10 +144,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .social-icon { height: 1em; width: 1em; flex-shrink: 0; }
 .agenda-art { box-sizing: border-box; display: block; max-width: 99%; max-height: 99%; width: auto; height: auto; margin: 0 auto; }
 
-/* le panneau du lecteur Bandcamp reste blanc (imposé par la plateforme
-   dès que la liste des titres est affichée) ; on l'encadre pour que ça
-   ressemble à une fiche posée sur la page plutôt qu'à un bloc qui dépareille. */
-.bandcamp-player { border: 0; min-width: 0; border-radius: 2px; }
 .content-link:hover, .content-link:focus-visible { color: #000; }
 
 /* cadre encré (juste les filets/coins, les silhouettes ont été effacées de
@@ -166,12 +169,23 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    23.32% contre 12.89% à droite), ce qui la rendait visiblement pas centrée
    une fois affichée - la marge ajoutée égalise les deux côtés (21.1% chacun
    sur le nouveau canevas 1564) sans rogner le filet gauche, serré contre le
-   bord. */
+   bord.
+   .bandcamp-window occupe tout le rectangle (fond noir) ; l'iframe à
+   l'intérieur est volontairement plus petite (88%) et centrée, sinon le
+   contenu Bandcamp (qui a tendance à remplir tout l'espace qu'on lui donne)
+   masque complètement le noir et on ne le voit jamais. */
 .bandcamp-wrap {
   position: relative; width: 100%; max-width: 600px; margin: 0 auto; flex-shrink: 0;
   aspect-ratio: 1564 / 2012;
   border-radius: 6px;
   overflow: hidden;
+}
+.bandcamp-window {
+  position: absolute;
+  left: 21.10%; top: 29.67%;
+  width: 57.74%; height: 62.28%;
+  background: #000;
+  display: flex; align-items: center; justify-content: center;
 }
 .bandcamp-player {
   /* width/height en % explicites, pas left+right+auto : un iframe est un
@@ -179,10 +193,8 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      navigateurs retombent sur sa taille par défaut (300x150) au lieu de
      calculer la taille depuis les contraintes - vérifié en headless Chrome
      (le lecteur Bandcamp s'affichait alors rabougri, UI dégradée). */
-  position: absolute;
-  left: 21.10%; top: 29.67%;
-  width: 57.74%; height: 62.28%;
-  background: #000;
+  border: 0; min-width: 0; border-radius: 2px;
+  width: 88%; height: 88%;
 }
 .bandcamp-frame {
   position: absolute; inset: 0;
