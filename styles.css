@@ -229,10 +229,8 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .stage-audience { margin: 1rem 0 0; font-size: .8rem; color: #999; border-top: 1px solid #ddd; padding-top: .6rem; }
 @media (min-width: 640px) { .rider-grid { grid-template-columns: 1.3fr 1fr; align-items: start; } }
 .press-byline { text-align: right; color: #555; font-style: italic; font-size: .8rem; margin: 1.5rem 0 0; }
-/* grand, posé seul au milieu du vide entre la fiche technique et la
-   signature - .frame-content centre tout son contenu verticalement dans un
-   cadre bien plus haut que le texte, d'où ce blanc à combler. */
-.flyingx { display: block; width: clamp(180px, 32vw, 420px); height: auto; margin: 4rem auto; }
+/* posé sous la fiche technique, dans sa colonne. */
+.flyingx { display: block; width: clamp(70px, 12vw, 140px); height: auto; margin: 2rem auto 0; }
 
 /* page video : télé (cassée, écran-crâne) serrée à gauche avec le lien
    youtube en légende dessous, les silhouettes qui tombent (reprises du
