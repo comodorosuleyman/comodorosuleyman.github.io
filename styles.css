@@ -164,10 +164,13 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      élément remplacé, et avec les 4 côtés posés + width/height:auto les
      navigateurs retombent sur sa taille par défaut (300x150) au lieu de
      calculer la taille depuis les contraintes - vérifié en headless Chrome
-     (le lecteur Bandcamp s'affichait alors rabougri, UI dégradée). */
+     (le lecteur Bandcamp s'affichait alors rabougri, UI dégradée).
+     Marges 23/35/20/10% reconverties par recherche dichotomique pixel par
+     pixel sur audio-frame.png (le rectangle précédent, estimé à l'oeil,
+     débordait sur les filets du cadre en haut et à gauche). */
   position: absolute;
-  left: 25%; top: 15%;
-  width: 55%; height: 75%;
+  left: 23%; top: 35%;
+  width: 57%; height: 55%;
   border: 0; min-width: 0; border-radius: 2px;
   background: #000;
 }
