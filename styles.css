@@ -199,7 +199,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    youtube en légende dessous, les silhouettes qui tombent (reprises du
    dessin de la page audio) à sa droite, puis le dessin des trois oiseaux
    en dessous. */
-.video-top-row { width: 100%; display: flex; align-items: flex-end; justify-content: flex-start; gap: 1.2rem; }
+.video-top-row { width: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 1.2rem; }
 .video-figures { display: block; width: min(34%, 230px); height: auto; flex-shrink: 0; }
 .tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(27.5%, 180px); margin: 0; flex-shrink: 0; }
 .tv-drawing { display: block; width: 100%; height: auto; }
