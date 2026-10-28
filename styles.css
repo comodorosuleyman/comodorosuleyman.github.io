@@ -155,15 +155,21 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    risque de cacher une partie fonctionnelle du lecteur), et le dessin du
    cadre (audio-frame.png, même ratio page que le SVG : pas de déformation)
    est posé par-dessus en débordement, pointer-events:none pour rester
-   cliquable. .bandcamp-wrap prend le ratio naturel du dessin (1416x2012,
-   forme d'origine du dessin - pas de recadrage) pour que le cadre ne soit
-   pas déformé. À l'intérieur du cadre (la fenêtre du lecteur), fond noir ;
-   à l'extérieur, aucun fond ajouté (transparent, donc couleur de la page),
-   même là où le dessin encré déborde visuellement sur la photo ou le
-   lecteur - ce n'est que des filets sur fond transparent, jamais un à-plat. */
+   cliquable. .bandcamp-wrap prend le ratio du dessin (1564x2012) pour que
+   le cadre ne soit pas déformé. À l'intérieur du cadre (la fenêtre du
+   lecteur), fond noir ; à l'extérieur, aucun fond ajouté (transparent, donc
+   couleur de la page), même là où le dessin encré déborde visuellement sur
+   la photo ou le lecteur - ce n'est que des filets sur fond transparent,
+   jamais un à-plat.
+   audio-frame.png a reçu 148px de marge transparente à droite : dans le
+   dessin d'origine (1416 de large) la fenêtre était décalée (marge gauche
+   23.32% contre 12.89% à droite), ce qui la rendait visiblement pas centrée
+   une fois affichée - la marge ajoutée égalise les deux côtés (21.1% chacun
+   sur le nouveau canevas 1564) sans rogner le filet gauche, serré contre le
+   bord. */
 .bandcamp-wrap {
   position: relative; width: 100%; max-width: 600px; margin: 0 auto; flex-shrink: 0;
-  aspect-ratio: 1416 / 2012;
+  aspect-ratio: 1564 / 2012;
   border-radius: 6px;
   overflow: hidden;
 }
@@ -174,8 +180,8 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      calculer la taille depuis les contraintes - vérifié en headless Chrome
      (le lecteur Bandcamp s'affichait alors rabougri, UI dégradée). */
   position: absolute;
-  left: 23.32%; top: 29.67%;
-  width: 63.79%; height: 62.28%;
+  left: 21.10%; top: 29.67%;
+  width: 57.74%; height: 62.28%;
   background: #000;
 }
 .bandcamp-frame {
