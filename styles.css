@@ -117,6 +117,14 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .codex-download { display: block; }
 .codex-download .download-arrow { height: clamp(40px, 12vw, 90px); width: auto; }
 
+/* titres "Burnin' Chamber Music (!) I/II" : redondants avec le PDF affiché
+   dans <embed> sur ordinateur (le titre y figure déjà), mais nécessaires
+   sur mobile où <embed> est masqué (pas de lecteur PDF) - seul repère entre
+   les deux partitions. */
+@media (min-width: 641px) {
+  .codex-title { display: none; }
+}
+
 /* les liens de contact doivent toujours tenir sur une seule ligne : une
    échelle (vw) calée sur la largeur réelle du cadre, pas sur celle de
    .content-link (calée sur la largeur du viewport), pour que l'adresse
