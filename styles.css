@@ -146,46 +146,18 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 
 .content-link:hover, .content-link:focus-visible { color: #000; }
 
-/* cadre encré (juste les filets/coins, les silhouettes ont été effacées de
-   audio-frame.png) posé en débordement sur le lecteur Bandcamp. */
-/* le découpage SVG fourni par
-   l'utilisateur (cadre rouge.svg) contient en réalité un rectangle précis
-   (56.825287,102.82671 155.44269x215.87593 sur un canevas de
-   243.68126x346.60416, soit left 23.32% / top 29.67% / right 12.89% /
-   bottom 8.05%) qui correspond à la fenêtre où le lecteur doit apparaître
-   - pas une forme organique à masquer. On positionne donc le lecteur en
-   absolute dans cette fenêtre exacte (iframe entier, non rogné : aucun
-   risque de cacher une partie fonctionnelle du lecteur), et le dessin du
-   cadre (audio-frame.png, même ratio page que le SVG : pas de déformation)
-   est posé par-dessus en débordement, pointer-events:none pour rester
-   cliquable. .bandcamp-wrap prend le ratio du dessin (1564x2012) pour que
-   le cadre ne soit pas déformé. À l'intérieur du cadre (la fenêtre du
-   lecteur), fond noir ; à l'extérieur, aucun fond ajouté (transparent, donc
-   couleur de la page), même là où le dessin encré déborde visuellement sur
-   la photo ou le lecteur - ce n'est que des filets sur fond transparent,
-   jamais un à-plat.
-   audio-frame.png a reçu 148px de marge transparente à droite : dans le
-   dessin d'origine (1416 de large) la fenêtre était décalée (marge gauche
-   23.32% contre 12.89% à droite), ce qui la rendait visiblement pas centrée
-   une fois affichée - la marge ajoutée égalise les deux côtés (21.1% chacun
-   sur le nouveau canevas 1564) sans rogner le filet gauche, serré contre le
-   bord.
-   .bandcamp-window occupe tout le rectangle (fond noir) ; l'iframe à
-   l'intérieur est volontairement plus petite (88%) et centrée, sinon le
-   contenu Bandcamp (qui a tendance à remplir tout l'espace qu'on lui donne)
-   masque complètement le noir et on ne le voit jamais. */
+/* cadre encré audio-frame.png : désormais un seul dessin où l'intérieur est
+   déjà peint en noir à la main (plus besoin d'un fond CSS séparé) - posé en
+   fond de .bandcamp-wrap, avec le lecteur Bandcamp incrusté par-dessus dans
+   la zone noire, en retrait des filets du cadre pour ne jamais les
+   recouvrir (marges vérifiées pixel par pixel sur le dessin). */
 .bandcamp-wrap {
-  position: relative; width: 100%; max-width: 600px; margin: 0 auto; flex-shrink: 0;
-  aspect-ratio: 1564 / 2012;
+  position: relative; width: 100%; max-width: 680px; margin: 0 auto; flex-shrink: 0;
+  aspect-ratio: 1762 / 2202;
   border-radius: 6px;
-  overflow: hidden;
-}
-.bandcamp-window {
-  position: absolute;
-  left: 21.10%; top: 29.67%;
-  width: 57.74%; height: 62.28%;
-  background: #000;
-  display: flex; align-items: center; justify-content: center;
+  background-image: url(audio-frame.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 .bandcamp-player {
   /* width/height en % explicites, pas left+right+auto : un iframe est un
@@ -193,19 +165,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      navigateurs retombent sur sa taille par défaut (300x150) au lieu de
      calculer la taille depuis les contraintes - vérifié en headless Chrome
      (le lecteur Bandcamp s'affichait alors rabougri, UI dégradée). */
+  position: absolute;
+  left: 25%; top: 15%;
+  width: 55%; height: 75%;
   border: 0; min-width: 0; border-radius: 2px;
-  width: 88%; height: 88%;
-}
-.bandcamp-frame {
-  position: absolute; inset: 0;
-  /* presque invisible, mais nécessaire : sans AUCUNE background-color,
-     certains moteurs de rendu (constaté en headless Chrome) ne peignent
-     jamais le background-image d'un calque qui n'a que ça. */
-  background-color: rgba(0, 0, 0, .01);
-  background-image: url(audio-frame.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  pointer-events: none; z-index: 2;
+  background: #000;
 }
 
 /* page argumentum : la colonne fait toute la largeur du manuscrit (1100px max) ;
