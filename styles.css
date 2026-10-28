@@ -177,7 +177,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
   position: relative; width: 100%; max-width: 950px; margin: 0 auto; flex-shrink: 0;
   aspect-ratio: 1762 / 2202;
   border-radius: 6px;
-  background-image: url(audio-frame.png?v=2);
+  background-image: url(audio-frame.png?v=3);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
