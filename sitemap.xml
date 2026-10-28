@@ -1,11 +1,269 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://comodorosuleyman.github.io/</loc></url>
-  <url><loc>https://comodorosuleyman.github.io/audio.html</loc></url>
-  <url><loc>https://comodorosuleyman.github.io/video.html</loc></url>
-  <url><loc>https://comodorosuleyman.github.io/codex.html</loc></url>
-  <url><loc>https://comodorosuleyman.github.io/argumentum.html</loc></url>
-  <url><loc>https://comodorosuleyman.github.io/agenda.html</loc></url>
-  <url><loc>https://comodorosuleyman.github.io/contact.html</loc></url>
-  <url><loc>https://comodorosuleyman.github.io/comodoro.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://comodorosuleyman.github.io/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/index-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/index-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/index-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/index-es.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/index-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/index-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/index-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/index-ro.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/index-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/index-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/index-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/index-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/index-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/index-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/index-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/"/>
+  </url>
+
+  <url>
+    <loc>https://comodorosuleyman.github.io/audio.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/audio.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/audio-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/audio-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/audio-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/audio.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/audio-es.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/audio.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/audio-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/audio-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/audio-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/audio.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/audio-ro.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/audio.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/audio-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/audio-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/audio-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/audio.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/audio-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/audio.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/audio-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/audio-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/audio-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/audio.html"/>
+  </url>
+
+  <url>
+    <loc>https://comodorosuleyman.github.io/video.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/video.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/video-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/video-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/video-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/video.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/video-es.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/video.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/video-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/video-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/video-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/video.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/video-ro.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/video.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/video-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/video-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/video-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/video.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/video-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/video.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/video-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/video-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/video-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/video.html"/>
+  </url>
+
+  <url>
+    <loc>https://comodorosuleyman.github.io/codex.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/codex.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/codex-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/codex-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/codex-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/codex.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/codex-es.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/codex.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/codex-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/codex-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/codex-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/codex.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/codex-ro.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/codex.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/codex-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/codex-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/codex-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/codex.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/codex-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/codex.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/codex-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/codex-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/codex-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/codex.html"/>
+  </url>
+
+  <url>
+    <loc>https://comodorosuleyman.github.io/argumentum.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/argumentum.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/argumentum-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/argumentum-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/argumentum-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/argumentum.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/argumentum-es.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/argumentum.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/argumentum-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/argumentum-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/argumentum-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/argumentum.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/argumentum-ro.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/argumentum.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/argumentum-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/argumentum-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/argumentum-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/argumentum.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/argumentum-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/argumentum.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/argumentum-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/argumentum-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/argumentum-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/argumentum.html"/>
+  </url>
+
+  <url>
+    <loc>https://comodorosuleyman.github.io/agenda.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/agenda.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/agenda-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/agenda-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/agenda-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/agenda.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/agenda-es.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/agenda.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/agenda-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/agenda-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/agenda-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/agenda.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/agenda-ro.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/agenda.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/agenda-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/agenda-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/agenda-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/agenda.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/agenda-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/agenda.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/agenda-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/agenda-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/agenda-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/agenda.html"/>
+  </url>
+
+  <url>
+    <loc>https://comodorosuleyman.github.io/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/contact-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/contact-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/contact-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/contact.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/contact-es.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/contact-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/contact-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/contact-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/contact.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/contact-ro.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/contact-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/contact-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/contact-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/contact.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/contact-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/contact-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/contact-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/contact-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/contact.html"/>
+  </url>
+
+  <url>
+    <loc>https://comodorosuleyman.github.io/comodoro.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/comodoro.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/comodoro-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/comodoro-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/comodoro-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/comodoro.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/comodoro-es.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/comodoro.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/comodoro-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/comodoro-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/comodoro-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/comodoro.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/comodoro-ro.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/comodoro.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/comodoro-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/comodoro-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/comodoro-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/comodoro.html"/>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.github.io/comodoro-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://comodorosuleyman.github.io/comodoro.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://comodorosuleyman.github.io/comodoro-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://comodorosuleyman.github.io/comodoro-ro.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://comodorosuleyman.github.io/comodoro-fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.github.io/comodoro.html"/>
+  </url>
+
 </urlset>
