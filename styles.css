@@ -155,9 +155,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .rider dt { font-weight: 700; font-size: .82rem; letter-spacing: .05em; text-transform: uppercase; color: #777; margin-top: 1rem; }
 .rider dt:first-child { margin-top: 0; }
 .rider dd { margin: .2rem 0 0; line-height: 1.5; }
-/* contact du rider technique : plus petit qu'ailleurs sur le site (propre
-   à cette page, ne touche pas .content-link/.phone utilisés ailleurs) */
-.rider dd a.content-link, .rider dd .phone { font-size: clamp(.85rem, 3.4vw, 1.15rem); }
+/* contact du rider technique : même taille que le reste du texte (pas la
+   grande taille habituelle de .content-link/.phone utilisée ailleurs) */
+.rider dd a.content-link, .rider dd .phone { font-size: inherit; }
 .stage-plot { background: #f0d5c2; border: 1px solid #e3e3e3; border-radius: 6px; padding: 1.2rem; text-align: center; }
 .stage-label { margin: 0 0 1rem; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: #999; }
 .stage-row { display: flex; justify-content: center; gap: 2.2rem; margin: 0 0 1rem; }
