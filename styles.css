@@ -284,6 +284,11 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
      zone noire du cadre, forçant un petit scroll interne inutile - on
      resserre l'espacement vertical pour que tout tienne sans scroll. */
   body.codex-page .frame-content { gap: .8rem; padding-top: .5rem; padding-bottom: .5rem; }
+  /* même principe que codex : la rangée figures+télé et le dessin des
+     oiseaux dépassaient légèrement la zone noire, forçant un petit scroll
+     interne inutile - on resserre et on plafonne un peu plus bas. */
+  body.video-page .frame-content { gap: .8rem; padding-top: .5rem; padding-bottom: .5rem; }
+  body.video-page .video-art { max-height: 50vw; }
 }
 
 /* entre 641px et ~1000px, le cadre est encore loin de son plafond de 1100px :
