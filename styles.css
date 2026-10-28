@@ -136,17 +136,18 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .content-link:hover, .content-link:focus-visible { color: #000; }
 
 /* cadre encré (juste les filets/coins, les silhouettes ont été effacées de
-   audio-frame.png) posé en débordement sur le lecteur Bandcamp. Le lecteur
-   est découpé (clip-path, pas juste recouvert) pour ne plus apparaître que
-   dans la zone intérieure du dessin ; pointer-events:none sur le cadre pour
-   que le lecteur reste cliquable dessous. */
+   audio-frame.png) posé en débordement sur le lecteur Bandcamp. Il épouse
+   à peu près la taille du lecteur (dimensions en % de .bandcamp-wrap, qui
+   a toujours exactement la taille du lecteur) quitte à déborder un peu,
+   légèrement décalé à gauche. Le lecteur est découpé (clip-path, pas juste
+   recouvert) pour ne plus apparaître que dans la zone intérieure du dessin ;
+   pointer-events:none sur le cadre pour que le lecteur reste cliquable
+   dessous. */
 .bandcamp-wrap { position: relative; width: 100%; max-width: 450px; margin: 0 auto; flex-shrink: 0; }
-.bandcamp-player { clip-path: inset(9% 5% 4% 16%); }
+.bandcamp-player { clip-path: inset(3% 2% 2% 3%); }
 .bandcamp-frame {
-  position: absolute; top: 50%; left: 38%; transform: translate(-50%, -50%);
-  height: 130%; width: auto;
-  max-width: calc(min(96vw, 1100px) * 0.74 * 0.96);
-  max-height: calc(min(96vw, 1100px) * 0.74 * 0.96 * 1.421);
+  position: absolute; top: 50%; left: 46%; transform: translate(-50%, -50%);
+  height: 108%; width: auto; max-width: 180%;
   pointer-events: none; z-index: 2;
 }
 
@@ -194,16 +195,15 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 @media (min-width: 640px) { .rider-grid { grid-template-columns: 1.3fr 1fr; align-items: start; } }
 .press-byline { text-align: right; color: #555; font-style: italic; font-size: .8rem; margin: 1.5rem 0 0; }
 
-/* page video : les silhouettes qui tombent (reprises du dessin de la page
-   audio) et le dessin de télé (réduit, lien youtube inséré dans l'écran)
-   côte à côte en haut, puis le dessin des trois oiseaux en dessous. */
-.video-top-row { width: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 1.2rem; }
+/* page video : télé (cassée, écran-crâne) serrée à gauche avec le lien
+   youtube en légende dessous, les silhouettes qui tombent (reprises du
+   dessin de la page audio) à sa droite, puis le dessin des trois oiseaux
+   en dessous. */
+.video-top-row { width: 100%; display: flex; align-items: flex-end; justify-content: flex-start; gap: 1.2rem; }
 .video-figures { display: block; width: min(34%, 230px); height: auto; flex-shrink: 0; }
-.tv-wrap { position: relative; width: min(27.5%, 180px); margin: 0; container-type: inline-size; }
+.tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(27.5%, 180px); margin: 0; flex-shrink: 0; }
 .tv-drawing { display: block; width: 100%; height: auto; }
-/* font-size en cqw (relatif à la largeur de .tv-wrap, pas du viewport) :
-   le texte reste à l'échelle de l'écran de télé quelle que soit sa taille. */
-.tv-link { position: absolute; left: 16%; top: 41.9%; width: 45.8%; height: 20%; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1; font-size: 3cqw; overflow: hidden; overflow-wrap: anywhere; }
+.tv-caption { font-size: clamp(.55rem, 2.2vw, .85rem); text-align: center; line-height: 1.25; }
 .video-art { box-sizing: border-box; display: block; width: auto; max-width: min(85%, 540px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .comodoro-art { box-sizing: border-box; display: block; width: min(52%, 300px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 
