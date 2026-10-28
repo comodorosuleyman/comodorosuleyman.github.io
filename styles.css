@@ -192,9 +192,12 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 @media (min-width: 640px) { .rider-grid { grid-template-columns: 1.3fr 1fr; align-items: start; } }
 .press-byline { text-align: right; color: #555; font-style: italic; font-size: .8rem; margin: 1.5rem 0 0; }
 
-/* page video : dessin de télé (réduit) avec le lien youtube inséré dans
-   l'écran, suivi du dessin des trois oiseaux. */
-.tv-wrap { position: relative; width: min(27.5%, 180px); margin: 0; align-self: flex-end; container-type: inline-size; }
+/* page video : les silhouettes qui tombent (reprises du dessin de la page
+   audio) et le dessin de télé (réduit, lien youtube inséré dans l'écran)
+   côte à côte en haut, puis le dessin des trois oiseaux en dessous. */
+.video-top-row { width: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 1.2rem; }
+.video-figures { display: block; width: min(22%, 150px); height: auto; flex-shrink: 0; }
+.tv-wrap { position: relative; width: min(27.5%, 180px); margin: 0; container-type: inline-size; }
 .tv-drawing { display: block; width: 100%; height: auto; }
 /* font-size en cqw (relatif à la largeur de .tv-wrap, pas du viewport) :
    le texte reste à l'échelle de l'écran de télé quelle que soit sa taille. */
@@ -226,6 +229,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      (bug constaté : 0x0). Une largeur directe en vw garde le calcul de la
      hauteur (height:auto sur l'image à l'intérieur) simple et fiable. */
   .tv-wrap { width: 11.4vw; }
+  .video-figures { width: auto; max-width: 9vw; max-height: 11vw; }
   .video-art { max-height: 46vw; }
   .comodoro-art { max-height: 18vw; }
   .contact-art { max-height: 40vw; }
