@@ -333,3 +333,17 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
   body.comodoro-page .frame-content { gap: .9rem; }
   body.comodoro-page .comodoro-art { width: min(58%, 310px); }
 }
+
+/* sélecteur de langue (drapeaux) : version ordi uniquement, en dehors du
+   dessin/cadre - coin haut-droit, fixe, au-dessus de tout le reste. */
+.lang-selector { display: none; }
+@media (min-width: 641px) {
+  .lang-selector {
+    display: flex; gap: .45rem; position: fixed; top: 1rem; right: 1rem; z-index: 50;
+  }
+  .lang-selector a { display: block; line-height: 0; opacity: .78; transition: opacity .2s ease, transform .2s ease; }
+  .lang-selector a img { width: 34px; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 6px rgba(0,0,0,.3); }
+  .lang-selector a:hover, .lang-selector a:focus-visible { opacity: 1; transform: translateY(-2px); }
+  .lang-selector a.current { opacity: 1; }
+  .lang-selector a.current img { box-shadow: 0 0 0 2px #7a1414, 0 2px 6px rgba(0,0,0,.3); }
+}
