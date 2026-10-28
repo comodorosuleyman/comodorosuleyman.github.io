@@ -135,6 +135,19 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 }
 .content-link:hover, .content-link:focus-visible { color: #000; }
 
+/* dessin encré (silhouettes qui tombent) posé en débordement sur le lecteur
+   Bandcamp, comme un cadre qui mord sur ses bords. Fond blanc détouré en
+   transparence (voir audio-frame.png) ; pointer-events:none pour que le
+   lecteur reste cliquable dessous. */
+.bandcamp-wrap { position: relative; width: 100%; max-width: 450px; margin: 0 auto; flex-shrink: 0; }
+.bandcamp-frame {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  height: 104%; width: auto;
+  max-width: calc(min(96vw, 1100px) * 0.74 * 0.92);
+  max-height: calc(min(96vw, 1100px) * 0.74 * 0.92 * 1.421);
+  pointer-events: none; z-index: 2;
+}
+
 /* page argumentum : la colonne fait toute la largeur du manuscrit (1100px max) ;
    le texte courant (programme, bio, press kit...) reste calé sur son bord
    gauche mais garde une largeur de lecture confortable grâce à .presskit. */
