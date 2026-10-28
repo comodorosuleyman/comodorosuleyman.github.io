@@ -138,6 +138,14 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
   .codex-title { display: none; }
 }
 
+/* petite figure décorative calée dans le coin bas-gauche du cadre, dans la
+   marge vide entre le contenu (centré) et le filet d'encre - % du cadre
+   pour rester à l'échelle, quelle que soit la largeur. */
+.codex-figure { position: absolute; left: 5%; bottom: 5%; width: 14%; height: auto; z-index: 1; }
+@media (max-width: 640px) {
+  .codex-figure { width: 20%; left: 4%; bottom: 3%; }
+}
+
 /* les liens de contact doivent toujours tenir sur une seule ligne : une
    échelle (vw) calée sur la largeur réelle du cadre, pas sur celle de
    .content-link (calée sur la largeur du viewport), pour que l'adresse
