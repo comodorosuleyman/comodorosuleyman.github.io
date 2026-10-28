@@ -324,3 +324,12 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
   body.comodoro-page .frame-content p { font-size: max(.8rem, 4.3cqw); }
   body.comodoro-page .frame-content { gap: 3cqw; }
 }
+
+/* page comodoro (ordinateur) : les deux portraits + le texte dépassaient
+   légèrement la zone noire du cadre, forçant un petit scroll interne
+   inutile - on resserre l'espacement et on plafonne un peu les portraits
+   pour que tout tienne sans scroll. */
+@media (min-width: 641px) {
+  body.comodoro-page .frame-content { gap: .9rem; }
+  body.comodoro-page .comodoro-art { width: min(58%, 310px); }
+}
