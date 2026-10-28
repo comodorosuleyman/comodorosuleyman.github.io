@@ -166,15 +166,18 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   mask-position: 46% 50%;
 }
 .bandcamp-frame {
-  position: absolute; inset: 0;
+  /* la boîte du calque EST les dimensions du dessin (aspect-ratio, pas
+     inset:0) : avec inset:0 le dessin, plus grand que le lecteur, se
+     faisait rogner par les bords de la boîte au lieu de déborder. */
+  position: absolute; top: 50%; left: 46%; transform: translate(-50%, -50%);
+  height: 108%; width: auto; aspect-ratio: 1416 / 2012;
   /* presque invisible, mais nécessaire : sans AUCUNE background-color,
      certains moteurs de rendu (constaté en headless Chrome) ne peignent
      jamais le background-image d'un calque qui n'a que ça. */
   background-color: rgba(0, 0, 0, .01);
   background-image: url(audio-frame.png);
   background-repeat: no-repeat;
-  background-size: auto 108%;
-  background-position: 46% 50%;
+  background-size: 100% 100%;
   pointer-events: none; z-index: 2;
 }
 
