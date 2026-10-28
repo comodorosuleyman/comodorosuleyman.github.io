@@ -254,17 +254,16 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* posé sous la fiche technique, dans sa colonne. */
 .flyingx { display: block; width: clamp(70px, 12vw, 140px); height: auto; margin: 2rem auto 0; }
 
-/* page video : télé (cassée, écran-crâne) serrée à gauche avec le lien
-   youtube en légende dessous, les silhouettes qui tombent (reprises du
-   dessin de la page audio) à sa droite, puis le dessin des trois oiseaux
-   en dessous. */
+/* page video : silhouettes qui tombent (reprises du dessin de la page
+   audio) à gauche, télé (cassée, écran-crâne) serrée à droite avec le lien
+   youtube en légende dessous, puis le dessin des trois oiseaux en dessous. */
 /* même largeur/centrage que .video-art juste en dessous (min(85%,540px),
-   margin:0 auto) pour que la télé, alignée à gauche dans cette rangée,
-   tombe exactement sur le bord gauche du cadre des oiseaux. */
-.video-top-row { width: 100%; max-width: min(85%, 540px); margin: 0 auto; display: flex; align-items: flex-end; justify-content: flex-start; gap: 1.2rem; }
+   margin:0 auto) pour que la télé, alignée à droite dans cette rangée,
+   tombe exactement sur le bord droit du cadre des oiseaux. */
+.video-top-row { width: 100%; max-width: min(85%, 540px); margin: 0 auto; display: flex; align-items: flex-end; justify-content: flex-end; gap: 1.2rem; }
 .video-figures { display: block; width: min(40%, 270px); height: auto; flex-shrink: 0; transform: scaleX(-1); }
 .tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(27.5%, 180px); margin: 0; flex-shrink: 0; }
-/* miroir, mais la boîte .tv-wrap garde sa position (bord gauche calé sur
+/* miroir, mais la boîte .tv-wrap garde sa position (bord droit calé sur
    celui du dessin des oiseaux) : seul le dessin à l'intérieur est inversé. */
 .tv-drawing { display: block; width: 100%; height: auto; transform: scaleX(-1); }
 .tv-caption { font-size: clamp(.55rem, 2.2vw, .85rem); text-align: center; line-height: 1.25; }
