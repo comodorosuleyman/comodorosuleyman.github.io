@@ -209,6 +209,10 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
 .argumentum-page { max-width: 1100px; margin: 2.5rem auto 1rem; padding: 0 1rem; text-align: center; }
 .argumentum-page img { max-width: 100%; height: auto; }
 .argumentum-page img.manuscript { width: 100%; max-width: none; margin-left: 0; display: block; margin-bottom: 0; }
+.manuscript-wrap { position: relative; display: block; }
+.manuscript-face { position: absolute; width: auto; height: auto; }
+.manuscript-face-mask { left: 73.76%; top: 36.46%; width: 11.03%; }
+.manuscript-face-viking { left: 81.57%; top: 53.27%; width: 14.24%; }
 .press-sub { margin: 0 0 .6rem; color: #777; font-size: .92rem; }
 /* flèche de téléchargement posée en tête de chaque colonne (Press Kit sur
    .press-col, Technical Rider sur .tech-col) : qu'elles soient côte à côte
@@ -355,7 +359,7 @@ img.lightbox-trigger { cursor: zoom-in; }
   position: fixed; inset: 0; z-index: 999;
   display: flex; align-items: center; justify-content: center;
   padding: 5vmin;
-  background: transparent;
+  background: #f0d5c2;
   opacity: 0; pointer-events: none;
   transition: opacity .2s ease;
 }
