@@ -147,15 +147,19 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    risque de cacher une partie fonctionnelle du lecteur), et le dessin du
    cadre (audio-frame.png, même ratio page que le SVG : pas de déformation)
    est posé par-dessus en débordement, pointer-events:none pour rester
-   cliquable. .bandcamp-wrap prend le ratio naturel du dessin (1416x2012)
+   cliquable. .bandcamp-wrap prend le ratio naturel du dessin (1416x1842)
    pour que le cadre ne soit pas déformé ; le cadre encré lui-même reste noir
    (c'est sa couleur d'encre naturelle) et se détache tel quel sur le fond de
    page, pas de fond noir ajouté derrière lui. Seul le rectangle du lecteur
    (la "partie rouge" du tracé fourni) a un fond noir, posé sur l'iframe
-   elle-même (le lecteur Bandcamp est appelé en transparent=true). */
+   elle-même (le lecteur Bandcamp est appelé en transparent=true).
+   audio-frame.png a été recadré (bande morte de 170px retirée entre le
+   filet du haut et la grappe d'encre qui pendouille) pour que le cadre se
+   tasse autour du lecteur au lieu de garder toute la hauteur d'une page
+   complète ; d'où les % du rectangle recalculés sur ce nouveau canevas. */
 .bandcamp-wrap {
   position: relative; width: 100%; max-width: 600px; margin: 0 auto; flex-shrink: 0;
-  aspect-ratio: 1416 / 2012;
+  aspect-ratio: 1416 / 1842;
   border-radius: 6px;
   overflow: hidden;
 }
@@ -166,8 +170,8 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      calculer la taille depuis les contraintes - vérifié en headless Chrome
      (le lecteur Bandcamp s'affichait alors rabougri, UI dégradée). */
   position: absolute;
-  left: 23.32%; top: 29.67%;
-  width: 63.79%; height: 62.28%;
+  left: 23.32%; top: 23.18%;
+  width: 63.79%; height: 68.02%;
   background: #000;
 }
 .bandcamp-frame {
