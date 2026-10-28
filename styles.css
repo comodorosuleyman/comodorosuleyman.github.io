@@ -74,19 +74,19 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    télécharge pas du tout sur mobile (contrairement à un style="background-
    image:..." inline, qui serait toujours téléchargé même si masqué). */
 @media (min-width: 641px) {
-  .scene a.zone[data-glow="glow-video.png"] { background-image: url(glow-video.png); }
-  .scene a.zone[data-glow="glow-audio.png"] { background-image: url(glow-audio.png); }
-  .scene a.zone[data-glow="glow-contact.png"] { background-image: url(glow-contact.png); }
-  .scene a.zone[data-glow="glow-agenda.png"] { background-image: url(glow-agenda.png); }
-  .scene a.zone[data-glow="glow-codex.png"] { background-image: url(glow-codex.png); }
+  .scene a.zone[data-glow="glow-video.png"] { background-image: url(glow-video.png?v=2); }
+  .scene a.zone[data-glow="glow-audio.png"] { background-image: url(glow-audio.png?v=2); }
+  .scene a.zone[data-glow="glow-contact.png"] { background-image: url(glow-contact.png?v=2); }
+  .scene a.zone[data-glow="glow-agenda.png"] { background-image: url(glow-agenda.png?v=2); }
+  .scene a.zone[data-glow="glow-codex.png"] { background-image: url(glow-codex.png?v=2); }
   .scene a.zone[data-glow="glow-argumentum.png"] { background-image: url(glow-argumentum.png); }
   .scene a.zone[data-glow="glow-comodoro.png"] { background-image: url(glow-comodoro.png); }
-  .scene a.zone[data-glow="glow-btn-audio.png"] { background-image: url(glow-btn-audio.png); }
-  .scene a.zone[data-glow="glow-btn-video.png"] { background-image: url(glow-btn-video.png); }
-  .scene a.zone[data-glow="glow-btn-codex.png"] { background-image: url(glow-btn-codex.png); }
-  .scene a.zone[data-glow="glow-btn-argumentum.png"] { background-image: url(glow-btn-argumentum.png); }
-  .scene a.zone[data-glow="glow-btn-agenda.png"] { background-image: url(glow-btn-agenda.png); }
-  .scene a.zone[data-glow="glow-btn-contact.png"] { background-image: url(glow-btn-contact.png); }
+  .scene a.zone[data-glow="glow-btn-audio.png"] { background-image: url(glow-btn-audio.png?v=2); }
+  .scene a.zone[data-glow="glow-btn-video.png"] { background-image: url(glow-btn-video.png?v=2); }
+  .scene a.zone[data-glow="glow-btn-codex.png"] { background-image: url(glow-btn-codex.png?v=2); }
+  .scene a.zone[data-glow="glow-btn-argumentum.png"] { background-image: url(glow-btn-argumentum.png?v=2); }
+  .scene a.zone[data-glow="glow-btn-agenda.png"] { background-image: url(glow-btn-agenda.png?v=2); }
+  .scene a.zone[data-glow="glow-btn-contact.png"] { background-image: url(glow-btn-contact.png?v=2); }
 }
 
 /* sous-pages encadrées (video, audio, contact, agenda, codex) */
