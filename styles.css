@@ -150,21 +150,19 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    none sur le cadre pour que le lecteur reste cliquable dessous. */
 .bandcamp-wrap { position: relative; width: 100%; max-width: 450px; margin: 0 auto; flex-shrink: 0; }
 .bandcamp-player {
+  /* 100% 100% (le dessin étiré, pas gardé dans ses proportions) pour que
+     le masque remplisse EXACTEMENT la même boîte que .bandcamp-frame
+     (inset:0 aussi) : les deux calques sont alors forcément calés l'un
+     sur l'autre, quelle que soit la taille réelle du lecteur. */
   -webkit-mask-image: url(audio-frame-mask.png);
   mask-image: url(audio-frame-mask.png);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  -webkit-mask-size: auto 108%;
-  mask-size: auto 108%;
-  -webkit-mask-position: 46% 50%;
-  mask-position: 46% 50%;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
 .bandcamp-frame {
-  /* la boîte du calque EST les dimensions du dessin (aspect-ratio, pas
-     inset:0) : avec inset:0 le dessin, plus grand que le lecteur, se
-     faisait rogner par les bords de la boîte au lieu de déborder. */
-  position: absolute; top: 50%; left: 46%; transform: translate(-50%, -50%);
-  height: 108%; width: auto; aspect-ratio: 1416 / 2012;
+  position: absolute; inset: 0;
   /* presque invisible, mais nécessaire : sans AUCUNE background-color,
      certains moteurs de rendu (constaté en headless Chrome) ne peignent
      jamais le background-image d'un calque qui n'a que ça. */
