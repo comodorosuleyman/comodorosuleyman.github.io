@@ -145,9 +145,9 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
    mix-blend-mode:multiply - le fond blanc du jpg scanné devient transparent
    (se fond dans la couleur de fond de la page, quelle qu'elle soit) tandis
    que le trait noir reste noir. */
-.codex-figure { position: absolute; left: 15%; bottom: 14%; width: 12%; height: auto; z-index: 1; mix-blend-mode: multiply; }
+.codex-figure { position: absolute; left: 15%; bottom: 14%; width: 14%; height: auto; z-index: 1; mix-blend-mode: multiply; }
 @media (max-width: 640px) {
-  .codex-figure { width: 17%; left: 15%; bottom: 14%; }
+  .codex-figure { width: 20%; left: 15%; bottom: 14%; }
 }
 
 /* les liens de contact doivent toujours tenir sur une seule ligne : une
@@ -158,7 +158,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
 /* centré dans l'espace libre sous les liens jusqu'au bas du cadre,
    pas juste collé sous Facebook (marges auto = centrage dans l'espace
    restant du conteneur flex, qui a une hauteur fixe via inset:13%). */
-.contact-art { box-sizing: border-box; width: 100%; max-width: 600px; height: auto; margin: auto 0; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.contact-art { box-sizing: border-box; width: 100%; max-width: 680px; height: auto; margin: auto 0; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .social-icon { height: 1em; width: 1em; flex-shrink: 0; }
 .agenda-art { box-sizing: border-box; display: block; max-width: 99%; max-height: 99%; width: auto; height: auto; margin: 0 auto; }
 
@@ -245,7 +245,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
 @media (min-width: 640px) { .rider-grid { grid-template-columns: 1.3fr 1fr; align-items: start; } }
 .press-byline { text-align: right; color: #555; font-style: italic; font-size: .8rem; margin: 1.5rem 0 0; }
 /* posé sous la fiche technique, dans sa colonne. */
-.flyingx { display: block; width: clamp(70px, 12vw, 140px); height: auto; margin: 2rem auto 0; }
+.flyingx { display: block; width: clamp(80px, 14vw, 160px); height: auto; margin: 2rem auto 0; }
 
 /* page video : silhouettes qui tombent (reprises du dessin de la page
    audio) à gauche, télé (cassée, écran-crâne) serrée à droite avec le lien
@@ -253,15 +253,15 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
 /* même largeur/centrage que .video-art juste en dessous (min(85%,540px),
    margin:0 auto) pour que la télé, alignée à droite dans cette rangée,
    tombe exactement sur le bord droit du cadre des oiseaux. */
-.video-top-row { width: 100%; max-width: min(85%, 540px); margin: 0 auto; display: flex; align-items: flex-end; justify-content: flex-end; gap: 1.2rem; }
-.video-figures { display: block; width: min(40%, 270px); height: auto; flex-shrink: 0; transform: scaleX(-1); }
-.tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(27.5%, 180px); margin: 0; flex-shrink: 0; }
+.video-top-row { width: 100%; max-width: min(90%, 610px); margin: 0 auto; display: flex; align-items: flex-end; justify-content: flex-end; gap: 1.2rem; }
+.video-figures { display: block; width: min(46%, 310px); height: auto; flex-shrink: 0; transform: scaleX(-1); }
+.tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(31%, 205px); margin: 0; flex-shrink: 0; }
 /* miroir, mais la boîte .tv-wrap garde sa position (bord droit calé sur
    celui du dessin des oiseaux) : seul le dessin à l'intérieur est inversé. */
 .tv-drawing { display: block; width: 100%; height: auto; transform: scaleX(-1); }
 .tv-caption { font-size: clamp(.55rem, 2.2vw, .85rem); text-align: center; line-height: 1.25; }
-.video-art { box-sizing: border-box; display: block; width: auto; max-width: min(85%, 540px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
-.comodoro-art { box-sizing: border-box; display: block; width: min(52%, 300px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 610px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.comodoro-art { box-sizing: border-box; display: block; width: min(58%, 340px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 
 /* tailles mobiles des illustrations, placées ici (après toutes les règles
    de base ci-dessus) exprès : à spécificité égale, une règle plus tardive
@@ -271,14 +271,14 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
    et hauteur étaient alors plafonnées indépendamment l'une de l'autre,
    déformant l'image au lieu de la mettre à l'échelle proportionnellement. */
 @media (max-width: 640px) {
-  .contact-art, .video-art { width: auto; height: auto; max-width: 70vw; max-height: 55vw; }
-  .video-top-row { max-width: 70vw; }
+  .contact-art, .video-art { width: auto; height: auto; max-width: 76vw; max-height: 60vw; }
+  .video-top-row { max-width: 76vw; }
   /* en %, pas en vw : .comodoro-art doit aussi rester à l'échelle quand
      .frame-page est plafonné par la hauteur d'écran (page comodoro), pas
      seulement par la largeur — un % du cadre suit les deux cas, un vw
      (lié au viewport) ne suivrait que le premier. */
-  .comodoro-art { width: auto; height: auto; max-width: 50%; max-height: 24%; }
-  .codex-art-mobile { display: block; width: auto; height: auto; max-width: 70vw; max-height: 32vw; }
+  .comodoro-art { width: auto; height: auto; max-width: 56%; max-height: 27%; }
+  .codex-art-mobile { display: block; width: auto; height: auto; max-width: 74vw; max-height: 35vw; }
   .codex-download .download-arrow { height: clamp(28px, 7vw, 60px); }
   /* le contenu (dessin + 2 titres + 2 flèches) dépassait légèrement la
      zone noire du cadre, forçant un petit scroll interne inutile - on
@@ -295,11 +295,11 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
      imposer une max-height sans largeur définie fait s'effondrer sa taille
      (bug constaté : 0x0). Une largeur directe en vw garde le calcul de la
      hauteur (height:auto sur l'image à l'intérieur) simple et fiable. */
-  .tv-wrap { width: 11.4vw; }
-  .video-figures { width: auto; max-width: 16vw; max-height: 19vw; }
-  .video-art { max-height: 46vw; }
-  .comodoro-art { max-height: 18vw; }
-  .contact-art { max-height: 40vw; }
+  .tv-wrap { width: 13vw; }
+  .video-figures { width: auto; max-width: 18.5vw; max-height: 22vw; }
+  .video-art { max-height: 50vw; }
+  .comodoro-art { max-height: 20vw; }
+  .contact-art { max-height: 44vw; }
 }
 
 /* page comodoro (mobile) : doit tenir sur un seul écran, sans aucun scroll.
