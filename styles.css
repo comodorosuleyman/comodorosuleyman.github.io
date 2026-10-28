@@ -145,9 +145,9 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
    mix-blend-mode:multiply - le fond blanc du jpg scanné devient transparent
    (se fond dans la couleur de fond de la page, quelle qu'elle soit) tandis
    que le trait noir reste noir. */
-.codex-figure { position: absolute; left: 15%; bottom: 14%; width: 14%; height: auto; z-index: 1; mix-blend-mode: multiply; }
+.codex-figure { position: absolute; left: 15%; bottom: 14%; width: 16%; height: auto; z-index: 1; mix-blend-mode: multiply; }
 @media (max-width: 640px) {
-  .codex-figure { width: 20%; left: 15%; bottom: 14%; }
+  .codex-figure { width: 23%; left: 15%; bottom: 14%; }
 }
 
 /* les liens de contact doivent toujours tenir sur une seule ligne : une
@@ -177,7 +177,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
   position: relative; width: 100%; max-width: 950px; margin: 0 auto; flex-shrink: 0;
   aspect-ratio: 1762 / 2202;
   border-radius: 6px;
-  background-image: url(audio-frame.png?v=3);
+  background-image: url(audio-frame.png?v=4);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -245,7 +245,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
 @media (min-width: 640px) { .rider-grid { grid-template-columns: 1.3fr 1fr; align-items: start; } }
 .press-byline { text-align: right; color: #555; font-style: italic; font-size: .8rem; margin: 1.5rem 0 0; }
 /* posé sous la fiche technique, dans sa colonne. */
-.flyingx { display: block; width: clamp(80px, 14vw, 160px); height: auto; margin: 2rem auto 0; }
+.flyingx { display: block; width: clamp(92px, 16vw, 184px); height: auto; margin: 2rem auto 0; }
 
 /* page video : silhouettes qui tombent (reprises du dessin de la page
    audio) à gauche, télé (cassée, écran-crâne) serrée à droite avec le lien
@@ -255,7 +255,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
    tombe exactement sur le bord droit du cadre des oiseaux. */
 .video-top-row { width: 100%; max-width: min(90%, 610px); margin: 0 auto; display: flex; align-items: flex-end; justify-content: flex-end; gap: 1.2rem; }
 .video-figures { display: block; width: min(46%, 310px); height: auto; flex-shrink: 0; transform: scaleX(-1); }
-.tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(31%, 205px); margin: 0; flex-shrink: 0; }
+.tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(36%, 236px); margin: 0; flex-shrink: 0; }
 /* miroir, mais la boîte .tv-wrap garde sa position (bord droit calé sur
    celui du dessin des oiseaux) : seul le dessin à l'intérieur est inversé. */
 .tv-drawing { display: block; width: 100%; height: auto; transform: scaleX(-1); }
@@ -295,7 +295,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
      imposer une max-height sans largeur définie fait s'effondrer sa taille
      (bug constaté : 0x0). Une largeur directe en vw garde le calcul de la
      hauteur (height:auto sur l'image à l'intérieur) simple et fiable. */
-  .tv-wrap { width: 13vw; }
+  .tv-wrap { width: 15vw; }
   .video-figures { width: auto; max-width: 18.5vw; max-height: 22vw; }
   .video-art { max-height: 50vw; }
   .comodoro-art { max-height: 20vw; }
