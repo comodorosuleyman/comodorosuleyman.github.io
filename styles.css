@@ -93,7 +93,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* le cartouche : bande vide entre les deux filets ornés en haut du cadre */
 .frame-title { position: absolute; left: 3.58%; top: 4.68%; width: 88.65%; height: 5.26%; display: flex; align-items: center; justify-content: center; }
 .frame-title img { max-width: 100%; max-height: 100%; object-fit: contain; }
-.frame-content { position: absolute; inset: 13%; overflow: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; text-align: center; }
+.frame-content { position: absolute; inset: 13%; overflow: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; text-align: center; container-type: inline-size; }
 .codex-art-mobile { box-sizing: border-box; display: none; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 @media (max-width: 640px) {
   /* sur petit écran, le contenu dépasse souvent la zone du cadre ; en le
@@ -135,16 +135,18 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 }
 .content-link:hover, .content-link:focus-visible { color: #000; }
 
-/* dessin encré (silhouettes qui tombent) posé en débordement sur le lecteur
-   Bandcamp, comme un cadre qui mord sur ses bords. Fond blanc détouré en
-   transparence (voir audio-frame.png) ; pointer-events:none pour que le
-   lecteur reste cliquable dessous. */
+/* cadre encré (juste les filets/coins, les silhouettes ont été effacées de
+   audio-frame.png) posé en débordement sur le lecteur Bandcamp. Le lecteur
+   est découpé (clip-path, pas juste recouvert) pour ne plus apparaître que
+   dans la zone intérieure du dessin ; pointer-events:none sur le cadre pour
+   que le lecteur reste cliquable dessous. */
 .bandcamp-wrap { position: relative; width: 100%; max-width: 450px; margin: 0 auto; flex-shrink: 0; }
+.bandcamp-player { clip-path: inset(9% 5% 4% 16%); }
 .bandcamp-frame {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  height: 104%; width: auto;
-  max-width: calc(min(96vw, 1100px) * 0.74 * 0.92);
-  max-height: calc(min(96vw, 1100px) * 0.74 * 0.92 * 1.421);
+  position: absolute; top: 50%; left: 38%; transform: translate(-50%, -50%);
+  height: 130%; width: auto;
+  max-width: calc(min(96vw, 1100px) * 0.74 * 0.96);
+  max-height: calc(min(96vw, 1100px) * 0.74 * 0.96 * 1.421);
   pointer-events: none; z-index: 2;
 }
 
@@ -196,7 +198,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    audio) et le dessin de télé (réduit, lien youtube inséré dans l'écran)
    côte à côte en haut, puis le dessin des trois oiseaux en dessous. */
 .video-top-row { width: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 1.2rem; }
-.video-figures { display: block; width: min(22%, 150px); height: auto; flex-shrink: 0; }
+.video-figures { display: block; width: min(34%, 230px); height: auto; flex-shrink: 0; }
 .tv-wrap { position: relative; width: min(27.5%, 180px); margin: 0; container-type: inline-size; }
 .tv-drawing { display: block; width: 100%; height: auto; }
 /* font-size en cqw (relatif à la largeur de .tv-wrap, pas du viewport) :
@@ -214,7 +216,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    déformant l'image au lieu de la mettre à l'échelle proportionnellement. */
 @media (max-width: 640px) {
   .contact-art, .video-art { width: auto; height: auto; max-width: 70vw; max-height: 55vw; }
-  .comodoro-art { width: auto; height: auto; max-width: 50vw; max-height: 24vw; }
+  /* en %, pas en vw : .comodoro-art doit aussi rester à l'échelle quand
+     .frame-page est plafonné par la hauteur d'écran (page comodoro), pas
+     seulement par la largeur — un % du cadre suit les deux cas, un vw
+     (lié au viewport) ne suivrait que le premier. */
+  .comodoro-art { width: auto; height: auto; max-width: 50%; max-height: 24%; }
   .codex-art-mobile { display: block; width: auto; height: auto; max-width: 70vw; max-height: 50vw; }
   .bandcamp-player { height: min(900px, max(180px, calc(min(96vw, 1100px) * 1.0457 - 140px))); }
 }
@@ -229,8 +235,26 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      (bug constaté : 0x0). Une largeur directe en vw garde le calcul de la
      hauteur (height:auto sur l'image à l'intérieur) simple et fiable. */
   .tv-wrap { width: 11.4vw; }
-  .video-figures { width: auto; max-width: 9vw; max-height: 11vw; }
+  .video-figures { width: auto; max-width: 14vw; max-height: 17vw; }
   .video-art { max-height: 46vw; }
   .comodoro-art { max-height: 18vw; }
   .contact-art { max-height: 40vw; }
+}
+
+/* page comodoro (mobile) : doit tenir sur un seul écran, sans aucun scroll.
+   Son bandeau de navigation a 7 badges (un de plus que les autres pages,
+   qui n'affichent pas de lien vers elles-mêmes), donc plus haut une fois
+   replié sur petit écran. On réduit d'autant la réserve de bas de page et,
+   surtout, on plafonne la taille du cadre lui-même à la hauteur d'écran
+   réellement disponible (100dvh tient compte de la barre du navigateur
+   mobile) : normalement le cadre ne dépend que de la largeur (aspect-ratio
+   fixe), ici on ajoute un troisième plafond basé sur la hauteur. */
+@media (max-width: 640px) {
+  body.comodoro-page:has(nav.menu) { padding-bottom: 230px; }
+  body.comodoro-page .frame-page { width: min(96vw, 1100px, calc((100dvh - 286px) / 1.4131)); }
+  /* idem pour le texte (cqw, relatif à la largeur réelle de .frame-content,
+     pas au viewport) : sur un écran très court, le cadre devient petit et
+     le texte à taille fixe ne tiendrait plus. */
+  body.comodoro-page .frame-content p { font-size: max(.8rem, 4.3cqw); }
+  body.comodoro-page .frame-content { gap: 3cqw; }
 }
