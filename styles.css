@@ -135,6 +135,17 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 }
 .content-link:hover, .content-link:focus-visible { color: #000; }
 
+/* version ordinateur : le texte "... on Bandcamp" est redondant (lien déjà
+   évident à cet endroit) ; on le remplace par la flèche download (blanche,
+   même dessin que celle d'argumentum). Gardé en mobile, où la place est
+   moins contrainte. */
+.bandcamp-link-wrap { display: flex; justify-content: center; }
+.bandcamp-arrow { display: none; }
+@media (min-width: 641px) {
+  .bandcamp-link-text { position: absolute; left: -9999px; }
+  .bandcamp-arrow { display: block; height: 80px; width: auto; }
+}
+
 /* cadre encré (juste les filets/coins, les silhouettes ont été effacées de
    audio-frame.png) posé en débordement sur le lecteur Bandcamp. Le lecteur
    est démasqué (mask-image, pas juste recouvert) pour ne plus apparaître
