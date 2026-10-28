@@ -347,3 +347,21 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
   .lang-selector a.current { opacity: 1; }
   .lang-selector a.current img { box-shadow: 0 0 0 2px #7a1414, 0 2px 6px rgba(0,0,0,.3); }
 }
+
+/* loupe : les dessins s'agrandissent au clic/tap (lightbox.js) */
+img.lightbox-trigger { cursor: zoom-in; }
+.lightbox-overlay {
+  position: fixed; inset: 0; z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  padding: 5vmin;
+  background: rgba(10, 4, 2, .88);
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s ease;
+}
+.lightbox-overlay.is-open { opacity: 1; pointer-events: auto; }
+.lightbox-img {
+  max-width: 90vw; max-height: 90vh;
+  cursor: zoom-out;
+  box-shadow: 0 10px 40px rgba(0,0,0,.5);
+}
+body.lightbox-locked { overflow: hidden; }
