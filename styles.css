@@ -132,14 +132,14 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* même grille que .presskit-cols plus bas, pour que chaque bouton reste
    aligné avec le paragraphe auquel il correspond (Press Kit / Programme
    note à gauche, Technical Rider / fiche technique à droite). */
-.presskit-download { text-align: left; max-width: 1000px; margin: 9rem 0 0; padding-left: 0; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+.presskit-download { text-align: left; margin: 9rem 0 0; padding-left: 0; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
 @media (min-width: 760px) {
   .presskit-download { grid-template-columns: 1fr 1fr; }
 }
-.presskit-download a { display: inline-flex; align-items: flex-start; gap: .5rem; white-space: nowrap; font-size: clamp(1.3rem, 6vw, 2rem); }
+.presskit-download a { display: inline-flex; align-items: flex-start; gap: .5rem; white-space: nowrap; font-size: clamp(1rem, 4vw, 1.4rem); }
 .argumentum-page .download-arrow { height: clamp(40px, 16vw, 112px); width: auto; flex-shrink: 0; }
 
-.presskit { text-align: left; max-width: 1000px; margin: 2.5rem 0; }
+.presskit { text-align: left; margin: 2.5rem 0; }
 /* presse (programme, bio, version courte) à gauche, fiche technique à droite,
    comme deux colonnes de journal ; empilées sur petit écran. */
 .presskit-cols { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
