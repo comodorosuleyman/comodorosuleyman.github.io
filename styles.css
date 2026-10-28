@@ -145,7 +145,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
    mix-blend-mode:multiply - le fond blanc du jpg scanné devient transparent
    (se fond dans la couleur de fond de la page, quelle qu'elle soit) tandis
    que le trait noir reste noir. */
-.codex-figure { position: absolute; left: 15%; bottom: 14%; width: 16%; height: auto; z-index: 1; mix-blend-mode: multiply; }
+.codex-figure { position: absolute; left: 15%; bottom: 14%; width: 12%; height: auto; z-index: 1; mix-blend-mode: multiply; }
 @media (max-width: 640px) {
   .codex-figure { width: 23%; left: 15%; bottom: 14%; }
 }
