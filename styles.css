@@ -140,10 +140,14 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
 
 /* petite figure décorative calée dans le coin bas-gauche du cadre, dans la
    marge vide entre le contenu (centré) et le filet d'encre - % du cadre
-   pour rester à l'échelle, quelle que soit la largeur. */
-.codex-figure { position: absolute; left: 5%; bottom: 5%; width: 14%; height: auto; z-index: 1; }
+   pour rester à l'échelle, quelle que soit la largeur. Même inset que
+   .frame-content (13%) pour ne jamais déborder sur le filet d'encre.
+   mix-blend-mode:multiply - le fond blanc du jpg scanné devient transparent
+   (se fond dans la couleur de fond de la page, quelle qu'elle soit) tandis
+   que le trait noir reste noir. */
+.codex-figure { position: absolute; left: 15%; bottom: 14%; width: 12%; height: auto; z-index: 1; mix-blend-mode: multiply; }
 @media (max-width: 640px) {
-  .codex-figure { width: 20%; left: 4%; bottom: 3%; }
+  .codex-figure { width: 17%; left: 15%; bottom: 14%; }
 }
 
 /* les liens de contact doivent toujours tenir sur une seule ligne : une
@@ -173,7 +177,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
   position: relative; width: 100%; max-width: 950px; margin: 0 auto; flex-shrink: 0;
   aspect-ratio: 1762 / 2202;
   border-radius: 6px;
-  background-image: url(audio-frame.png);
+  background-image: url(audio-frame.png?v=2);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -193,7 +197,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
      tailles, il faut un ratio hauteur/largeur d'au moins ~1.3 pour voir
      les deux titres ; 40% de large pour 55% de haut en donne ~1.72. */
   position: absolute;
-  left: 23%; top: 35%;
+  left: 30%; top: 22.5%;
   width: 40%; height: 55%;
   border: 0; min-width: 0; border-radius: 2px;
   background: #000;
