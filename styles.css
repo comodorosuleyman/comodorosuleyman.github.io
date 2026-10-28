@@ -132,34 +132,41 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* le panneau du lecteur Bandcamp reste blanc (imposé par la plateforme
    dès que la liste des titres est affichée) ; on l'encadre pour que ça
    ressemble à une fiche posée sur la page plutôt qu'à un bloc qui dépareille. */
-.bandcamp-player { border: 0; width: 100%; max-width: 450px; min-width: 0; flex-shrink: 0; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,.25);
-  /* la hauteur du lecteur Bandcamp est fixe (imposée par la plateforme) ;
-     on la met à l'échelle de la hauteur réelle du cadre (dérivée de sa
-     largeur, cf. .frame-page) pour qu'elle ne dépasse jamais sans scroll. */
-  height: min(900px, max(200px, calc(min(96vw, 1100px) * 1.0457 - 110px)));
-}
+.bandcamp-player { border: 0; min-width: 0; border-radius: 2px; }
 .content-link:hover, .content-link:focus-visible { color: #000; }
 
 /* cadre encré (juste les filets/coins, les silhouettes ont été effacées de
-   audio-frame.png) posé en débordement sur le lecteur Bandcamp. Le lecteur
-   est démasqué (mask-image, pas juste recouvert) pour ne plus apparaître
-   que dans la zone intérieure du dessin (audio-frame-mask.png : la zone
-   rouge donnée par l'utilisateur, détourée en blanc opaque). Le cadre et
-   le masque utilisent EXACTEMENT les mêmes background-size/position pour
-   rester calés l'un sur l'autre à toute taille d'écran ; pointer-events:
-   none sur le cadre pour que le lecteur reste cliquable dessous. */
-.bandcamp-wrap { position: relative; width: 100%; max-width: 450px; margin: 0 auto; flex-shrink: 0; }
+   audio-frame.png) posé en débordement sur le lecteur Bandcamp. */
+/* le découpage SVG fourni par
+   l'utilisateur (cadre rouge.svg) contient en réalité un rectangle précis
+   (56.825287,102.82671 155.44269x215.87593 sur un canevas de
+   243.68126x346.60416, soit left 23.32% / top 29.67% / right 12.89% /
+   bottom 8.05%) qui correspond à la fenêtre où le lecteur doit apparaître
+   - pas une forme organique à masquer. On positionne donc le lecteur en
+   absolute dans cette fenêtre exacte (iframe entier, non rogné : aucun
+   risque de cacher une partie fonctionnelle du lecteur), et le dessin du
+   cadre (audio-frame.png, même ratio page que le SVG : pas de déformation)
+   est posé par-dessus en débordement, pointer-events:none pour rester
+   cliquable. .bandcamp-wrap prend le ratio naturel du dessin (1416x2012)
+   pour que le cadre ne soit pas déformé, et un fond noir pour combler
+   l'espace entre le rectangle du lecteur et le contour irrégulier du
+   dessin encré. */
+.bandcamp-wrap {
+  position: relative; width: 100%; max-width: 600px; margin: 0 auto; flex-shrink: 0;
+  aspect-ratio: 1416 / 2012;
+  background: #000;
+  border-radius: 6px;
+  overflow: hidden;
+}
 .bandcamp-player {
-  /* 100% 100% (le dessin étiré, pas gardé dans ses proportions) pour que
-     le masque remplisse EXACTEMENT la même boîte que .bandcamp-frame
-     (inset:0 aussi) : les deux calques sont alors forcément calés l'un
-     sur l'autre, quelle que soit la taille réelle du lecteur. */
-  -webkit-mask-image: url(audio-frame-mask.png);
-  mask-image: url(audio-frame-mask.png);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
+  /* width/height en % explicites, pas left+right+auto : un iframe est un
+     élément remplacé, et avec les 4 côtés posés + width/height:auto les
+     navigateurs retombent sur sa taille par défaut (300x150) au lieu de
+     calculer la taille depuis les contraintes - vérifié en headless Chrome
+     (le lecteur Bandcamp s'affichait alors rabougri, UI dégradée). */
+  position: absolute;
+  left: 23.32%; top: 29.67%;
+  width: 63.79%; height: 62.28%;
 }
 .bandcamp-frame {
   position: absolute; inset: 0;
@@ -170,6 +177,10 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   background-image: url(audio-frame.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  /* audio-frame.png est un filet encré noir sur fond transparent : posé tel
+     quel sur le fond noir de .bandcamp-wrap il devient invisible (noir sur
+     noir). On inverse ses couleurs pour qu'il se dessine en blanc. */
+  filter: invert(1);
   pointer-events: none; z-index: 2;
 }
 
@@ -249,7 +260,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   .comodoro-art { width: auto; height: auto; max-width: 50%; max-height: 24%; }
   .codex-art-mobile { display: block; width: auto; height: auto; max-width: 70vw; max-height: 50vw; }
   .codex-download .download-arrow { height: clamp(28px, 7vw, 60px); }
-  .bandcamp-player { height: min(900px, max(180px, calc(min(96vw, 1100px) * 1.0457 - 140px))); }
 }
 
 /* entre 641px et ~1000px, le cadre est encore loin de son plafond de 1100px :
