@@ -210,9 +210,11 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
 .argumentum-page img { max-width: 100%; height: auto; }
 .argumentum-page img.manuscript { width: 100%; max-width: none; margin-left: 0; display: block; margin-bottom: 0; }
 .manuscript-wrap { position: relative; display: block; }
-.manuscript-face { position: absolute; width: auto; height: auto; }
-.manuscript-face-mask { left: 73.76%; top: 36.46%; width: 11.03%; }
-.manuscript-face-viking { left: 81.57%; top: 53.27%; width: 14.24%; }
+.manuscript-face-hit { position: absolute; display: block; }
+.manuscript-face-hit::before { content: ''; position: absolute; inset: -14px; }
+.manuscript-face { display: block; width: 100%; height: auto; }
+.manuscript-face-hit-mask { left: 73.76%; top: 36.46%; width: 11.03%; }
+.manuscript-face-hit-viking { left: 81.57%; top: 53.27%; width: 14.24%; }
 .press-sub { margin: 0 0 .6rem; color: #777; font-size: .92rem; }
 /* flèche de téléchargement posée en tête de chaque colonne (Press Kit sur
    .press-col, Technical Rider sur .tech-col) : qu'elles soient côte à côte
@@ -354,7 +356,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
 }
 
 /* loupe : les dessins s'agrandissent au clic/tap (lightbox.js) */
-img.lightbox-trigger { cursor: zoom-in; }
+img.lightbox-trigger, .lightbox-trigger { cursor: zoom-in; }
 .lightbox-overlay {
   position: fixed; inset: 0; z-index: 999;
   display: flex; align-items: center; justify-content: center;

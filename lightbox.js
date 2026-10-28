@@ -1,6 +1,6 @@
 (function () {
   function initLightbox() {
-    var imgs = document.querySelectorAll('img.manuscript-face, img.flyingx');
+    var imgs = document.querySelectorAll('.manuscript-face-hit, img.flyingx');
     if (!imgs.length) return;
 
     var overlay = document.createElement('div');
@@ -28,7 +28,8 @@
     imgs.forEach(function (el) {
       el.classList.add('lightbox-trigger');
       el.addEventListener('click', function () {
-        open(el.currentSrc || el.src);
+        var target = el.tagName === 'IMG' ? el : el.querySelector('img');
+        open(target.currentSrc || target.src);
       });
     });
   }
