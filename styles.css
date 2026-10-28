@@ -40,6 +40,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      de page pour qu'il ne cache jamais le contenu, quel que soit le nombre
      de lignes sur lesquelles il s'étale. */
   body:has(nav.menu) { padding-bottom: 300px; }
+  /* "BACK TO INDEX" est nettement plus grand que les autres badges du
+     bandeau ; sur petit écran ça prend trop de place en hauteur. */
+  nav.menu a[href="index.html"] img { height: 56px; }
 }
 
 @media (max-width: 640px) {
@@ -109,17 +112,27 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 
 .frame-content embed { width: 100%; max-width: 500px; height: clamp(220px, 60vw, 420px); border: 1px solid #ccc; }
 
-.social-link { display: inline-flex; align-items: center; gap: .55rem; }
+/* les liens de contact doivent toujours tenir sur une seule ligne : une
+   échelle (vw) calée sur la largeur réelle du cadre, pas sur celle de
+   .content-link (calée sur la largeur du viewport), pour que l'adresse
+   mail (la plus longue) ne passe jamais à la ligne. */
+.social-link { display: inline-flex; align-items: center; gap: .55rem; font-size: clamp(.75rem, 4vw, 1.6rem); white-space: nowrap; }
 /* centré dans l'espace libre sous les liens jusqu'au bas du cadre,
    pas juste collé sous Facebook (marges auto = centrage dans l'espace
    restant du conteneur flex, qui a une hauteur fixe via inset:13%). */
 .contact-art { box-sizing: border-box; width: 100%; max-width: 600px; height: auto; margin: auto 0; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .social-icon { height: 1em; width: 1em; flex-shrink: 0; }
+.agenda-art { box-sizing: border-box; display: block; max-width: 99%; max-height: 99%; width: auto; height: auto; margin: 0 auto; }
 
 /* le panneau du lecteur Bandcamp reste blanc (imposé par la plateforme
    dès que la liste des titres est affichée) ; on l'encadre pour que ça
    ressemble à une fiche posée sur la page plutôt qu'à un bloc qui dépareille. */
-.bandcamp-player { border-radius: 6px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.bandcamp-player { border: 0; width: 100%; max-width: 450px; min-width: 0; flex-shrink: 0; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  /* la hauteur du lecteur Bandcamp est fixe (imposée par la plateforme) ;
+     on la met à l'échelle de la hauteur réelle du cadre (dérivée de sa
+     largeur, cf. .frame-page) pour qu'elle ne dépasse jamais sans scroll. */
+  height: min(900px, max(200px, calc(min(96vw, 1100px) * 1.0457 - 110px)));
+}
 .content-link:hover, .content-link:focus-visible { color: #000; }
 
 /* page argumentum : la colonne fait toute la largeur du manuscrit (1100px max) ;
@@ -173,7 +186,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* font-size en cqw (relatif à la largeur de .tv-wrap, pas du viewport) :
    le texte reste à l'échelle de l'écran de télé quelle que soit sa taille. */
 .tv-link { position: absolute; left: 16%; top: 41.9%; width: 45.8%; height: 20%; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1; font-size: 3cqw; overflow: hidden; overflow-wrap: anywhere; }
-.video-art { box-sizing: border-box; display: block; width: min(85%, 540px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.video-art { box-sizing: border-box; display: block; width: auto; max-width: min(85%, 540px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .comodoro-art { box-sizing: border-box; display: block; width: min(52%, 300px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 
 /* tailles mobiles des illustrations, placées ici (après toutes les règles
@@ -187,4 +200,20 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   .contact-art, .video-art { width: auto; height: auto; max-width: 70vw; max-height: 55vw; }
   .comodoro-art { width: auto; height: auto; max-width: 50vw; max-height: 24vw; }
   .codex-art-mobile { display: block; width: auto; height: auto; max-width: 70vw; max-height: 50vw; }
+  .bandcamp-player { height: min(900px, max(180px, calc(min(96vw, 1100px) * 1.0457 - 140px))); }
+}
+
+/* entre 641px et ~1000px, le cadre est encore loin de son plafond de 1100px :
+   la télé + les oiseaux empilés (dimensionnés en % du cadre) dépassent alors
+   la hauteur du cadre. On y plafonne leur hauteur (vw, pas % : indépendant
+   de la largeur du cadre lui-même). */
+@media (min-width: 641px) and (max-width: 1100px) {
+  /* width (pas max-height) : .tv-wrap est un <div>, pas une image — lui
+     imposer une max-height sans largeur définie fait s'effondrer sa taille
+     (bug constaté : 0x0). Une largeur directe en vw garde le calcul de la
+     hauteur (height:auto sur l'image à l'intérieur) simple et fiable. */
+  .tv-wrap { width: 11.4vw; }
+  .video-art { max-height: 46vw; }
+  .comodoro-art { max-height: 18vw; }
+  .contact-art { max-height: 40vw; }
 }
