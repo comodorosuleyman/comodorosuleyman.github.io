@@ -112,6 +112,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 
 .frame-content embed { width: 100%; max-width: 500px; height: clamp(220px, 60vw, 420px); border: 1px solid #ccc; }
 
+/* page codex : la flèche download (encre noire, intérieur rempli de blanc
+   au pot de peinture) remplace le texte "Download scores in PDF". */
+.codex-download { display: block; }
+.codex-download .download-arrow { height: clamp(40px, 12vw, 90px); width: auto; }
+
 /* les liens de contact doivent toujours tenir sur une seule ligne : une
    échelle (vw) calée sur la largeur réelle du cadre, pas sur celle de
    .content-link (calée sur la largeur du viewport), pour que l'adresse
@@ -134,17 +139,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   height: min(900px, max(200px, calc(min(96vw, 1100px) * 1.0457 - 110px)));
 }
 .content-link:hover, .content-link:focus-visible { color: #000; }
-
-/* version ordinateur : le texte "... on Bandcamp" est redondant (lien déjà
-   évident à cet endroit) ; on le remplace par la flèche download (blanche,
-   même dessin que celle d'argumentum). Gardé en mobile, où la place est
-   moins contrainte. */
-.bandcamp-link-wrap { display: flex; justify-content: center; }
-.bandcamp-arrow { display: none; }
-@media (min-width: 641px) {
-  .bandcamp-link-text { position: absolute; left: -9999px; }
-  .bandcamp-arrow { display: block; height: 80px; width: auto; }
-}
 
 /* cadre encré (juste les filets/coins, les silhouettes ont été effacées de
    audio-frame.png) posé en débordement sur le lecteur Bandcamp. Le lecteur
@@ -256,6 +250,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      (lié au viewport) ne suivrait que le premier. */
   .comodoro-art { width: auto; height: auto; max-width: 50%; max-height: 24%; }
   .codex-art-mobile { display: block; width: auto; height: auto; max-width: 70vw; max-height: 50vw; }
+  .codex-download .download-arrow { height: clamp(28px, 7vw, 60px); }
   .bandcamp-player { height: min(900px, max(180px, calc(min(96vw, 1100px) * 1.0457 - 140px))); }
 }
 
