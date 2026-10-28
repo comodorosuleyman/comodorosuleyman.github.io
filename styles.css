@@ -199,8 +199,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    youtube en légende dessous, les silhouettes qui tombent (reprises du
    dessin de la page audio) à sa droite, puis le dessin des trois oiseaux
    en dessous. */
-.video-top-row { width: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 1.2rem; }
-.video-figures { display: block; width: min(34%, 230px); height: auto; flex-shrink: 0; }
+/* même largeur/centrage que .video-art juste en dessous (min(85%,540px),
+   margin:0 auto) pour que la télé, alignée à gauche dans cette rangée,
+   tombe exactement sur le bord gauche du cadre des oiseaux. */
+.video-top-row { width: 100%; max-width: min(85%, 540px); margin: 0 auto; display: flex; align-items: flex-end; justify-content: flex-start; gap: 1.2rem; }
+.video-figures { display: block; width: min(40%, 270px); height: auto; flex-shrink: 0; }
 .tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(27.5%, 180px); margin: 0; flex-shrink: 0; }
 .tv-drawing { display: block; width: 100%; height: auto; }
 .tv-caption { font-size: clamp(.55rem, 2.2vw, .85rem); text-align: center; line-height: 1.25; }
@@ -216,6 +219,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    déformant l'image au lieu de la mettre à l'échelle proportionnellement. */
 @media (max-width: 640px) {
   .contact-art, .video-art { width: auto; height: auto; max-width: 70vw; max-height: 55vw; }
+  .video-top-row { max-width: 70vw; }
   /* en %, pas en vw : .comodoro-art doit aussi rester à l'échelle quand
      .frame-page est plafonné par la hauteur d'écran (page comodoro), pas
      seulement par la largeur — un % du cadre suit les deux cas, un vw
@@ -235,7 +239,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      (bug constaté : 0x0). Une largeur directe en vw garde le calcul de la
      hauteur (height:auto sur l'image à l'intérieur) simple et fiable. */
   .tv-wrap { width: 11.4vw; }
-  .video-figures { width: auto; max-width: 14vw; max-height: 17vw; }
+  .video-figures { width: auto; max-width: 16vw; max-height: 19vw; }
   .video-art { max-height: 46vw; }
   .comodoro-art { max-height: 18vw; }
   .contact-art { max-height: 40vw; }
