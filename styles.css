@@ -136,18 +136,34 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .content-link:hover, .content-link:focus-visible { color: #000; }
 
 /* cadre encré (juste les filets/coins, les silhouettes ont été effacées de
-   audio-frame.png) posé en débordement sur le lecteur Bandcamp. Il épouse
-   à peu près la taille du lecteur (dimensions en % de .bandcamp-wrap, qui
-   a toujours exactement la taille du lecteur) quitte à déborder un peu,
-   légèrement décalé à gauche. Le lecteur est découpé (clip-path, pas juste
-   recouvert) pour ne plus apparaître que dans la zone intérieure du dessin ;
-   pointer-events:none sur le cadre pour que le lecteur reste cliquable
-   dessous. */
+   audio-frame.png) posé en débordement sur le lecteur Bandcamp. Le lecteur
+   est démasqué (mask-image, pas juste recouvert) pour ne plus apparaître
+   que dans la zone intérieure du dessin (audio-frame-mask.png : la zone
+   rouge donnée par l'utilisateur, détourée en blanc opaque). Le cadre et
+   le masque utilisent EXACTEMENT les mêmes background-size/position pour
+   rester calés l'un sur l'autre à toute taille d'écran ; pointer-events:
+   none sur le cadre pour que le lecteur reste cliquable dessous. */
 .bandcamp-wrap { position: relative; width: 100%; max-width: 450px; margin: 0 auto; flex-shrink: 0; }
-.bandcamp-player { clip-path: inset(3% 2% 2% 3%); }
+.bandcamp-player {
+  -webkit-mask-image: url(audio-frame-mask.png);
+  mask-image: url(audio-frame-mask.png);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: auto 108%;
+  mask-size: auto 108%;
+  -webkit-mask-position: 46% 50%;
+  mask-position: 46% 50%;
+}
 .bandcamp-frame {
-  position: absolute; top: 50%; left: 46%; transform: translate(-50%, -50%);
-  height: 108%; width: auto; max-width: 180%;
+  position: absolute; inset: 0;
+  /* presque invisible, mais nécessaire : sans AUCUNE background-color,
+     certains moteurs de rendu (constaté en headless Chrome) ne peignent
+     jamais le background-image d'un calque qui n'a que ça. */
+  background-color: rgba(0, 0, 0, .01);
+  background-image: url(audio-frame.png);
+  background-repeat: no-repeat;
+  background-size: auto 108%;
+  background-position: 46% 50%;
   pointer-events: none; z-index: 2;
 }
 
