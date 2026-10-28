@@ -1,6 +1,6 @@
 (function () {
   function initLightbox() {
-    var imgs = document.querySelectorAll('img[alt^="Drawing:"], img[alt^="Painting:"], img[alt^="Handwritten text:"]');
+    var imgs = document.querySelectorAll('img.manuscript, img.flyingx');
     if (!imgs.length) return;
 
     var overlay = document.createElement('div');
