@@ -15,6 +15,10 @@ body.home .scene img { height: 100%; }
   body.home .scene { display: none; }
   .scene-mobile { display: block; position: fixed; inset: 0; }
   .scene-mobile .poster-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  /* zone invisible posée sur le titre "Comodoro Süleyman" peint en haut de
+     l'affiche (object-fit:cover ne rogne que les côtés sur un écran de
+     téléphone, jamais le haut/bas, donc ce repère vertical reste fiable). */
+  .mobile-title-link { position: fixed; left: 5%; top: 1.5%; width: 90%; height: 11%; z-index: 10; }
   .mobile-badges { position: fixed; right: .8rem; bottom: .8rem; z-index: 10; display: flex; flex-direction: column; align-items: flex-end; gap: .55rem; }
   .mobile-badges a { display: block; text-decoration: none; transition: opacity .2s ease; }
   .mobile-badges a img { height: 44px; width: auto; display: block; filter: grayscale(1) contrast(10) brightness(1.1); }
