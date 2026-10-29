@@ -300,18 +300,6 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
   /* les 3 liens sociaux + le corbac dépassaient légèrement la zone noire
      du cadre, forçant un petit scroll interne inutile. */
   body.contact-page .frame-content { gap: .8rem; padding-top: .5rem; padding-bottom: .5rem; }
-  /* même principe que comodoro (plus bas) : sur un écran court, le cadre
-     (dimensionné seulement par sa largeur) + la marge du bas (40px+16px)
-     + le bandeau replié sur plusieurs lignes (300px réservés) dépassaient
-     la hauteur d'écran réelle, forçant un petit scroll de page inutile -
-     on plafonne aussi la largeur du cadre par la hauteur disponible. */
-  body.audio-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 356px) / 1.4131)); }
-  body.video-page .frame-page { width: min(96vw, 1100px, calc((100dvh - 356px) / 1.4131)); }
-  /* sur un écran à la fois étroit et court, le cadre plafonné par la
-     hauteur (règle juste au-dessus) rétrécit la colonne .tv-wrap au point
-     que "YouTube" (taille fixe, en vw) ne tient plus à côté du logo -
-     on le laisse retomber à la ligne plutôt que déborder/être rogné. */
-  body.video-page .social-link { flex-wrap: wrap; justify-content: center; }
 }
 
 /* entre 641px et ~1000px, le cadre est encore loin de son plafond de 1100px :
