@@ -163,10 +163,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
 .agenda-art { box-sizing: border-box; display: block; max-width: 99%; max-height: 99%; width: auto; height: auto; margin: 0 auto; }
 
 .content-link:hover, .content-link:focus-visible { color: #000; }
-/* taille fixe, pas le clamp de .content-link (pensé pour les gros boutons
-   de la page contact) : sur petit écran (320px) ça débordait. */
-.bandcamp-link-below { text-align: center; margin: .8rem 0 0; padding: 0 1rem; }
-.bandcamp-link-below .content-link { font-size: .85rem; }
+.bandcamp-link-below { margin: 0; }
 
 /* cadre encré audio-frame.png : désormais un seul dessin où l'intérieur est
    déjà peint en noir à la main (plus besoin d'un fond CSS séparé) - posé en
