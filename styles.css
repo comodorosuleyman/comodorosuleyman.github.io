@@ -89,13 +89,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   .scene a.zone[data-glow="glow-btn-contact.png"] { background-image: url(glow-btn-contact.png?v=2); }
 }
 
-/* sous-pages encadrées (video, audio, contact, agenda, codex) */
-.frame-page { position: relative; width: min(96vw, 1100px); aspect-ratio: 6994 / 9882; margin: 2.5rem auto 1rem; background: url(cadre.jpg?v=5) center / 100% 100% no-repeat; }
-/* page audio : cadre plus large que les autres, pour que .bandcamp-wrap
-   (lui-même plafonné à 950px) ait vraiment la place d'atteindre ce
-   plafond - sinon le lecteur Bandcamp reste trop bas pour afficher toute
-   la tracklist, même avec des marges correctes. */
-body.audio-page .frame-page { width: min(96vw, 1350px); }
+/* sous-pages encadrées (video, audio, comodoro, codex, contact, agenda) :
+   même plafond de largeur partout (celui qui servait à la page audio, pour
+   que .bandcamp-wrap - plafonné à 950px - ait la place d'atteindre son
+   propre plafond), pour que le cadre ait la même taille sur toutes. */
+.frame-page { position: relative; width: min(96vw, 1350px); aspect-ratio: 6994 / 9882; margin: 2.5rem auto 1rem; background: url(cadre.jpg?v=5) center / 100% 100% no-repeat; }
 /* le cartouche : bande vide entre les deux filets ornés en haut du cadre */
 .frame-title { position: absolute; left: 3.58%; top: 4.68%; width: 88.65%; height: 5.26%; display: flex; align-items: center; justify-content: center; }
 .frame-title img { max-width: 100%; max-height: 100%; object-fit: contain; }
@@ -328,7 +326,7 @@ body.audio-page .frame-page { width: min(96vw, 1350px); }
    fixe), ici on ajoute un troisième plafond basé sur la hauteur. */
 @media (max-width: 640px) {
   body.comodoro-page:has(nav.menu) { padding-bottom: 230px; }
-  body.comodoro-page .frame-page { width: min(96vw, 1100px, calc((100dvh - 286px) / 1.4131)); }
+  body.comodoro-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 286px) / 1.4131)); }
   /* idem pour le texte (cqw, relatif à la largeur réelle de .frame-content,
      pas au viewport) : sur un écran très court, le cadre devient petit et
      le texte à taille fixe ne tiendrait plus. */
