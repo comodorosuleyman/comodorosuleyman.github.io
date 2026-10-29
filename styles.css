@@ -1,4 +1,4 @@
-:root { --rouge: #7a1414; }
+:root { --rouge: #7a1414; color-scheme: light; }
 
 html, body { margin: 0; background: #f0d5c2; font-family: Georgia, serif; }
 body:has(nav.menu) { padding-bottom: 74px; }
