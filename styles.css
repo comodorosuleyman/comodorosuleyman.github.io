@@ -297,7 +297,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      .frame-page est plafonné par la hauteur d'écran (page comodoro), pas
      seulement par la largeur — un % du cadre suit les deux cas, un vw
      (lié au viewport) ne suivrait que le premier. */
-  .comodoro-art { width: auto; height: auto; max-width: 46%; max-height: 17%; }
+  .comodoro-art { width: auto; height: auto; max-width: 56%; max-height: 23%; }
   .codex-art-mobile { display: block; width: auto; height: auto; max-width: 74vw; max-height: 28vw; }
   /* cqw (largeur réelle de .frame-content), pas vw : sur un écran très
      étroit le texte/la flèche à plancher fixe (1rem/28px) ne rétrécissaient
@@ -349,8 +349,8 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* idem pour le texte (cqw, relatif à la largeur réelle de .frame-content,
      pas au viewport) : sur un écran très court, le cadre devient petit et
      le texte à taille fixe ne tiendrait plus. */
-  body.comodoro-page .frame-content p { font-size: max(.65rem, 4.3cqw); }
-  body.comodoro-page .frame-content { gap: 1.6cqw; }
+  body.comodoro-page .frame-content p { font-size: max(.58rem, 4.3cqw); }
+  body.comodoro-page .frame-content { gap: 1.6cqw; padding-top: .2rem; padding-bottom: .2rem; }
 }
 
 /* page comodoro (ordinateur) : les deux portraits + le texte dépassaient
