@@ -152,7 +152,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    agrandie, quelle que soit sa position verticale - on la garde plus
    proche de sa taille d'origine ici plutôt que de chevaucher le texte. */
 @media (max-width: 360px) {
-  .codex-figure { width: 16%; bottom: 8%; }
+  .codex-figure { width: 16%; bottom: 17%; }
 }
 /* entre 641px et ~1200px, la fiche PDF (hauteur plafonnée à 420px, en px
    fixes) grandit moins vite que le cadre (en %) : à largeur égale ils se
@@ -297,9 +297,14 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      .frame-page est plafonné par la hauteur d'écran (page comodoro), pas
      seulement par la largeur — un % du cadre suit les deux cas, un vw
      (lié au viewport) ne suivrait que le premier. */
-  .comodoro-art { width: auto; height: auto; max-width: 56%; max-height: 27%; }
-  .codex-art-mobile { display: block; width: auto; height: auto; max-width: 74vw; max-height: 35vw; }
-  .codex-download .download-arrow { height: clamp(28px, 7vw, 60px); }
+  .comodoro-art { width: auto; height: auto; max-width: 46%; max-height: 17%; }
+  .codex-art-mobile { display: block; width: auto; height: auto; max-width: 74vw; max-height: 28vw; }
+  /* cqw (largeur réelle de .frame-content), pas vw : sur un écran très
+     étroit le texte/la flèche à plancher fixe (1rem/28px) ne rétrécissaient
+     plus assez vite, et le contenu dépassait la zone noire du cadre -
+     même principe que la page comodoro plus bas. */
+  .codex-title { font-size: max(0.65rem, 4.0cqw); }
+  .codex-download .download-arrow { height: max(16px, 10cqw); }
   /* le contenu (dessin + 2 titres + 2 flèches) dépassait légèrement la
      zone noire du cadre, forçant un petit scroll interne inutile - on
      resserre l'espacement vertical pour que tout tienne sans scroll. */
@@ -344,8 +349,8 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* idem pour le texte (cqw, relatif à la largeur réelle de .frame-content,
      pas au viewport) : sur un écran très court, le cadre devient petit et
      le texte à taille fixe ne tiendrait plus. */
-  body.comodoro-page .frame-content p { font-size: max(.8rem, 4.3cqw); }
-  body.comodoro-page .frame-content { gap: 3cqw; }
+  body.comodoro-page .frame-content p { font-size: max(.65rem, 4.3cqw); }
+  body.comodoro-page .frame-content { gap: 1.6cqw; }
 }
 
 /* page comodoro (ordinateur) : les deux portraits + le texte dépassaient
