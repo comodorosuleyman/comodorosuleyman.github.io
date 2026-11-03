@@ -244,6 +244,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .manuscript-face { display: block; width: 100%; height: auto; }
 .manuscript-face-hit-mask { left: 73.76%; top: 36.46%; width: 11.03%; }
 .manuscript-face-hit-viking { left: 81.57%; top: 53.27%; width: 14.24%; }
+/* transcription/traduction en texte du manuscrit (image, donc non
+   traduisible directement) - sous l'image, dans les langues où elle
+   est fournie. Distincte du texte courant : italique, plus sobre. */
+.manuscript-translation { max-width: 640px; margin: 1.4rem auto 0; text-align: left; font-style: italic; color: #555; line-height: 1.6; }
+.manuscript-translation + .manuscript-translation { margin-top: .9rem; }
 .press-sub { margin: 0 0 .6rem; color: #777; font-size: .92rem; }
 /* flèche de téléchargement posée en tête de chaque colonne (Press Kit sur
    .press-col, Technical Rider sur .tech-col) : qu'elles soient côte à côte
