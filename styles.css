@@ -247,7 +247,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* transcription/traduction en texte du manuscrit (image, donc non
    traduisible directement) - sous l'image, dans les langues où elle
    est fournie. Distincte du texte courant : italique, plus sobre. */
-.manuscript-translation { max-width: 640px; margin: 1.4rem auto 0; text-align: left; font-style: italic; color: #555; line-height: 1.6; }
+.manuscript-translation { width: 100%; margin: 1.4rem 0 0; text-align: left; font-style: italic; color: #555; line-height: 1.6; }
 .manuscript-translation + .manuscript-translation { margin-top: .9rem; }
 .press-sub { margin: 0 0 .6rem; color: #777; font-size: .92rem; }
 /* flèche de téléchargement posée en tête de chaque colonne (Press Kit sur
