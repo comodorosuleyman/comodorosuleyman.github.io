@@ -359,11 +359,13 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    pour que tout tienne sans scroll. */
 @media (min-width: 641px) {
   body.comodoro-page .frame-content { gap: .9rem; }
-  /* max-height en plus de width : au-delà de 1100px (hors zone couverte
-     par le plafond de la fourchette 641-1100px plus bas), rien ne limitait
-     plus la hauteur - l'image grandissait avec son propre ratio et
-     débordait de nouveau la zone noire. */
-  body.comodoro-page .comodoro-art { width: min(58%, 420px); max-height: 24vw; }
+  /* width ET height en auto, avec max-width/max-height comme plafonds
+     (jamais width fixe + max-height ensemble) : sinon le navigateur
+     applique le plafond de hauteur sans réduire la largeur en retour,
+     et les deux dessins - de ratios différents - se retrouvent étirés
+     à la même taille, déformés. auto/auto laisse le navigateur choisir
+     la contrainte la plus stricte des deux tout en gardant le ratio. */
+  body.comodoro-page .comodoro-art { width: auto; height: auto; max-width: min(58%, 420px); max-height: 35vw; }
 }
 
 /* sélecteur de langue (drapeaux) : version ordi uniquement, en dehors du
