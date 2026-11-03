@@ -299,6 +299,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(36%, 236px); margin: 0; flex-shrink: 0; }
 /* miroir, mais la boîte .tv-wrap garde sa position (bord droit calé sur
    celui du dessin des oiseaux) : seul le dessin à l'intérieur est inversé. */
+.tv-link { display: block; width: 100%; }
 .tv-drawing { display: block; width: 100%; height: auto; transform: scaleX(-1); }
 .tv-caption { font-size: clamp(.55rem, 2.2vw, .85rem); text-align: center; line-height: 1.25; }
 .video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
