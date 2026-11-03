@@ -164,8 +164,19 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 
 /* niu.svg : calé dans la marge droite, au niveau de la 1re partition
    (centrée verticalement sur elle, comme .codex-figure dans la marge
-   gauche en bas). */
-.codex-niu { position: absolute; right: 8%; top: 30.5%; transform: translateY(-50%); width: 18%; height: auto; z-index: 1; mix-blend-mode: multiply; }
+   gauche en bas). right:15% est le minimum pour ne pas toucher le filet
+   d'encre (irrégulier, dessiné à la main - il mordait sur la marge
+   nominale de 13% à cette hauteur) ; mais à cette distance du bord,
+   niu empiète dans .frame-content, où la 1re partition (plafonnée à
+   500px) occupe déjà toute la largeur disponible entre 641px et
+   ~1400px - jamais assez de place pour les deux en même temps dans
+   cette fourchette. On masque niu uniquement là ; en dessous (mobile,
+   partition masquée) et au-delà (partition à son plafond, de la place
+   libère), aucun conflit. */
+.codex-niu { position: absolute; right: 15%; top: 30.5%; transform: translateY(-50%); width: 16%; height: auto; z-index: 1; mix-blend-mode: multiply; }
+@media (min-width: 641px) and (max-width: 1500px) {
+  .codex-niu { display: none; }
+}
 
 /* les liens de contact doivent toujours tenir sur une seule ligne : une
    échelle (vw) calée sur la largeur réelle du cadre, pas sur celle de
