@@ -359,7 +359,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    pour que tout tienne sans scroll. */
 @media (min-width: 641px) {
   body.comodoro-page .frame-content { gap: .9rem; }
-  body.comodoro-page .comodoro-art { width: min(58%, 310px); }
+  /* max-height en plus de width : au-delà de 1100px (hors zone couverte
+     par le plafond de la fourchette 641-1100px plus bas), rien ne limitait
+     plus la hauteur - l'image grandissait avec son propre ratio et
+     débordait de nouveau la zone noire. */
+  body.comodoro-page .comodoro-art { width: min(58%, 420px); max-height: 24vw; }
 }
 
 /* sélecteur de langue (drapeaux) : version ordi uniquement, en dehors du
