@@ -318,7 +318,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      .frame-page est plafonné par la hauteur d'écran (page comodoro), pas
      seulement par la largeur — un % du cadre suit les deux cas, un vw
      (lié au viewport) ne suivrait que le premier. */
-  .comodoro-art { width: auto; height: auto; max-width: 56%; max-height: 25%; }
+  .comodoro-art { width: auto; height: auto; max-width: 56%; max-height: 34%; }
   .codex-art-mobile { display: block; width: auto; height: auto; max-width: 74vw; max-height: 28vw; }
   /* cqw (largeur réelle de .frame-content), pas vw : sur un écran très
      étroit le texte/la flèche à plancher fixe (1rem/28px) ne rétrécissaient
@@ -338,6 +338,13 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* les 3 liens sociaux + le corbac dépassaient légèrement la zone noire
      du cadre, forçant un petit scroll interne inutile. */
   body.contact-page .frame-content { gap: .8rem; padding-top: .5rem; padding-bottom: .5rem; }
+}
+/* même limite physique que .codex-figure sous ~360px (iPhone SE...) :
+   34% déborde sur cet écran plus court, on retombe à la valeur sûre
+   la plus haute (25%) - cette règle doit suivre le bloc ≤640px dans le
+   fichier pour le primer (même spécificité, l'ordre de source décide). */
+@media (max-width: 360px) {
+  .comodoro-art { max-height: 25%; }
 }
 
 /* entre 641px et ~1000px, le cadre est encore loin de son plafond de 1100px :
