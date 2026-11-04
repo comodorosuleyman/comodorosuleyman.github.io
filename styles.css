@@ -260,6 +260,15 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   border: 0; min-width: 0; border-radius: 2px;
   background: #000;
 }
+@media (max-width: 640px) {
+  /* sur mobile, .bandcamp-wrap est bien plus étroit (largeur de .frame-content,
+     pas 950px) : à 40%/55%, l'iframe Bandcamp tombe à ~95x160px, trop petit
+     pour que le lecteur Bandcamp affiche play/titre/tracklist sans son
+     propre scroll interne. On agrandit (même ratio ~1.72, vérifié pixel par
+     pixel sur audio-frame.png jusqu'à 18%/7% de marge sans toucher le filet
+     d'encre) uniquement ici : le lecteur a déjà assez de place sur ordinateur. */
+  .bandcamp-player { left: 18%; top: 7%; width: 64%; height: 86%; }
+}
 
 /* page argumentum : la colonne fait toute la largeur du manuscrit (1100px max) ;
    le texte courant (programme, bio, press kit...) reste calé sur son bord
