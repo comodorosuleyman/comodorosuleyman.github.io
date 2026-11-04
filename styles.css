@@ -2,13 +2,13 @@
 
 html, body { margin: 0; background: #f0d5c2; font-family: Georgia, serif; cursor: url('cursor-arrow.png?v=4') 18 0, auto; }
 a, button { cursor: url('cursor-hand.png?v=4') 9 1, pointer; }
-/* 190px et non 74px : la nav (position:fixed) mesure 122px de haut sur une
-   seule ligne (badge Index 90px + 2*1rem de padding), mais repasse sur deux
-   lignes (~174px) entre ~641px et ~1000px de large faute de place pour les
-   6 badges. 74px laissait le bas des pages (copyright, mentions légales)
-   se faire recouvrir par la bande fixe dans toute cette plage. On réserve
-   large (190px) plutôt que de viser un seuil de repli exact et fragile. */
-body:has(nav.menu) { padding-bottom: 190px; }
+/* 280px et non 74px : la nav (position:fixed) mesure jusqu'à 255px de haut
+   une fois repliée sur deux lignes (badges agrandis à 50/104px) entre
+   ~641px et ~700px de large faute de place pour les 6 badges. 74px laissait
+   le bas des pages (copyright, mentions légales) se faire recouvrir par la
+   bande fixe dans toute cette plage. On réserve large (280px) plutôt que de
+   viser un seuil de repli exact et fragile. */
+body:has(nav.menu) { padding-bottom: 280px; }
 html:has(body.home) { height: 100%; overflow: hidden; }
 body.home { background: #160404; height: 100vh; height: 100dvh; display: flex; align-items: center; justify-content: center; overflow: hidden; position: fixed; inset: 0; width: 100%; cursor: url('cursor-arrow-white.png?v=3') 18 0, auto; }
 body.home a, body.home button { cursor: url('cursor-hand-white.png?v=3') 9 1, pointer; }
@@ -42,6 +42,13 @@ nav.menu a img { height: 42px; width: auto; display: block; }
 nav.menu a[href="index.html"] img { height: 90px; }
 nav.menu a[href="index.html"] { margin-right: auto; }
 nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
+
+@media (min-width: 641px) {
+  /* desktop a de la marge sous la nav (voir body:has(nav.menu) plus haut) :
+     on agrandit un peu les badges plutôt que de laisser ce vide. */
+  nav.menu a img { height: 50px; }
+  nav.menu a[href="index.html"] img { height: 104px; }
+}
 
 @media (max-width: 640px) {
   /* le bandeau (inchangé, forme et couleurs d'origine) peut s'étaler sur
@@ -248,7 +255,8 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .argumentum-page img.manuscript { width: 100%; max-width: none; margin-left: 0; display: block; margin-bottom: 0; }
 .legal-page h1 { font-size: clamp(1.4rem, 5vw, 2rem); color: var(--rouge); margin: 0 0 1.5rem; }
 .legal-page .press-byline { margin-top: 2.5rem; }
-.press-byline.legal-link { text-align: right; font-size: .68rem; max-width: 1350px; margin: .8rem auto 1.2rem; padding: 0 1.5rem; }
+.legal-link { text-align: center; font-size: .55rem; margin: 0; }
+.legal-link .content-link { font-size: inherit; }
 .manuscript-wrap { position: relative; display: block; }
 .manuscript-face-hit { position: absolute; display: block; }
 .manuscript-face-hit::before { content: ''; position: absolute; inset: -14px; }
@@ -348,8 +356,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   body.video-page .frame-content { gap: .8rem; padding-top: .5rem; padding-bottom: .5rem; }
   body.video-page .video-art { max-height: 50vw; }
   /* les 3 liens sociaux + le corbac dépassaient légèrement la zone noire
-     du cadre, forçant un petit scroll interne inutile. */
-  body.contact-page .frame-content { gap: .8rem; padding-top: .5rem; padding-bottom: .5rem; }
+     du cadre, forçant un petit scroll interne inutile. Resserré encore
+     (gap .5rem) depuis l'ajout du lien mentions légales, un 5e élément. */
+  body.contact-page .frame-content { gap: .5rem; padding-top: .4rem; padding-bottom: .4rem; }
 }
 /* même limite physique que .codex-figure sous ~360px (iPhone SE...) :
    34% déborde sur cet écran plus court, on retombe à la valeur sûre
