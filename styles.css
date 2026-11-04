@@ -240,6 +240,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .argumentum-page { max-width: 1100px; margin: 2.5rem auto 1rem; padding: 0 1rem; text-align: center; }
 .argumentum-page img { max-width: 100%; height: auto; }
 .argumentum-page img.manuscript { width: 100%; max-width: none; margin-left: 0; display: block; margin-bottom: 0; }
+.legal-page h1 { font-size: clamp(1.4rem, 5vw, 2rem); color: var(--rouge); margin: 0 0 1.5rem; }
+.legal-page .press-byline { margin-top: 2.5rem; }
+.press-byline.legal-link { text-align: center; max-width: 1350px; margin: .8rem auto 0; padding: 0 1rem; }
 .manuscript-wrap { position: relative; display: block; }
 .manuscript-face-hit { position: absolute; display: block; }
 .manuscript-face-hit::before { content: ''; position: absolute; inset: -14px; }
