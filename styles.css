@@ -45,13 +45,13 @@ body.home .scene img { height: 100%; }
 nav.menu { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: #f0d5c2; box-shadow: 0 -2px 8px rgba(0,0,0,.15); display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .6rem; padding: 1rem; }
 nav.menu a { display: block; text-decoration: none; transition: opacity .2s ease; }
 nav.menu a img { height: 42px; width: auto; display: block; }
-nav.menu a[href="index.html"] img { height: 90px; }
-nav.menu a[href="index.html"] { margin-right: auto; }
+nav.menu a[href^="index"] img { height: 90px; }
+nav.menu a[href^="index"] { margin-right: auto; }
 nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 
 @media (min-width: 641px) {
   nav.menu a img { height: 50px; }
-  nav.menu a[href="index.html"] img { height: 104px; }
+  nav.menu a[href^="index"] img { height: 104px; }
 }
 
 @media (max-width: 640px) {
@@ -62,7 +62,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   body:has(nav.menu) { padding-bottom: 300px; }
   /* "BACK TO INDEX" est nettement plus grand que les autres badges du
      bandeau ; sur petit écran ça prend trop de place en hauteur. */
-  nav.menu a[href="index.html"] img { height: 56px; }
+  nav.menu a[href^="index"] img { height: 56px; }
 }
 
 @media (max-width: 640px) {
