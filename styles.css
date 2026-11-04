@@ -58,11 +58,21 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* le bandeau (inchangé, forme et couleurs d'origine) peut s'étaler sur
      plusieurs lignes sur un petit écran ; on réserve assez de place en bas
      de page pour qu'il ne cache jamais le contenu, quel que soit le nombre
-     de lignes sur lesquelles il s'étale. */
-  body:has(nav.menu) { padding-bottom: 300px; }
+     de lignes sur lesquelles il s'étale. 310px au plus étroit (294px
+     mesurés + marge), réduit par paliers ci-dessous car la nav se replie
+     sur de moins en moins de lignes à mesure que l'écran s'élargit -
+     300px fixe laissait un grand vide en bas sur la moitié haute de la
+     plage mobile (ex. 480-640px, où la nav ne fait que 140px). */
+  body:has(nav.menu) { padding-bottom: 310px; }
   /* "BACK TO INDEX" est nettement plus grand que les autres badges du
      bandeau ; sur petit écran ça prend trop de place en hauteur. */
   nav.menu a[href^="index"] img { height: 56px; }
+}
+@media (min-width: 361px) and (max-width: 640px) {
+  body:has(nav.menu) { padding-bottom: 210px; }
+}
+@media (min-width: 540px) and (max-width: 640px) {
+  body:has(nav.menu) { padding-bottom: 160px; }
 }
 
 @media (max-width: 640px) {
@@ -402,13 +412,25 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      bandeau replié est donc plus haut (jusqu'à 294px mesuré à 320px de
      large) que les 300px déjà réservés ailleurs - 230px était insuffisant
      et laissait le bandeau recouvrir le bas du cadre. */
-  body.comodoro-page:has(nav.menu) { padding-bottom: 300px; }
+  body.comodoro-page:has(nav.menu) { padding-bottom: 310px; }
   body.comodoro-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 230px) / 1.4131)); }
   /* idem pour le texte (cqw, relatif à la largeur réelle de .frame-content,
      pas au viewport) : sur un écran très court, le cadre devient petit et
      le texte à taille fixe ne tiendrait plus. */
   body.comodoro-page .frame-content p { font-size: max(.58rem, 4.3cqw); }
   body.comodoro-page .frame-content { gap: 1.6cqw; padding-top: .2rem; padding-bottom: .2rem; }
+}
+/* même logique de paliers que la nav générale : la nav à 7 liens de
+   comodoro se replie sur moins de lignes à mesure que l'écran s'élargit
+   (243px à 361-413px, 191px à 414-599px, 140px à 600px+). */
+@media (min-width: 361px) and (max-width: 640px) {
+  body.comodoro-page:has(nav.menu) { padding-bottom: 260px; }
+}
+@media (min-width: 414px) and (max-width: 640px) {
+  body.comodoro-page:has(nav.menu) { padding-bottom: 210px; }
+}
+@media (min-width: 600px) and (max-width: 640px) {
+  body.comodoro-page:has(nav.menu) { padding-bottom: 160px; }
 }
 
 /* page comodoro (ordinateur) : les deux portraits + le texte dépassaient
