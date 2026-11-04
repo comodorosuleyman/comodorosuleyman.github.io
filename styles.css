@@ -259,7 +259,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .argumentum-page img.manuscript { width: 100%; max-width: none; margin-left: 0; display: block; margin-bottom: 0; }
 .legal-page h1 { font-size: clamp(1.4rem, 5vw, 2rem); color: var(--rouge); margin: 0 0 1.5rem; }
 .legal-page .press-byline { margin-top: 2.5rem; }
-.legal-link { align-self: flex-end; font-size: .55rem; margin: 0; }
+.frame-content .legal-link { align-self: flex-end; font-size: .75rem; margin: 0; }
 .legal-link .content-link { font-size: inherit; }
 .manuscript-wrap { position: relative; display: block; }
 .manuscript-face-hit { position: absolute; display: block; }
@@ -397,8 +397,13 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    mobile) : normalement le cadre ne dépend que de la largeur (aspect-ratio
    fixe), ici on ajoute un troisième plafond basé sur la hauteur. */
 @media (max-width: 640px) {
-  body.comodoro-page:has(nav.menu) { padding-bottom: 230px; }
-  body.comodoro-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 286px) / 1.4131)); }
+  /* comodoro.html a 7 liens dans la nav (contrairement aux 6 des autres
+     pages, puisque comodoro n'est le lien "retour" d'aucune d'elles) : son
+     bandeau replié est donc plus haut (jusqu'à 294px mesuré à 320px de
+     large) que les 300px déjà réservés ailleurs - 230px était insuffisant
+     et laissait le bandeau recouvrir le bas du cadre. */
+  body.comodoro-page:has(nav.menu) { padding-bottom: 300px; }
+  body.comodoro-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 230px) / 1.4131)); }
   /* idem pour le texte (cqw, relatif à la largeur réelle de .frame-content,
      pas au viewport) : sur un écran très court, le cadre devient petit et
      le texte à taille fixe ne tiendrait plus. */
