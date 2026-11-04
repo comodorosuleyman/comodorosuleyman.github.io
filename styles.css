@@ -4,8 +4,8 @@ html, body { margin: 0; background: #f0d5c2; font-family: Georgia, serif; cursor
 a, button { cursor: url('cursor-hand.png?v=1') 17 6, pointer; }
 body:has(nav.menu) { padding-bottom: 74px; }
 html:has(body.home) { height: 100%; overflow: hidden; }
-body.home { background: #160404; height: 100vh; height: 100dvh; display: flex; align-items: center; justify-content: center; overflow: hidden; position: fixed; inset: 0; width: 100%; cursor: url('cursor-arrow-white.png?v=1') 20 4, auto; }
-body.home a, body.home button { cursor: url('cursor-hand-white.png?v=1') 17 6, pointer; }
+body.home { background: #160404; height: 100vh; height: 100dvh; display: flex; align-items: center; justify-content: center; overflow: hidden; position: fixed; inset: 0; width: 100%; cursor: url('cursor-arrow-white.png?v=2') 20 4, auto; }
+body.home a, body.home button { cursor: url('cursor-hand-white.png?v=2') 17 6, pointer; }
 body.home .scene { width: auto; max-width: 100vw; max-height: 100vh; aspect-ratio: 2296 / 1623; margin: 0; }
 body.home .scene img { height: 100%; }
 .visually-hidden { position: absolute; left: -9999px; }
