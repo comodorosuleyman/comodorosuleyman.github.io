@@ -172,16 +172,19 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    mix-blend-mode:multiply - le fond blanc du jpg scanné devient transparent
    (se fond dans la couleur de fond de la page, quelle qu'elle soit) tandis
    que le trait noir reste noir. */
-.codex-figure { position: absolute; left: 15%; bottom: 11%; width: 22%; height: auto; z-index: 1; mix-blend-mode: multiply; }
+.codex-figure { position: absolute; left: 15%; bottom: 11%; width: 23%; height: auto; z-index: 1; mix-blend-mode: multiply; }
 @media (max-width: 640px) {
-  .codex-figure { width: 24%; left: 15%; bottom: 10%; }
+  .codex-figure { width: 28%; left: 15%; bottom: 10%; }
 }
 /* sous ~360px (vieux iPhone SE...), le 2e titre + sa flèche de
    téléchargement n'ont plus assez de place en dessous pour une figure
    agrandie, quelle que soit sa position verticale - on la garde plus
-   proche de sa taille d'origine ici plutôt que de chevaucher le texte. */
+   proche de sa taille d'origine ici plutôt que de chevaucher le texte.
+   16% chevauchait déjà réellement le 2e titre à 320px (iPhone SE, le cas
+   le plus étroit de cette tranche) - vérifié par détection de collision
+   avec tous les éléments de contenu, pas seulement par inspection visuelle. */
 @media (max-width: 360px) {
-  .codex-figure { width: 16%; bottom: 17%; }
+  .codex-figure { width: 14%; bottom: 17%; }
 }
 /* entre 641px et ~1200px, la fiche PDF (hauteur plafonnée à 420px, en px
    fixes) grandit moins vite que le cadre (en %) : à largeur égale ils se
