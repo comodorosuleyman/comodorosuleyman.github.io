@@ -1,6 +1,7 @@
 :root { --rouge: #7a1414; color-scheme: light; }
 
-html, body { margin: 0; background: #f0d5c2; font-family: Georgia, serif; }
+html, body { margin: 0; background: #f0d5c2; font-family: Georgia, serif; cursor: url('cursor-arrow.png?v=1') 20 4, auto; }
+a, button { cursor: url('cursor-hand.png?v=1') 17 6, pointer; }
 body:has(nav.menu) { padding-bottom: 74px; }
 html:has(body.home) { height: 100%; overflow: hidden; }
 body.home { background: #160404; height: 100vh; height: 100dvh; display: flex; align-items: center; justify-content: center; overflow: hidden; position: fixed; inset: 0; width: 100%; }
