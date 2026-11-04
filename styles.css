@@ -2,7 +2,13 @@
 
 html, body { margin: 0; background: #f0d5c2; font-family: Georgia, serif; cursor: url('cursor-arrow.png?v=4') 18 0, auto; }
 a, button { cursor: url('cursor-hand.png?v=4') 9 1, pointer; }
-body:has(nav.menu) { padding-bottom: 74px; }
+/* 190px et non 74px : la nav (position:fixed) mesure 122px de haut sur une
+   seule ligne (badge Index 90px + 2*1rem de padding), mais repasse sur deux
+   lignes (~174px) entre ~641px et ~1000px de large faute de place pour les
+   6 badges. 74px laissait le bas des pages (copyright, mentions légales)
+   se faire recouvrir par la bande fixe dans toute cette plage. On réserve
+   large (190px) plutôt que de viser un seuil de repli exact et fragile. */
+body:has(nav.menu) { padding-bottom: 190px; }
 html:has(body.home) { height: 100%; overflow: hidden; }
 body.home { background: #160404; height: 100vh; height: 100dvh; display: flex; align-items: center; justify-content: center; overflow: hidden; position: fixed; inset: 0; width: 100%; cursor: url('cursor-arrow-white.png?v=3') 18 0, auto; }
 body.home a, body.home button { cursor: url('cursor-hand-white.png?v=3') 9 1, pointer; }
