@@ -418,15 +418,21 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 img.lightbox-trigger, .lightbox-trigger { cursor: url('cursor-zoom-in.png?v=2') 11 11, zoom-in; }
 .lightbox-overlay {
   position: fixed; inset: 0; z-index: 999;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: safe center; justify-content: safe center;
   padding: 5vmin;
   background: #f0d5c2;
   opacity: 0; pointer-events: none;
   transition: opacity .2s ease;
+  overflow: auto;
 }
 .lightbox-overlay.is-open { opacity: 1; pointer-events: auto; }
 .lightbox-img {
-  max-width: 90vw; max-height: 90vh;
+  /* pas de max-height : une image haute et étroite (ex. contact-crow.jpg,
+     1400x1971) serait alors plafonnée par 90vh et pourrait s'afficher plus
+     petite que sa taille déjà affichée dans le cadre (bug constaté : le clic
+     "rétrécissait" l'image). On ne plafonne que la largeur ; si l'image est
+     plus haute que l'écran, l'overlay devient scrollable (overflow: auto). */
+  max-width: 90vw;
   cursor: url('cursor-zoom-out.png?v=2') 10 10, zoom-out;
   box-shadow: 0 10px 40px rgba(0,0,0,.5);
 }
