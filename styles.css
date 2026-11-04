@@ -9,6 +9,11 @@ a, button { cursor: url('cursor-hand.png?v=4') 9 1, pointer; }
    se faire recouvrir par la bande fixe dans toute cette plage. On réserve
    large (190px) plutôt que de viser un seuil de repli exact et fragile. */
 body:has(nav.menu) { padding-bottom: 190px; }
+@media (min-width: 1200px) {
+  /* au-delà de 1200px, la nav tient toujours sur une seule ligne (122px)
+     pour toutes les pages : pas besoin de la marge de repli deux-lignes. */
+  body:has(nav.menu) { padding-bottom: 145px; }
+}
 html:has(body.home) { height: 100%; overflow: hidden; }
 body.home { background: #160404; height: 100vh; height: 100dvh; display: flex; align-items: center; justify-content: center; overflow: hidden; position: fixed; inset: 0; width: 100%; cursor: url('cursor-arrow-white.png?v=3') 18 0, auto; }
 body.home a, body.home button { cursor: url('cursor-hand-white.png?v=3') 9 1, pointer; }
