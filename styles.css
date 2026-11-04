@@ -253,7 +253,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .argumentum-page img.manuscript { width: 100%; max-width: none; margin-left: 0; display: block; margin-bottom: 0; }
 .legal-page h1 { font-size: clamp(1.4rem, 5vw, 2rem); color: var(--rouge); margin: 0 0 1.5rem; }
 .legal-page .press-byline { margin-top: 2.5rem; }
-.legal-link { text-align: center; font-size: .55rem; margin: 0; }
+.legal-link { align-self: flex-end; font-size: .55rem; margin: 0; }
 .legal-link .content-link { font-size: inherit; }
 .manuscript-wrap { position: relative; display: block; }
 .manuscript-face-hit { position: absolute; display: block; }
