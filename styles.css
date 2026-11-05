@@ -362,6 +362,14 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .tv-link { display: block; width: 100%; }
 .tv-drawing { display: block; width: 100%; height: auto; transform: scaleX(-1); }
 .tv-caption { font-size: clamp(.55rem, 2.2vw, .85rem); text-align: center; line-height: 1.25; }
+/* .tv-wrap est bien plus étroit que le cadre (36% max, 15vw entre 641-1100px) :
+   la taille générale de .social-link (calée sur la largeur du cadre, pensée
+   pour l'adresse mail sur la page contact) est trop grande ici et fait
+   déborder le texte ("Watch on YouTube", plus long que l'ancien "YouTube"
+   seul) hors du cadre sur mobile - cqw (largeur de .frame-content, le même
+   ratio que .tv-wrap) rétrécit le texte en conséquence, vérifié sans
+   dépassement jusqu'à 320px sur la plus longue traduction (roumain). */
+.tv-wrap .social-link { flex-direction: column; gap: .15rem; font-size: clamp(.68rem, 2.8cqw, .95rem); white-space: normal; overflow-wrap: normal; text-align: center; }
 .video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .comodoro-art { box-sizing: border-box; display: block; width: min(58%, 340px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 
