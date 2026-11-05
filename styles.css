@@ -276,6 +276,18 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   .bandcamp-player { left: 18%; top: 7%; width: 64%; height: 86%; }
 }
 
+/* lecteur <audio> natif de secours (audio-fallback.js bascule dessus si
+   l'iframe Bandcamp échoue à charger) : masqué via [hidden] par défaut ;
+   :not([hidden]) pour fixer display sans jamais entrer en conflit de
+   spécificité avec la règle UA [hidden]{display:none} (même spécificité
+   qu'un simple sélecteur de classe - vérifié après le bug nav.menu plus haut). */
+.native-audio-fallback:not([hidden]) { display: flex; }
+.native-audio-fallback { flex-direction: column; gap: 1rem; width: 100%; max-width: 480px; margin: 0 auto; }
+.native-audio-note { margin: 0; font-size: clamp(.8rem, 3vw, 1rem); color: var(--rouge); }
+.native-audio-track { display: flex; flex-direction: column; gap: .3rem; width: 100%; }
+.native-audio-title { margin: 0; font-family: Georgia, serif; color: var(--rouge); font-weight: 700; font-size: clamp(.85rem, 3.4vw, 1.1rem); }
+.native-audio-track audio { width: 100%; }
+
 /* page argumentum : la colonne fait toute la largeur du manuscrit (1100px max) ;
    le texte courant (programme, bio, press kit...) reste calé sur son bord
    gauche mais garde une largeur de lecture confortable grâce à .presskit. */
