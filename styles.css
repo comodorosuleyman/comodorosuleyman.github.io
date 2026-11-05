@@ -385,6 +385,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      du cadre, forçant un petit scroll interne inutile. Resserré encore
      (gap .5rem) depuis l'ajout du lien mentions légales, un 5e élément. */
   body.contact-page .frame-content { gap: .5rem; padding-top: .4rem; padding-bottom: .4rem; }
+  /* rapproche le lien "Bandcamp" du lecteur agrandi, pour regagner un peu
+     de hauteur sur les écrans mobiles les plus courts. */
+  body.audio-page .frame-content { gap: .5rem; padding-top: .4rem; padding-bottom: .4rem; }
 }
 /* même limite physique que .codex-figure sous ~360px (iPhone SE...) :
    34% déborde sur cet écran plus court, on retombe à la valeur sûre
