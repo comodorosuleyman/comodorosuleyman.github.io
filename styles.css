@@ -164,6 +164,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 @media (min-width: 641px) {
   .codex-title { display: none; }
 }
+/* "Score"/"Partition"/... sous le titre : précise ce qu'on télécharge
+   (sur mobile, le PDF n'est pas affiché, seul indice avant la flèche). */
+.codex-subtitle { display: inline-block; margin-top: .15rem; font-family: Arial, Helvetica, sans-serif; font-size: .6rem; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; color: #777; }
 
 /* petite figure décorative calée dans le coin bas-gauche du cadre, dans la
    marge vide entre le contenu (centré) et le filet d'encre - % du cadre
@@ -184,7 +187,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    le plus étroit de cette tranche) - vérifié par détection de collision
    avec tous les éléments de contenu, pas seulement par inspection visuelle. */
 @media (max-width: 360px) {
-  .codex-figure { width: 14%; bottom: 17%; }
+  .codex-figure { width: 14%; bottom: 9%; }
 }
 /* entre 641px et ~1200px, la fiche PDF (hauteur plafonnée à 420px, en px
    fixes) grandit moins vite que le cadre (en %) : à largeur égale ils se
@@ -371,11 +374,12 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      plus assez vite, et le contenu dépassait la zone noire du cadre -
      même principe que la page comodoro plus bas. */
   .codex-title { font-size: max(0.65rem, 4.0cqw); }
+  .codex-subtitle { font-size: max(.5rem, 2.6cqw); }
   .codex-download .download-arrow { height: max(16px, 10cqw); }
   /* le contenu (dessin + 2 titres + 2 flèches) dépassait légèrement la
      zone noire du cadre, forçant un petit scroll interne inutile - on
      resserre l'espacement vertical pour que tout tienne sans scroll. */
-  body.codex-page .frame-content { gap: .8rem; padding-top: .5rem; padding-bottom: .5rem; }
+  body.codex-page .frame-content { gap: .5rem; padding-top: .4rem; padding-bottom: .4rem; }
   /* même principe que codex : la rangée figures+télé et le dessin des
      oiseaux dépassaient légèrement la zone noire, forçant un petit scroll
      interne inutile - on resserre et on plafonne un peu plus bas. */
