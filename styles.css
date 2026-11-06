@@ -380,6 +380,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .youtube-link-below { margin: 0; }
 .video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .comodoro-art { box-sizing: border-box; display: block; width: min(58%, 340px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+/* "il y en a plus" sous le 2e dessin : pointe vers la bande de miniatures
+   juste en dessous du cadre - le dessin de la souris (cursor-arrow.png)
+   recoloré dans le terracotta des flèches de téléchargement, traits
+   noirs conservés (voir comodoro-more-arrow.png). */
+.comodoro-more-arrow { display: block; height: clamp(26px, 5vw, 40px); width: auto; margin: 0 auto; }
 
 /* tailles mobiles des illustrations, placées ici (après toutes les règles
    de base ci-dessus) exprès : à spécificité égale, une règle plus tardive
