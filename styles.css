@@ -381,17 +381,21 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .comodoro-art { box-sizing: border-box; display: block; width: min(58%, 340px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 /* "il y en a plus" sous le 2e dessin : pointe vers la bande de miniatures
-   juste en dessous du cadre - dessin original de la souris (haute résolution,
-   photographié par l'artiste), recoloré dans le terracotta des flèches de
-   téléchargement (fond rempli par comblement des trous du contour dessiné à
-   la main puis détection de composantes connexes), traits noirs conservés,
-   pivoté 180° pour pointer vers le bas. cqw (largeur réelle de .frame-content,
-   pas vw) plutôt que des paliers vw par breakpoint : c'est un flex item de
-   .frame-content (flex-shrink:1 par défaut), qui se met déjà à rétrécir sous
-   sa hauteur déclarée dès que le contenu total dépasse légèrement - cqw suit
-   la largeur réelle du cadre en continu, sans les zones de débordement qui
+   juste en dessous du cadre - dessin vectoriel original de la souris (fourni
+   par l'artiste), déjà rempli dans le terracotta des flèches de
+   téléchargement et déjà orienté vers le bas. Resserrée à droite du cadre
+   (align-self:flex-end - un flex item de .frame-content sizé à son contenu
+   puisque align-items:center sur le parent, donc le pousser à droite suffit
+   sans toucher à justify-content) avec le libellé "Galerie" juste avant,
+   même couleur, sur la même ligne. cqw (largeur réelle de .frame-content,
+   pas vw) plutôt que des paliers vw par breakpoint : c'est un flex item
+   (flex-shrink:1 par défaut) qui se met déjà à rétrécir sous sa taille
+   déclarée dès que le contenu total dépasse légèrement - cqw suit la largeur
+   réelle du cadre en continu, sans les zones de débordement qui
    apparaissaient aux bords de chaque palier vw fixe. */
-.comodoro-more-arrow { display: block; height: clamp(26px, 9cqw, 70px); width: auto; margin: 0 auto; }
+.comodoro-more-row { display: flex; align-items: center; gap: .4rem; align-self: flex-end; }
+.comodoro-more-label { color: #a35c4a; font-family: Georgia, serif; font-weight: 700; font-size: clamp(.7rem, 3.2cqw, 1.1rem); }
+.comodoro-more-arrow { display: block; height: clamp(26px, 9cqw, 70px); width: auto; }
 
 /* tailles mobiles des illustrations, placées ici (après toutes les règles
    de base ci-dessus) exprès : à spécificité égale, une règle plus tardive
