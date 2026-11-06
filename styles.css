@@ -306,12 +306,14 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .manuscript-face-hit-viking { left: 81.57%; top: 53.27%; width: 14.24%; }
 /* lien discret sur le mot manuscrit "Tiago" (dernière ligne du texte) :
    coordonnées relevées pixel par pixel sur argumentum.jpg (2176x2647),
-   même technique que .manuscript-face-hit mais un vrai lien, pas une
-   bascule lightbox - invisible par défaut, léger surlignage seulement
-   au survol/focus pour rester discret tout en étant repérable au clavier. */
-.manuscript-word-link { position: absolute; display: block; border-radius: 3px; }
-.manuscript-word-link:hover, .manuscript-word-link:focus-visible { background: rgba(122, 20, 20, .12); }
-.manuscript-word-link-tiago { left: 66.27%; top: 94.45%; width: 13.14%; height: 3.33%; }
+   même technique que .scene a.zone sur l'accueil - un calque précalculé
+   (tiago-glow.png, même recadrage exact que la zone ci-dessous, encre
+   repeinte en rouge du site #7a1414, fond rendu transparent par seuil de
+   luminance) apparaît en fondu au survol/focus, comme si l'encre du mot
+   devenait rouge, plutôt qu'un simple rectangle de surlignage. */
+.manuscript-word-link { position: absolute; display: block; background-size: 100% 100%; background-repeat: no-repeat; opacity: 0; transition: opacity .2s ease; }
+.manuscript-word-link:hover, .manuscript-word-link:focus-visible { opacity: 1; }
+.manuscript-word-link-tiago { left: 66.27%; top: 94.45%; width: 13.14%; height: 3.33%; background-image: url(tiago-glow.png); }
 /* transcription/traduction en texte du manuscrit (image, donc non
    traduisible directement) - sous l'image, dans les langues où elle
    est fournie. Distincte du texte courant : italique, plus sobre. */
