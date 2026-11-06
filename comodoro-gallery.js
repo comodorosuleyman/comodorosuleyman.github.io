@@ -13,7 +13,7 @@
   var alts = [];
   items.forEach(function (btn) {
     var img = btn.querySelector('img');
-    sources.push(img.currentSrc || img.src);
+    sources.push(btn.dataset.full || img.currentSrc || img.src);
     alts.push(img.alt);
   });
 
@@ -24,6 +24,7 @@
     current = (index + sources.length) % sources.length;
     sliderImg.src = sources[current];
     sliderImg.alt = alts[current];
+    sliderImg.classList.remove('is-zoomed');
     count.textContent = (current + 1) + ' / ' + sources.length;
   }
 
@@ -48,6 +49,11 @@
   btnClose.addEventListener('click', close);
   btnPrev.addEventListener('click', function () { show(current - 1); });
   btnNext.addEventListener('click', function () { show(current + 1); });
+
+  sliderImg.addEventListener('click', function (e) {
+    e.stopPropagation();
+    sliderImg.classList.toggle('is-zoomed');
+  });
 
   slider.addEventListener('click', function (e) {
     if (e.target === slider) close();
