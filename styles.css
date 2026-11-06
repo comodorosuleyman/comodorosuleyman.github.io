@@ -381,11 +381,17 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .comodoro-art { box-sizing: border-box; display: block; width: min(58%, 340px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 /* "il y en a plus" sous le 2e dessin : pointe vers la bande de miniatures
-   juste en dessous du cadre - le dessin de la souris (cursor-arrow.png)
-   recoloré dans le terracotta des flèches de téléchargement, traits
-   noirs conservés, pivoté à 225° pour que le museau/moustaches pointent
-   vers le bas (voir comodoro-more-arrow.png). */
-.comodoro-more-arrow { display: block; height: clamp(78px, 15vw, 120px); width: auto; margin: 0 auto; }
+   juste en dessous du cadre - dessin original de la souris (haute résolution,
+   photographié par l'artiste), recoloré dans le terracotta des flèches de
+   téléchargement (fond rempli par comblement des trous du contour dessiné à
+   la main puis détection de composantes connexes), traits noirs conservés,
+   pivoté 180° pour pointer vers le bas. cqw (largeur réelle de .frame-content,
+   pas vw) plutôt que des paliers vw par breakpoint : c'est un flex item de
+   .frame-content (flex-shrink:1 par défaut), qui se met déjà à rétrécir sous
+   sa hauteur déclarée dès que le contenu total dépasse légèrement - cqw suit
+   la largeur réelle du cadre en continu, sans les zones de débordement qui
+   apparaissaient aux bords de chaque palier vw fixe. */
+.comodoro-more-arrow { display: block; height: clamp(26px, 9cqw, 70px); width: auto; margin: 0 auto; }
 
 /* tailles mobiles des illustrations, placées ici (après toutes les règles
    de base ci-dessus) exprès : à spécificité égale, une règle plus tardive
@@ -471,10 +477,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      le texte à taille fixe ne tiendrait plus. */
   body.comodoro-page .frame-content p { font-size: max(.58rem, 4.3cqw); }
   body.comodoro-page .frame-content { gap: 1.6cqw; padding-top: .2rem; padding-bottom: .2rem; }
-  /* la flèche-souris (x3) en plus du reste faisait déborder .frame-content
-     d'une poignée de px à certaines largeurs mobiles (ex. 375px) - plafond
-     un peu plus bas ici, toujours nettement plus grande qu'avant la x3. */
-  .comodoro-more-arrow { height: clamp(50px, 11vw, 90px); }
 }
 /* même logique de paliers que la nav générale : la nav à 7 liens de
    comodoro se replie sur moins de lignes à mesure que l'écran s'élargit
@@ -493,16 +495,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    légèrement la zone noire du cadre, forçant un petit scroll interne
    inutile - on resserre l'espacement et on plafonne un peu les portraits
    pour que tout tienne sans scroll. */
-@media (min-width: 641px) and (max-width: 720px) {
-  /* même débordement que ≤640px, juste au-dessus du palier : le cadre est
-     encore étroit/court ici (avant que .frame-page plafonne autrement au-delà
-     de 720px), la flèche agrandie fait encore déborder .frame-content. Valeur
-     volontairement basse : .comodoro-more-arrow est un flex item de
-     .frame-content (flex-shrink:1 par défaut) et se fait déjà rétrécir sous
-     sa hauteur déclarée quand le contenu total dépasse - la clamp() réelle
-     doit donc laisser de la marge, pas juste viser le pixel près. */
-  .comodoro-more-arrow { height: clamp(30px, 6vw, 55px); }
-}
 @media (min-width: 641px) {
   body.comodoro-page .frame-content { gap: .9rem; }
   /* width ET height en auto, avec max-width/max-height comme plafonds
