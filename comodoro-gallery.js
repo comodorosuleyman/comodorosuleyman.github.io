@@ -3,6 +3,7 @@
   var slider = document.getElementById('comodoro-slider');
   if (!items.length || !slider) return;
 
+  var viewport = slider.querySelector('.comodoro-slider-viewport');
   var sliderImg = document.getElementById('comodoro-slider-img');
   var count = document.getElementById('comodoro-slider-count');
   var btnClose = slider.querySelector('.comodoro-slider-close');
@@ -56,7 +57,7 @@
   });
 
   slider.addEventListener('click', function (e) {
-    if (e.target === slider) close();
+    if (e.target === slider || e.target === viewport) close();
   });
 
   document.addEventListener('keydown', function (e) {

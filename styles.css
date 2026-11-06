@@ -554,15 +554,20 @@ body.lightbox-locked { overflow: hidden; }
    règle UA [hidden]{display:none} (même piège que .native-audio-fallback
    plus haut : un simple sélecteur de classe aurait la même spécificité
    que [hidden] et pourrait le regagner selon l'ordre de la cascade). */
-.comodoro-slider { position: fixed; inset: 0; z-index: 999; align-items: safe center; justify-content: safe center; background: #f0d5c2; padding: 5vmin; overflow: auto; }
-.comodoro-slider:not([hidden]) { display: flex; }
+.comodoro-slider { position: fixed; inset: 0; z-index: 999; background: #f0d5c2; }
+.comodoro-slider:not([hidden]) { display: block; }
+/* la zone défilante (image zoomée) et les contrôles (close/prev/next/
+   compteur) doivent être DEUX niveaux séparés : si overflow:auto et les
+   contrôles position:absolute vivent sur le même élément, les contrôles
+   font partie du contenu défilant et scrollent avec l'image au lieu de
+   rester fixés à l'écran (bug constaté : le compteur "1/5" se retrouvait
+   au milieu du dessin après un scroll en zoom). Le viewport porte le
+   scroll, .comodoro-slider (non-scrollable) porte les contrôles. */
+.comodoro-slider-viewport { position: absolute; inset: 0; display: flex; align-items: safe center; justify-content: safe center; padding: 5vmin; overflow: auto; }
 /* loupe : cliquer l'image bascule entre "tenir dans l'écran" et sa
    pleine résolution (comodoro-dessin-N-full.jpg, 2400px) pour examiner
    le détail du trait - même paire de curseurs zoom-in/zoom-out que le
-   lightbox.js existant, pour rester cohérent. En zoomé, l'image dépasse
-   souvent le viewport : .comodoro-slider passe en overflow:auto (déjà
-   posé ci-dessus) et safe center au lieu de center pour ne jamais
-   couper son bord de départ si elle est plus grande que l'écran. */
+   lightbox.js existant, pour rester cohérent. */
 .comodoro-slider-img { max-width: 90vw; max-height: 85vh; border: 4px solid #000; box-shadow: 0 10px 40px rgba(0,0,0,.5); cursor: url('cursor-zoom-in.png?v=2') 11 11, zoom-in; flex-shrink: 0; }
 .comodoro-slider-img.is-zoomed { max-width: 100%; max-height: none; width: auto; cursor: url('cursor-zoom-out.png?v=2') 10 10, zoom-out; }
 .comodoro-slider-close, .comodoro-slider-prev, .comodoro-slider-next {
