@@ -394,7 +394,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    réelle du cadre en continu, sans les zones de débordement qui
    apparaissaient aux bords de chaque palier vw fixe. */
 .comodoro-more-row { display: flex; align-items: center; gap: .4rem; align-self: flex-end; }
-.comodoro-more-label { color: #a35c4a; font-family: Georgia, serif; font-weight: 700; font-size: clamp(.7rem, 3.2cqw, 1.1rem); }
+.comodoro-more-label { color: var(--rouge); font-family: Georgia, serif; font-weight: 700; font-size: clamp(.7rem, 3.2cqw, 1.1rem); }
 .comodoro-more-arrow { display: block; height: clamp(26px, 9cqw, 70px); width: auto; }
 
 /* tailles mobiles des illustrations, placées ici (après toutes les règles
