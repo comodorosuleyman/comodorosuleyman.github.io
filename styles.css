@@ -247,34 +247,43 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   background-size: 100% 100%;
 }
 .native-audio-wrap {
-  /* la pochette occupe maintenant toute la boîte en fond (position:absolute
-     inset:0 sur .native-audio-cover) - ce conteneur n'est donc plus un
-     flex-centré pour cover+pistes, juste un repère de positionnement
-     (position:relative) + un fond noir de secours tant que l'image charge.
-     Les pistes vivent dans .native-audio-tracklist, superposées en bas. */
+  /* "le cadre" : cette boîte NE DOIT PAS changer de dimensions (c'est elle
+     qui logeait l'iframe Bandcamp à l'origine) - la pochette, elle, est
+     volontairement plus grande que cette boîte et déborde par-dessus
+     (overflow:visible, pas hidden) plutôt que d'être rognée à sa taille.
+     Les pistes vivent dans .native-audio-tracklist, superposées en bas,
+     qui reste elle calée sur CETTE boîte (pas sur la pochette agrandie). */
   position: absolute;
   left: 30%; top: 22.5%;
   width: 40%; height: 55%;
-  overflow: hidden;
+  overflow: visible;
   box-sizing: border-box;
   background: #000;
   border-radius: 2px;
 }
 @media (max-width: 640px) {
-  /* sur mobile, .bandcamp-wrap est bien plus étroit (largeur de .frame-content,
-     pas 950px) : on agrandit la zone utile (même ratio, vérifié pixel par
-     pixel sur audio-frame.png jusqu'à 18%/7% de marge sans toucher le filet
-     d'encre) pour laisser respirer les deux lecteurs. */
   .native-audio-wrap { left: 18%; top: 7%; width: 64%; height: 86%; }
 }
 .native-audio-cover {
-  /* pochette affichée en entier, sans aucun recadrage (pas de
-     object-fit:cover) : pleine largeur de la boîte, hauteur automatique
-     qui garde le ratio carré de la source - posée en haut, aucun pixel
-     coupé. Le bandeau des pistes (.native-audio-tracklist) vient
-     seulement se superposer par-dessus le bas de l'image, en dégradé ;
-     il la couvre visuellement mais ne la recadre pas. */
-  position: absolute; top: 0; left: 0; width: 100%; height: auto; display: block;
+  /* dimensionnée pour remplir le plus grand rectangle carré tenant dans
+     la zone noire du dessin (audio-frame.png) SANS toucher le filet
+     d'encre - trouvé par script (expansion pixel par pixel depuis
+     l'ancienne boîte, seuil luminance+alpha, marge de sécurité ~12px
+     contre l'anticrénelage ; 99.9997% de pixels noirs vérifiés dans le
+     rectangle retenu : left 27%/top 21%/largeur 52% de .bandcamp-wrap,
+     qui garde toujours le même ratio 1762/2202 quelle que soit la largeur
+     d'écran). Positions ci-dessous recalculées en % DE LA BOÎTE (pas de
+     .bandcamp-wrap) puisque .native-audio-cover est un enfant positionné
+     de .native-audio-wrap - d'où des valeurs négatives/>100%, c'est
+     normal : la pochette déborde largement de la boîte d'origine.
+     height:auto (pas de object-fit) garde le ratio carré intact, aucun
+     pixel de la pochette n'est rogné. */
+  position: absolute; left: -7.5%; top: -2.73%; width: 130%; height: auto; display: block;
+}
+@media (max-width: 640px) {
+  /* même rectangle cible en absolu (left 27%/top 21%/largeur 52% de
+     .bandcamp-wrap), reconverti en % de la boîte mobile (18%/7%/64%/86%). */
+  .native-audio-cover { left: 14.06%; top: 16.28%; width: 81.25%; }
 }
 .native-audio-tracklist {
   /* bandeau superposé en bas de la pochette, pas un flux partagé avec
@@ -301,7 +310,17 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    illisible sur le fond rouge - c'est ce que le retour "gris sur fond
    noir" pointait vraiment, pas le choix de couleur en soi). */
 .native-audio-wrap .native-audio-title { margin: 0; font-family: Georgia, serif; color: #f0d5c2; font-weight: 700; font-size: clamp(.8rem, 3vw, 1rem); line-height: 1.15; }
-.native-audio-track audio { width: 100%; height: 32px; }
+/* teinte rouge-brun du lecteur natif : accent-color seul (standard CSS)
+   n'a aucun effet visible sur le fond/les icônes du lecteur <audio> dans
+   Chrome - les pseudo-éléments ::-webkit-media-controls-* (non standard,
+   Chrome/Safari/Edge uniquement) sont nécessaires pour ça. Dans un
+   navigateur qui ne les supporte pas (Firefox), le lecteur retombe
+   simplement sur son habillage gris par défaut - dégradation sans casse. */
+.native-audio-track audio { width: 100%; height: 32px; accent-color: var(--rouge); }
+.native-audio-track audio::-webkit-media-controls-panel { background-color: var(--rouge); }
+.native-audio-track audio::-webkit-media-controls-play-button,
+.native-audio-track audio::-webkit-media-controls-mute-button,
+.native-audio-track audio::-webkit-media-controls-overflow-button { background-color: rgba(0,0,0,.15); border-radius: 50%; }
 @media (max-width: 640px) {
   /* Espagnol ("fragmento") et roumain ("extras") sont plus longs que
      "excerpt"/"extrait" : ce titre plus petit évite le retour à la ligne
