@@ -318,7 +318,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 @media (max-width: 640px) {
   .native-audio-tracklist { bottom: 0; gap: .2rem; padding: .7rem 3% .35rem; }
 }
-.native-audio-track { display: flex; flex-direction: column; gap: .2rem; width: 100%; }
+.native-audio-track { display: flex; flex-direction: column; gap: .1rem; width: 100%; }
 /* .native-audio-wrap .native-audio-title (pas juste .native-audio-title) :
    .frame-content p (plus haut dans ce fichier) cible aussi ce <p> avec une
    spécificité plus forte (une classe + un type d'élément) qu'un simple
@@ -332,7 +332,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    Positions des zones interactives en % de l'image de la barre (1000x175,
    ratio conservé depuis le dessin original 3198x560) : triangle play,
    piste de progression et piste de volume mesurées sur le dessin source. */
-.hand-player { position: relative; width: 100%; margin-top: .25rem; touch-action: none; }
+/* 78% (pas 100%) et centré : le dessin de la barre paraissait trop
+   imposant par rapport au titre/compteur (qui gardent leur taille) ;
+   margin-top plus généreux que le gap des autres lignes pour la
+   décaler un peu plus bas sous le titre. */
+.hand-player { position: relative; width: 78%; margin: .45rem auto 0; touch-action: none; }
 .hand-player-bar-img { display: block; width: 100%; height: auto; }
 .hand-player audio { display: none; }
 .hand-player-playhit {
@@ -375,7 +379,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    renfort de spécificité que .native-audio-wrap .native-audio-title plus
    haut, pour ne pas se faire écraser par .frame-content p (texte en #333
    gris, illisible sur le fond noir du lecteur). */
-.native-audio-wrap .hand-player-time { margin: .1rem 0 0; font-family: Georgia, serif; color: #f0d5c2; font-size: clamp(.68rem, 2.4vw, .8rem); text-align: center; opacity: .85; }
+.native-audio-wrap .hand-player-time { margin: .02rem 0 0; font-family: Georgia, serif; color: #f0d5c2; font-size: clamp(.68rem, 2.4vw, .8rem); text-align: center; opacity: .85; }
 @media (max-width: 640px) {
   /* Espagnol ("fragmento") et roumain ("extras") sont plus longs que
      "excerpt"/"extrait" : ce titre plus petit évite le retour à la ligne
