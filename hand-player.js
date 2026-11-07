@@ -1,6 +1,13 @@
 (function () {
   function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
 
+  function formatTime(s) {
+    if (!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s / 60);
+    var sec = Math.floor(s % 60);
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
   function ratioFromPointer(e, track) {
     var rect = track.getBoundingClientRect();
     var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
@@ -45,8 +52,16 @@
     var seekKnob = player.querySelector('.hand-player-seek-knob');
     var volTrack = player.querySelector('.hand-player-volume');
     var volKnob = player.querySelector('.hand-player-volume-knob');
+    var timeDisplay = player.parentElement.querySelector('.hand-player-time');
     var seekPct = trackPercents(seekTrack, player);
     var volPct = trackPercents(volTrack, player);
+
+    function updateTimeDisplay() {
+      if (!timeDisplay) return;
+      timeDisplay.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+    }
+    updateTimeDisplay();
+    audio.addEventListener('loadedmetadata', updateTimeDisplay);
 
     function setSeekKnob(ratio) {
       seekKnob.style.left = (seekPct.left + ratio * seekPct.width) + '%';
@@ -67,8 +82,9 @@
 
     audio.addEventListener('timeupdate', function () {
       if (audio.duration) setSeekKnob(audio.currentTime / audio.duration);
+      updateTimeDisplay();
     });
-    audio.addEventListener('ended', function () { setSeekKnob(0); });
+    audio.addEventListener('ended', function () { setSeekKnob(0); updateTimeDisplay(); });
 
     setupDraggable(seekTrack, seekKnob, function (ratio) {
       // preload="metadata" fait déjà connaître la durée dès le chargement
@@ -78,6 +94,7 @@
       if (!audio.duration) { audio.load(); return; }
       audio.currentTime = ratio * audio.duration;
       setSeekKnob(ratio);
+      updateTimeDisplay();
     });
     setupDraggable(volTrack, volKnob, function (ratio) {
       audio.volume = ratio;
@@ -89,6 +106,7 @@
       var step = audio.duration * 0.02;
       if (e.key === 'ArrowLeft') { audio.currentTime = clamp(audio.currentTime - step, 0, audio.duration); setSeekKnob(audio.currentTime / audio.duration); }
       else if (e.key === 'ArrowRight') { audio.currentTime = clamp(audio.currentTime + step, 0, audio.duration); setSeekKnob(audio.currentTime / audio.duration); }
+      updateTimeDisplay();
     });
     volTrack.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowLeft') { audio.volume = clamp(audio.volume - 0.05, 0, 1); setVolKnob(audio.volume); }
