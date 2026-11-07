@@ -264,6 +264,13 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 @media (max-width: 640px) {
   .native-audio-wrap { left: 18%; top: 7%; width: 64%; height: 86%; }
 }
+/* le dessin du cadre (lune, tache d'encre, filets) redessiné par-dessus la
+   pochette : audio-frame.png sert de fond à .bandcamp-wrap, donc la
+   pochette (enfant positionné) le recouvre partout où elle déborde. Ce
+   calque reprend uniquement l'encre du dessin (fond transparent, lune et
+   tache repeintes en crème #f0d5c2 au lieu de transparent, pour qu'elles
+   recouvrent la pochette au lieu de laisser voir la pochette à travers). */
+.native-audio-frame-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .native-audio-cover {
   /* dimensionnée pour remplir le plus grand rectangle carré tenant dans
      la zone noire du dessin (audio-frame.png) SANS toucher le filet
@@ -313,17 +320,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    illisible sur le fond rouge - c'est ce que le retour "gris sur fond
    noir" pointait vraiment, pas le choix de couleur en soi). */
 .native-audio-wrap .native-audio-title { margin: 0; font-family: Georgia, serif; color: #f0d5c2; font-weight: 700; font-size: clamp(.8rem, 3vw, 1rem); line-height: 1.15; }
-/* teinte rouge-brun du lecteur natif : accent-color seul (standard CSS)
-   n'a aucun effet visible sur le fond/les icônes du lecteur <audio> dans
-   Chrome - les pseudo-éléments ::-webkit-media-controls-* (non standard,
-   Chrome/Safari/Edge uniquement) sont nécessaires pour ça. Dans un
-   navigateur qui ne les supporte pas (Firefox), le lecteur retombe
-   simplement sur son habillage gris par défaut - dégradation sans casse. */
-.native-audio-track audio { width: 100%; height: 32px; accent-color: var(--rouge); }
-.native-audio-track audio::-webkit-media-controls-panel { background-color: var(--rouge); }
-.native-audio-track audio::-webkit-media-controls-play-button,
-.native-audio-track audio::-webkit-media-controls-mute-button,
-.native-audio-track audio::-webkit-media-controls-overflow-button { background-color: rgba(0,0,0,.15); border-radius: 50%; }
+.native-audio-track audio { width: 100%; height: 32px; margin-top: .25rem; }
 @media (max-width: 640px) {
   /* Espagnol ("fragmento") et roumain ("extras") sont plus longs que
      "excerpt"/"extrait" : ce titre plus petit évite le retour à la ligne
