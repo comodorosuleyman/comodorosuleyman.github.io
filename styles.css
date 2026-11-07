@@ -298,8 +298,15 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .native-audio-tracklist {
   /* bandeau superposé en bas de la pochette, pas un flux partagé avec
      elle : fond en dégradé (opaque en bas, transparent vers le haut) pour
-     rester lisible par-dessus l'image sans la couper net par un bloc plein. */
-  position: absolute; left: 0; right: 0; bottom: 0;
+     rester lisible par-dessus l'image sans la couper net par un bloc plein.
+     bottom:-22% (desktop uniquement) : descend le bandeau jusqu'au bas réel
+     de la zone peinte en noir du dessin (vérifié pixel par pixel - le fond
+     noir va jusqu'à ~92% de .bandcamp-wrap avant le filet d'encre du bord
+     du cadre, la boîte "le cadre" s'arrête elle à 77.5% ; -22% l'amène à
+     ~89.6%, avec marge, sans jamais toucher le filet). Boîte mobile non
+     retouchée : son bord bas (93%) est déjà au ras du filet, donc aucune
+     marge disponible pour descendre davantage sans empiéter dessus. */
+  position: absolute; left: 0; right: 0; bottom: -22%;
   display: flex; flex-direction: column; justify-content: flex-end;
   gap: .3rem;
   padding: 1.1rem 6% .5rem;
@@ -309,7 +316,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   box-sizing: border-box;
 }
 @media (max-width: 640px) {
-  .native-audio-tracklist { gap: .2rem; padding: .7rem 3% .35rem; }
+  .native-audio-tracklist { bottom: 0; gap: .2rem; padding: .7rem 3% .35rem; }
 }
 .native-audio-track { display: flex; flex-direction: column; gap: .2rem; width: 100%; }
 /* .native-audio-wrap .native-audio-title (pas juste .native-audio-title) :
