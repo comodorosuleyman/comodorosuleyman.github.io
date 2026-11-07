@@ -370,6 +370,13 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    cadre, exactement comme .bandcamp-link-below sur la page audio - même
    classe de base .social-link, même taille, aucune règle dédiée ici. */
 .youtube-link-below { margin: 0; }
+.audio-cover {
+  /* marge basse négative : réduit le gap hérité de .frame-content (1.3rem,
+     commun à toutes les pages) spécifiquement entre la pochette et le
+     cadre audio, pour que les deux tiennent sans dépasser la hauteur du
+     cadre (qui ne doit jamais défiler en interne). */
+  box-sizing: border-box; display: block; width: min(17%, 85px); height: auto; margin: 0 auto -2rem; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); flex-shrink: 0;
+}
 .video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .comodoro-art { box-sizing: border-box; display: block; width: min(58%, 340px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 /* "il y en a plus" sous le 2e dessin : pointe vers la bande de miniatures
