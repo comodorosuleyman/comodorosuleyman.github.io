@@ -247,26 +247,15 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   background-size: 100% 100%;
 }
 .native-audio-wrap {
-  /* fond noir plein : couvre le détail de coin déchiré du dessin (traits
-     fins) que l'ancien iframe Bandcamp (fond #000 opaque) masquait déjà.
-     Le texte crème (#f0d5c2) semblait illisible dessus avant, mais c'était
-     en fait un bug de spécificité CSS qui le rendait gris (#333) - voir
-     .native-audio-wrap .native-audio-title plus bas - pas une vraie
-     limite de contraste crème/noir. Une fois corrigé, noir + crème
-     fonctionne et laisse le dessin du cadre respirer autour de la boîte. */
-  /* justify-content: safe center, pas center tout court : sur mobile le
-     contenu (2 titres + lecteurs) dépasse légèrement la hauteur de la
-     boîte - avec un centrage "unsafe", le début du premier titre devient
-     inaccessible (scrollTop reste à 0 mais le haut est rogné) au lieu de
-     simplement activer le défilement - même piège que .comodoro-slider-viewport
-     plus bas, qui utilise déjà align-items: safe center pour cette raison. */
+  /* la pochette occupe maintenant toute la boîte en fond (position:absolute
+     inset:0 sur .native-audio-cover) - ce conteneur n'est donc plus un
+     flex-centré pour cover+pistes, juste un repère de positionnement
+     (position:relative) + un fond noir de secours tant que l'image charge.
+     Les pistes vivent dans .native-audio-tracklist, superposées en bas. */
   position: absolute;
   left: 30%; top: 22.5%;
   width: 40%; height: 55%;
-  display: flex; flex-direction: column; justify-content: safe center;
-  gap: .4rem;
-  overflow: auto;
-  padding: 0 6%;
+  overflow: hidden;
   box-sizing: border-box;
   background: #000;
   border-radius: 2px;
@@ -276,18 +265,34 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      pas 950px) : on agrandit la zone utile (même ratio, vérifié pixel par
      pixel sur audio-frame.png jusqu'à 18%/7% de marge sans toucher le filet
      d'encre) pour laisser respirer les deux lecteurs. */
-  .native-audio-wrap { left: 18%; top: 7%; width: 64%; height: 86%; gap: .25rem; padding: 0 3%; }
+  .native-audio-wrap { left: 18%; top: 7%; width: 64%; height: 86%; }
 }
-.native-audio-cover { box-sizing: border-box; display: block; width: 70%; max-width: 260px; height: auto; margin: 0 auto; border: 2px solid #000; box-shadow: 0 3px 10px rgba(0,0,0,.35); flex-shrink: 0; }
+.native-audio-cover {
+  /* pochette = image de fond de toute la boîte (environ 7x la surface de
+     la vignette carrée précédente, à la demande explicite) plutôt qu'un
+     bandeau partageant l'espace avec les pistes - object-fit:cover avec
+     object-position en haut pour garder le titre "BURNIN' CHAMBER
+     MUSIC(!)" (en haut de l'image) lisible ; la lune et le personnage,
+     plus bas sur la pochette, débordent/sont rognés sous le bandeau des
+     pistes - l'effet voulu. */
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 100% 0%;
+}
+.native-audio-tracklist {
+  /* bandeau superposé en bas de la pochette, pas un flux partagé avec
+     elle : fond en dégradé (opaque en bas, transparent vers le haut) pour
+     rester lisible par-dessus l'image sans la couper net par un bloc plein. */
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  gap: .3rem;
+  padding: 1.1rem 6% .5rem;
+  background: linear-gradient(to top, rgba(0,0,0,.92) 55%, rgba(0,0,0,0));
+  max-height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+}
 @media (max-width: 640px) {
-  /* placé après la règle de base ci-dessus (même spécificité des deux
-     côtés - un media query ne suffit pas à gagner la cascade si la règle
-     non conditionnelle est plus bas dans le fichier, comme pour
-     .native-audio-title plus bas). width réduit, pas seulement max-width :
-     à 320-360px la largeur en % (70% de la boîte, déjà étroite) produit
-     une image plus petite que l'ancien plafond de 120/150px, donc changer
-     seulement max-width n'avait aucun effet - vérifié par sweep. */
-  .native-audio-cover { width: 50%; max-width: 110px; }
+  .native-audio-tracklist { gap: .2rem; padding: .7rem 3% .35rem; }
 }
 .native-audio-track { display: flex; flex-direction: column; gap: .2rem; width: 100%; }
 /* .native-audio-wrap .native-audio-title (pas juste .native-audio-title) :
