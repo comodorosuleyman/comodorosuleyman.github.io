@@ -327,7 +327,45 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    illisible sur le fond rouge - c'est ce que le retour "gris sur fond
    noir" pointait vraiment, pas le choix de couleur en soi). */
 .native-audio-wrap .native-audio-title { margin: 0; font-family: Georgia, serif; color: #f0d5c2; font-weight: 700; font-size: clamp(.8rem, 3vw, 1rem); line-height: 1.15; }
-.native-audio-track audio { width: 100%; height: 32px; margin-top: .25rem; }
+/* lecteur dessiné à la main (player-bar.png / player-knob.png, fournis par
+   l'utilisateur) à la place des contrôles <audio> natifs du navigateur.
+   Positions des zones interactives en % de l'image de la barre (1000x175,
+   ratio conservé depuis le dessin original 3198x560) : triangle play,
+   piste de progression et piste de volume mesurées sur le dessin source. */
+.hand-player { position: relative; width: 100%; margin-top: .25rem; touch-action: none; }
+.hand-player-bar-img { display: block; width: 100%; height: auto; }
+.hand-player audio { display: none; }
+.hand-player-playhit {
+  position: absolute; left: 2.5%; top: 15%; width: 11%; height: 70%;
+  margin: 0; padding: 0; border: 0; background: none; cursor: pointer;
+}
+/* pendant la lecture : un fond rouge recouvre entièrement le triangle
+   "play" dessiné dans la barre (fond transparent dans player-bar.png, pas
+   moyen de l'effacer autrement), par-dessus lequel vient l'icône pause -
+   même zone que .hand-player-playhit, dont elle reprend les dimensions. */
+.hand-player-pause-patch, .hand-player-pause-icon {
+  position: absolute; left: 2.5%; top: 15%; width: 11%; height: 70%;
+  display: none; pointer-events: none;
+}
+.hand-player-pause-patch { background: #000; border-radius: 15%; }
+.hand-player-pause-icon { object-fit: contain; }
+.hand-player.is-playing .hand-player-pause-patch,
+.hand-player.is-playing .hand-player-pause-icon { display: block; }
+.hand-player-seek, .hand-player-volume {
+  position: absolute; top: 15%; height: 70%; cursor: pointer;
+}
+.hand-player-seek { left: 13.4%; width: 41.2%; }
+.hand-player-volume { left: 83.5%; width: 12.6%; }
+/* taille du curseur en % de TOUTE la largeur du lecteur (pas de sa piste
+   locale, 41.2% pour le son / 12.6% pour le volume - sinon un même 10%
+   donnerait deux tailles très différentes) : positionné en enfant direct
+   de .hand-player, "left" calculé en JS à partir de la position réelle
+   de chaque piste. */
+.hand-player-knob {
+  position: absolute; top: 52.8%; width: 4.5%;
+  transform: translate(-50%, -50%); pointer-events: none;
+}
+.hand-player-volume-knob { top: 45.7%; }
 @media (max-width: 640px) {
   /* Espagnol ("fragmento") et roumain ("extras") sont plus longs que
      "excerpt"/"extrait" : ce titre plus petit évite le retour à la ligne

@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="1623">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="favicon.png?v=2">
-<link rel="stylesheet" href="styles.css?v=254">
+<link rel="stylesheet" href="styles.css?v=256">
 </head>
 <body class="audio-page">
 <nav class="lang-selector" aria-label="Language">
@@ -36,12 +36,32 @@
         <div class="native-audio-tracklist">
           <div class="native-audio-track">
             <p class="native-audio-title">I — fragmento</p>
-            <audio controls preload="none" src="audio/burnin-chamber-music-i-excerpt.mp3">Tu navegador no admite la reproducción de audio nativa. <a href="audio/burnin-chamber-music-i-excerpt.mp3">Descargar el archivo</a>.</audio>
+            <div class="hand-player">
+              <img src="player-bar.png?v=1" alt="" class="hand-player-bar-img">
+              <button type="button" class="hand-player-playhit" aria-label="Reproducir pista I — fragmento"></button>
+              <span class="hand-player-pause-patch" aria-hidden="true"></span>
+              <img src="player-pause.png?v=1" alt="" class="hand-player-pause-icon">
+              <div class="hand-player-seek" tabindex="0" role="slider" aria-label="Avance" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+              <div class="hand-player-volume" tabindex="0" role="slider" aria-label="Volumen" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"></div>
+              <img src="player-knob.png?v=1" alt="" class="hand-player-knob hand-player-seek-knob">
+              <img src="player-knob.png?v=1" alt="" class="hand-player-knob hand-player-volume-knob">
+              <audio preload="metadata" src="audio/burnin-chamber-music-i-excerpt.mp3">Tu navegador no admite la reproducción de audio nativa. <a href="audio/burnin-chamber-music-i-excerpt.mp3">Descargar el archivo</a>.</audio>
+            </div>
             <button type="button" class="native-audio-wav-btn" data-wav="audio/burnin-chamber-music-i-excerpt.wav">Reproducir en calidad WAV (43 MB)</button>
           </div>
           <div class="native-audio-track">
             <p class="native-audio-title">II — fragmento</p>
-            <audio controls preload="none" src="audio/burnin-chamber-music-ii-excerpt.mp3">Tu navegador no admite la reproducción de audio nativa. <a href="audio/burnin-chamber-music-ii-excerpt.mp3">Descargar el archivo</a>.</audio>
+            <div class="hand-player">
+              <img src="player-bar.png?v=1" alt="" class="hand-player-bar-img">
+              <button type="button" class="hand-player-playhit" aria-label="Reproducir pista II — fragmento"></button>
+              <span class="hand-player-pause-patch" aria-hidden="true"></span>
+              <img src="player-pause.png?v=1" alt="" class="hand-player-pause-icon">
+              <div class="hand-player-seek" tabindex="0" role="slider" aria-label="Avance" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+              <div class="hand-player-volume" tabindex="0" role="slider" aria-label="Volumen" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"></div>
+              <img src="player-knob.png?v=1" alt="" class="hand-player-knob hand-player-seek-knob">
+              <img src="player-knob.png?v=1" alt="" class="hand-player-knob hand-player-volume-knob">
+              <audio preload="metadata" src="audio/burnin-chamber-music-ii-excerpt.mp3">Tu navegador no admite la reproducción de audio nativa. <a href="audio/burnin-chamber-music-ii-excerpt.mp3">Descargar el archivo</a>.</audio>
+            </div>
             <button type="button" class="native-audio-wav-btn" data-wav="audio/burnin-chamber-music-ii-excerpt.wav">Reproducir en calidad WAV (61 MB)</button>
           </div>
         </div>
@@ -59,6 +79,7 @@
   <a href="agenda-es.html"><img src="titre-agenda.png?v=2" alt="Agenda - Comodoro Süleyman"></a>
   <a href="contact-es.html"><img src="titre-contact.png?v=2" alt="Contact - Comodoro Süleyman"></a>
 </nav>
-<script src="audio-quality.js?v=1" defer></script>
+<script src="hand-player.js?v=1" defer></script>
+<script src="audio-quality.js?v=2" defer></script>
 </body>
 </html>
