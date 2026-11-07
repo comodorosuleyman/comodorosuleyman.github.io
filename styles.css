@@ -247,10 +247,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   background-size: 100% 100%;
 }
 .native-audio-wrap {
-  /* fond noir plein : le dessin du cadre a un détail de coin déchiré (traits
-     fins) dans cette zone, que l'ancien iframe Bandcamp (fond #000 opaque)
-     masquait - sans lui, le texte des titres se lit mal dessus sur mobile
-     (titres sur 3 lignes, plus proches du coin). */
+  /* fond rouge plein (--rouge, la couleur du site) plutôt que noir : couvre
+     le détail de coin déchiré du dessin (traits fins) que l'ancien iframe
+     Bandcamp (fond #000 opaque) masquait déjà, et donne au texte crème
+     (#f0d5c2) un contraste net - le crème sur noir pur se lisait mal à
+     l'écran du téléphone. Rouge + crème : les deux couleurs du site. */
   /* justify-content: safe center, pas center tout court : sur mobile le
      contenu (2 titres + lecteurs) dépasse légèrement la hauteur de la
      boîte - avec un centrage "unsafe", le début du premier titre devient
@@ -265,7 +266,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   overflow: auto;
   padding: 0 6%;
   box-sizing: border-box;
-  background: #000;
+  background: var(--rouge);
   border-radius: 2px;
 }
 @media (max-width: 640px) {
