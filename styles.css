@@ -344,7 +344,12 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    moyen de l'effacer autrement), par-dessus lequel vient l'icône pause -
    même zone que .hand-player-playhit, dont elle reprend les dimensions. */
 .hand-player-pause-patch, .hand-player-pause-icon {
-  position: absolute; left: 2.5%; top: 15%; width: 11%; height: 70%;
+  /* plus petite que .hand-player-playhit (centrée dans la même zone,
+     11%/70% de large/haut) : la cible tactile reste généreuse, mais la
+     taille affichée de l'icône pause est calée sur celle, mesurée sur
+     player-bar.png, du triangle play (~6.7% x ~44.6%) pour que les deux
+     icônes paraissent de taille cohérente. */
+  position: absolute; left: 4%; top: 28%; width: 8%; height: 44%;
   display: none; pointer-events: none;
 }
 .hand-player-pause-patch { background: #000; border-radius: 15%; }
@@ -362,7 +367,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    de .hand-player, "left" calculé en JS à partir de la position réelle
    de chaque piste. */
 .hand-player-knob {
-  position: absolute; top: 52.8%; width: 4.5%;
+  position: absolute; top: 52.8%; width: 8.5%;
   transform: translate(-50%, -50%); pointer-events: none;
 }
 .hand-player-volume-knob { top: 45.7%; }
