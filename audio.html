@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="1623">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="favicon.png?v=2">
-<link rel="stylesheet" href="styles.css?v=212">
+<link rel="stylesheet" href="styles.css?v=217">
 </head>
 <body class="audio-page">
 <nav class="lang-selector" aria-label="Language">
@@ -30,35 +30,19 @@
   <h1 class="visually-hidden">Audio — Comodoro Süleyman</h1>
   <div class="frame-title"><img src="titre-audio.png?v=2" alt="Audio"></div>
   <div class="frame-content">
-    <div class="bandcamp-wrap" id="bandcamp-wrap">
-      <div class="bandcamp-frame" aria-hidden="true"></div>
-      <iframe class="bandcamp-player" id="bandcamp-player" src="https://bandcamp.com/EmbeddedPlayer/album=3712449056/size=large/bgcol=08061e/linkcol=4ec5ec/tracklist=true/transparent=true/" seamless title="Burnin' Chamber Music (!) — Bandcamp player"></iframe>
+    <div class="bandcamp-wrap">
+      <div class="native-audio-wrap">
+        <div class="native-audio-track">
+          <p class="native-audio-title">I — excerpt</p>
+          <audio controls preload="none" src="audio/burnin-chamber-music-i-excerpt.mp3">Your browser doesn't support native audio playback. <a href="audio/burnin-chamber-music-i-excerpt.mp3">Download the file</a>.</audio>
+        </div>
+        <div class="native-audio-track">
+          <p class="native-audio-title">II — excerpt</p>
+          <audio controls preload="none" src="audio/burnin-chamber-music-ii-excerpt.mp3">Your browser doesn't support native audio playback. <a href="audio/burnin-chamber-music-ii-excerpt.mp3">Download the file</a>.</audio>
+        </div>
+      </div>
     </div>
     <p class="bandcamp-link-below"><a class="content-link social-link" href="https://comodorosuleyman.bandcamp.com/" target="_blank" rel="noopener"><svg class="social-icon" viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8Zm48.2,326.1h-181L207.9,178h181Z"/></svg>Listen on Bandcamp</a></p>
-    <div class="native-audio-fallback" id="native-audio-fallback" hidden>
-      <p class="native-audio-note">The Bandcamp player couldn't load. Listen to an excerpt below:</p>
-      <div class="native-audio-track">
-        <p class="native-audio-title">Burnin' Chamber Music (!) I — excerpt</p>
-        <audio controls preload="none" src="audio/burnin-chamber-music-i-excerpt.mp3">Your browser doesn't support native audio playback. <a href="audio/burnin-chamber-music-i-excerpt.mp3">Download the file</a>.</audio>
-      </div>
-      <div class="native-audio-track">
-        <p class="native-audio-title">Burnin' Chamber Music (!) II — excerpt</p>
-        <audio controls preload="none" src="audio/burnin-chamber-music-ii-excerpt.mp3">Your browser doesn't support native audio playback. <a href="audio/burnin-chamber-music-ii-excerpt.mp3">Download the file</a>.</audio>
-      </div>
-    </div>
-    <noscript>
-      <div class="native-audio-fallback">
-        <p class="native-audio-note">Listen to an excerpt below:</p>
-        <div class="native-audio-track">
-          <p class="native-audio-title">Burnin' Chamber Music (!) I — excerpt</p>
-          <audio controls preload="none" src="audio/burnin-chamber-music-i-excerpt.mp3"></audio>
-        </div>
-        <div class="native-audio-track">
-          <p class="native-audio-title">Burnin' Chamber Music (!) II — excerpt</p>
-          <audio controls preload="none" src="audio/burnin-chamber-music-ii-excerpt.mp3"></audio>
-        </div>
-      </div>
-    </noscript>
   </div>
 </div>
 <nav class="menu" aria-label="Main menu">
@@ -69,6 +53,5 @@
   <a href="agenda.html"><img src="titre-agenda.png?v=2" alt="Agenda - Comodoro Süleyman"></a>
   <a href="contact.html"><img src="titre-contact.png?v=2" alt="Contact - Comodoro Süleyman"></a>
 </nav>
-<script src="audio-fallback.js?v=1" defer></script>
 </body>
 </html>

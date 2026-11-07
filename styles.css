@@ -228,16 +228,17 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .content-link:hover, .content-link:focus-visible { color: #000; }
 .bandcamp-link-below { margin: 0; }
 
-/* cadre encré audio-frame.png : désormais un seul dessin où l'intérieur est
-   déjà peint en noir à la main (plus besoin d'un fond CSS séparé) - posé en
-   fond de .bandcamp-wrap, avec le lecteur Bandcamp incrusté par-dessus dans
-   la zone noire, en retrait des filets du cadre pour ne jamais les
-   recouvrir (marges vérifiées pixel par pixel sur le dessin). */
+/* cadre encré audio-frame.png : un seul dessin où l'intérieur est déjà
+   peint en noir à la main (plus besoin d'un fond CSS séparé) - posé en
+   fond de .bandcamp-wrap, avec le lecteur <audio> natif incrusté par-dessus
+   dans la zone noire, en retrait des filets du cadre pour ne jamais les
+   recouvrir (marges vérifiées pixel par pixel sur le dessin). L'iframe
+   Bandcamp a été abandonnée : cross-origine, elle déclenche "load" même
+   quand elle échoue à s'afficher sur mobile, donc aucune bascule JS ne
+   pouvait fiablement la détecter. */
 .bandcamp-wrap {
   /* agrandi (680 -> 950) pour que le lecteur, à marges % inchangées, ait
-     assez de hauteur réelle pour afficher toute la tracklist plutôt que de
-     rogner la liste des titres - grandir le cadre plutôt que forcer le
-     lecteur à dépasser ses marges sûres. */
+     assez de hauteur réelle. */
   position: relative; width: 100%; max-width: 950px; margin: 0 auto; flex-shrink: 0;
   aspect-ratio: 1762 / 2202;
   border-radius: 6px;
@@ -245,47 +246,37 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.bandcamp-player {
-  /* width/height en % explicites, pas left+right+auto : un iframe est un
-     élément remplacé, et avec les 4 côtés posés + width/height:auto les
-     navigateurs retombent sur sa taille par défaut (300x150) au lieu de
-     calculer la taille depuis les contraintes - vérifié en headless Chrome
-     (le lecteur Bandcamp s'affichait alors rabougri, UI dégradée).
-     Marges verticales (top/height) reconverties par recherche dichotomique
-     pixel par pixel sur audio-frame.png (le rectangle précédent, estimé à
-     l'oeil, débordait sur les filets du cadre en haut et à gauche).
-     Largeur délibérément plus étroite que le maximum sûr (57%) : la
-     pochette Bandcamp (carrée) grandit avec la largeur de l'iframe, donc
-     un lecteur trop large laisse moins de hauteur relative pour la liste
-     des titres en dessous - testé en isolant l'iframe à différentes
-     tailles, il faut un ratio hauteur/largeur d'au moins ~1.3 pour voir
-     les deux titres ; 40% de large pour 55% de haut en donne ~1.72. */
+.native-audio-wrap {
+  /* fond noir plein : le dessin du cadre a un détail de coin déchiré (traits
+     fins) dans cette zone, que l'ancien iframe Bandcamp (fond #000 opaque)
+     masquait - sans lui, le texte des titres se lit mal dessus sur mobile
+     (titres sur 3 lignes, plus proches du coin). */
+  /* justify-content: safe center, pas center tout court : sur mobile le
+     contenu (2 titres + lecteurs) dépasse légèrement la hauteur de la
+     boîte - avec un centrage "unsafe", le début du premier titre devient
+     inaccessible (scrollTop reste à 0 mais le haut est rogné) au lieu de
+     simplement activer le défilement - même piège que .comodoro-slider-viewport
+     plus bas, qui utilise déjà align-items: safe center pour cette raison. */
   position: absolute;
   left: 30%; top: 22.5%;
   width: 40%; height: 55%;
-  border: 0; min-width: 0; border-radius: 2px;
+  display: flex; flex-direction: column; justify-content: safe center;
+  gap: .4rem;
+  overflow: auto;
+  padding: 0 6%;
+  box-sizing: border-box;
   background: #000;
+  border-radius: 2px;
 }
 @media (max-width: 640px) {
   /* sur mobile, .bandcamp-wrap est bien plus étroit (largeur de .frame-content,
-     pas 950px) : à 40%/55%, l'iframe Bandcamp tombe à ~95x160px, trop petit
-     pour que le lecteur Bandcamp affiche play/titre/tracklist sans son
-     propre scroll interne. On agrandit (même ratio ~1.72, vérifié pixel par
+     pas 950px) : on agrandit la zone utile (même ratio, vérifié pixel par
      pixel sur audio-frame.png jusqu'à 18%/7% de marge sans toucher le filet
-     d'encre) uniquement ici : le lecteur a déjà assez de place sur ordinateur. */
-  .bandcamp-player { left: 18%; top: 7%; width: 64%; height: 86%; }
+     d'encre) pour laisser respirer les deux lecteurs. */
+  .native-audio-wrap { left: 18%; top: 7%; width: 64%; height: 86%; }
 }
-
-/* lecteur <audio> natif de secours (audio-fallback.js bascule dessus si
-   l'iframe Bandcamp échoue à charger) : masqué via [hidden] par défaut ;
-   :not([hidden]) pour fixer display sans jamais entrer en conflit de
-   spécificité avec la règle UA [hidden]{display:none} (même spécificité
-   qu'un simple sélecteur de classe - vérifié après le bug nav.menu plus haut). */
-.native-audio-fallback:not([hidden]) { display: flex; }
-.native-audio-fallback { flex-direction: column; gap: 1rem; width: 100%; max-width: 480px; margin: 0 auto; }
-.native-audio-note { margin: 0; font-size: clamp(.8rem, 3vw, 1rem); color: var(--rouge); }
-.native-audio-track { display: flex; flex-direction: column; gap: .3rem; width: 100%; }
-.native-audio-title { margin: 0; font-family: Georgia, serif; color: var(--rouge); font-weight: 700; font-size: clamp(.85rem, 3.4vw, 1.1rem); }
+.native-audio-track { display: flex; flex-direction: column; gap: .2rem; width: 100%; }
+.native-audio-title { margin: 0; font-family: Georgia, serif; color: #f0d5c2; font-weight: 700; font-size: clamp(.8rem, 3vw, 1rem); line-height: 1.15; }
 .native-audio-track audio { width: 100%; }
 
 /* page argumentum : la colonne fait toute la largeur du manuscrit (1100px max) ;
@@ -566,9 +557,9 @@ body.lightbox-locked { overflow: hidden; }
    .lightbox-overlay pour rester cohérent visuellement, mais avec
    navigation précédent/suivant entre les 5 dessins. :not([hidden]) pour
    fixer display sans jamais entrer en conflit de spécificité avec la
-   règle UA [hidden]{display:none} (même piège que .native-audio-fallback
-   plus haut : un simple sélecteur de classe aurait la même spécificité
-   que [hidden] et pourrait le regagner selon l'ordre de la cascade). */
+   règle UA [hidden]{display:none} (un simple sélecteur de classe aurait
+   la même spécificité que [hidden] et pourrait le regagner selon l'ordre
+   de la cascade). */
 .comodoro-slider { position: fixed; inset: 0; z-index: 999; background: #f0d5c2; }
 .comodoro-slider:not([hidden]) { display: block; }
 /* la zone défilante (image zoomée) et les contrôles (close/prev/next/
