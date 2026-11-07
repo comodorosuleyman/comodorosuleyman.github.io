@@ -72,6 +72,7 @@
       volTrack.setAttribute('aria-valuenow', Math.round(ratio * 100));
     }
 
+    setSeekKnob(0);
     setVolKnob(audio.volume);
 
     playBtn.addEventListener('click', function () {

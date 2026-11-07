@@ -371,7 +371,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   transform: translate(-50%, -50%); pointer-events: none;
 }
 .hand-player-volume-knob { top: 45.7%; }
-.hand-player-time { margin: .1rem 0 0; font-family: Georgia, serif; color: #f0d5c2; font-size: clamp(.68rem, 2.4vw, .8rem); text-align: center; opacity: .85; }
+/* .native-audio-wrap .hand-player-time (pas juste .hand-player-time) : même
+   renfort de spécificité que .native-audio-wrap .native-audio-title plus
+   haut, pour ne pas se faire écraser par .frame-content p (texte en #333
+   gris, illisible sur le fond noir du lecteur). */
+.native-audio-wrap .hand-player-time { margin: .1rem 0 0; font-family: Georgia, serif; color: #f0d5c2; font-size: clamp(.68rem, 2.4vw, .8rem); text-align: center; opacity: .85; }
 @media (max-width: 640px) {
   /* Espagnol ("fragmento") et roumain ("extras") sont plus longs que
      "excerpt"/"extrait" : ce titre plus petit évite le retour à la ligne
