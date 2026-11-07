@@ -304,21 +304,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 @media (max-width: 640px) {
   .native-audio-tracklist { gap: .2rem; padding: .7rem 3% .35rem; }
 }
-.native-audio-frame-overlay {
-  /* "tout le cadre vient sur la photo et non dessous" : le dessin du
-     cadre (trait d'encre, lune/étoile du coin déchiré, bordure droite)
-     doit rester visible PAR-DESSUS la pochette agrandie, pas être
-     recouvert par elle. audio-frame-overlay.png est une version
-     d'audio-frame.png où le grand aplat noir de l'intérieur a été rendu
-     transparent (ouverture morphologique : érosion pour ne garder que le
-     gros bloc contigu, le reste - traits fins, lune, bordures - reste
-     intact) ; posée en calque au-dessus de tout, à la même taille/position
-     que le fond de .bandcamp-wrap, elle ne laisse voir que l'encre, pas
-     l'aplat. pointer-events:none pour ne jamais bloquer les clics sur les
-     lecteurs/boutons en dessous. */
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  pointer-events: none;
-}
 .native-audio-track { display: flex; flex-direction: column; gap: .2rem; width: 100%; }
 /* .native-audio-wrap .native-audio-title (pas juste .native-audio-title) :
    .frame-content p (plus haut dans ce fichier) cible aussi ce <p> avec une
