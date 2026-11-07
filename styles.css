@@ -247,11 +247,13 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   background-size: 100% 100%;
 }
 .native-audio-wrap {
-  /* fond rouge plein (--rouge, la couleur du site) plutôt que noir : couvre
-     le détail de coin déchiré du dessin (traits fins) que l'ancien iframe
-     Bandcamp (fond #000 opaque) masquait déjà, et donne au texte crème
-     (#f0d5c2) un contraste net - le crème sur noir pur se lisait mal à
-     l'écran du téléphone. Rouge + crème : les deux couleurs du site. */
+  /* fond noir plein : couvre le détail de coin déchiré du dessin (traits
+     fins) que l'ancien iframe Bandcamp (fond #000 opaque) masquait déjà.
+     Le texte crème (#f0d5c2) semblait illisible dessus avant, mais c'était
+     en fait un bug de spécificité CSS qui le rendait gris (#333) - voir
+     .native-audio-wrap .native-audio-title plus bas - pas une vraie
+     limite de contraste crème/noir. Une fois corrigé, noir + crème
+     fonctionne et laisse le dessin du cadre respirer autour de la boîte. */
   /* justify-content: safe center, pas center tout court : sur mobile le
      contenu (2 titres + lecteurs) dépasse légèrement la hauteur de la
      boîte - avec un centrage "unsafe", le début du premier titre devient
@@ -266,7 +268,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   overflow: auto;
   padding: 0 6%;
   box-sizing: border-box;
-  background: var(--rouge);
+  background: #000;
   border-radius: 2px;
 }
 @media (max-width: 640px) {
@@ -275,9 +277,18 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      pixel sur audio-frame.png jusqu'à 18%/7% de marge sans toucher le filet
      d'encre) pour laisser respirer les deux lecteurs. */
   .native-audio-wrap { left: 18%; top: 7%; width: 64%; height: 86%; gap: .25rem; padding: 0 3%; }
-  .native-audio-cover { max-width: 72px; }
 }
-.native-audio-cover { box-sizing: border-box; display: block; width: 40%; max-width: 130px; height: auto; margin: 0 auto; border: 2px solid #000; box-shadow: 0 3px 10px rgba(0,0,0,.35); flex-shrink: 0; }
+.native-audio-cover { box-sizing: border-box; display: block; width: 70%; max-width: 260px; height: auto; margin: 0 auto; border: 2px solid #000; box-shadow: 0 3px 10px rgba(0,0,0,.35); flex-shrink: 0; }
+@media (max-width: 640px) {
+  /* placé après la règle de base ci-dessus (même spécificité des deux
+     côtés - un media query ne suffit pas à gagner la cascade si la règle
+     non conditionnelle est plus bas dans le fichier, comme pour
+     .native-audio-title plus bas). width réduit, pas seulement max-width :
+     à 320-360px la largeur en % (70% de la boîte, déjà étroite) produit
+     une image plus petite que l'ancien plafond de 120/150px, donc changer
+     seulement max-width n'avait aucun effet - vérifié par sweep. */
+  .native-audio-cover { width: 50%; max-width: 110px; }
+}
 .native-audio-track { display: flex; flex-direction: column; gap: .2rem; width: 100%; }
 /* .native-audio-wrap .native-audio-title (pas juste .native-audio-title) :
    .frame-content p (plus haut dans ce fichier) cible aussi ce <p> avec une
