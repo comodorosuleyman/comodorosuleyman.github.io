@@ -399,7 +399,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    apparaissaient aux bords de chaque palier vw fixe. */
 .comodoro-more-row { display: flex; align-items: center; gap: .4rem; align-self: flex-end; }
 .comodoro-more-label { color: var(--rouge); font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: clamp(.7rem, 3.2cqw, 1.1rem); }
-.comodoro-more-arrow { display: block; height: clamp(22px, 7.5cqw, 58px); width: auto; }
+.comodoro-more-arrow { display: block; height: clamp(18px, 6cqw, 46px); width: auto; }
 
 /* tailles mobiles des illustrations, placées ici (après toutes les règles
    de base ci-dessus) exprès : à spécificité égale, une règle plus tardive
