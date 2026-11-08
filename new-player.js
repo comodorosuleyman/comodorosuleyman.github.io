@@ -164,7 +164,7 @@
       });
       mp3Dot.classList.toggle('selected', which === 'mp3');
       wavDot.classList.toggle('selected', which === 'wav');
-      if (wasPlaying) playActive();
+      if (wasPlaying) playTrack(active);
     }
     if (mp3Btn) mp3Btn.addEventListener('click', function () { selectQuality('mp3'); });
     if (wavBtn) wavBtn.addEventListener('click', function () { selectQuality('wav'); });
