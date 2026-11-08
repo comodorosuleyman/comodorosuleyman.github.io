@@ -402,6 +402,55 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .native-audio-wav-btn { align-self: center; margin: 0; padding: 0; border: 0; background: none; font-family: Arial, Helvetica, sans-serif; font-size: clamp(.62rem, 2.4vw, .75rem); color: #f0d5c2; text-decoration: underline; opacity: .85; }
 .native-audio-wav-btn:hover, .native-audio-wav-btn:focus-visible { opacity: 1; }
 
+/* nouveau lecteur unifié (panneau dessiné à la main : bouton play/pause
+   partagé, 2 pistes avec leur propre barre+compteur, sélecteur MP3/WAV,
+   volume partagé) - remplace l'ancien .hand-player par piste. Toutes les
+   positions ci-dessous en % du panneau (np-panel.png), mesurées par
+   analyse de composants connexes sur le dessin source. */
+.new-player { position: relative; width: 100%; touch-action: none; }
+.new-player-bg { display: block; width: 100%; height: auto; }
+.new-player audio { display: none; }
+.new-player-playhit {
+  position: absolute; left: 4.52%; top: 6.75%; width: 14.88%; height: 24.88%;
+  margin: 0; padding: 0; border: 0; background: none; cursor: pointer;
+}
+.new-player-play-icon, .new-player-pause-icon {
+  position: absolute; left: 6.87%; top: 10.66%; width: 9.62%; pointer-events: none;
+}
+.new-player-pause-icon, .new-player.is-playing .new-player-play-icon { display: none; }
+.new-player.is-playing .new-player-pause-icon { display: block; }
+.new-player-seek1, .new-player-seek2, .new-player-volume { position: absolute; cursor: pointer; }
+.new-player-seek1 { left: 22.07%; top: 9.27%; width: 61.34%; height: 8.38%; }
+.new-player-seek2 { left: 22.72%; top: 37.3%; width: 61.24%; height: 7.91%; }
+.new-player-volume { left: 88.27%; top: 31.23%; width: 3.82%; height: 58.87%; }
+.new-player-knob {
+  position: absolute; width: 5.6%;
+  transform: translate(-50%, -50%); pointer-events: none;
+}
+.new-player-seek1-knob { top: 13.46%; }
+.new-player-seek2-knob { top: 41.26%; }
+/* .native-audio-wrap .new-player-counter (pas juste .new-player-counter) :
+   même renfort de spécificité qu'ailleurs sur cette page contre
+   .frame-content p (texte en #333 gris, illisible). */
+.native-audio-wrap .new-player-counter {
+  position: absolute; margin: 0; color: #1a1a1a; font-family: Georgia, serif;
+  font-size: clamp(.5rem, 1.5vw, .8rem); text-align: center;
+  display: flex; align-items: center; justify-content: center;
+}
+.new-player-counter1 { left: 68.48%; top: 19.17%; width: 15.31%; height: 14.34%; }
+.new-player-counter2 { left: 69.1%; top: 47.68%; width: 14.52%; height: 13.46%; }
+.new-player-mp3, .new-player-wav {
+  position: absolute; margin: 0; padding: 0; border: 0; background: none; cursor: pointer;
+}
+.new-player-mp3 { left: 4%; top: 40%; width: 11%; height: 25%; }
+.new-player-wav { left: 4%; top: 65%; width: 11.5%; height: 23%; }
+.new-player-dot {
+  position: absolute; width: 7.98%; pointer-events: none; display: none;
+}
+.new-player-dot.selected { display: block; }
+.new-player-mp3-dot { left: 6.76%; top: 41.45%; }
+.new-player-wav-dot { left: 7.69%; top: 66.05%; }
+
 /* page argumentum : la colonne fait toute la largeur du manuscrit (1100px max) ;
    le texte courant (programme, bio, press kit...) reste calé sur son bord
    gauche mais garde une largeur de lecture confortable grâce à .presskit. */
