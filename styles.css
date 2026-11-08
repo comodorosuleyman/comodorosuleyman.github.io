@@ -438,7 +438,12 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    titre + la piste - toute la ligne sélectionne/joue cette piste. */
 .new-player-seek1 { left: 19.74%; top: 2.21%; width: 66.22%; height: 27.66%; }
 .new-player-seek2 { left: 20.45%; top: 29.88%; width: 66.12%; height: 38.73%; }
-.new-player-volume { left: 91.21%; top: 34.56%; width: 4.12%; height: 65.14%; }
+/* piste de volume raccourcie (trop longue à l'origine, son bouton à
+   pleine valeur empiétait sur l'icône de haut-parleur) : dessin
+   raccourci en np-vol-track.png, repositionné avec davantage d'écart
+   sous l'icône. */
+.new-player-vol-track { position: absolute; left: 90.98%; top: 40.5%; width: 4.29%; pointer-events: none; }
+.new-player-volume { left: 90.98%; top: 40.5%; width: 4.29%; height: 43.1%; }
 .new-player-knob {
   position: absolute; width: 6.05%;
   transform: translate(-50%, -50%); pointer-events: none;
