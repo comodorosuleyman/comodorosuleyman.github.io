@@ -424,10 +424,10 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   position: absolute; width: 7%; height: 16%;
   margin: 0; padding: 0; border: 0; background: none; cursor: pointer;
 }
-.new-player-playhit1 { left: 12.11%; top: 8.85%; }
-.new-player-playhit2 { left: 13.19%; top: 39.84%; }
-.new-player-play-icon1, .new-player-pause-icon1 { position: absolute; left: 12.11%; top: 8.85%; width: 7.56%; pointer-events: none; }
-.new-player-play-icon2, .new-player-pause-icon2 { position: absolute; left: 13.19%; top: 39.84%; width: 7.56%; pointer-events: none; }
+.new-player-playhit1 { left: 2.5%; top: 8.85%; }
+.new-player-playhit2 { left: 2.5%; top: 39.84%; }
+.new-player-play-icon1, .new-player-pause-icon1 { position: absolute; left: 2.5%; top: 8.85%; width: 7.56%; pointer-events: none; }
+.new-player-play-icon2, .new-player-pause-icon2 { position: absolute; left: 2.5%; top: 39.84%; width: 7.56%; pointer-events: none; }
 .new-player-pause-icon1, .new-player-pause-icon2 { display: none; }
 .new-player.is-playing1 .new-player-play-icon1 { display: none; }
 .new-player.is-playing1 .new-player-pause-icon1 { display: block; }
@@ -455,17 +455,26 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 }
 .new-player-counter1 { left: 69.85%; top: 21.21%; width: 16.53%; height: 15.87%; }
 .new-player-counter2 { left: 70.52%; top: 52.76%; width: 15.68%; height: 14.89%; }
+/* MP3/WAV déplacés : la colonne verticale à gauche touchait le bord
+   où le motif du cadre empiète - repris en une rangée horizontale en
+   bas du lecteur, là où il y a de la place libre. */
 .new-player-mp3, .new-player-wav {
   position: absolute; margin: 0; padding: 0; border: 0; background: none; cursor: pointer;
 }
-.new-player-mp3 { left: 0.24%; top: 44.26%; width: 11.88%; height: 27.66%; }
-.new-player-wav { left: 0.24%; top: 71.92%; width: 12.42%; height: 25.45%; }
+.new-player-mp3 { left: 4%; top: 84%; width: 19%; height: 11.5%; }
+.new-player-wav { left: 49%; top: 84%; width: 19%; height: 11.5%; }
+.new-player-ring { position: absolute; width: 5.2%; pointer-events: none; }
+.new-player-mp3-ring { left: 5%; top: 85.5%; }
+.new-player-wav-ring { left: 50%; top: 85.5%; }
+.new-player-label { position: absolute; pointer-events: none; }
+.new-player-mp3-label { left: 11.2%; top: 85.5%; width: 11.72%; }
+.new-player-wav-label { left: 56.2%; top: 85.5%; width: 11.92%; }
 .new-player-dot {
-  position: absolute; width: 8.62%; pointer-events: none; display: none;
+  position: absolute; width: 5.2%; pointer-events: none; display: none;
 }
 .new-player-dot.selected { display: block; }
-.new-player-mp3-dot { left: 3.22%; top: 45.87%; }
-.new-player-wav-dot { left: 4.22%; top: 73.09%; }
+.new-player-mp3-dot { left: 5%; top: 85.5%; }
+.new-player-wav-dot { left: 50%; top: 85.5%; }
 
 /* page argumentum : la colonne fait toute la largeur du manuscrit (1100px max) ;
    le texte courant (programme, bio, press kit...) reste calé sur son bord
