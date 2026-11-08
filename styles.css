@@ -290,11 +290,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      ratio carré intact, aucun pixel de la pochette n'est rogné. */
   position: absolute; left: 0; top: 0; width: 100%; height: auto; display: block;
 }
-@media (max-width: 640px) {
-  /* même rectangle cible en absolu (left 20.5%/top 21%/largeur 58.5% de
-     .bandcamp-wrap), reconverti en % de la boîte mobile (18%/7%/64%/86%). */
-  .native-audio-cover { left: 3.91%; top: 16.28%; width: 91.41%; }
-}
 .native-audio-tracklist {
   /* bandeau superposé en bas de la pochette, pas un flux partagé avec
      elle : fond en dégradé (opaque en bas, transparent vers le haut) pour
@@ -335,10 +330,10 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    décaler un peu plus bas sous le titre. */
 .hand-player { position: relative; width: 78%; margin: .45rem auto 0; touch-action: none; }
 @media (max-width: 640px) {
-  /* sur mobile, 78% de la boîte déjà étroite rendait le lecteur (et ses
-     cibles tactiles) minuscule - toutes les positions internes restent
-     en % de .hand-player, donc l'élargir ne déforme rien. */
-  .hand-player { width: 94%; }
+  /* agrandi jusqu'à la limite de .native-audio-track (toutes les
+     positions internes restent en % de .hand-player, donc l'élargir ne
+     déforme rien). */
+  .hand-player { width: 99%; }
 }
 .hand-player-bar-img { display: block; width: 100%; height: auto; }
 .hand-player audio { display: none; }
@@ -398,11 +393,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      qui ferait déborder la boîte à largeur très étroite (320-340px, testé
      via sweep Playwright). */
   .native-audio-wrap .native-audio-title { font-size: clamp(.66rem, 2.6vw, .85rem); }
-  /* lecteur repassé au rouge brun standard du site sur téléphone (le
-     crème reste le choix sur ordinateur) - mêmes fichiers, recolorés. */
-  .hand-player-bar-img { content: url(player-bar-red.png?v=1); }
-  .hand-player-knob { content: url(player-knob-red.png?v=1); }
-  .hand-player-pause-icon { content: url(player-pause-red.png?v=1); }
 }
 /* bouton "lire en qualité WAV" (audio-quality.js) : MP3 par défaut (léger,
    démarre vite), le WAV pèse 10x plus - texte seul plutôt qu'un bouton
