@@ -363,7 +363,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .hand-player-seek, .hand-player-volume {
   position: absolute; top: 15%; height: 70%; cursor: pointer;
 }
-.hand-player-seek { left: 13.5%; width: 41.2%; }
+/* left décalé de 13.5% à 14% : à 13.5% le bouton (centré sur ce point au
+   repos) touchait tout juste le bord droit du triangle play (~10.6%). */
+.hand-player-seek { left: 14%; width: 41.2%; }
 .hand-player-volume { left: 83.5%; width: 12.5%; }
 /* taille du curseur en % de TOUTE la largeur du lecteur (pas de sa piste
    locale, 41.2% pour le son / 12.5% pour le volume - sinon un même 10%
