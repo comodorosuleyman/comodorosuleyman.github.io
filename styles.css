@@ -258,8 +258,8 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      à l'ancienne : 21+68.6=89.6%. Les pistes vivent dans
      .native-audio-tracklist, superposées en bas, calée sur CETTE boîte. */
   position: absolute;
-  left: 20.5%; top: 21%;
-  width: 58.5%; height: 68.6%;
+  left: 16.75%; top: 18%;
+  width: 66%; height: 74%;
   overflow: visible;
   box-sizing: border-box;
   background: #000;
