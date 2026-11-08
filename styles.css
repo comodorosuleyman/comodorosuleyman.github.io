@@ -337,6 +337,12 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    margin-top plus généreux que le gap des autres lignes pour la
    décaler un peu plus bas sous le titre. */
 .hand-player { position: relative; width: 78%; margin: .45rem auto 0; touch-action: none; }
+@media (max-width: 640px) {
+  /* sur mobile, 78% de la boîte déjà étroite rendait le lecteur (et ses
+     cibles tactiles) minuscule - toutes les positions internes restent
+     en % de .hand-player, donc l'élargir ne déforme rien. */
+  .hand-player { width: 94%; }
+}
 .hand-player-bar-img { display: block; width: 100%; height: auto; }
 .hand-player audio { display: none; }
 .hand-player-playhit {
