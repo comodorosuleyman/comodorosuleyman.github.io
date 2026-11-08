@@ -461,19 +461,19 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .new-player-mp3, .new-player-wav {
   position: absolute; margin: 0; padding: 0; border: 0; background: none; cursor: pointer;
 }
-.new-player-mp3 { left: 4%; top: 84%; width: 19%; height: 11.5%; }
+.new-player-mp3 { left: 7%; top: 84%; width: 19%; height: 11.5%; }
 .new-player-wav { left: 49%; top: 84%; width: 19%; height: 11.5%; }
 .new-player-ring { position: absolute; width: 5.2%; pointer-events: none; }
-.new-player-mp3-ring { left: 5%; top: 85.5%; }
+.new-player-mp3-ring { left: 8%; top: 85.5%; }
 .new-player-wav-ring { left: 50%; top: 85.5%; }
 .new-player-label { position: absolute; pointer-events: none; }
-.new-player-mp3-label { left: 11.2%; top: 85.5%; width: 11.72%; }
+.new-player-mp3-label { left: 14.2%; top: 85.5%; width: 11.72%; }
 .new-player-wav-label { left: 56.2%; top: 85.5%; width: 11.92%; }
 .new-player-dot {
   position: absolute; width: 5.2%; pointer-events: none; display: none;
 }
 .new-player-dot.selected { display: block; }
-.new-player-mp3-dot { left: 5%; top: 85.5%; }
+.new-player-mp3-dot { left: 8%; top: 85.5%; }
 .new-player-wav-dot { left: 50%; top: 85.5%; }
 
 /* page argumentum : la colonne fait toute la largeur du manuscrit (1100px max) ;
