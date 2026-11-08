@@ -262,7 +262,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   border-radius: 2px;
 }
 @media (max-width: 640px) {
-  .native-audio-wrap { left: 18%; top: 7%; width: 64%; height: 86%; }
+  .native-audio-wrap { left: 10%; top: 7%; width: 80%; height: 86%; }
 }
 /* le dessin du cadre (lune, tache d'encre, filets) redessiné par-dessus la
    pochette : audio-frame.png sert de fond à .bandcamp-wrap, donc la
