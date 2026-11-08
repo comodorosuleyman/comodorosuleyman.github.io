@@ -416,15 +416,23 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .new-player { position: relative; width: 100%; touch-action: none; }
 .new-player-bg { display: block; width: 100%; height: auto; }
 .new-player audio { display: none; }
-.new-player-playhit {
-  position: absolute; left: 4.52%; top: 6.75%; width: 14.88%; height: 24.88%;
+/* le bouton play/pause unique du dessin d'origine (grand cadre en haut
+   à gauche) était une erreur de composition - remplacé par un bouton
+   réduit au début de CHAQUE piste, repeint par-dessus l'espace laissé
+   vide dans np-panel.png (zone de l'ancien cadre, effacée). */
+.new-player-playhit1, .new-player-playhit2 {
+  position: absolute; width: 7%; height: 16%;
   margin: 0; padding: 0; border: 0; background: none; cursor: pointer;
 }
-.new-player-play-icon, .new-player-pause-icon {
-  position: absolute; left: 6.87%; top: 10.66%; width: 9.62%; pointer-events: none;
-}
-.new-player-pause-icon, .new-player.is-playing .new-player-play-icon { display: none; }
-.new-player.is-playing .new-player-pause-icon { display: block; }
+.new-player-playhit1 { left: 15%; top: 8%; }
+.new-player-playhit2 { left: 16%; top: 36%; }
+.new-player-play-icon1, .new-player-pause-icon1 { position: absolute; left: 15%; top: 8%; width: 7%; pointer-events: none; }
+.new-player-play-icon2, .new-player-pause-icon2 { position: absolute; left: 16%; top: 36%; width: 7%; pointer-events: none; }
+.new-player-pause-icon1, .new-player-pause-icon2 { display: none; }
+.new-player.is-playing1 .new-player-play-icon1 { display: none; }
+.new-player.is-playing1 .new-player-pause-icon1 { display: block; }
+.new-player.is-playing2 .new-player-play-icon2 { display: none; }
+.new-player.is-playing2 .new-player-pause-icon2 { display: block; }
 .new-player-seek1, .new-player-seek2, .new-player-volume { position: absolute; cursor: pointer; }
 /* zone cliquable agrandie (pas juste le fin trait) pour couvrir tout le
    titre + la piste - toute la ligne sélectionne/joue cette piste. */

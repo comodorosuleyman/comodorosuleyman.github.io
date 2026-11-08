@@ -8,7 +8,10 @@
   }
 
   document.querySelectorAll('.new-player').forEach(function (player) {
-    var playBtn = player.querySelector('.new-player-playhit');
+    var playBtns = [
+      player.querySelector('.new-player-playhit1'),
+      player.querySelector('.new-player-playhit2')
+    ];
     var audios = [
       player.querySelector('.new-player-audio1'),
       player.querySelector('.new-player-audio2')
@@ -61,25 +64,28 @@
       active = i;
     }
 
-    function playActive() {
-      audios.forEach(function (a, i) { if (i !== active && a) a.pause(); });
-      if (audios[active]) audios[active].play();
+    function playTrack(i) {
+      audios.forEach(function (a, j) { if (j !== i && a) a.pause(); });
+      if (audios[i]) audios[i].play();
     }
 
-    playBtn.addEventListener('click', function () {
-      var a = audios[active];
-      if (!a) return;
-      if (a.paused) playActive(); else a.pause();
+    playBtns.forEach(function (btn, i) {
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var a = audios[i];
+        if (!a) return;
+        if (a.paused) playTrack(i); else a.pause();
+      });
     });
 
     audios.forEach(function (a, i) {
       if (!a) return;
       a.addEventListener('play', function () {
         setActive(i);
-        player.classList.add('is-playing');
+        player.classList.add('is-playing' + (i + 1));
       });
       a.addEventListener('pause', function () {
-        if (i === active) player.classList.remove('is-playing');
+        player.classList.remove('is-playing' + (i + 1));
       });
       a.addEventListener('timeupdate', function () {
         if (a.duration) setKnobX(knobs[i], seeks[i], a.currentTime / a.duration);
