@@ -361,9 +361,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .hand-player-seek, .hand-player-volume {
   position: absolute; top: 15%; height: 70%; cursor: pointer;
 }
-/* left décalé de 13.5% à 14% : à 13.5% le bouton (centré sur ce point au
-   repos) touchait tout juste le bord droit du triangle play (~10.6%). */
-.hand-player-seek { left: 14%; width: 41.2%; }
+/* left décalé de 13.5% à 16% (14% restait encore trop près du triangle
+   play visuellement). */
+.hand-player-seek { left: 16%; width: 41.2%; }
 /* left décalé de 83.5% à 73% (piste + bouton ensemble, pas juste le
    bouton) : au repos (volume 100%, bouton sur left+width) il chevauchait
    l'embout droit du cadre, dont le mur intérieur commence vers 90%. */
