@@ -247,15 +247,19 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   background-size: 100% 100%;
 }
 .native-audio-wrap {
-  /* "le cadre" : cette boîte NE DOIT PAS changer de dimensions (c'est elle
-     qui logeait l'iframe Bandcamp à l'origine) - la pochette, elle, est
-     volontairement plus grande que cette boîte et déborde par-dessus
-     (overflow:visible, pas hidden) plutôt que d'être rognée à sa taille.
-     Les pistes vivent dans .native-audio-tracklist, superposées en bas,
-     qui reste elle calée sur CETTE boîte (pas sur la pochette agrandie). */
+  /* agrandie jusqu'au rectangle sûr déjà établi pour la pochette carrée
+     (left 20.5%/top 21%/largeur 58.5% DE .bandcamp-wrap - voir le calcul
+     dans .native-audio-cover ci-dessous, qui vérifiait pixel par pixel
+     que ce rectangle ne touche jamais le filet d'encre) : le lecteur,
+     bien plus petit que la pochette, reste donc lui aussi à l'intérieur
+     de la zone noire sans risque de chevaucher le cadre. Hauteur calée
+     sur l'autre repère pixel par pixel de ce fichier (le fond noir du
+     dessin va jusqu'à ~92% de .bandcamp-wrap) avec une marge identique
+     à l'ancienne : 21+68.6=89.6%. Les pistes vivent dans
+     .native-audio-tracklist, superposées en bas, calée sur CETTE boîte. */
   position: absolute;
-  left: 30%; top: 22.5%;
-  width: 40%; height: 55%;
+  left: 20.5%; top: 21%;
+  width: 58.5%; height: 68.6%;
   overflow: visible;
   box-sizing: border-box;
   background: #000;
@@ -278,23 +282,13 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    recouvrent la pochette au lieu de laisser voir la pochette à travers). */
 .native-audio-frame-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .native-audio-cover {
-  /* dimensionnée pour remplir le plus grand rectangle carré tenant dans
-     la zone noire du dessin (audio-frame.png) SANS toucher le filet
-     d'encre - trouvé par script (expansion pixel par pixel depuis
-     l'ancienne boîte, seuil luminance+alpha, marge de sécurité ~12px
-     contre l'anticrénelage ; 99.9997% de pixels noirs vérifiés dans le
-     rectangle retenu initialement : left 27%/top 21%/largeur 52% de
-     .bandcamp-wrap. Agrandi ensuite à la demande pour empiéter sur le
-     croissant de lune dessiné dans le coin déchié du cadre (à gauche) :
-     coin haut-droit FIXE (top 21%/droite 79%, inchangés), extension
-     uniquement vers la gauche/le bas (carré, donc les deux ensemble) -
-     left 20.5%/largeur 58.5% de .bandcamp-wrap. Positions ci-dessous
-     recalculées en % DE LA BOÎTE (pas de .bandcamp-wrap) puisque
-     .native-audio-cover est un enfant positionné de .native-audio-wrap -
-     d'où des valeurs négatives/>100%, c'est normal : la pochette déborde
-     largement de la boîte d'origine. height:auto (pas de object-fit)
-     garde le ratio carré intact, aucun pixel de la pochette n'est rogné. */
-  position: absolute; left: -23.75%; top: -2.73%; width: 146.25%; height: auto; display: block;
+  /* rectangle sûr (sans toucher le filet d'encre) trouvé par script :
+     left 20.5%/top 21%/largeur 58.5% de .bandcamp-wrap - voir l'historique
+     pour le détail du calcul pixel par pixel. .native-audio-wrap occupe
+     maintenant exactement ce même rectangle, donc plus besoin de débord
+     négatif ici : 0/0/100%. height:auto (pas de object-fit) garde le
+     ratio carré intact, aucun pixel de la pochette n'est rogné. */
+  position: absolute; left: 0; top: 0; width: 100%; height: auto; display: block;
 }
 @media (max-width: 640px) {
   /* même rectangle cible en absolu (left 20.5%/top 21%/largeur 58.5% de
@@ -305,14 +299,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* bandeau superposé en bas de la pochette, pas un flux partagé avec
      elle : fond en dégradé (opaque en bas, transparent vers le haut) pour
      rester lisible par-dessus l'image sans la couper net par un bloc plein.
-     bottom:-22% (desktop uniquement) : descend le bandeau jusqu'au bas réel
-     de la zone peinte en noir du dessin (vérifié pixel par pixel - le fond
-     noir va jusqu'à ~92% de .bandcamp-wrap avant le filet d'encre du bord
-     du cadre, la boîte "le cadre" s'arrête elle à 77.5% ; -22% l'amène à
-     ~89.6%, avec marge, sans jamais toucher le filet). Boîte mobile non
-     retouchée : son bord bas (93%) est déjà au ras du filet, donc aucune
-     marge disponible pour descendre davantage sans empiéter dessus. */
-  position: absolute; left: 0; right: 0; bottom: -22%;
+     bottom:0 (desktop) : .native-audio-wrap atteint maintenant déjà
+     89.6% de .bandcamp-wrap (son ancien repère pixel par pixel : le fond
+     noir du dessin va jusqu'à ~92%, marge gardée), donc plus besoin de
+     déborder sous la boîte pour l'atteindre. */
+  position: absolute; left: 0; right: 0; bottom: 0;
   display: flex; flex-direction: column; justify-content: flex-end;
   gap: .3rem;
   padding: 1.1rem 6% .5rem;
