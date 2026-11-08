@@ -262,7 +262,13 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   border-radius: 2px;
 }
 @media (max-width: 640px) {
-  .native-audio-wrap { left: 10%; top: 7%; width: 80%; height: 86%; }
+  /* sur téléphone, le cadre à l'encre (fond audio-frame.png + calque
+     native-audio-frame-overlay) disparaît entièrement - juste la photo
+     et le lecteur, dans la boîte noire agrandie au maximum que permet
+     la frise du site (.frame-page). */
+  .bandcamp-wrap { background-image: none; }
+  .native-audio-frame-overlay { display: none; }
+  .native-audio-wrap { left: 1%; top: 1%; width: 98%; height: 98%; }
 }
 /* le dessin du cadre (lune, tache d'encre, filets) redessiné par-dessus la
    pochette : audio-frame.png sert de fond à .bandcamp-wrap, donc la
@@ -401,6 +407,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      qui ferait déborder la boîte à largeur très étroite (320-340px, testé
      via sweep Playwright). */
   .native-audio-wrap .native-audio-title { font-size: clamp(.66rem, 2.6vw, .85rem); }
+  /* lecteur repassé au rouge brun standard du site sur téléphone (le
+     crème reste le choix sur ordinateur) - mêmes fichiers, recolorés. */
+  .hand-player-bar-img { content: url(player-bar-red.png?v=1); }
+  .hand-player-knob { content: url(player-knob-red.png?v=1); }
+  .hand-player-pause-icon { content: url(player-pause-red.png?v=1); }
 }
 /* bouton "lire en qualité WAV" (audio-quality.js) : MP3 par défaut (léger,
    démarre vite), le WAV pèse 10x plus - texte seul plutôt qu'un bouton
