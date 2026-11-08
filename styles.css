@@ -285,10 +285,16 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* rectangle sûr (sans toucher le filet d'encre) trouvé par script :
      left 20.5%/top 21%/largeur 58.5% de .bandcamp-wrap - voir l'historique
      pour le détail du calcul pixel par pixel. .native-audio-wrap occupe
-     maintenant exactement ce même rectangle, donc plus besoin de débord
-     négatif ici : 0/0/100%. height:auto (pas de object-fit) garde le
-     ratio carré intact, aucun pixel de la pochette n'est rogné. */
-  position: absolute; left: 0; top: 0; width: 100%; height: auto; display: block;
+     maintenant exactement ce même rectangle. height:auto (pas de
+     object-fit) garde le ratio carré intact, aucun pixel rogné.
+     left/width calés sur le padding gauche/droit de
+     .native-audio-tracklist (6% desktop) pour que la pochette fasse
+     exactement la même largeur que le lecteur en dessous. */
+  position: absolute; left: 6%; top: 0; width: 88%; height: auto; display: block;
+}
+@media (max-width: 640px) {
+  /* même alignement, avec le padding mobile de .native-audio-tracklist (3%). */
+  .native-audio-cover { left: 3%; width: 94%; }
 }
 .native-audio-tracklist {
   /* bandeau superposé en bas de la pochette, pas un flux partagé avec
