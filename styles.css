@@ -271,7 +271,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      et le lecteur, dans la boîte noire agrandie au maximum que permet
      la frise du site (.frame-page). */
   .bandcamp-wrap { background-image: none; }
-  .native-audio-frame-overlay { display: none; }
+  .native-audio-frame-overlay, .native-audio-frame-liseré { display: none; }
   .native-audio-wrap { left: 1%; top: 1%; width: 98%; height: 98%; }
 }
 /* le dessin du cadre (lune, tache d'encre, filets) redessiné par-dessus la
@@ -281,6 +281,12 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    tache repeintes en crème #f0d5c2 au lieu de transparent, pour qu'elles
    recouvrent la pochette au lieu de laisser voir la pochette à travers). */
 .native-audio-frame-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+/* liseré intérieur du cadre : tracé vectoriel (np-lisere.svg) au lieu d'une
+   dilatation matricielle - contour extrait de audio-frame-overlay.png
+   (limite intérieure de l'encre), simplifié puis offset vers l'intérieur
+   d'une largeur constante avec shapely. Net à n'importe quelle résolution,
+   contrairement à un simple épaississement de pixels crème. */
+.native-audio-frame-liseré { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .native-audio-cover {
   /* rectangle sûr (sans toucher le filet d'encre) trouvé par script :
      left 20.5%/top 21%/largeur 58.5% de .bandcamp-wrap - voir l'historique
