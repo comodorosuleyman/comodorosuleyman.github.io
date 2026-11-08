@@ -420,8 +420,10 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .new-player-pause-icon, .new-player.is-playing .new-player-play-icon { display: none; }
 .new-player.is-playing .new-player-pause-icon { display: block; }
 .new-player-seek1, .new-player-seek2, .new-player-volume { position: absolute; cursor: pointer; }
-.new-player-seek1 { left: 22.07%; top: 9.27%; width: 61.34%; height: 8.38%; }
-.new-player-seek2 { left: 22.72%; top: 37.3%; width: 61.24%; height: 7.91%; }
+/* zone cliquable agrandie (pas juste le fin trait) pour couvrir tout le
+   titre + la piste - toute la ligne sélectionne/joue cette piste. */
+.new-player-seek1 { left: 22.07%; top: 2%; width: 61.34%; height: 25%; }
+.new-player-seek2 { left: 22.72%; top: 27%; width: 61.24%; height: 35%; }
 .new-player-volume { left: 88.27%; top: 31.23%; width: 3.82%; height: 58.87%; }
 .new-player-knob {
   position: absolute; width: 5.6%;
