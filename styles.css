@@ -371,8 +371,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    de .hand-player, "left" calculé en JS à partir de la position réelle
    de chaque piste. "top" mesuré sur le nouveau dessin de la barre
    (player-bar.png) : centre vertical de chaque piste. */
+/* largeur plafonnée pour qu'au repos (ratio 0, centre du bouton sur le
+   début de la piste à 13.5%) il ne chevauche pas le triangle play (bord
+   droit mesuré à ~10.6%) : rayon max 13.5-10.6=2.9%, donc 5.8% de large. */
 .hand-player-knob {
-  position: absolute; top: 54.6%; width: 8.5%;
+  position: absolute; top: 54.6%; width: 5.8%;
   transform: translate(-50%, -50%); pointer-events: none;
 }
 .hand-player-volume-knob { top: 52.8%; }
