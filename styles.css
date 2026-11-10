@@ -496,6 +496,19 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .legal-page .press-byline { margin-top: 2.5rem; }
 .frame-content .legal-link { align-self: flex-end; font-size: .75rem; margin: 0; }
 .legal-link .content-link { font-size: inherit; }
+/* page "Burnin' Chamber Music (!)" : pas de titre dessiné à la main pour
+   celle-ci (page créée pour le référencement, pas tirée du dessin
+   original) - plaque de texte simple, même rouge/serif que les autres
+   titres de contenu plutôt qu'une fausse image à l'encre. */
+.bcm-title { margin: 0; font-family: Georgia, serif; font-weight: 700; color: var(--rouge); font-size: clamp(.95rem, 3.6vw, 1.5rem); text-align: center; line-height: 1.15; }
+.bcm-cover { box-sizing: border-box; display: block; width: min(60%, 320px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.bcm-intro { max-width: 36rem; text-align: center; margin: 0 auto; }
+@media (max-width: 640px) {
+  body.bcm-page .frame-content { gap: .35rem; padding-top: .4rem; padding-bottom: .4rem; }
+  .bcm-cover { width: min(36%, 170px); }
+  .bcm-intro { font-size: clamp(.62rem, 2.9vw, .75rem); }
+  body.bcm-page .content-link { font-size: clamp(.72rem, 3.2vw, 1rem); }
+}
 .manuscript-wrap { position: relative; display: block; }
 .manuscript-face-hit { position: absolute; display: block; }
 .manuscript-face-hit::before { content: ''; position: absolute; inset: -14px; }
@@ -670,6 +683,12 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    des oiseaux ne tiennent plus avec la marge habituelle - léger rabais. */
 @media (max-width: 360px) {
   body.video-page .video-art { max-height: 44vw; }
+}
+@media (max-width: 360px) {
+  .bcm-cover { width: min(24%, 120px); }
+  .bcm-intro { font-size: .56rem; }
+  body.bcm-page .frame-content { gap: .18rem; }
+  body.bcm-page .content-link { font-size: .68rem; }
 }
 
 /* entre 641px et ~1000px, le cadre est encore loin de son plafond de 1100px :
