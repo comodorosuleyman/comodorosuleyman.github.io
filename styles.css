@@ -144,6 +144,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* les navigateurs mobiles n'ont pas de lecteur PDF pour <embed> : la zone
      reste vide/noire. On la masque et on mise sur le lien d'ouverture. */
   .frame-content embed { display: none; }
+  /* codex-figure/niu décoraient la marge vide laissée par le petit dessin
+     mobile d'origine - une fois ce dessin agrandi (le vrai contenu de la
+     page) pour profiter de cette même place, il n'y a plus de marge où
+     les caser sans chevaucher les titres/flèches. Masqués sur mobile. */
+  .codex-figure, .codex-niu { display: none; }
 }
 .frame-content-top { justify-content: flex-start; padding-top: 2rem; }
 .frame-content p { color: #333; font-size: 1.05rem; margin: 0; }
@@ -178,16 +183,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .codex-figure { position: absolute; left: 15%; bottom: 11%; width: 23%; height: auto; z-index: 1; mix-blend-mode: multiply; }
 @media (max-width: 640px) {
   .codex-figure { width: 28%; left: 15%; bottom: 10%; }
-}
-/* sous ~360px (vieux iPhone SE...), le 2e titre + sa flèche de
-   téléchargement n'ont plus assez de place en dessous pour une figure
-   agrandie, quelle que soit sa position verticale - on la garde plus
-   proche de sa taille d'origine ici plutôt que de chevaucher le texte.
-   16% chevauchait déjà réellement le 2e titre à 320px (iPhone SE, le cas
-   le plus étroit de cette tranche) - vérifié par détection de collision
-   avec tous les éléments de contenu, pas seulement par inspection visuelle. */
-@media (max-width: 360px) {
-  .codex-figure { width: 14%; bottom: 9%; }
 }
 /* entre 641px et ~1200px, la fiche PDF (hauteur plafonnée à 420px, en px
    fixes) grandit moins vite que le cadre (en %) : à largeur égale ils se
@@ -615,7 +610,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      seulement par la largeur — un % du cadre suit les deux cas, un vw
      (lié au viewport) ne suivrait que le premier. */
   .comodoro-art { width: auto; height: auto; max-width: 56%; max-height: 34%; }
-  .codex-art-mobile { display: block; width: auto; height: auto; max-width: 74vw; max-height: 28vw; }
+  .codex-art-mobile { display: block; width: auto; height: auto; max-width: 74vw; max-height: 45vw; }
   /* cqw (largeur réelle de .frame-content), pas vw : sur un écran très
      étroit le texte/la flèche à plancher fixe (1rem/28px) ne rétrécissaient
      plus assez vite, et le contenu dépassait la zone noire du cadre -
@@ -645,6 +640,15 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    fichier pour le primer (même spécificité, l'ordre de source décide). */
 @media (max-width: 360px) {
   .comodoro-art { max-height: 25%; }
+}
+/* sous ~360px (vieux iPhone SE...), .frame-content elle-même est plus
+   courte (les paddings/gap en rem fixe pèsent proportionnellement plus
+   lourd) - le dessin doit rétrécir un peu plus pour que titres + flèches
+   des 2 partitions tiennent sans scroll interne. codex-figure/niu sont
+   déjà masqués dès 640px (plus de collision à gérer ici). Doit suivre
+   le bloc ≤640px (même règle de cascade que .comodoro-art ci-dessus). */
+@media (max-width: 360px) {
+  .codex-art-mobile { max-height: 27vw; }
 }
 
 /* entre 641px et ~1000px, le cadre est encore loin de son plafond de 1100px :
