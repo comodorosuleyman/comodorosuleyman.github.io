@@ -177,11 +177,10 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    que le trait noir reste noir. */
 .codex-figure { position: absolute; left: 15%; bottom: 11%; width: 23%; height: auto; z-index: 1; mix-blend-mode: multiply; }
 @media (max-width: 640px) {
-  /* le dessin mobile agrandi occupe maintenant la place que la figure
-     décorait en bas (ancrage bottom:10% d'origine) - rabattue à côté du
-     dessin, comme niu de l'autre côté, en plus petit pour tenir dans la
-     marge latérale restante sans chevaucher le dessin ni le filet d'encre. */
-  .codex-figure { left: 14%; top: 30.8%; bottom: auto; transform: translateY(-50%); width: 16%; }
+  /* coin bas-gauche, comme sur ordinateur - taille réduite (16%, au lieu
+     de 23%/28%) pour tenir sous le 2e titre sans le chevaucher, le
+     contenu remplissant maintenant .frame-content sans marge basse. */
+  .codex-figure { width: 16%; bottom: 10%; }
 }
 /* entre 641px et ~1200px, la fiche PDF (hauteur plafonnée à 420px, en px
    fixes) grandit moins vite que le cadre (en %) : à largeur égale ils se
@@ -205,6 +204,12 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .codex-niu { position: absolute; right: 15%; top: 30.5%; transform: translateY(-50%); width: 16%; height: auto; z-index: 1; mix-blend-mode: multiply; }
 @media (min-width: 641px) and (max-width: 1500px) {
   .codex-niu { display: none; }
+}
+@media (max-width: 640px) {
+  /* descendu à côté de la 1re flèche de téléchargement, plutôt qu'au
+     niveau du dessin agrandi - right devient left (calé sur la position
+     réelle de cette flèche, pas sur la marge droite du cadre). */
+  .codex-niu { left: 57%; right: auto; top: 61%; }
 }
 
 /* les liens de contact doivent toujours tenir sur une seule ligne : une
