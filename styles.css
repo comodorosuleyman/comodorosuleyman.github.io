@@ -576,7 +576,15 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    cadre, exactement comme .bandcamp-link-below sur la page audio - même
    classe de base .social-link, même taille, aucune règle dédiée ici. */
 .youtube-link-below { margin: 0; }
-.video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+/* les 2 vidéos intégrées individuellement (avant : un seul lien générique
+   vers la chaîne) - côte à côte (pas empilées) pour que la paire ne
+   prenne qu'une hauteur de rangée dans un cadre déjà chargé. */
+.video-embeds { width: 100%; max-width: min(90%, 580px); margin: 0 auto; display: flex; flex-direction: row; gap: .9rem; }
+.video-embed { flex: 1 1 0; min-width: 0; }
+.video-embed-title { margin: 0 0 .3rem; font-family: Georgia, serif; color: var(--rouge); font-weight: 700; text-align: center; font-size: clamp(.6rem, 2.6vw, 1.1rem); }
+.video-embed-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; box-sizing: border-box; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); overflow: hidden; }
+.video-embed-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); max-height: 660px; height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .comodoro-art { box-sizing: border-box; display: block; width: min(58%, 340px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 /* "il y en a plus" sous le 2e dessin : pointe vers la bande de miniatures
    juste en dessous du cadre - dessin vectoriel original de la souris (fourni
@@ -628,8 +636,12 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* même principe que codex : la rangée figures+télé et le dessin des
      oiseaux dépassaient légèrement la zone noire, forçant un petit scroll
      interne inutile - on resserre et on plafonne un peu plus bas. */
-  body.video-page .frame-content { gap: .8rem; padding-top: .5rem; padding-bottom: .5rem; }
+  body.video-page .frame-content { gap: .6rem; padding-top: .5rem; padding-bottom: .5rem; }
   body.video-page .video-art { max-height: 50vw; }
+  /* la rangée figures+télé décorative (lien générique vers la chaîne)
+     fait double emploi avec les 2 vraies vidéos juste en dessous, et il
+     n'y a plus la place pour les deux sur petit écran - masquée ici. */
+  .video-top-row { display: none; }
   /* les 3 liens sociaux + le corbac dépassaient légèrement la zone noire
      du cadre, forçant un petit scroll interne inutile. Resserré encore
      (gap .5rem) depuis l'ajout du lien mentions légales, un 5e élément. */
@@ -654,6 +666,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 @media (max-width: 360px) {
   .codex-art-mobile { max-height: 27vw; }
 }
+/* même raison qu'au-dessus : sous ~360px, la paire de vidéos + le dessin
+   des oiseaux ne tiennent plus avec la marge habituelle - léger rabais. */
+@media (max-width: 360px) {
+  body.video-page .video-art { max-height: 44vw; }
+}
 
 /* entre 641px et ~1000px, le cadre est encore loin de son plafond de 1100px :
    la télé + les oiseaux empilés (dimensionnés en % du cadre) dépassent alors
@@ -666,7 +683,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      hauteur (height:auto sur l'image à l'intérieur) simple et fiable. */
   .tv-wrap { width: 15vw; }
   .video-figures { width: auto; max-width: 18.5vw; max-height: 22vw; }
-  .video-art { max-height: 50vw; }
+  .video-art { max-height: 47vw; }
   .comodoro-art { max-height: 20vw; }
   .contact-art { max-height: 44vw; }
 }
