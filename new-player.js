@@ -8,6 +8,7 @@
   }
 
   document.querySelectorAll('.new-player').forEach(function (player) {
+    var bgImg = player.querySelector('.new-player-bg');
     var playBtns = [
       player.querySelector('.new-player-playhit1'),
       player.querySelector('.new-player-playhit2')
@@ -93,7 +94,6 @@
       });
       a.addEventListener('loadedmetadata', updateCounter.bind(null, i));
       updateCounter(i);
-      setKnobX(knobs[i], seeks[i], 0);
 
       function seekTo(e) {
         if (!a.duration) { a.load(); return; }
@@ -128,7 +128,17 @@
       audios.forEach(function (a) { if (a) a.volume = ratio; });
       setKnobY(volKnob, volTrack, ratio);
     }
-    setVolume(1);
+    // np-panel.png (the sole normal-flow child) is what gives .new-player
+    // its height - positioning the knobs off its getBoundingClientRect()
+    // before it has loaded divides by a near-zero height, sending them
+    // miles off (reported: volume knob landing near the bottom of the
+    // page). Run the initial layout only once it's actually sized.
+    function layoutInit() {
+      knobs.forEach(function (knob, i) { setKnobX(knob, seeks[i], 0); });
+      setVolume(1);
+    }
+    if (bgImg.complete && bgImg.naturalWidth) layoutInit();
+    else bgImg.addEventListener('load', layoutInit);
     function volFromEvent(e) {
       var rect = volTrack.getBoundingClientRect();
       var y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
