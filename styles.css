@@ -648,12 +648,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* même principe que codex : la rangée figures+télé et le dessin des
      oiseaux dépassaient légèrement la zone noire, forçant un petit scroll
      interne inutile - on resserre et on plafonne un peu plus bas. */
-  body.video-page .frame-content { gap: .6rem; padding-top: .5rem; padding-bottom: .5rem; }
-  body.video-page .video-art { max-height: 50vw; }
-  /* la rangée figures+télé décorative (lien générique vers la chaîne)
-     fait double emploi avec les 2 vraies vidéos juste en dessous, et il
-     n'y a plus la place pour les deux sur petit écran - masquée ici. */
-  .video-top-row { display: none; }
+  body.video-page .frame-content { gap: .4rem; padding-top: .5rem; padding-bottom: .5rem; }
+  body.video-page .video-art { max-height: 46vw; }
+  .video-top-row { max-width: 46vw; gap: .5rem; }
+  .video-figures { width: min(46%, 112px); }
+  .tv-wrap { width: min(36%, 88px); }
   /* les 3 liens sociaux + le corbac dépassaient légèrement la zone noire
      du cadre, forçant un petit scroll interne inutile. Resserré encore
      (gap .5rem) depuis l'ajout du lien mentions légales, un 5e élément. */
