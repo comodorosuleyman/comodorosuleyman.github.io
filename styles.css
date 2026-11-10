@@ -144,11 +144,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* les navigateurs mobiles n'ont pas de lecteur PDF pour <embed> : la zone
      reste vide/noire. On la masque et on mise sur le lien d'ouverture. */
   .frame-content embed { display: none; }
-  /* codex-figure/niu décoraient la marge vide laissée par le petit dessin
-     mobile d'origine - une fois ce dessin agrandi (le vrai contenu de la
-     page) pour profiter de cette même place, il n'y a plus de marge où
-     les caser sans chevaucher les titres/flèches. Masqués sur mobile. */
-  .codex-figure, .codex-niu { display: none; }
 }
 .frame-content-top { justify-content: flex-start; padding-top: 2rem; }
 .frame-content p { color: #333; font-size: 1.05rem; margin: 0; }
@@ -182,7 +177,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    que le trait noir reste noir. */
 .codex-figure { position: absolute; left: 15%; bottom: 11%; width: 23%; height: auto; z-index: 1; mix-blend-mode: multiply; }
 @media (max-width: 640px) {
-  .codex-figure { width: 28%; left: 15%; bottom: 10%; }
+  /* le dessin mobile agrandi occupe maintenant la place que la figure
+     décorait en bas (ancrage bottom:10% d'origine) - rabattue à côté du
+     dessin, comme niu de l'autre côté, en plus petit pour tenir dans la
+     marge latérale restante sans chevaucher le dessin ni le filet d'encre. */
+  .codex-figure { left: 14%; top: 30.8%; bottom: auto; transform: translateY(-50%); width: 16%; }
 }
 /* entre 641px et ~1200px, la fiche PDF (hauteur plafonnée à 420px, en px
    fixes) grandit moins vite que le cadre (en %) : à largeur égale ils se
