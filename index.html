@@ -21,16 +21,31 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Comodoro Süleyman",
-  "url": "https://comodorosuleyman.com/",
-  "image": "https://comodorosuleyman.com/accueil.jpg",
-  "sameAs": [
-    "https://www.instagram.com/comodoro_suleyman/",
-    "https://www.facebook.com/profile.php?id=61589648332289"
-  ],
-  "jobTitle": "Bassist, composer and draughtsman",
-  "description": "Comodoro Süleyman — bassist, composer and draughtsman. Burnin' Chamber Music (!), his first project as a composer."
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "Comodoro Süleyman",
+      "url": "https://comodorosuleyman.com/",
+      "image": "https://comodorosuleyman.com/accueil.jpg",
+      "sameAs": [
+        "https://www.instagram.com/comodoro_suleyman/",
+        "https://www.facebook.com/profile.php?id=61589648332289"
+      ],
+      "jobTitle": "Bassist, composer and draughtsman",
+      "description": "Comodoro Süleyman — bassist, composer and draughtsman. Burnin' Chamber Music (!), his first project as a composer."
+    },
+    {
+      "@type": "MusicAlbum",
+      "name": "Burnin' Chamber Music (!)",
+      "url": "https://comodorosuleyman.com/",
+      "image": "https://comodorosuleyman.com/burnin-chamber-music-cover.jpg",
+      "byArtist": { "@type": "Person", "name": "Comodoro Süleyman", "url": "https://comodorosuleyman.com/" },
+      "track": [
+        { "@type": "MusicRecording", "name": "Burnin' Chamber Music (!) I", "byArtist": { "@type": "Person", "name": "Comodoro Süleyman" } },
+        { "@type": "MusicRecording", "name": "Burnin' Chamber Music (!) II", "byArtist": { "@type": "Person", "name": "Comodoro Süleyman" } }
+      ]
+    }
+  ]
 }
 </script>
 </head>

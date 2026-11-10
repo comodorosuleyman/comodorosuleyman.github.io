@@ -21,16 +21,50 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Comodoro Süleyman",
-  "url": "https://comodorosuleyman.com/index-es.html",
-  "image": "https://comodorosuleyman.com/accueil.jpg",
-  "sameAs": [
-    "https://www.instagram.com/comodoro_suleyman/",
-    "https://www.facebook.com/profile.php?id=61589648332289"
-  ],
-  "jobTitle": "Bajista, compositor y dibujante",
-  "description": "Comodoro Süleyman — bajista, compositor y dibujante. Burnin' Chamber Music (!), su primer proyecto como compositor."
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Comodoro Süleyman",
+      "url": "https://comodorosuleyman.com/index-es.html",
+      "image": "https://comodorosuleyman.com/accueil.jpg",
+      "sameAs": [
+        "https://www.instagram.com/comodoro_suleyman/",
+        "https://www.facebook.com/profile.php?id=61589648332289"
+      ],
+      "jobTitle": "Bajista, compositor y dibujante",
+      "description": "Comodoro Süleyman — bajista, compositor y dibujante. Burnin' Chamber Music (!), su primer proyecto como compositor."
+    },
+    {
+      "@type": "MusicAlbum",
+      "name": "Burnin' Chamber Music (!)",
+      "url": "https://comodorosuleyman.com/index-es.html",
+      "image": "https://comodorosuleyman.com/burnin-chamber-music-cover.jpg",
+      "byArtist": {
+        "@type": "Person",
+        "name": "Comodoro Süleyman",
+        "url": "https://comodorosuleyman.com/"
+      },
+      "track": [
+        {
+          "@type": "MusicRecording",
+          "name": "Burnin' Chamber Music (!) I",
+          "byArtist": {
+            "@type": "Person",
+            "name": "Comodoro Süleyman"
+          }
+        },
+        {
+          "@type": "MusicRecording",
+          "name": "Burnin' Chamber Music (!) II",
+          "byArtist": {
+            "@type": "Person",
+            "name": "Comodoro Süleyman"
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
