@@ -667,6 +667,10 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    fichier pour le primer (même spécificité, l'ordre de source décide). */
 @media (max-width: 360px) {
   .comodoro-art { max-height: 25%; }
+  /* body.comodoro-page ajouté pour grimper au-dessus de la spécificité de
+     .comodoro-art:first-of-type (bloc ≤640px, plus bas dans le fichier
+     donc gagnant à spécificité égale) et rester sous ce plafond réduit. */
+  body.comodoro-page .comodoro-art:first-of-type { max-height: 32%; }
 }
 /* sous ~360px (vieux iPhone SE...), .frame-content elle-même est plus
    courte (les paddings/gap en rem fixe pèsent proportionnellement plus
@@ -725,7 +729,14 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      pas au viewport) : sur un écran très court, le cadre devient petit et
      le texte à taille fixe ne tiendrait plus. */
   body.comodoro-page .frame-content p { font-size: max(.58rem, 4.3cqw); }
-  body.comodoro-page .frame-content { gap: 1.6cqw; padding-top: .2rem; padding-bottom: .2rem; }
+  /* space-between (pas flex-start, la valeur générique ≤640px) : étale les
+     4 blocs sur toute la hauteur du cadre au lieu de les tasser en haut en
+     laissant un vide sous "Gallery" - le 1er dessin reste collé en haut,
+     le texte/2e dessin/"Gallery" glissent vers le bas pour combler. */
+  body.comodoro-page .frame-content { gap: 1.2cqw; padding-top: .1rem; padding-bottom: .1rem; justify-content: space-between; }
+  /* le 1er dessin (portrait "soleil") agrandi par rapport au 2nd - :first-of-type
+     cible le premier <img> enfant sans toucher au balisage. */
+  .comodoro-art:first-of-type { max-width: 64%; max-height: 37%; }
 }
 /* même logique de paliers que la nav générale : la nav à 7 liens de
    comodoro se replie sur moins de lignes à mesure que l'écran s'élargit
