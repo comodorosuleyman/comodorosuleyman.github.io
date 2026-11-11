@@ -617,7 +617,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .video-embed { flex: 0 0 auto; height: 100%; }
 .video-embed-frame { position: relative; height: 100%; width: auto; aspect-ratio: 16 / 9; box-sizing: border-box; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); overflow: hidden; }
 .video-embed-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); max-height: 650px; height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); max-height: 950px; height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 /* marge resserrée sur la page vidéo (desktop compris, pas que mobile) :
    regagner de la hauteur pour que le cadre à l'encre des vidéos puisse
    avoir une vraie marge de noir sans provoquer de scroll interne. */
@@ -674,7 +674,7 @@ body.video-page .frame-content { gap: .75rem; }
      oiseaux dépassaient légèrement la zone noire, forçant un petit scroll
      interne inutile - on resserre et on plafonne un peu plus bas. */
   body.video-page .frame-content { gap: .4rem; padding-top: .5rem; padding-bottom: .5rem; }
-  body.video-page .video-art { max-height: 34vw; }
+  body.video-page .video-art { max-height: 44vw; }
   .video-top-row { max-width: 46vw; gap: .5rem; }
   .video-figures { width: min(46%, 112px); }
   .tv-wrap { width: min(36%, 88px); }
@@ -709,7 +709,7 @@ body.video-page .frame-content { gap: .75rem; }
 /* même raison qu'au-dessus : sous ~360px, la paire de vidéos + le dessin
    des oiseaux ne tiennent plus avec la marge habituelle - léger rabais. */
 @media (max-width: 360px) {
-  body.video-page .video-art { max-height: 30vw; }
+  body.video-page .video-art { max-height: 39vw; }
 }
 @media (max-width: 360px) {
   .bcm-cover { width: min(24%, 120px); }
@@ -743,7 +743,7 @@ body.video-page .frame-content { gap: .75rem; }
      débordement sur leurs pages, pas besoin du même plafond ici. */
   .tv-wrap { width: min(12.5vw, 176px); }
   .video-figures { width: auto; max-width: min(15.5vw, 219px); max-height: min(18.5vw, 261px); }
-  .video-art { max-height: min(37vw, 522px); }
+  .video-art { max-height: min(52vw, 733px); }
   .comodoro-art { max-height: 20vw; }
   .contact-art { max-height: 44vw; }
 }
@@ -753,7 +753,7 @@ body.video-page .frame-content { gap: .75rem; }
    jusqu'à la frise du bas, sans toucher la zone 641-900px plus à l'étroit.
    Même plafond px que ci-dessus au-delà de ~1410px de viewport. */
 @media (min-width: 900px) {
-  .video-art { max-height: min(44vw, 620px); }
+  .video-art { max-height: min(51.5vw, 726px); }
 }
 
 /* page comodoro (mobile) : doit tenir sur un seul écran, sans aucun scroll.
