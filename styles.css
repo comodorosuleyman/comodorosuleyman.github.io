@@ -615,7 +615,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    ne sort de la zone noire, à plusieurs largeurs. */
 .video-embed { position: absolute; width: 19%; top: 43%; }
 .video-embed:nth-child(1) { left: 32%; }
-.video-embed:nth-child(2) { left: 54%; }
+.video-embed:nth-child(2) { left: 54%; top: 47%; }
 .video-embed-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; box-sizing: border-box; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); overflow: hidden; }
 .video-embed-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); max-height: 1100px; height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
@@ -744,7 +744,7 @@ body.video-page .frame-content { gap: .75rem; }
      débordement sur leurs pages, pas besoin du même plafond ici. */
   .tv-wrap { width: min(16vw, 226px); }
   .video-figures { width: auto; max-width: min(24vw, 338px); max-height: min(29vw, 409px); }
-  .video-art { max-height: min(31vw, 437px); }
+  .video-art { max-height: min(31.5vw, 426px); }
   .comodoro-art { max-height: 20vw; }
   .contact-art { max-height: 44vw; }
 }
@@ -754,7 +754,7 @@ body.video-page .frame-content { gap: .75rem; }
    jusqu'à la frise du bas, sans toucher la zone 641-900px plus à l'étroit.
    Même plafond px que ci-dessus au-delà de ~1410px de viewport. */
 @media (min-width: 900px) {
-  .video-art { max-height: min(33.5vw, 471px); }
+  .video-art { max-height: min(32vw, 432px); }
 }
 
 /* page comodoro (mobile) : doit tenir sur un seul écran, sans aucun scroll.
