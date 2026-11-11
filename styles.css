@@ -741,9 +741,9 @@ body.video-page .frame-content { gap: .75rem; }
      cadre vidéo sur très grand écran. Ypx = valeur vw figée à ce plafond
      (1410×X%). .comodoro-art/.contact-art gardent du vw pur : testé sans
      débordement sur leurs pages, pas besoin du même plafond ici. */
-  .tv-wrap { width: min(12.5vw, 176px); }
-  .video-figures { width: auto; max-width: min(15.5vw, 219px); max-height: min(18.5vw, 261px); }
-  .video-art { max-height: min(52vw, 733px); }
+  .tv-wrap { width: min(15vw, 212px); }
+  .video-figures { width: auto; max-width: min(18.5vw, 261px); max-height: min(22vw, 310px); }
+  .video-art { max-height: min(49.5vw, 698px); }
   .comodoro-art { max-height: 20vw; }
   .contact-art { max-height: 44vw; }
 }
@@ -753,7 +753,7 @@ body.video-page .frame-content { gap: .75rem; }
    jusqu'à la frise du bas, sans toucher la zone 641-900px plus à l'étroit.
    Même plafond px que ci-dessus au-delà de ~1410px de viewport. */
 @media (min-width: 900px) {
-  .video-art { max-height: min(51.5vw, 726px); }
+  .video-art { max-height: min(49vw, 691px); }
 }
 
 /* page comodoro (mobile) : doit tenir sur un seul écran, sans aucun scroll.
