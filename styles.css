@@ -613,11 +613,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    top/bottom % se calculent contre la HAUTEUR du conteneur, left/right %
    contre sa LARGEUR, ce qui donne enfin un calcul fiable et correct. */
 .video-embeds { position: relative; width: 100%; max-width: min(90%, 580px); margin: 0 auto; aspect-ratio: 1.96; }
-/* fondu : le fond passe sur un ::before séparé (pas sur .video-embeds
-   lui-même) pour que le masque ne s'applique qu'à l'image du cadre, pas
-   aux vidéos par-dessus - plein noir contre les vidéos, qui s'estompe
-   vers transparent en allant vers les bords extérieurs du cadre. */
-.video-embeds::before { content: ""; position: absolute; inset: 0; background: url(video-frame.png) center / 100% 100% no-repeat; -webkit-mask-image: url(video-frame-mask.png); mask-image: url(video-frame-mask.png); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+/* le fondu (plein noir contre les vidéos, s'estompant vers l'extérieur)
+   est maintenant cuit directement dans le canal alpha de video-frame.png
+   (plus de mask-image CSS, au support inégal selon les navigateurs -
+   ça marche partout, sans exception). */
+.video-embeds::before { content: ""; position: absolute; inset: 0; background: url(video-frame.png) center / 100% 100% no-repeat; }
 .video-embed-row { position: absolute; top: 25%; bottom: 30%; left: 8%; right: 8%; display: flex; flex-direction: row; justify-content: center; gap: .9rem; }
 .video-embed { flex: 0 0 auto; height: 100%; }
 .video-embed-frame { position: relative; height: 100%; width: auto; aspect-ratio: 16 / 9; box-sizing: border-box; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); overflow: hidden; }
