@@ -552,6 +552,14 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .presskit p { margin: 0 0 .7rem; line-height: 1.55; color: #222; }
 .presskit p.press-lede { font-size: 1.3rem; color: var(--rouge); }
 .presskit em { font-style: italic; }
+/* dessin du fantôme à crâne, posé à gauche du paragraphe "About" : flottant
+   classique (float), pas une colonne flex - le paragraphe garde exactement
+   sa largeur/son alignement habituels (comme Biography juste en dessous),
+   seul son texte s'enroule autour de l'image sur les 2-3 premières lignes. */
+.argumentum-ghost { float: left; width: clamp(56px, 14vw, 100px); height: auto; margin: .2rem 1rem .5rem 0; }
+@media (max-width: 480px) {
+  .argumentum-ghost { width: clamp(44px, 20vw, 70px); margin: .1rem .7rem .4rem 0; }
+}
 .rider-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
 .rider dt { font-weight: 700; font-size: .82rem; letter-spacing: .05em; text-transform: uppercase; color: #777; margin-top: 1rem; }
 .rider dt:first-child { margin-top: 0; }
@@ -583,20 +591,24 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .tv-link { display: block; width: 100%; }
 .tv-drawing { display: block; width: 100%; height: auto; transform: scaleX(-1); }
 .tv-caption { font-size: clamp(.55rem, 2.2vw, .85rem); text-align: center; line-height: 1.25; }
-/* le lien YouTube est sorti de .tv-wrap (trop étroit pour accueillir le
-   texte "Watch on YouTube" à la taille normale de .social-link sans
-   déborder) : il vit maintenant sous .video-top-row, pleine largeur du
-   cadre, exactement comme .bandcamp-link-below sur la page audio - même
-   classe de base .social-link, même taille, aucune règle dédiée ici. */
-.youtube-link-below { margin: 0; }
 /* les 2 vidéos intégrées individuellement (avant : un seul lien générique
    vers la chaîne) - côte à côte (pas empilées) pour que la paire ne
    prenne qu'une hauteur de rangée dans un cadre déjà chargé. */
-.video-embeds { width: 100%; max-width: min(90%, 580px); margin: 0 auto; display: flex; flex-direction: row; gap: .9rem; }
+/* le cadre à l'encre (video-frame.png, déchiré en haut/bas) habille la paire
+   de fenêtres : étiré en background sur .video-embeds, avec assez de padding
+   pour que les 2 vidéos tiennent réellement À L'INTÉRIEUR du cadre (pas de
+   débordement), sans provoquer de scroll interne. La place est trouvée en
+   rétrécissant un peu video-top-row/video-art (voir plus bas), pas en
+   réduisant les vidéos elles-mêmes qui restent le contenu principal. */
+.video-embeds { position: relative; width: 100%; max-width: min(84%, 500px); margin: 0 auto; display: flex; flex-direction: row; gap: .9rem; padding: 3.6rem 1.8rem 4.2rem; box-sizing: border-box; background: url(video-frame.png) center / 100% 100% no-repeat; }
 .video-embed { flex: 1 1 0; min-width: 0; }
 .video-embed-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; box-sizing: border-box; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); overflow: hidden; }
 .video-embed-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); max-height: 660px; height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); max-height: 650px; height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+/* marge resserrée sur la page vidéo (desktop compris, pas que mobile) :
+   regagner de la hauteur pour que le cadre à l'encre des vidéos puisse
+   avoir une vraie marge de noir sans provoquer de scroll interne. */
+body.video-page .frame-content { gap: 1rem; }
 .comodoro-art { box-sizing: border-box; display: block; width: min(58%, 340px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 /* "il y en a plus" sous le 2e dessin : pointe vers la bande de miniatures
    juste en dessous du cadre - dessin vectoriel original de la souris (fourni
@@ -649,10 +661,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      oiseaux dépassaient légèrement la zone noire, forçant un petit scroll
      interne inutile - on resserre et on plafonne un peu plus bas. */
   body.video-page .frame-content { gap: .4rem; padding-top: .5rem; padding-bottom: .5rem; }
-  body.video-page .video-art { max-height: 46vw; }
+  body.video-page .video-art { max-height: 34vw; }
   .video-top-row { max-width: 46vw; gap: .5rem; }
   .video-figures { width: min(46%, 112px); }
   .tv-wrap { width: min(36%, 88px); }
+  .video-embeds { max-width: 46vw; padding: 1.4rem .9rem 1.7rem; }
   /* les 3 liens sociaux + le corbac dépassaient légèrement la zone noire
      du cadre, forçant un petit scroll interne inutile. Resserré encore
      (gap .5rem) depuis l'ajout du lien mentions légales, un 5e élément. */
@@ -684,7 +697,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* même raison qu'au-dessus : sous ~360px, la paire de vidéos + le dessin
    des oiseaux ne tiennent plus avec la marge habituelle - léger rabais. */
 @media (max-width: 360px) {
-  body.video-page .video-art { max-height: 44vw; }
+  body.video-page .video-art { max-height: 30vw; }
 }
 @media (max-width: 360px) {
   .bcm-cover { width: min(24%, 120px); }
@@ -693,20 +706,34 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   body.bcm-page .content-link { font-size: .68rem; }
 }
 
-/* entre 641px et ~1000px, le cadre est encore loin de son plafond de 1100px :
-   la télé + les oiseaux empilés (dimensionnés en % du cadre) dépassent alors
-   la hauteur du cadre. On y plafonne leur hauteur (vw, pas % : indépendant
-   de la largeur du cadre lui-même). */
-@media (min-width: 641px) and (max-width: 1100px) {
+/* entre 641px et ~1250px (borne relevée de 1100 à 1250 au fil des ajouts :
+   au-delà de 1100px le cadre continue de grandir en 96vw jusqu'à ~1250px
+   avant de rattraper son retard de hauteur - un petit scroll interne
+   apparaissait dans cette zone, y compris avant l'ajout du cadre à l'encre
+   ci-dessus), le cadre est encore loin de son plafond de 1350px : la télé +
+   les oiseaux empilés (dimensionnés en % du cadre) dépassent alors la
+   hauteur du cadre. On y plafonne leur hauteur (vw, pas % : indépendant de
+   la largeur du cadre lui-même). .video-art un peu plus bas que les autres
+   (40vw au lieu de 47vw) : la paire de vidéos a gagné un vrai cadre à
+   l'encre (padding) qui prend de la place, il faut regagner cette hauteur
+   ailleurs pour rester sans scroll interne. */
+@media (min-width: 641px) and (max-width: 1250px) {
   /* width (pas max-height) : .tv-wrap est un <div>, pas une image — lui
      imposer une max-height sans largeur définie fait s'effondrer sa taille
      (bug constaté : 0x0). Une largeur directe en vw garde le calcul de la
      hauteur (height:auto sur l'image à l'intérieur) simple et fiable. */
   .tv-wrap { width: 15vw; }
   .video-figures { width: auto; max-width: 18.5vw; max-height: 22vw; }
-  .video-art { max-height: 47vw; }
+  .video-art { max-height: 37vw; }
   .comodoro-art { max-height: 20vw; }
   .contact-art { max-height: 44vw; }
+}
+/* au-delà de ~900px, la marge dispo sous le cadre vidéo est large (le cadre
+   à l'encre des vidéos a pris de la place, mais le dessin des oiseaux était
+   resté petit) : on l'agrandit nettement pour qu'il descende presque
+   jusqu'à la frise du bas, sans toucher la zone 641-900px plus à l'étroit. */
+@media (min-width: 900px) and (max-width: 1250px) {
+  .video-art { max-height: 44vw; }
 }
 
 /* page comodoro (mobile) : doit tenir sur un seul écran, sans aucun scroll.
