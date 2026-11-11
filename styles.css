@@ -608,10 +608,10 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    donc toujours ancrée au même endroit de l'image quelle que soit la
    taille), à l'intérieur de la zone pleine de l'éclaboussure, en tout
    petit format. */
-.video-embeds { position: relative; width: 100%; max-width: min(55%, 330px); margin: 0 auto; aspect-ratio: 1.796; background: url(video-frame.png) center / 100% 100% no-repeat; }
-.video-embed { position: absolute; width: 17%; }
-.video-embed:nth-child(1) { left: 28%; top: 30%; }
-.video-embed:nth-child(2) { left: 56%; top: 52%; }
+.video-embeds { position: relative; width: 100%; max-width: min(65%, 390px); margin: 0 auto; aspect-ratio: 1.5; background: url(video-frame.png) center / 100% 100% no-repeat; }
+.video-embed { position: absolute; width: 16%; }
+.video-embed:nth-child(1) { left: 30%; top: 36%; }
+.video-embed:nth-child(2) { left: 58%; top: 54%; }
 .video-embed-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; box-sizing: border-box; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); overflow: hidden; }
 .video-embed-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); max-height: 1400px; height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
@@ -671,7 +671,7 @@ body.video-page .frame-content { gap: .75rem; }
      oiseaux dépassaient légèrement la zone noire, forçant un petit scroll
      interne inutile - on resserre et on plafonne un peu plus bas. */
   body.video-page .frame-content { gap: .4rem; padding-top: .5rem; padding-bottom: .5rem; }
-  body.video-page .video-art { max-height: 50vw; }
+  body.video-page .video-art { max-height: 43vw; }
   .video-top-row { max-width: 46vw; gap: .5rem; }
   .video-figures { width: min(46%, 112px); }
   .tv-wrap { width: min(36%, 88px); }
@@ -706,7 +706,7 @@ body.video-page .frame-content { gap: .75rem; }
 /* même raison qu'au-dessus : sous ~360px, la paire de vidéos + le dessin
    des oiseaux ne tiennent plus avec la marge habituelle - léger rabais. */
 @media (max-width: 360px) {
-  body.video-page .video-art { max-height: 46vw; }
+  body.video-page .video-art { max-height: 39vw; }
 }
 @media (max-width: 360px) {
   .bcm-cover { width: min(24%, 120px); }
@@ -740,7 +740,7 @@ body.video-page .frame-content { gap: .75rem; }
      débordement sur leurs pages, pas besoin du même plafond ici. */
   .tv-wrap { width: min(20vw, 282px); }
   .video-figures { width: auto; max-width: min(24vw, 338px); max-height: min(28vw, 395px); }
-  .video-art { max-height: min(54.5vw, 768px); }
+  .video-art { max-height: min(47vw, 662px); }
   .comodoro-art { max-height: 20vw; }
   .contact-art { max-height: 44vw; }
 }
@@ -750,7 +750,7 @@ body.video-page .frame-content { gap: .75rem; }
    jusqu'à la frise du bas, sans toucher la zone 641-900px plus à l'étroit.
    Même plafond px que ci-dessus au-delà de ~1410px de viewport. */
 @media (min-width: 900px) {
-  .video-art { max-height: min(53.5vw, 754px); }
+  .video-art { max-height: min(46vw, 648px); }
 }
 
 /* page comodoro (mobile) : doit tenir sur un seul écran, sans aucun scroll.
