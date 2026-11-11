@@ -582,16 +582,16 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .flyingx { display: block; width: clamp(92px, 16vw, 184px); height: auto; margin: 2rem auto 0; }
 
 /* page video : silhouettes qui tombent (reprises du dessin de la page
-   audio) à gauche, télé (cassée, écran-crâne) serrée à droite avec le lien
-   youtube en légende dessous, puis le dessin des trois oiseaux en dessous. */
-/* même largeur/centrage que .video-art juste en dessous (min(85%,540px),
-   margin:0 auto) pour que la télé, alignée à droite dans cette rangée,
-   tombe exactement sur le bord droit du cadre des oiseaux. */
-.video-top-row { width: 100%; max-width: min(95%, 640px); margin: 0 auto; display: flex; align-items: flex-end; justify-content: flex-end; gap: 1.2rem; }
-.video-figures { display: block; width: min(55%, 380px); height: auto; flex-shrink: 0; transform: scaleX(-1); }
-.tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(36%, 236px); margin: 0; flex-shrink: 0; }
-/* miroir, mais la boîte .tv-wrap garde sa position (bord droit calé sur
-   celui du dessin des oiseaux) : seul le dessin à l'intérieur est inversé. */
+   audio) en haut à gauche, le plus grand possible maintenant que le cadre
+   n'a plus que la paire de vidéos en dessous - télé (cassée, écran-crâne)
+   sortie du flux (position absolue) pour ne plus partager sa largeur avec
+   les personnages, calée en haut à droite du cadre. */
+.video-figures { display: block; align-self: flex-start; width: min(55%, 380px); height: auto; flex-shrink: 0; transform: scaleX(-1); }
+/* position absolue (pas un flex item) : la taille des personnages n'est
+   plus limitée par la place qui reste à côté de la télé dans une rangée. */
+.tv-wrap { position: absolute; top: 1%; right: 2%; display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(36%, 236px); margin: 0; }
+/* miroir : seul le dessin à l'intérieur est inversé, la boîte .tv-wrap
+   garde sa position (calée en haut à droite). */
 .tv-link { display: block; width: 100%; }
 .tv-drawing { display: block; width: 100%; height: auto; transform: scaleX(-1); }
 .tv-caption { font-size: clamp(.55rem, 2.2vw, .85rem); text-align: center; line-height: 1.25; }
@@ -618,11 +618,13 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .video-embed:nth-child(2) { left: 54%; top: 47%; }
 .video-embed-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; box-sizing: border-box; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); overflow: hidden; }
 .video-embed-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.video-art { box-sizing: border-box; display: block; width: auto; max-width: min(90%, 580px); max-height: 1100px; height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 /* marge resserrée sur la page vidéo (desktop compris, pas que mobile) :
    regagner de la hauteur pour que le cadre à l'encre des vidéos puisse
    avoir une vraie marge de noir sans provoquer de scroll interne. */
-body.video-page .frame-content { gap: .75rem; }
+/* justify-content:flex-start (pas le centrage par défaut) : les
+   personnages, maintenant bien plus grands, doivent rester collés en haut
+   du cadre plutôt que de pousser toute la rangée vers le centre. */
+body.video-page .frame-content { gap: .75rem; justify-content: flex-start; padding-top: 2%; }
 .comodoro-art { box-sizing: border-box; display: block; width: min(58%, 340px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 /* "il y en a plus" sous le 2e dessin : pointe vers la bande de miniatures
    juste en dessous du cadre - dessin vectoriel original de la souris (fourni
@@ -653,8 +655,7 @@ body.video-page .frame-content { gap: .75rem; }
    et hauteur étaient alors plafonnées indépendamment l'une de l'autre,
    déformant l'image au lieu de la mettre à l'échelle proportionnellement. */
 @media (max-width: 640px) {
-  .contact-art, .video-art { width: auto; height: auto; max-width: 76vw; max-height: 60vw; }
-  .video-top-row { max-width: 76vw; }
+  .contact-art { width: auto; height: auto; max-width: 76vw; max-height: 60vw; }
   /* en %, pas en vw : .comodoro-art doit aussi rester à l'échelle quand
      .frame-page est plafonné par la hauteur d'écran (page comodoro), pas
      seulement par la largeur — un % du cadre suit les deux cas, un vw
@@ -671,14 +672,14 @@ body.video-page .frame-content { gap: .75rem; }
      zone noire du cadre, forçant un petit scroll interne inutile - on
      resserre l'espacement vertical pour que tout tienne sans scroll. */
   body.codex-page .frame-content { gap: .3rem; padding-top: .3rem; padding-bottom: .3rem; }
-  /* même principe que codex : la rangée figures+télé et le dessin des
-     oiseaux dépassaient légèrement la zone noire, forçant un petit scroll
-     interne inutile - on resserre et on plafonne un peu plus bas. */
-  body.video-page .frame-content { gap: .4rem; padding-top: .5rem; padding-bottom: .5rem; }
-  body.video-page .video-art { max-height: 28vw; }
-  .video-top-row { max-width: 46vw; gap: .5rem; }
-  .video-figures { width: min(50%, 122px); }
-  .tv-wrap { width: min(32%, 78px); }
+  body.video-page .frame-content { gap: .4rem; padding-top: .5rem; padding-bottom: .5rem; justify-content: flex-start; }
+  /* personnages le plus grand possible (demande explicite), en % du cadre
+     plutot qu'en vw : .tv-wrap est maintenant en position absolue (plus
+     dans la meme rangee), les personnages peuvent donc utiliser presque
+     toute la largeur du cadre sans etre limites par la taille de la
+     television. */
+  .video-figures { width: min(65%, 358px); }
+  .tv-wrap { width: min(14.72vw, 78px); }
   /* les 3 liens sociaux + le corbac dépassaient légèrement la zone noire
      du cadre, forçant un petit scroll interne inutile. Resserré encore
      (gap .5rem) depuis l'ajout du lien mentions légales, un 5e élément. */
@@ -707,11 +708,6 @@ body.video-page .frame-content { gap: .75rem; }
 @media (max-width: 360px) {
   .codex-art-mobile { max-height: 27vw; }
 }
-/* même raison qu'au-dessus : sous ~360px, la paire de vidéos + le dessin
-   des oiseaux ne tiennent plus avec la marge habituelle - léger rabais. */
-@media (max-width: 360px) {
-  body.video-page .video-art { max-height: 29vw; }
-}
 @media (max-width: 360px) {
   .bcm-cover { width: min(24%, 120px); }
   .bcm-intro { font-size: .56rem; }
@@ -719,42 +715,26 @@ body.video-page .frame-content { gap: .75rem; }
   body.bcm-page .content-link { font-size: .68rem; }
 }
 
-/* entre 641px et ~1250px (borne relevée de 1100 à 1250 au fil des ajouts :
-   au-delà de 1100px le cadre continue de grandir en 96vw jusqu'à ~1250px
-   avant de rattraper son retard de hauteur - un petit scroll interne
-   apparaissait dans cette zone, y compris avant l'ajout du cadre à l'encre
-   ci-dessus), le cadre est encore loin de son plafond de 1350px : la télé +
-   les oiseaux empilés (dimensionnés en % du cadre) dépassent alors la
-   hauteur du cadre. On y plafonne leur hauteur (vw, pas % : indépendant de
-   la largeur du cadre lui-même). .video-art un peu plus bas que les autres
-   (37vw au lieu de 47vw à l'origine) : la paire de vidéos a gagné un vrai
-   cadre à l'encre (padding généreux) qui prend de la place, il faut
-   regagner cette hauteur ailleurs pour rester sans scroll interne. */
 @media (min-width: 641px) {
   /* width (pas max-height) : .tv-wrap est un <div>, pas une image — lui
      imposer une max-height sans largeur définie fait s'effondrer sa taille
      (bug constaté : 0x0). Une largeur directe en vw garde le calcul de la
      hauteur (height:auto sur l'image à l'intérieur) simple et fiable.
-     min(Xvw, Ypx) plutôt que Xvw seul pour .tv-wrap/.video-figures/.video-art
-     (propres à la page vidéo) : frame-page plafonne à 1350px (~1410px de
-     viewport) et arrête de grandir au-delà, mais un vw pur continue de
-     grandir avec le viewport - ça finissait par déborder la zone noire du
-     cadre vidéo sur très grand écran. Ypx = valeur vw figée à ce plafond
-     (1410×X%). .comodoro-art/.contact-art gardent du vw pur : testé sans
-     débordement sur leurs pages, pas besoin du même plafond ici. */
+     min(Xvw, Ypx) plutôt que Xvw seul : frame-page plafonne à 1350px
+     (~1410px de viewport) et arrête de grandir au-delà, mais un vw pur
+     continue de grandir avec le viewport - ça finissait par déborder la
+     zone noire du cadre vidéo sur très grand écran. Ypx = valeur vw figée
+     à ce plafond (1410×X%). */
   .tv-wrap { width: min(16vw, 226px); }
-  .video-figures { width: auto; max-width: min(24vw, 338px); max-height: min(29vw, 409px); }
-  .video-art { max-height: min(31.5vw, 426px); }
+  /* personnages le plus grand possible (demande explicite) : en % du
+     cadre (.frame-content), pas en vw - .tv-wrap est maintenant en
+     position absolue (plus dans la même rangée), les personnages peuvent
+     donc utiliser presque toute la largeur/hauteur du cadre sans être
+     limités par la télé, et le % suit directement le plafond du cadre
+     lui-même (1350px) sans avoir besoin du même bricolage vw/px. */
+  .video-figures { width: auto; max-width: min(68%, 960px); max-height: min(82%, 1150px); }
   .comodoro-art { max-height: 20vw; }
   .contact-art { max-height: 44vw; }
-}
-/* au-delà de ~900px, la marge dispo sous le cadre vidéo est large (le cadre
-   à l'encre des vidéos a pris de la place, mais le dessin des oiseaux était
-   resté petit) : on l'agrandit nettement pour qu'il descende presque
-   jusqu'à la frise du bas, sans toucher la zone 641-900px plus à l'étroit.
-   Même plafond px que ci-dessus au-delà de ~1410px de viewport. */
-@media (min-width: 900px) {
-  .video-art { max-height: min(32vw, 432px); }
 }
 
 /* page comodoro (mobile) : doit tenir sur un seul écran, sans aucun scroll.
@@ -853,12 +833,12 @@ img.lightbox-trigger, .lightbox-trigger { cursor: url('cursor-zoom-in.png?v=2') 
 }
 body.lightbox-locked { overflow: hidden; }
 
-/* bande de miniatures sous la frise sur la page comodoro : flex:1 1 0 sur
-   chaque item (plutôt qu'une largeur fixe en px/vw) pour que les 5 tiennent
-   toujours sur une seule ligne, quelle que soit la largeur d'écran, sans
-   réglages par palier - même cadre noir que .comodoro-art/.video-art. */
-.comodoro-gallery { display: flex; justify-content: center; gap: 3%; max-width: 1440px; margin: 1.5rem auto 2rem; padding: 0 1rem; }
-.comodoro-gallery-item { flex: 1 1 0; min-width: 0; max-width: 270px; padding: 0; border: none; background: none; }
+/* bande de miniatures sous la frise sur la page comodoro : grille à 3
+   colonnes fixes (les dessins s'organisent 3 par 3, en autant de rangées
+   que nécessaire) plutôt qu'une seule ligne qui rétrécissait tous les
+   items pour tous les faire tenir - même cadre noir que .comodoro-art. */
+.comodoro-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 270px)); justify-content: center; gap: 3%; max-width: 1440px; margin: 1.5rem auto 2rem; padding: 0 1rem; }
+.comodoro-gallery-item { min-width: 0; max-width: 270px; padding: 0; border: none; background: none; }
 .comodoro-gallery-item img { display: block; width: 100%; height: auto; border: 3px solid #000; border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,.25); transition: transform .15s ease; }
 .comodoro-gallery-item:hover img, .comodoro-gallery-item:focus-visible img { transform: translateY(-3px); }
 
