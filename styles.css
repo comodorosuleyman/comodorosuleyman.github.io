@@ -587,8 +587,8 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* même largeur/centrage que .video-art juste en dessous (min(85%,540px),
    margin:0 auto) pour que la télé, alignée à droite dans cette rangée,
    tombe exactement sur le bord droit du cadre des oiseaux. */
-.video-top-row { width: 100%; max-width: min(90%, 540px); margin: 0 auto; display: flex; align-items: flex-end; justify-content: flex-end; gap: 1.2rem; }
-.video-figures { display: block; width: min(46%, 310px); height: auto; flex-shrink: 0; transform: scaleX(-1); }
+.video-top-row { width: 100%; max-width: min(95%, 640px); margin: 0 auto; display: flex; align-items: flex-end; justify-content: flex-end; gap: 1.2rem; }
+.video-figures { display: block; width: min(55%, 380px); height: auto; flex-shrink: 0; transform: scaleX(-1); }
 .tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(36%, 236px); margin: 0; flex-shrink: 0; }
 /* miroir, mais la boîte .tv-wrap garde sa position (bord droit calé sur
    celui du dessin des oiseaux) : seul le dessin à l'intérieur est inversé. */
@@ -608,8 +608,8 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    donc toujours ancrée au même endroit de l'image quelle que soit la
    taille), à l'intérieur de la zone pleine de l'éclaboussure, en tout
    petit format. */
-.video-embeds { position: relative; width: 100%; max-width: min(90%, 540px); margin: 0 auto; aspect-ratio: 1.5; background: url(video-frame.png) center / 100% 100% no-repeat; }
-.video-embed { position: absolute; width: 22%; }
+.video-embeds { position: relative; width: 100%; max-width: min(95%, 640px); margin: 0 auto; aspect-ratio: 1.5; background: url(video-frame.png) center / 100% 100% no-repeat; }
+.video-embed { position: absolute; width: 25%; }
 .video-embed:nth-child(1) { left: 30%; top: 36%; }
 .video-embed:nth-child(2) { left: 58%; top: 54%; }
 .video-embed-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; box-sizing: border-box; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); overflow: hidden; }
@@ -671,9 +671,9 @@ body.video-page .frame-content { gap: .75rem; }
      oiseaux dépassaient légèrement la zone noire, forçant un petit scroll
      interne inutile - on resserre et on plafonne un peu plus bas. */
   body.video-page .frame-content { gap: .4rem; padding-top: .5rem; padding-bottom: .5rem; }
-  body.video-page .video-art { max-height: 33vw; }
+  body.video-page .video-art { max-height: 28vw; }
   .video-top-row { max-width: 46vw; gap: .5rem; }
-  .video-figures { width: min(40%, 98px); }
+  .video-figures { width: min(50%, 122px); }
   .tv-wrap { width: min(32%, 78px); }
   /* les 3 liens sociaux + le corbac dépassaient légèrement la zone noire
      du cadre, forçant un petit scroll interne inutile. Resserré encore
@@ -739,8 +739,8 @@ body.video-page .frame-content { gap: .75rem; }
      (1410×X%). .comodoro-art/.contact-art gardent du vw pur : testé sans
      débordement sur leurs pages, pas besoin du même plafond ici. */
   .tv-wrap { width: min(16vw, 226px); }
-  .video-figures { width: auto; max-width: min(19vw, 268px); max-height: min(23vw, 324px); }
-  .video-art { max-height: min(37vw, 521px); }
+  .video-figures { width: auto; max-width: min(24vw, 338px); max-height: min(29vw, 409px); }
+  .video-art { max-height: min(31vw, 437px); }
   .comodoro-art { max-height: 20vw; }
   .contact-art { max-height: 44vw; }
 }
@@ -750,7 +750,7 @@ body.video-page .frame-content { gap: .75rem; }
    jusqu'à la frise du bas, sans toucher la zone 641-900px plus à l'étroit.
    Même plafond px que ci-dessus au-delà de ~1410px de viewport. */
 @media (min-width: 900px) {
-  .video-art { max-height: min(36vw, 507px); }
+  .video-art { max-height: min(33.5vw, 471px); }
 }
 
 /* page comodoro (mobile) : doit tenir sur un seul écran, sans aucun scroll.
