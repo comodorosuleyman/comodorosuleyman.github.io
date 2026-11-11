@@ -177,10 +177,10 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    que le trait noir reste noir. */
 .codex-figure { position: absolute; left: 15%; bottom: 11%; width: 23%; height: auto; z-index: 1; mix-blend-mode: multiply; }
 @media (max-width: 640px) {
-  /* coin bas-gauche, comme sur ordinateur - taille réduite (16%, au lieu
-     de 23%/28%) pour tenir sous le 2e titre sans le chevaucher, le
-     contenu remplissant maintenant .frame-content sans marge basse. */
-  .codex-figure { width: 16%; bottom: 10%; }
+  /* coin bas-gauche, comme sur ordinateur - taille réduite par rapport à
+     23%/28% pour tenir sous le 2e titre sans le chevaucher, le contenu
+     remplissant maintenant .frame-content sans marge basse. */
+  .codex-figure { width: 24%; bottom: 9%; }
 }
 /* entre 641px et ~1200px, la fiche PDF (hauteur plafonnée à 420px, en px
    fixes) grandit moins vite que le cadre (en %) : à largeur égale ils se
@@ -640,11 +640,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
      plus assez vite, et le contenu dépassait la zone noire du cadre -
      même principe que la page comodoro plus bas. */
   .codex-title { font-size: max(0.65rem, 4.0cqw); }
-  .codex-download .download-arrow { height: max(16px, 10cqw); }
+  .codex-download .download-arrow { height: max(22px, 14cqw); }
   /* le contenu (dessin + 2 titres + 2 flèches) dépassait légèrement la
      zone noire du cadre, forçant un petit scroll interne inutile - on
      resserre l'espacement vertical pour que tout tienne sans scroll. */
-  body.codex-page .frame-content { gap: .5rem; padding-top: .4rem; padding-bottom: .4rem; }
+  body.codex-page .frame-content { gap: .3rem; padding-top: .3rem; padding-bottom: .3rem; }
   /* même principe que codex : la rangée figures+télé et le dessin des
      oiseaux dépassaient légèrement la zone noire, forçant un petit scroll
      interne inutile - on resserre et on plafonne un peu plus bas. */
