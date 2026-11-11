@@ -552,13 +552,17 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .presskit p { margin: 0 0 .7rem; line-height: 1.55; color: #222; }
 .presskit p.press-lede { font-size: 1.3rem; color: var(--rouge); }
 .presskit em { font-style: italic; }
-/* dessin du fantôme à crâne, posé à gauche du paragraphe "About" : flottant
-   classique (float), pas une colonne flex - le paragraphe garde exactement
-   sa largeur/son alignement habituels (comme Biography juste en dessous),
-   seul son texte s'enroule autour de l'image sur les 2-3 premières lignes. */
-.argumentum-ghost { float: left; width: clamp(56px, 14vw, 100px); height: auto; margin: .2rem 1rem .5rem 0; }
-@media (max-width: 480px) {
-  .argumentum-ghost { width: clamp(44px, 20vw, 70px); margin: .1rem .7rem .4rem 0; }
+/* dessin du fantôme à crâne : par défaut, simple image bloc après le
+   paragraphe "About" (ne touche ni à sa largeur ni à son alignement, texte
+   identique à Biography juste en dessous). Seulement au-delà de ~1450px,
+   .argumentum-page (plafonnée à 1100px, centrée) laisse une vraie marge
+   vide des deux côtés : assez large pour y loger le dessin en position
+   absolue, dans la marge réelle de la page plutôt que dans la colonne de
+   texte - rien ne bouge dans le texte, à aucune largeur d'écran. */
+.argumentum-ghost { display: block; width: clamp(56px, 9vw, 90px); height: auto; margin: 1.1rem auto 0; }
+@media (min-width: 1450px) {
+  .about-article { position: relative; }
+  .argumentum-ghost { position: absolute; left: -134px; top: .15rem; width: 100px; margin: 0; }
 }
 .rider-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
 .rider dt { font-weight: 700; font-size: .82rem; letter-spacing: .05em; text-transform: uppercase; color: #777; margin-top: 1rem; }
@@ -600,7 +604,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    débordement), sans provoquer de scroll interne. La place est trouvée en
    rétrécissant un peu video-top-row/video-art (voir plus bas), pas en
    réduisant les vidéos elles-mêmes qui restent le contenu principal. */
-.video-embeds { position: relative; width: 100%; max-width: min(84%, 500px); margin: 0 auto; display: flex; flex-direction: row; gap: .9rem; padding: 3.6rem 1.8rem 4.2rem; box-sizing: border-box; background: url(video-frame.png) center / 100% 100% no-repeat; }
+.video-embeds { position: relative; width: 100%; max-width: min(78%, 480px); margin: 0 auto; display: flex; flex-direction: row; gap: .9rem; padding: 6.8rem 3.2rem 7.6rem; box-sizing: border-box; background: url(video-frame.png) center / 100% 100% no-repeat; }
 .video-embed { flex: 1 1 0; min-width: 0; }
 .video-embed-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; box-sizing: border-box; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); overflow: hidden; }
 .video-embed-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
@@ -608,7 +612,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* marge resserrée sur la page vidéo (desktop compris, pas que mobile) :
    regagner de la hauteur pour que le cadre à l'encre des vidéos puisse
    avoir une vraie marge de noir sans provoquer de scroll interne. */
-body.video-page .frame-content { gap: 1rem; }
+body.video-page .frame-content { gap: .75rem; }
 .comodoro-art { box-sizing: border-box; display: block; width: min(58%, 340px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 /* "il y en a plus" sous le 2e dessin : pointe vers la bande de miniatures
    juste en dessous du cadre - dessin vectoriel original de la souris (fourni
@@ -665,7 +669,7 @@ body.video-page .frame-content { gap: 1rem; }
   .video-top-row { max-width: 46vw; gap: .5rem; }
   .video-figures { width: min(46%, 112px); }
   .tv-wrap { width: min(36%, 88px); }
-  .video-embeds { max-width: 46vw; padding: 1.4rem .9rem 1.7rem; }
+  .video-embeds { max-width: 38vw; padding: 3.3rem 1.8rem 3.9rem; }
   /* les 3 liens sociaux + le corbac dépassaient légèrement la zone noire
      du cadre, forçant un petit scroll interne inutile. Resserré encore
      (gap .5rem) depuis l'ajout du lien mentions légales, un 5e élément. */
@@ -714,16 +718,16 @@ body.video-page .frame-content { gap: 1rem; }
    les oiseaux empilés (dimensionnés en % du cadre) dépassent alors la
    hauteur du cadre. On y plafonne leur hauteur (vw, pas % : indépendant de
    la largeur du cadre lui-même). .video-art un peu plus bas que les autres
-   (40vw au lieu de 47vw) : la paire de vidéos a gagné un vrai cadre à
-   l'encre (padding) qui prend de la place, il faut regagner cette hauteur
-   ailleurs pour rester sans scroll interne. */
+   (37vw au lieu de 47vw à l'origine) : la paire de vidéos a gagné un vrai
+   cadre à l'encre (padding généreux) qui prend de la place, il faut
+   regagner cette hauteur ailleurs pour rester sans scroll interne. */
 @media (min-width: 641px) and (max-width: 1250px) {
   /* width (pas max-height) : .tv-wrap est un <div>, pas une image — lui
      imposer une max-height sans largeur définie fait s'effondrer sa taille
      (bug constaté : 0x0). Une largeur directe en vw garde le calcul de la
      hauteur (height:auto sur l'image à l'intérieur) simple et fiable. */
-  .tv-wrap { width: 15vw; }
-  .video-figures { width: auto; max-width: 18.5vw; max-height: 22vw; }
+  .tv-wrap { width: 12.5vw; }
+  .video-figures { width: auto; max-width: 15.5vw; max-height: 18.5vw; }
   .video-art { max-height: 37vw; }
   .comodoro-art { max-height: 20vw; }
   .contact-art { max-height: 44vw; }
