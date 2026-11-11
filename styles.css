@@ -587,7 +587,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* même largeur/centrage que .video-art juste en dessous (min(85%,540px),
    margin:0 auto) pour que la télé, alignée à droite dans cette rangée,
    tombe exactement sur le bord droit du cadre des oiseaux. */
-.video-top-row { width: 100%; max-width: min(90%, 580px); margin: 0 auto; display: flex; align-items: flex-end; justify-content: flex-end; gap: 1.2rem; }
+.video-top-row { width: 100%; max-width: min(65%, 390px); margin: 0 auto; display: flex; align-items: flex-end; justify-content: flex-end; gap: 1.2rem; }
 .video-figures { display: block; width: min(46%, 310px); height: auto; flex-shrink: 0; transform: scaleX(-1); }
 .tv-wrap { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: min(36%, 236px); margin: 0; flex-shrink: 0; }
 /* miroir, mais la boîte .tv-wrap garde sa position (bord droit calé sur
