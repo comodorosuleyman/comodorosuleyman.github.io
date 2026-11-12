@@ -695,31 +695,18 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
   /* rapproche le lien "Bandcamp" du lecteur agrandi, pour regagner un peu
      de hauteur sur les écrans mobiles les plus courts. */
   body.audio-page .frame-content { gap: .5rem; padding-top: .4rem; padding-bottom: .4rem; }
-  /* lecteur un peu plus réduit qu'en desktop, et crédits un peu plus
-     compacts, pour laisser la place aux 6 lignes (qui passent sur deux
-     lignes chacune à cette largeur) sans scroll interne. */
-  .bandcamp-wrap { width: 78%; }
-  .credits { margin-top: .4rem; gap: .08rem; }
-  .credits p { font-size: .7rem; line-height: 1.25; }
+  /* lecteur en pleine largeur sur mobile (demande explicite) : le cadre
+     devient alors trop court pour tout contenir, mais le défilement
+     interne de .frame-content est exceptionnellement autorisé ici pour
+     que les crédits restent atteignables en scrollant - dérogation
+     ponctuelle à la règle habituelle "jamais de scroll interne". */
+  .bandcamp-wrap { width: 100%; }
 }
-/* sous ~420px, encore un peu de scroll interne avec les 6 lignes de
-   crédits (sur deux lignes chacune) malgré la réduction ci-dessus - même
-   principe, un cran plus loin. Doit suivre le bloc ≤640px ci-dessus. */
-@media (max-width: 420px) {
-  body.audio-page .bandcamp-wrap { width: 71%; }
-  body.audio-page .credits { margin-top: .3rem; gap: .05rem; }
-  body.audio-page .credits p { font-size: .6rem; line-height: 1.2; }
-}
-/* entre 641 et ~720px, léger scroll interne résiduel : la règle ≤640px
-   ci-dessus s'arrête juste avant que le cadre ait assez grandi pour
-   absorber le passage aux tailles desktop. Un palier intermédiaire. */
-@media (min-width: 641px) and (max-width: 720px) {
+/* entre 641 et ~720px, léger scroll interne résiduel (hérité de l'ancien
+   réglage) : la règle habituelle "pas de scroll interne" s'applique
+   encore au-delà de la largeur téléphone, donc on garde ce palier. */
+@media (min-width: 641px) and (max-width: 745px) {
   body.audio-page .bandcamp-wrap { width: 78%; }
-}
-/* sous ~365px (vieux iPhone SE...), encore un peu de scroll interne même
-   avec la réduction ≤420px - un cran de plus, seulement à cette largeur. */
-@media (max-width: 365px) {
-  body.audio-page .bandcamp-wrap { width: 64%; }
 }
 /* même limite physique que .codex-figure sous ~360px (iPhone SE...) :
    34% déborde sur cet écran plus court, on retombe à la valeur sûre
