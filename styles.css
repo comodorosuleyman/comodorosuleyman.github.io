@@ -608,7 +608,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    donc toujours ancrée au même endroit de l'image quelle que soit la
    taille), à l'intérieur de la zone pleine de l'éclaboussure, en tout
    petit format. */
-.video-embeds { position: relative; width: 100%; max-width: min(95%, 640px); margin: 0 auto; aspect-ratio: 1.5; background: url(video-frame.png?v=2) center / 100% 100% no-repeat; }
+.video-embeds { position: relative; width: 100%; max-width: min(97%, 760px); margin: min(5vw, 64px) auto 0; aspect-ratio: 1.5; background: url(video-frame.png?v=2) center / 100% 100% no-repeat; }
 /* positions recalculées à partir du plus grand rectangle réellement
    opaque de l'image (calculé par programme, pas estimé à l'œil) + marge
    de sécurité supplémentaire - vérifié ensuite pixel par pixel que rien
