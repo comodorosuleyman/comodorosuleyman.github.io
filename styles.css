@@ -228,6 +228,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .bandcamp-link-below { margin: 0; }
 .credits { margin: .6rem 0 0; display: flex; flex-direction: column; gap: .15rem; }
 .credits p { margin: 0; font-size: 1.05rem; line-height: 1.3; color: #333; }
+.recording-note { margin: .8rem 0 0; font-style: italic; font-size: .85rem; line-height: 1.4; color: #555; }
 
 /* cadre encré audio-frame.png : un seul dessin où l'intérieur est déjà
    peint en noir à la main (plus besoin d'un fond CSS séparé) - posé en
@@ -721,8 +722,8 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
 /* entre 641 et ~720px, léger scroll interne résiduel (hérité de l'ancien
    réglage) : la règle habituelle "pas de scroll interne" s'applique
    encore au-delà de la largeur téléphone, donc on garde ce palier. */
-@media (min-width: 641px) and (max-width: 850px) {
-  body.audio-page .bandcamp-wrap { width: 70%; }
+@media (min-width: 641px) and (max-width: 1150px) {
+  body.audio-page .bandcamp-wrap { width: 48%; }
 }
 /* même limite physique que .codex-figure sous ~360px (iPhone SE...) :
    34% déborde sur cet écran plus court, on retombe à la valeur sûre
