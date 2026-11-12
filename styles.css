@@ -649,6 +649,16 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
 .comodoro-more-label { color: var(--rouge); font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: clamp(.7rem, 3.2cqw, 1.1rem); }
 .comodoro-more-arrow { display: block; height: clamp(18px, 6cqw, 46px); width: auto; }
 
+/* page audio : même présentation que le pointeur "Galerie" de la page
+   comodoro ("Credits" + petite souris), à côté du lien Bandcamp plutôt
+   qu'en fin de .frame-content (d'où une classe dédiée, pas de réemploi
+   direct de .comodoro-more-row qui dépend d'être un enfant direct en
+   colonne de .frame-content via align-self:flex-end). */
+.audio-bottom-row { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.credits-more-row { display: flex; align-items: center; gap: .4rem; }
+.credits-more-label { color: var(--rouge); font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: clamp(.7rem, 3.2cqw, 1.1rem); }
+.credits-more-arrow { display: block; height: clamp(18px, 6cqw, 46px); width: auto; }
+
 /* tailles mobiles des illustrations, placées ici (après toutes les règles
    de base ci-dessus) exprès : à spécificité égale, une règle plus tardive
    dans le fichier gagne la cascade. Un essai précédent avait cette règle
