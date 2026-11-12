@@ -220,7 +220,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 /* centré dans l'espace libre sous les liens jusqu'au bas du cadre,
    pas juste collé sous Facebook (marges auto = centrage dans l'espace
    restant du conteneur flex, qui a une hauteur fixe via inset:13%). */
-.contact-art { box-sizing: border-box; width: 100%; max-width: 680px; height: auto; margin: auto 0; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.contact-art { box-sizing: border-box; width: 100%; max-width: 920px; height: auto; margin: auto 0; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 .social-icon { height: 1em; width: 1em; flex-shrink: 0; }
 .agenda-art { box-sizing: border-box; display: block; max-width: 80%; max-height: 80%; width: auto; height: auto; margin: 0 auto; }
 
@@ -655,7 +655,7 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
    et hauteur étaient alors plafonnées indépendamment l'une de l'autre,
    déformant l'image au lieu de la mettre à l'échelle proportionnellement. */
 @media (max-width: 640px) {
-  .contact-art { width: auto; height: auto; max-width: 76vw; max-height: 60vw; }
+  .contact-art { width: auto; height: auto; max-width: 80vw; max-height: 64vw; }
   /* en %, pas en vw : .comodoro-art doit aussi rester à l'échelle quand
      .frame-page est plafonné par la hauteur d'écran (page comodoro), pas
      seulement par la largeur — un % du cadre suit les deux cas, un vw
@@ -751,7 +751,7 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
      hauteur à 44vw mais gardait la largeur à 100%, déformant l'image -
      resté invisible tant que la peinture du corbeau (plus haute que ce
      pour quoi 44vw avait été calé à l'origine) n'avait pas été ajoutée. */
-  .contact-art { width: auto; max-height: 44vw; }
+  .contact-art { width: auto; max-height: 62vw; }
 }
 
 /* page comodoro (mobile) : doit tenir sur un seul écran, sans aucun scroll.
