@@ -226,6 +226,8 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 
 .content-link:hover, .content-link:focus-visible { color: #000; }
 .bandcamp-link-below { margin: 0; }
+.credits { margin: .6rem 0 0; display: flex; flex-direction: column; gap: .15rem; }
+.credits p { margin: 0; font-size: .85rem; line-height: 1.3; color: #333; }
 
 /* cadre encré audio-frame.png : un seul dessin où l'intérieur est déjà
    peint en noir à la main (plus besoin d'un fond CSS séparé) - posé en
@@ -238,7 +240,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .bandcamp-wrap {
   /* agrandi (680 -> 950) pour que le lecteur, à marges % inchangées, ait
      assez de hauteur réelle. */
-  position: relative; width: 100%; max-width: 950px; margin: 0 auto; flex-shrink: 0;
+  position: relative; width: 88%; max-width: 836px; margin: 0 auto; flex-shrink: 0;
   aspect-ratio: 1762 / 2202;
   border-radius: 6px;
   background-image: url(audio-frame.png?v=4);
@@ -693,6 +695,26 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
   /* rapproche le lien "Bandcamp" du lecteur agrandi, pour regagner un peu
      de hauteur sur les écrans mobiles les plus courts. */
   body.audio-page .frame-content { gap: .5rem; padding-top: .4rem; padding-bottom: .4rem; }
+  /* lecteur un peu plus réduit qu'en desktop, et crédits un peu plus
+     compacts, pour laisser la place aux 6 lignes (qui passent sur deux
+     lignes chacune à cette largeur) sans scroll interne. */
+  .bandcamp-wrap { width: 78%; }
+  .credits { margin-top: .4rem; gap: .08rem; }
+  .credits p { font-size: .7rem; line-height: 1.25; }
+}
+/* sous ~420px, encore un peu de scroll interne avec les 6 lignes de
+   crédits (sur deux lignes chacune) malgré la réduction ci-dessus - même
+   principe, un cran plus loin. Doit suivre le bloc ≤640px ci-dessus. */
+@media (max-width: 420px) {
+  body.audio-page .bandcamp-wrap { width: 66%; }
+  body.audio-page .credits { margin-top: .3rem; gap: .05rem; }
+  body.audio-page .credits p { font-size: .6rem; line-height: 1.2; }
+}
+/* entre 641 et ~720px, léger scroll interne résiduel : la règle ≤640px
+   ci-dessus s'arrête juste avant que le cadre ait assez grandi pour
+   absorber le passage aux tailles desktop. Un palier intermédiaire. */
+@media (min-width: 641px) and (max-width: 720px) {
+  body.audio-page .bandcamp-wrap { width: 78%; }
 }
 /* même limite physique que .codex-figure sous ~360px (iPhone SE...) :
    34% déborde sur cet écran plus court, on retombe à la valeur sûre
