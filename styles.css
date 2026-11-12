@@ -706,7 +706,7 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
    crédits (sur deux lignes chacune) malgré la réduction ci-dessus - même
    principe, un cran plus loin. Doit suivre le bloc ≤640px ci-dessus. */
 @media (max-width: 420px) {
-  body.audio-page .bandcamp-wrap { width: 66%; }
+  body.audio-page .bandcamp-wrap { width: 71%; }
   body.audio-page .credits { margin-top: .3rem; gap: .05rem; }
   body.audio-page .credits p { font-size: .6rem; line-height: 1.2; }
 }
@@ -715,6 +715,11 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
    absorber le passage aux tailles desktop. Un palier intermédiaire. */
 @media (min-width: 641px) and (max-width: 720px) {
   body.audio-page .bandcamp-wrap { width: 78%; }
+}
+/* sous ~365px (vieux iPhone SE...), encore un peu de scroll interne même
+   avec la réduction ≤420px - un cran de plus, seulement à cette largeur. */
+@media (max-width: 365px) {
+  body.audio-page .bandcamp-wrap { width: 64%; }
 }
 /* même limite physique que .codex-figure sous ~360px (iPhone SE...) :
    34% déborde sur cet écran plus court, on retombe à la valeur sûre
