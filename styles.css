@@ -613,9 +613,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    opaque de l'image (calculé par programme, pas estimé à l'œil) + marge
    de sécurité supplémentaire - vérifié ensuite pixel par pixel que rien
    ne sort de la zone noire, à plusieurs largeurs. */
-.video-embed { position: absolute; width: 21.5%; top: 44%; }
-.video-embed:nth-child(1) { left: 30.7%; }
-.video-embed:nth-child(2) { left: 54.5%; top: 48%; }
+.video-embed { position: absolute; width: 24%; top: 42%; }
+.video-embed:nth-child(1) { left: 23.5%; }
+.video-embed:nth-child(2) { left: 50%; top: 45.5%; }
 .video-embed-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; box-sizing: border-box; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); overflow: hidden; }
 .video-embed-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 /* marge resserrée sur la page vidéo (desktop compris, pas que mobile) :
