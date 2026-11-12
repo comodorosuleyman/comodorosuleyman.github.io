@@ -673,6 +673,12 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
      resserre l'espacement vertical pour que tout tienne sans scroll. */
   body.codex-page .frame-content { gap: .3rem; padding-top: .3rem; padding-bottom: .3rem; }
   body.video-page .frame-content { gap: .4rem; padding-top: .5rem; padding-bottom: .5rem; justify-content: flex-start; }
+  /* marge au-dessus de l'éclaboussure bien plus réduite qu'en desktop : sur
+     mobile, le mode de rendu "mobile" réel (testé via émulation Playwright,
+     pas juste une largeur de viewport redimensionnée) fait déborder
+     .frame-content de 11-14px avec la même formule qu'en desktop (5vw) -
+     un test en simple redimensionnement desktop ne le montrait pas. */
+  .video-embeds { margin-top: min(1vw, 6px); }
   /* personnages le plus grand possible (demande explicite), en % du cadre
      plutot qu'en vw : .tv-wrap est maintenant en position absolue (plus
      dans la meme rangee), les personnages peuvent donc utiliser presque
@@ -713,6 +719,12 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
   .bcm-intro { font-size: .56rem; }
   body.bcm-page .frame-content { gap: .18rem; }
   body.bcm-page .content-link { font-size: .68rem; }
+}
+/* même raison qu'au-dessus (.codex-art-mobile) : sous ~360px, encore 1-2px
+   de trop malgré la marge déjà réduite ci-dessus - on la supprime
+   complètement à cette largeur plutôt que de la rogner encore. */
+@media (max-width: 360px) {
+  .video-embeds { margin-top: 0; }
 }
 
 @media (min-width: 641px) {
