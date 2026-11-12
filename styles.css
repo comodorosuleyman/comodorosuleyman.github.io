@@ -655,7 +655,10 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
    direct de .comodoro-more-row qui dépend d'être un enfant direct en
    colonne de .frame-content via align-self:flex-end). */
 .audio-bottom-row { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-.credits-more-row { display: flex; align-items: center; gap: .4rem; }
+/* masqué par défaut (desktop/tablette) : les crédits sont déjà visibles
+   juste en dessous sans avoir à scroller, le pointeur n'y sert à rien -
+   affiché seulement sur mobile, où il indique qu'il faut scroller. */
+.credits-more-row { display: none; align-items: center; gap: .4rem; }
 .credits-more-label { color: var(--rouge); font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: clamp(.7rem, 3.2cqw, 1.1rem); }
 .credits-more-arrow { display: block; height: clamp(18px, 6cqw, 46px); width: auto; }
 
@@ -711,6 +714,9 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
      que les crédits restent atteignables en scrollant - dérogation
      ponctuelle à la règle habituelle "jamais de scroll interne". */
   .bandcamp-wrap { width: 100%; }
+  /* la souris "Credits" n'a d'intérêt que sur mobile, où il faut scroller
+     pour les atteindre (voir règle de base, masquée par défaut). */
+  .credits-more-row { display: flex; }
 }
 /* entre 641 et ~720px, léger scroll interne résiduel (hérité de l'ancien
    réglage) : la règle habituelle "pas de scroll interne" s'applique
