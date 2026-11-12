@@ -746,7 +746,12 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
      lui-même (1350px) sans avoir besoin du même bricolage vw/px. */
   .video-figures { width: auto; max-width: min(68%, 960px); max-height: min(82%, 1150px); }
   .comodoro-art { max-height: 20vw; }
-  .contact-art { max-height: 44vw; }
+  /* width:auto nécessaire ici (pas seulement max-height) : la règle de
+     base impose width:100%, donc sans ça le navigateur plafonnait la
+     hauteur à 44vw mais gardait la largeur à 100%, déformant l'image -
+     resté invisible tant que la peinture du corbeau (plus haute que ce
+     pour quoi 44vw avait été calé à l'origine) n'avait pas été ajoutée. */
+  .contact-art { width: auto; max-height: 44vw; }
 }
 
 /* page comodoro (mobile) : doit tenir sur un seul écran, sans aucun scroll.
