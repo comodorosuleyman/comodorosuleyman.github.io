@@ -88,6 +88,9 @@
       a.addEventListener('pause', function () {
         player.classList.remove('is-playing' + (i + 1));
       });
+      a.addEventListener('ended', function () {
+        if (audios[i + 1]) playTrack(i + 1);
+      });
       a.addEventListener('timeupdate', function () {
         if (a.duration) setKnobX(knobs[i], seeks[i], a.currentTime / a.duration);
         updateCounter(i);
