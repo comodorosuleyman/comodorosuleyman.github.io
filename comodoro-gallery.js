@@ -3,6 +3,13 @@
   var slider = document.getElementById('comodoro-slider');
   if (!items.length || !slider) return;
 
+  // galerie.html / galerie-2.html : continuer vers la page suivante/
+  // précédente au lieu de boucler sur place, pour parcourir TOUTES les
+  // images d'affilée en agrandi, pas seulement celles de la page en cours.
+  var gallerySection = document.querySelector('.comodoro-gallery');
+  var nextPage = gallerySection && gallerySection.dataset.nextPage;
+  var prevPage = gallerySection && gallerySection.dataset.prevPage;
+
   var viewport = slider.querySelector('.comodoro-slider-viewport');
   var sliderImg = document.getElementById('comodoro-slider-img');
   var count = document.getElementById('comodoro-slider-count');
@@ -22,6 +29,14 @@
   var lastFocused = null;
 
   function show(index) {
+    if (index >= sources.length && nextPage) {
+      window.location.href = nextPage + '#slide=0';
+      return;
+    }
+    if (index < 0 && prevPage) {
+      window.location.href = prevPage + '#slide=last';
+      return;
+    }
     current = (index + sources.length) % sources.length;
     sliderImg.src = sources[current];
     sliderImg.alt = alts[current];
@@ -79,4 +94,13 @@
     }
     touchStartX = null;
   }, { passive: true });
+
+  // arrivée depuis la page précédente/suivante (voir show() ci-dessus) :
+  // rouvrir directement sur la bonne image plutôt que sur la galerie.
+  var hashMatch = /^#slide=(\d+|last)$/.exec(window.location.hash);
+  if (hashMatch) {
+    var startIndex = hashMatch[1] === 'last' ? sources.length - 1 : parseInt(hashMatch[1], 10);
+    if (startIndex >= 0 && startIndex < sources.length) open(startIndex);
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
 })();
