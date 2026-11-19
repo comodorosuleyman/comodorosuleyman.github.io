@@ -158,23 +158,12 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 @media (min-width: 456px) and (max-width: 640px) {
   .frame-page { width: min(96vw, 1350px, calc((100dvh - 160px) / 1.4131)); }
 }
-/* galerie.html/-2 affichent maintenant la souris de pagination EN PLUS
-   du bandeau sur mobile (navigation entre les 2 pages) - ce bloc
-   supplémentaire (souris réduites à 44px sur mobile, ~90px mesurés avec
-   marges) vit SOUS le cadre, entre lui et le bandeau fixe, donc le
-   plafond générique ci-dessus (calé seulement sur la marge propre de
-   .frame-page) ne lui laisse plus assez de place. +80px de réserve en
-   plus, mêmes paliers - souris encore réduites (36px) pour laisser le
-   plus de place possible au cadre/à la galerie, qui priment sur elles. */
-@media (max-width: 640px) {
-  body.galerie-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 310px) / 1.4131)); }
-}
-@media (min-width: 320px) and (max-width: 640px) {
-  body.galerie-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 275px) / 1.4131)); }
-}
-@media (min-width: 456px) and (max-width: 640px) {
-  body.galerie-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 240px) / 1.4131)); }
-}
+/* galerie.html/-2 : le cadre doit rester EXACTEMENT la même taille que
+   sur les autres pages à frise (pas de plafond dédié ici, contrairement
+   à avant) - la souris de pagination, ajoutée sous le cadre sur mobile,
+   doit se contenter de ce qui reste entre lui et le bandeau plutôt que
+   de rogner sur la taille du cadre/de la galerie. Voir plus bas pour sa
+   taille/marges, réduites en conséquence et collées à la frise. */
 /* le cartouche : bande vide entre les deux filets ornés en haut du cadre */
 .frame-title { position: absolute; left: 3.58%; top: 4.68%; width: 88.65%; height: 5.26%; display: flex; align-items: center; justify-content: center; }
 .frame-title img { max-width: 100%; max-height: 100%; object-fit: contain; }
@@ -1003,8 +992,14 @@ body.lightbox-locked { overflow: hidden; }
    mêmes (secondaires face à la frise/galerie). Doit suivre la règle de
    base ci-dessus (même sélecteur) pour la battre via l'ordre de source. */
 @media (max-width: 640px) {
-  .galerie-pagenav { margin: .4rem auto .5rem; gap: 1.6rem; }
-  .galerie-back img, .galerie-forward img { width: 36px; }
+  .galerie-pagenav { margin: 0 auto; gap: 1rem; }
+  .galerie-back img, .galerie-forward img { width: 8px; }
+  /* l'icône visible est minuscule pour tenir dans le peu de place
+     restante, mais la zone tactile reste accessible : ::before
+     agrandit la cible au doigt sans occuper d'espace dans le flux
+     (position:absolute), donc sans remettre en cause le calcul ci-dessus. */
+  .galerie-back, .galerie-forward { position: relative; }
+  .galerie-back::before, .galerie-forward::before { content: ''; position: absolute; inset: -16px; }
 }
 
 /* même souris/retour, ancrée au bord gauche du dessin lui-même (pas du
