@@ -903,7 +903,7 @@ body.lightbox-locked { overflow: hidden; }
    règle body:has(nav.menu) ne s'applique alors plus, donc pas de
    padding-bottom réservé à récupérer). */
 .galerie-back { display: block; width: fit-content; margin: 1.5rem auto 2.5rem; }
-.galerie-back img { display: block; width: 64px; height: auto; transform: rotate(-90deg); transition: opacity .15s ease; }
+.galerie-back img { display: block; width: 64px; height: auto; transform: rotate(90deg); transition: opacity .15s ease; }
 .galerie-back:hover img, .galerie-back:focus-visible img { opacity: .6; }
 
 /* slider plein écran (comodoro-gallery.js) : même fond/overlay que
