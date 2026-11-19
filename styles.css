@@ -59,20 +59,26 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* le bandeau (inchangé, forme et couleurs d'origine) peut s'étaler sur
      plusieurs lignes sur un petit écran ; on réserve assez de place en bas
      de page pour qu'il ne cache jamais le contenu, quel que soit le nombre
-     de lignes sur lesquelles il s'étale. 310px au plus étroit (294px
-     mesurés + marge), réduit par paliers ci-dessous car la nav se replie
-     sur de moins en moins de lignes à mesure que l'écran s'élargit -
-     300px fixe laissait un grand vide en bas sur la moitié haute de la
-     plage mobile (ex. 480-640px, où la nav ne fait que 140px). */
-  body:has(nav.menu) { padding-bottom: 310px; }
+     de lignes sur lesquelles il s'étale, même tout en bas de page (le
+     cadre doit rester intégralement visible au scroll). Paliers et
+     valeurs mesurés directement (hauteur réelle de nav.menu, pire cas sur
+     les 5 pages contact/codex/audio/video/agenda) à chaque largeur de
+     320 à 640px, + ~15px de marge - les seuils précédents (361/540px,
+     210/160px) ne correspondaient pas aux vrais points de repli de la
+     nav et laissaient jusqu'à 33px de bandeau recouvrir le bas du cadre
+     même après un scroll complet. */
+  body:has(nav.menu) { padding-bottom: 365px; }
   /* "BACK TO INDEX" est nettement plus grand que les autres badges du
      bandeau ; sur petit écran ça prend trop de place en hauteur. */
   nav.menu a[href^="index"] img { height: 56px; }
 }
-@media (min-width: 361px) and (max-width: 640px) {
+@media (min-width: 338px) and (max-width: 640px) {
+  body:has(nav.menu) { padding-bottom: 260px; }
+}
+@media (min-width: 461px) and (max-width: 640px) {
   body:has(nav.menu) { padding-bottom: 210px; }
 }
-@media (min-width: 540px) and (max-width: 640px) {
+@media (min-width: 623px) and (max-width: 640px) {
   body:has(nav.menu) { padding-bottom: 160px; }
 }
 
