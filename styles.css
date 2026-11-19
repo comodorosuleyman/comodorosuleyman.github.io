@@ -1006,7 +1006,25 @@ body.lightbox-locked { overflow: hidden; }
      la souris plutôt que de la perdre en marge morte. */
   body.galerie-page .frame-page { margin-bottom: 2px; }
   .galerie-pagenav { margin: 0 auto; gap: 1rem; }
-  .galerie-back img, .galerie-forward img { width: 16px; }
+  /* taille proportionnelle à la place réellement dispo, pas une valeur
+     fixe : réutilise LITTÉRALEMENT la même expression min(96vw*ratio,
+     100dvh-réserve) que .frame-page elle-même (ligne ~153), pour que la
+     marge sous le cadre se calcule juste - une constante figée par
+     palier (essayé d'abord) se trompait dès que la largeur variait À
+     L'INTÉRIEUR d'un palier (96vw change en continu, pas le reste).
+     169.5px/133.9px = constante résiduelle calée empiriquement (marges
+     de .galerie-pagenav/.frame-page + réserve de nav.menu, qui ne se
+     recoupent pas proprement en théorie - calée à l'usage plutôt que
+     décomposée). Sous le plancher : écran court, cadre plafonné par la
+     hauteur ⇒ marge quasi fixe. Au-delà : cadre à taille fixe (limité
+     par la largeur), chaque px de hauteur en plus va dans la marge. */
+  .galerie-back img, .galerie-forward img { width: clamp(16px, calc((100dvh - 169.5px - min(96vw * 1.4131, 100dvh - 230px)) / 1.54), 64px); }
+}
+@media (min-width: 320px) and (max-width: 640px) {
+  .galerie-back img, .galerie-forward img { width: clamp(16px, calc((100dvh - 169.5px - min(96vw * 1.4131, 100dvh - 195px)) / 1.54), 64px); }
+}
+@media (min-width: 456px) and (max-width: 640px) {
+  .galerie-back img, .galerie-forward img { width: clamp(16px, calc((100dvh - 133.9px - min(96vw * 1.4131, 100dvh - 160px)) / 1.54), 64px); }
 }
 
 /* même souris/retour, ancrée au bord gauche du dessin lui-même (pas du
