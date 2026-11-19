@@ -986,10 +986,14 @@ body.lightbox-locked { overflow: hidden; }
   .galerie-page:has(nav.menu) { padding-bottom: 110px; }
 }
 
-/* page 2 n'a que 3 dessins (une seule rangée) - sans ça .frame-content
-   (justify-content:center par défaut) les centre verticalement et
-   laisse un grand vide au-dessus ; on les colle plutôt en haut. */
-.galerie-p2 .frame-content { justify-content: flex-start; padding-top: 4%; }
+/* page 2 n'a plus qu'1 dessin (2 déplacés vers la page 1, voir plus
+   haut) : la grille 3 colonnes (dimensionnée pour la page 1) réservait
+   quand même sa pleine largeur avec les 2 dernières colonnes vides,
+   collant l'unique image en haut à gauche du cadre au lieu de la
+   centrer - repasse en flex pour centrer le groupe quel que soit le
+   nombre d'images qui finissent sur cette page. */
+.galerie-p2 .comodoro-gallery { display: flex; flex-wrap: wrap; justify-content: center; }
+.galerie-p2 .comodoro-gallery-item { flex: 0 1 28%; max-width: 270px; }
 .galerie-back img, .galerie-forward img { display: block; width: 64px; height: auto; transition: opacity .15s ease; }
 .galerie-back img { transform: rotate(90deg); }
 .galerie-forward img { transform: rotate(-90deg); }
