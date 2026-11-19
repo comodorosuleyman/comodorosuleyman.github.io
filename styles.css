@@ -910,7 +910,13 @@ body.lightbox-locked { overflow: hidden; }
    viewport, dont la marge varie selon le ratio d'écran) - nichée dans
    .scene (position:relative) donc masquée automatiquement avec elle
    en mobile, qui garde sa propre structure (scene-mobile). */
-.index-back { position: absolute; left: -130px; bottom: 2%; z-index: 5; display: block; }
+/* -130px colle bien au dessin sur un écran large où .scene est limitée
+   par la hauteur (vraie marge latérale) ; mais sur un viewport plus
+   étroit que haut, .scene est limitée par la largeur (marge nulle) et
+   ce décalage négatif sortirait entièrement de l'écran. position:fixed
+   (plutôt qu'absolute dans .scene) + max() avec la marge réelle,
+   calculée comme .scene, évite que la souris disparaisse. */
+.index-back { position: fixed; left: max(.5rem, calc((100vw - min(100vw, 100dvh * 2296 / 1623)) / 2 - 130px)); bottom: 2rem; z-index: 5; display: block; }
 .index-back img { display: block; width: 64px; height: auto; transform: rotate(90deg); transition: opacity .15s ease; }
 .index-back:hover img, .index-back:focus-visible img { opacity: .6; }
 
