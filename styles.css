@@ -167,11 +167,15 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .frame-content { position: absolute; inset: 13%; overflow: auto; scrollbar-gutter: stable both-edges; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; text-align: center; container-type: inline-size; }
 .codex-art-mobile { box-sizing: border-box; display: none; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 @media (max-width: 640px) {
-  /* sur petit écran, le contenu dépasse souvent la zone du cadre ; en le
-     centrant (justify-content:center) le début du contenu devenait
-     inaccessible au scroll. On aligne en haut pour pouvoir toujours
-     tout faire défiler, du premier au dernier élément. */
-  .frame-content { justify-content: flex-start; padding-top: .8rem; padding-bottom: .8rem; }
+  /* historiquement flex-start ici : le contenu dépassait souvent la zone
+     du cadre, et centrer (justify-content:center) rendait le début du
+     contenu inaccessible au scroll. Depuis que .frame-page est plafonnée
+     à la hauteur d'écran disponible (plus haut) spécifiquement pour que
+     chaque page à frise tienne SANS déborder, ce n'est plus vrai nulle
+     part - flex-start ne faisait plus que tasser un contenu qui tient
+     déjà vers le haut, laissant un vide disgracieux en bas (galerie,
+     agenda, audio...) plutôt que de le centrer comme sur desktop. */
+  .frame-content { justify-content: center; padding-top: .8rem; padding-bottom: .8rem; }
   /* les navigateurs mobiles n'ont pas de lecteur PDF pour <embed> : la zone
      reste vide/noire. On la masque et on mise sur le lien d'ouverture. */
   .frame-content embed { display: none; }
@@ -848,12 +852,18 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
      couvert par le palier générique min-width:456px (voir plus haut),
      donc aucune règle dédiée n'est nécessaire ici pour le bandeau.
      Le reste ci-dessous est spécifique au contenu de cette page. */
-  body.comodoro-page .frame-content p { font-size: max(.58rem, 4.3cqw); }
+  /* :not(.galerie-page) partout ci-dessous : galerie.html/-2 partagent la
+     classe comodoro-page (pour la grille/slider) mais pas cette mise en
+     page spécifique à comodoro.html (texte + 2 dessins) - sans l'exclusion,
+     la grille de la galerie héritait de justify-content:space-between,
+     qui avec un seul enfant (la grille) le collait en haut au lieu de le
+     centrer verticalement dans le cadre. */
+  body.comodoro-page:not(.galerie-page) .frame-content p { font-size: max(.58rem, 4.3cqw); }
   /* space-between (pas flex-start, la valeur générique ≤640px) : étale les
      4 blocs sur toute la hauteur du cadre au lieu de les tasser en haut en
      laissant un vide sous "Gallery" - le 1er dessin reste collé en haut,
      le texte/2e dessin/"Gallery" glissent vers le bas pour combler. */
-  body.comodoro-page .frame-content { gap: 1.2cqw; padding-top: .1rem; padding-bottom: .1rem; justify-content: space-between; }
+  body.comodoro-page:not(.galerie-page) .frame-content { gap: 1.2cqw; padding-top: .1rem; padding-bottom: .1rem; justify-content: space-between; }
   /* le 1er dessin (portrait "soleil") agrandi par rapport au 2nd - :first-of-type
      cible le premier <img> enfant sans toucher au balisage. */
   .comodoro-art:first-of-type { max-width: 64%; max-height: 37%; }
