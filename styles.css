@@ -906,6 +906,11 @@ body.lightbox-locked { overflow: hidden; }
    est symétrique donc rotate(-90deg) EST le miroir de rotate(90deg),
    pas besoin de scaleX). */
 .galerie-pagenav { display: flex; justify-content: center; align-items: center; gap: 3rem; margin: 1.5rem auto 2.5rem; }
+
+/* page 2 n'a que 3 dessins (une seule rangée) - sans ça .frame-content
+   (justify-content:center par défaut) les centre verticalement et
+   laisse un grand vide au-dessus ; on les colle plutôt en haut. */
+.galerie-p2 .frame-content { justify-content: flex-start; padding-top: 4%; }
 .galerie-back img, .galerie-forward img { display: block; width: 64px; height: auto; transition: opacity .15s ease; }
 .galerie-back img { transform: rotate(90deg); }
 .galerie-forward img { transform: rotate(-90deg); }
