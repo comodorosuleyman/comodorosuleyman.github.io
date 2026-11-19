@@ -790,7 +790,7 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
   /* body.comodoro-page ajouté pour grimper au-dessus de la spécificité de
      .comodoro-art:first-of-type (bloc ≤640px, plus bas dans le fichier
      donc gagnant à spécificité égale) et rester sous ce plafond réduit. */
-  body.comodoro-page .comodoro-art:first-of-type { max-height: 32%; }
+  body.comodoro-page .comodoro-art:first-of-type { max-height: 40%; }
 }
 /* sous ~360px (vieux iPhone SE...), .frame-content elle-même est plus
    courte (les paddings/gap en rem fixe pèsent proportionnellement plus
@@ -881,7 +881,7 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
   body.comodoro-page:not(.galerie-page) .frame-content { gap: 1.2cqw; padding-top: .1rem; padding-bottom: .1rem; justify-content: space-between; }
   /* le 1er dessin (portrait "soleil") agrandi par rapport au 2nd - :first-of-type
      cible le premier <img> enfant sans toucher au balisage. */
-  .comodoro-art:first-of-type { max-width: 64%; max-height: 37%; }
+  .comodoro-art:first-of-type { max-width: 74%; max-height: 50%; }
 }
 
 /* page comodoro (ordinateur) : les deux portraits + le texte dépassaient
