@@ -885,10 +885,26 @@ body.lightbox-locked { overflow: hidden; }
    colonnes fixes (les dessins s'organisent 3 par 3, en autant de rangées
    que nécessaire) plutôt qu'une seule ligne qui rétrécissait tous les
    items pour tous les faire tenir - même cadre noir que .comodoro-art. */
-.comodoro-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 270px)); justify-content: center; gap: 3%; max-width: 1440px; margin: 1.5rem auto 2rem; padding: 0 1rem; }
-.comodoro-gallery-item { min-width: 0; max-width: 270px; padding: 0; border: none; background: none; }
-.comodoro-gallery-item img { display: block; width: 100%; height: auto; border: 3px solid #000; border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,.25); transition: transform .15s ease; }
+/* grille nichée dans .frame-content (galerie.html) : les dessins
+   partagent presque exactement le ratio du cadre lui-même (~1.415 vs
+   ~1.413), donc une grille 3 colonnes pleine largeur ferait une
+   hauteur quasi identique à la hauteur du cadre, sans AUCUNE marge
+   pour gap/bordures - d'où une largeur bridée à 88% (pas la grille en
+   %/px classiques) pour garder une vraie marge et ne jamais déclencher
+   le scroll interne de .frame-content (interdit). */
+.comodoro-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw; width: 88%; max-width: 88%; margin: 0 auto; padding: 0; }
+.comodoro-gallery-item { min-width: 0; max-width: none; padding: 0; border: none; background: none; }
+.comodoro-gallery-item img { display: block; width: 100%; height: auto; border: 2px solid #000; border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,.25); transition: transform .15s ease; }
 .comodoro-gallery-item:hover img, .comodoro-gallery-item:focus-visible img { transform: translateY(-3px); }
+
+/* galerie.html : pas de grand bandeau de liens en bas (ce n'est pas une
+   sous-page "musique") - juste la souris rouge, tournée pour pointer
+   vers la gauche ("retour"), en lieu et place de nav.menu (dont la
+   règle body:has(nav.menu) ne s'applique alors plus, donc pas de
+   padding-bottom réservé à récupérer). */
+.galerie-back { display: block; width: fit-content; margin: 1.5rem auto 2.5rem; }
+.galerie-back img { display: block; width: 64px; height: auto; transform: rotate(-90deg); transition: opacity .15s ease; }
+.galerie-back:hover img, .galerie-back:focus-visible img { opacity: .6; }
 
 /* slider plein écran (comodoro-gallery.js) : même fond/overlay que
    .lightbox-overlay pour rester cohérent visuellement, mais avec
