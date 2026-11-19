@@ -800,7 +800,16 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
      large) que les 300px déjà réservés ailleurs - 230px était insuffisant
      et laissait le bandeau recouvrir le bas du cadre. */
   body.comodoro-page:has(nav.menu) { padding-bottom: 310px; }
-  body.comodoro-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 230px) / 1.4131)); }
+  /* +56px = la marge propre de .frame-page (2.5rem en haut + 1rem en
+     bas, ligne ~125) : le budget de hauteur doit aussi lui faire de la
+     place, sinon le cadre déborde quand même de 56px sous le plafond
+     visé malgré une réserve par ailleurs correcte. */
+  body.comodoro-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 366px) / 1.4131)); }
+  /* comodoro.html seul (pas galerie.html/-2) a aussi le lien mobile-only
+     "Imagines" (8 badges au lieu de 7) ⇒ bandeau replié un peu plus haut
+     encore - léger supplément au-delà des paliers partagés ci-dessus. */
+  body.comodoro-page:not(.galerie-page):has(nav.menu) { padding-bottom: 335px; }
+  body.comodoro-page:not(.galerie-page) .frame-page { width: min(96vw, 1350px, calc((100dvh - 391px) / 1.4131)); }
   /* idem pour le texte (cqw, relatif à la largeur réelle de .frame-content,
      pas au viewport) : sur un écran très court, le cadre devient petit et
      le texte à taille fixe ne tiendrait plus. */
@@ -816,15 +825,28 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
 }
 /* même logique de paliers que la nav générale : la nav à 7 liens de
    comodoro se replie sur moins de lignes à mesure que l'écran s'élargit
-   (243px à 361-413px, 191px à 414-599px, 140px à 600px+). */
+   (243px à 361-413px, 191px à 414-599px, 140px à 600px+). Le plafond de
+   hauteur de .frame-page (ligne ~803) doit suivre les mêmes paliers,
+   sinon il continue de réserver seulement 230px : sur un écran bas où
+   le bandeau replié dépasse cette valeur (jusqu'à 310px), le cadre
+   déborde dessous et se fait recouvrir par le bandeau fixe. */
 @media (min-width: 361px) and (max-width: 640px) {
   body.comodoro-page:has(nav.menu) { padding-bottom: 260px; }
+  body.comodoro-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 316px) / 1.4131)); }
+  body.comodoro-page:not(.galerie-page):has(nav.menu) { padding-bottom: 285px; }
+  body.comodoro-page:not(.galerie-page) .frame-page { width: min(96vw, 1350px, calc((100dvh - 341px) / 1.4131)); }
 }
 @media (min-width: 414px) and (max-width: 640px) {
   body.comodoro-page:has(nav.menu) { padding-bottom: 210px; }
+  body.comodoro-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 266px) / 1.4131)); }
+  body.comodoro-page:not(.galerie-page):has(nav.menu) { padding-bottom: 235px; }
+  body.comodoro-page:not(.galerie-page) .frame-page { width: min(96vw, 1350px, calc((100dvh - 291px) / 1.4131)); }
 }
 @media (min-width: 600px) and (max-width: 640px) {
   body.comodoro-page:has(nav.menu) { padding-bottom: 160px; }
+  body.comodoro-page .frame-page { width: min(96vw, 1350px, calc((100dvh - 216px) / 1.4131)); }
+  body.comodoro-page:not(.galerie-page):has(nav.menu) { padding-bottom: 185px; }
+  body.comodoro-page:not(.galerie-page) .frame-page { width: min(96vw, 1350px, calc((100dvh - 241px) / 1.4131)); }
 }
 
 /* page comodoro (ordinateur) : les deux portraits + le texte dépassaient
