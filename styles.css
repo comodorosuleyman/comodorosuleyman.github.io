@@ -992,14 +992,21 @@ body.lightbox-locked { overflow: hidden; }
    mêmes (secondaires face à la frise/galerie). Doit suivre la règle de
    base ci-dessus (même sélecteur) pour la battre via l'ordre de source. */
 @media (max-width: 640px) {
+  /* la souris de retour (gauche) de la page 1 renvoie vers
+     accueil-nouvelle.html, la page d'accueil scindée - un concept
+     desktop uniquement (le mobile a sa propre structure plate, bandeau
+     + badges). Inutile sur mobile : la retirer libère une icône entière
+     et simplifie la page 1 à une seule souris (suite, vers la page 2).
+     La souris de la page 2 (retour vers la page 1) reste, elle sert
+     vraiment. :not(.galerie-p2) cible donc seulement la page 1. */
+  .galerie-page:not(.galerie-p2) .galerie-back { display: none; }
+  /* la marge basse propre de .frame-page (1rem, ligne ~141) mangeait à
+     elle seule une bonne partie du peu de place disponible sous le
+     cadre avant le bandeau fixe - la réduire ici redonne cette place à
+     la souris plutôt que de la perdre en marge morte. */
+  body.galerie-page .frame-page { margin-bottom: 2px; }
   .galerie-pagenav { margin: 0 auto; gap: 1rem; }
-  .galerie-back img, .galerie-forward img { width: 8px; }
-  /* l'icône visible est minuscule pour tenir dans le peu de place
-     restante, mais la zone tactile reste accessible : ::before
-     agrandit la cible au doigt sans occuper d'espace dans le flux
-     (position:absolute), donc sans remettre en cause le calcul ci-dessus. */
-  .galerie-back, .galerie-forward { position: relative; }
-  .galerie-back::before, .galerie-forward::before { content: ''; position: absolute; inset: -16px; }
+  .galerie-back img, .galerie-forward img { width: 16px; }
 }
 
 /* même souris/retour, ancrée au bord gauche du dessin lui-même (pas du
