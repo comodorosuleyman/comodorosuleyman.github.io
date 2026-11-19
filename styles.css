@@ -897,14 +897,20 @@ body.lightbox-locked { overflow: hidden; }
 .comodoro-gallery-item img { display: block; width: 100%; height: auto; border: 2px solid #000; border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,.25); transition: transform .15s ease; }
 .comodoro-gallery-item:hover img, .comodoro-gallery-item:focus-visible img { transform: translateY(-3px); }
 
-/* galerie.html : pas de grand bandeau de liens en bas (ce n'est pas une
-   sous-page "musique") - juste la souris rouge, tournée pour pointer
-   vers la gauche ("retour"), en lieu et place de nav.menu (dont la
-   règle body:has(nav.menu) ne s'applique alors plus, donc pas de
-   padding-bottom réservé à récupérer). */
-.galerie-back { display: block; width: fit-content; margin: 1.5rem auto 2.5rem; }
-.galerie-back img { display: block; width: 64px; height: auto; transform: rotate(90deg); transition: opacity .15s ease; }
-.galerie-back:hover img, .galerie-back:focus-visible img { opacity: .6; }
+/* galerie.html / galerie-2.html : pas de grand bandeau de liens en bas
+   (ce n'est pas une sous-page "musique") - juste la souris rouge, en
+   lieu et place de nav.menu (dont la règle body:has(nav.menu) ne
+   s'applique alors plus, donc pas de padding-bottom réservé à
+   récupérer). .galerie-pagenav regroupe retour (gauche) et, sur la
+   page 1 seulement, suite (droite, même souris en miroir - la forme
+   est symétrique donc rotate(-90deg) EST le miroir de rotate(90deg),
+   pas besoin de scaleX). */
+.galerie-pagenav { display: flex; justify-content: center; align-items: center; gap: 3rem; margin: 1.5rem auto 2.5rem; }
+.galerie-back img, .galerie-forward img { display: block; width: 64px; height: auto; transition: opacity .15s ease; }
+.galerie-back img { transform: rotate(90deg); }
+.galerie-forward img { transform: rotate(-90deg); }
+.galerie-back:hover img, .galerie-back:focus-visible img,
+.galerie-forward:hover img, .galerie-forward:focus-visible img { opacity: .6; }
 
 /* même souris/retour, ancrée au bord gauche du dessin lui-même (pas du
    viewport, dont la marge varie selon le ratio d'écran) - nichée dans
