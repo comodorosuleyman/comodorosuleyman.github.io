@@ -906,6 +906,15 @@ body.lightbox-locked { overflow: hidden; }
 .galerie-back img { display: block; width: 64px; height: auto; transform: rotate(90deg); transition: opacity .15s ease; }
 .galerie-back:hover img, .galerie-back:focus-visible img { opacity: .6; }
 
+/* même souris/retour, mais ancrée en bas à gauche du viewport sur
+   l'accueil desktop (body.home scinde maintenant vers la nouvelle
+   page d'accueil) - masquée en mobile, qui garde sa propre structure
+   (scene-mobile, pas de souris). */
+.index-back { position: fixed; left: 1.2rem; bottom: 1.2rem; z-index: 5; display: block; }
+.index-back img { display: block; width: 64px; height: auto; transform: rotate(90deg); transition: opacity .15s ease; }
+.index-back:hover img, .index-back:focus-visible img { opacity: .6; }
+@media (max-width: 640px) { .index-back { display: none; } }
+
 /* slider plein écran (comodoro-gallery.js) : même fond/overlay que
    .lightbox-overlay pour rester cohérent visuellement, mais avec
    navigation précédent/suivant entre les 5 dessins. :not([hidden]) pour
