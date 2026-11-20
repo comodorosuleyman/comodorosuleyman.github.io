@@ -27,6 +27,7 @@ body.home .scene img { height: 100%; }
 
 @media (max-width: 640px) {
   body.home .scene { display: none; }
+  body.home .newhome-stage { display: none; }
   .scene-mobile { display: block; position: fixed; inset: 0; }
   .scene-mobile .poster-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   /* zone invisible du titre, serrée à droite (porte claire / aplat sombre
@@ -1105,16 +1106,15 @@ body.lightbox-locked { overflow: hidden; }
 .comodoro-slider-next { right: 1rem; top: 50%; transform: translateY(-50%); }
 .comodoro-slider-count { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); margin: 0; font-size: .85rem; color: var(--rouge); font-weight: 700; }
 
-/* ===== brouillon : nouvelle page d'accueil (accueil-nouvelle.svg) =====
-   page non liée / non publiée, cf. instruction de l'utilisateur. Deux
-   dessins (plume et diapason) sur fond noir ; chacun a une copie
-   superposée identique, rognée par clip-path à sa seule zone et
+/* ===== accueil desktop (index.html, .scene équivalent) : plume + diapason
+   (accueil-nouvelle.svg) ===== deux dessins sur fond noir ; chacun a une
+   copie superposée identique, rognée par clip-path à sa seule zone et
    éclaircie (filter:brightness), révélée au survol/focus via :has() -
    le noir du fond reste noir (brightness ne change pas 0), seul le
-   trait rouge s'éclaircit. */
+   trait rouge s'éclaircit. Centré par body.home (display:flex) déjà en
+   place pour .scene - pas besoin d'un wrapper dédié. */
 html:has(.newhome-stage) { background: #000; }
 .newhome-stage { position: relative; width: min(96vw, 1700px, calc(96dvh * 1.46307)); margin: 0 auto; background: #000; line-height: 0; overflow: hidden; }
-.newhome-page { display: flex; align-items: center; justify-content: center; min-height: 100dvh; }
 /* la plume et le diapason sont petits et excentrés dans le dessin
    d'origine (accueil-nouvelle.svg) - ce transform zoome/recentre le
    groupe des deux (même origine/échelle sur les 3 calques empilés :
