@@ -1066,8 +1066,15 @@ body.lightbox-locked { overflow: hidden; }
    ce décalage négatif sortirait entièrement de l'écran. position:fixed
    (plutôt qu'absolute dans .scene) + max() avec la marge réelle,
    calculée comme .scene, évite que la souris disparaisse. */
-.index-back { position: fixed; left: max(.5rem, calc((100vw - min(100vw, 100dvh * 2296 / 1623)) / 2 - 130px)); bottom: 2rem; z-index: 5; display: block; }
-.index-back img { display: block; width: 64px; height: auto; transform: rotate(90deg); transition: opacity .15s ease; }
+.index-back { position: fixed; left: max(.5rem, calc((100vw - min(100vw, 100dvh * 2296 / 1623)) / 2 - 130px)); bottom: 2rem; z-index: 5; display: flex; flex-direction: column; align-items: center; gap: .35rem; }
+.index-back img { display: block; height: auto; transition: opacity .15s ease; }
+/* spécificité (classe+img) nécessaire pour battre .scene img (ligne ~111,
+   width:100%) qui s'applique aussi à ces icônes, nichées dans .scene. */
+.index-back img.index-back-arrow { width: 64px; transform: rotate(90deg); }
+/* "BACK" manuscrit (comodoro-mark.svg, fourni par l'artiste) sous la
+   souris - même ratio que son viewBox (1073.76 x 609.63) pour ne pas le
+   déformer. */
+.index-back img.index-back-label { width: 88px; }
 .index-back:hover img, .index-back:focus-visible img { opacity: .6; }
 
 /* slider plein écran (comodoro-gallery.js) : même fond/overlay que
