@@ -1122,7 +1122,7 @@ html:has(.newhome-stage) { background: #000; }
    art + 2 glows, pour qu'ils restent alignés) sans toucher au layout
    (transform ne change pas la boîte ⇒ .newhome-stage garde sa hauteur
    normale, overflow:hidden rogne le surplus). */
-.newhome-art, .newhome-glow { transform: translate(-.46%, -5.33%) scale(1.4); transform-origin: 50.46% 55.33%; }
+.newhome-art, .newhome-glow { transform: translate(-6.98%, -8.89%) scale(1.1); transform-origin: 0 0; }
 .newhome-art { display: block; width: 100%; height: auto; }
 .newhome-glow {
   position: absolute; top: 0; left: 0; width: 100%; height: auto;
