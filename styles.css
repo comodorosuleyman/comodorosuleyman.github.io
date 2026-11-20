@@ -254,7 +254,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* descendu à côté de la 1re flèche de téléchargement, plutôt qu'au
      niveau du dessin agrandi - right devient left (calé sur la position
      réelle de cette flèche, pas sur la marge droite du cadre). */
-  .codex-niu { left: 57%; right: auto; top: 61%; }
+  .codex-niu { left: 68%; right: auto; top: 50%; }
 }
 
 /* les liens de contact doivent toujours tenir sur une seule ligne : une
@@ -546,6 +546,19 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .argumentum-page { max-width: 1100px; margin: 2.5rem auto 1rem; padding: 0 1rem; text-align: center; }
 .argumentum-page img { max-width: 100%; height: auto; }
 .argumentum-page img.manuscript { width: 100%; max-width: none; margin-left: 0; display: block; margin-bottom: 0; }
+/* repris depuis le style inline (retiré du HTML, les 4 langues) pour
+   que la règle mobile ci-dessous puisse la surcharger - un style
+   inline aurait gagné sur n'importe quelle règle de classe. */
+.argumentum-page .titre { margin: 0 auto 1rem; }
+@media (max-width: 640px) {
+  /* demandé : baisser le bandeau "ARGUMENTUM" (déjà plus proche du bas
+     que du haut de l'espace avant le manuscrit, d'après la mesure, mais
+     confirmé par l'utilisateur sur son écran réel). Agrandit la marge
+     du HAUT de .argumentum-page (pas celle de .titre : elle collapse
+     avec celle du parent puisque le <h1> qui précède est en
+     position:absolute donc hors flux, et n'a aucun effet). */
+  .argumentum-page { margin-top: 52px; }
+}
 .legal-page h1 { font-size: clamp(1.4rem, 5vw, 2rem); color: var(--rouge); margin: 0 0 1.5rem; }
 .legal-page .press-byline { margin-top: 2.5rem; }
 .frame-content .legal-link { align-self: flex-end; font-size: .75rem; margin: 0; }
