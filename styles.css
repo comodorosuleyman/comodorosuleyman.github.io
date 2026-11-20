@@ -1002,12 +1002,11 @@ body.lightbox-locked { overflow: hidden; }
 
 /* le dessin de la page 2 reste en haut à gauche du cadre (voulu). */
 .galerie-p2 .frame-content { justify-content: flex-start; padding-top: 4%; }
-/* la souris DANS la frise (desktop) se centre sur toute la largeur de
-   .frame-content par défaut - sur la page 2, où l'unique dessin reste
-   collé en haut à gauche (voulu), ça la faisait flotter loin à droite
-   de l'image au lieu d'être rattachée à elle. Alignée sur le bord
-   gauche de la grille (6% = (100-88%)/2, sa propre marge). */
-.galerie-p2 .galerie-pagenav-in { align-self: flex-start; justify-content: flex-start; margin-left: 6%; }
+/* le dessin de la page 2 reste calé en haut (flex-start ci-dessus),
+   mais la souris doit rester en bas de la frise comme sur la page 1 -
+   margin-top:auto pousse ce dernier enfant flex tout en bas, sans
+   toucher à la position du dessin au-dessus. */
+.galerie-p2 .galerie-pagenav-in { margin-top: auto; }
 .galerie-back img, .galerie-forward img { display: block; width: 64px; height: auto; transition: opacity .15s ease; }
 .galerie-back img { transform: rotate(90deg); }
 .galerie-forward img { transform: rotate(-90deg); }
