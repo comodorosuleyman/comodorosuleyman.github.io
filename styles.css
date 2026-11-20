@@ -1114,7 +1114,8 @@ body.lightbox-locked { overflow: hidden; }
    le noir du fond reste noir (brightness ne change pas 0), seul le
    trait rouge s'éclaircit. */
 html:has(.newhome-stage) { background: #000; }
-.newhome-stage { position: relative; width: min(100vw, 1600px, calc(98dvh * 1.46307)); margin: 0 auto; background: #000; line-height: 0; overflow: hidden; }
+.newhome-stage { position: relative; width: min(55vw, 900px, calc(55dvh * 1.46307)); margin: 0 auto; background: #000; line-height: 0; overflow: hidden; }
+.newhome-page { display: flex; align-items: center; justify-content: center; min-height: 100dvh; }
 /* la plume et le diapason sont petits et excentrés dans le dessin
    d'origine (accueil-nouvelle.svg) - ce transform zoome/recentre le
    groupe des deux (même origine/échelle sur les 3 calques empilés :
