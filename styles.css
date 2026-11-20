@@ -986,6 +986,14 @@ body.lightbox-locked { overflow: hidden; }
 @media (max-width: 640px) {
   .galerie-pagenav-in { display: none; }
   .galerie-pagenav-out { display: flex; }
+  /* page 2 seule : un unique dessin collé en haut à gauche (voulu)
+     laisse le reste du cadre vide - la souris "out" (sous le cadre,
+     taille réduite pour tenir au-dessus du bandeau) finissait isolée
+     au milieu d'une grande zone vide, perdue. Comme ce cadre a - lui -
+     largement la place en interne (rien d'autre à y caser), on utilise
+     plutôt la souris "in", juste sous le dessin, comme sur desktop. */
+  .galerie-p2 .galerie-pagenav-in { display: flex; }
+  .galerie-p2 .galerie-pagenav-out { display: none; }
   .galerie-page nav.menu { display: flex; }
   /* même paliers que la règle générique (nav resserrée) - il faut
      redéclarer ici avec le même sélecteur .galerie-page:has(nav.menu)
