@@ -580,8 +580,8 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .manuscript-face-hit { position: absolute; display: block; }
 .manuscript-face-hit::before { content: ''; position: absolute; inset: -14px; }
 .manuscript-face { display: block; width: 100%; height: auto; }
-.manuscript-face-hit-mask { left: 73.76%; top: 36.46%; width: 11.03%; }
-.manuscript-face-hit-viking { left: 81.57%; top: 53.27%; width: 14.24%; }
+.manuscript-face-hit-mask { left: 73.76%; top: 32.64%; width: 11.03%; }
+.manuscript-face-hit-viking { left: 81.57%; top: 50.46%; width: 14.24%; }
 /* lien discret sur le mot manuscrit "Tiago" (dernière ligne du texte) :
    coordonnées relevées pixel par pixel sur argumentum.jpg (2176x2647),
    même technique que .scene a.zone sur l'accueil - un calque précalculé
@@ -591,7 +591,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    devenait rouge, plutôt qu'un simple rectangle de surlignage. */
 .manuscript-word-link { position: absolute; display: block; background-size: 100% 100%; background-repeat: no-repeat; opacity: 0; transition: opacity .2s ease; }
 .manuscript-word-link:hover, .manuscript-word-link:focus-visible { opacity: 1; }
-.manuscript-word-link-tiago { left: 66.27%; top: 94.45%; width: 13.14%; height: 3.33%; background-image: url(tiago-glow.png); }
+.manuscript-word-link-tiago { left: 66.27%; top: 94.12%; width: 13.14%; height: 3.53%; background-image: url(tiago-glow.png); }
 /* transcription/traduction en texte du manuscrit (image, donc non
    traduisible directement) - sous l'image, dans les langues où elle
    est fournie. Distincte du texte courant : italique, plus sobre. */
