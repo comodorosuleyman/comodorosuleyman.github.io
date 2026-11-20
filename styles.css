@@ -1131,11 +1131,11 @@ body.lightbox-locked { overflow: hidden; }
    coordonnées d'origine du dessin - seuls zoom/recentrage (transform
    ci-dessus) et les zones cliquables (coordonnées écran, ci-dessous)
    utilisent les coordonnées déjà agrandies/recentrées. */
-.newhome-glow-plume { clip-path: inset(24% 63% 14% 27%); }
-.newhome-glow-diapason { clip-path: inset(28% 28% 32% 60%); }
+.newhome-glow-plume { clip-path: inset(9.7% 59.3% 1.8% 29.8%); }
+.newhome-glow-diapason { clip-path: inset(16.1% 26.9% 22.2% 60.1%); }
 .newhome-zone { position: absolute; display: block; }
-.newhome-zone-plume { left: 17.16%; top: 6.15%; width: 14%; height: 86.8%; }
-.newhome-zone-diapason { left: 63.36%; top: 11.75%; width: 16.8%; height: 56%; }
+.newhome-zone-plume { left: 18.7%; top: 3%; width: 21.7%; height: 95.1%; }
+.newhome-zone-diapason { left: 63.5%; top: 7.3%; width: 17.3%; height: 69.7%; }
 .newhome-stage:has(.newhome-zone-plume:hover) .newhome-glow-plume,
 .newhome-stage:has(.newhome-zone-plume:focus-visible) .newhome-glow-plume { opacity: 1; }
 .newhome-stage:has(.newhome-zone-diapason:hover) .newhome-glow-diapason,
