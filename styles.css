@@ -1021,7 +1021,7 @@ body.lightbox-locked { overflow: hidden; }
    base ci-dessus (même sélecteur) pour la battre via l'ordre de source. */
 @media (max-width: 640px) {
   /* la souris de retour (gauche) de la page 1 renvoie vers
-     accueil-nouvelle.html, la page d'accueil scindée - un concept
+     accueil.html, la page d'accueil scindée - un concept
      desktop uniquement (le mobile a sa propre structure plate, bandeau
      + badges). Inutile sur mobile : la retirer libère une icône entière
      et simplifie la page 1 à une seule souris (suite, vers la page 2).
