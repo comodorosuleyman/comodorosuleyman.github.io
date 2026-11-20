@@ -1114,7 +1114,7 @@ body.lightbox-locked { overflow: hidden; }
    le noir du fond reste noir (brightness ne change pas 0), seul le
    trait rouge s'éclaircit. */
 html:has(.newhome-stage) { background: #000; }
-.newhome-stage { position: relative; width: min(55vw, 900px, calc(55dvh * 1.46307)); margin: 0 auto; background: #000; line-height: 0; overflow: hidden; }
+.newhome-stage { position: relative; width: min(96vw, 1700px, calc(96dvh * 1.46307)); margin: 0 auto; background: #000; line-height: 0; overflow: hidden; }
 .newhome-page { display: flex; align-items: center; justify-content: center; min-height: 100dvh; }
 /* la plume et le diapason sont petits et excentrés dans le dessin
    d'origine (accueil-nouvelle.svg) - ce transform zoome/recentre le
@@ -1135,6 +1135,16 @@ html:has(.newhome-stage) { background: #000; }
    utilisent les coordonnées déjà agrandies/recentrées. */
 .newhome-glow-plume { clip-path: inset(9.7% 59.3% 1.8% 29.8%); }
 .newhome-glow-diapason { clip-path: inset(16.1% 26.9% 22.2% 60.1%); }
+.newhome-mascot { position: absolute; left: 51%; bottom: 4%; width: 17%; height: auto; transform: translateX(-50%); pointer-events: none; }
+.newhome-mascot-left, .newhome-mascot-right { display: none; }
+.newhome-stage:has(.newhome-zone-plume:hover) .newhome-mascot-rest,
+.newhome-stage:has(.newhome-zone-plume:focus-visible) .newhome-mascot-rest,
+.newhome-stage:has(.newhome-zone-diapason:hover) .newhome-mascot-rest,
+.newhome-stage:has(.newhome-zone-diapason:focus-visible) .newhome-mascot-rest { display: none; }
+.newhome-stage:has(.newhome-zone-plume:hover) .newhome-mascot-left,
+.newhome-stage:has(.newhome-zone-plume:focus-visible) .newhome-mascot-left { display: block; }
+.newhome-stage:has(.newhome-zone-diapason:hover) .newhome-mascot-right,
+.newhome-stage:has(.newhome-zone-diapason:focus-visible) .newhome-mascot-right { display: block; }
 .newhome-zone { position: absolute; display: block; }
 .newhome-zone-plume { left: 18.7%; top: 3%; width: 21.7%; height: 95.1%; }
 .newhome-zone-diapason { left: 63.5%; top: 7.3%; width: 17.3%; height: 69.7%; }
