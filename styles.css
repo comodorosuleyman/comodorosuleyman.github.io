@@ -1013,7 +1013,7 @@ body.lightbox-locked { overflow: hidden; }
    margin-top:auto pousse ce dernier enfant flex tout en bas, sans
    toucher à la position du dessin au-dessus. */
 .galerie-p2 .galerie-pagenav-in { margin-top: auto; }
-.galerie-back img, .galerie-forward img { display: block; width: clamp(22px, 7cqw, 56px); height: auto; transition: opacity .15s ease; }
+.galerie-back img, .galerie-forward img { display: block; width: clamp(18px, 5cqw, 42px); height: auto; transition: opacity .15s ease; }
 .galerie-back img { transform: rotate(90deg); }
 .galerie-forward img { transform: rotate(-90deg); }
 .galerie-back:hover img, .galerie-back:focus-visible img,
@@ -1052,13 +1052,13 @@ body.lightbox-locked { overflow: hidden; }
      décomposée). Sous le plancher : écran court, cadre plafonné par la
      hauteur ⇒ marge quasi fixe. Au-delà : cadre à taille fixe (limité
      par la largeur), chaque px de hauteur en plus va dans la marge. */
-  .galerie-back img, .galerie-forward img { width: clamp(16px, calc((100dvh - 169.5px - min(96vw * 1.4131, 100dvh - 230px)) / 1.54), 64px); }
+  .galerie-back img, .galerie-forward img { width: clamp(16px, calc((100dvh - 169.5px - min(96vw * 1.4131, 100dvh - 230px)) / 1.54), 44px); }
 }
 @media (min-width: 320px) and (max-width: 640px) {
-  .galerie-back img, .galerie-forward img { width: clamp(16px, calc((100dvh - 169.5px - min(96vw * 1.4131, 100dvh - 195px)) / 1.54), 64px); }
+  .galerie-back img, .galerie-forward img { width: clamp(16px, calc((100dvh - 169.5px - min(96vw * 1.4131, 100dvh - 195px)) / 1.54), 44px); }
 }
 @media (min-width: 456px) and (max-width: 640px) {
-  .galerie-back img, .galerie-forward img { width: clamp(16px, calc((100dvh - 133.9px - min(96vw * 1.4131, 100dvh - 160px)) / 1.54), 64px); }
+  .galerie-back img, .galerie-forward img { width: clamp(16px, calc((100dvh - 133.9px - min(96vw * 1.4131, 100dvh - 160px)) / 1.54), 44px); }
 }
 
 /* même souris/retour, ancrée au bord gauche du dessin lui-même (pas du
