@@ -973,9 +973,19 @@ body.lightbox-locked { overflow: hidden; }
    quand nav.menu est display:none (l'élément existe toujours), on le
    neutralise sur desktop et on le restaure seulement sous 641px. */
 .galerie-pagenav { display: flex; justify-content: center; align-items: center; gap: 3rem; margin: 1.5rem auto 2.5rem; }
+/* deux exemplaires de la souris dans le HTML (même liens) plutôt qu'un
+   seul repositionné en CSS : sur desktop elle doit vivre DANS la frise
+   (.galerie-pagenav-in, après la grille dans .frame-content) ; sur
+   mobile elle garde sa place sous le cadre avec sa taille réactive déjà
+   calée (.galerie-pagenav-out, cf. plus bas) - la faire co-exister au
+   même endroit sur les deux aurait forcé un compromis unique entre "à
+   l'intérieur, grande marge requise" et "en dessous, place comptée". */
+.galerie-pagenav-out { display: none; }
 .galerie-page nav.menu { display: none; }
 .galerie-page:has(nav.menu) { padding-bottom: 0; }
 @media (max-width: 640px) {
+  .galerie-pagenav-in { display: none; }
+  .galerie-pagenav-out { display: flex; }
   .galerie-page nav.menu { display: flex; }
   /* même paliers que la règle générique (nav resserrée) - il faut
      redéclarer ici avec le même sélecteur .galerie-page:has(nav.menu)
@@ -992,6 +1002,12 @@ body.lightbox-locked { overflow: hidden; }
 
 /* le dessin de la page 2 reste en haut à gauche du cadre (voulu). */
 .galerie-p2 .frame-content { justify-content: flex-start; padding-top: 4%; }
+/* la souris DANS la frise (desktop) se centre sur toute la largeur de
+   .frame-content par défaut - sur la page 2, où l'unique dessin reste
+   collé en haut à gauche (voulu), ça la faisait flotter loin à droite
+   de l'image au lieu d'être rattachée à elle. Alignée sur le bord
+   gauche de la grille (6% = (100-88%)/2, sa propre marge). */
+.galerie-p2 .galerie-pagenav-in { align-self: flex-start; justify-content: flex-start; margin-left: 6%; }
 .galerie-back img, .galerie-forward img { display: block; width: 64px; height: auto; transition: opacity .15s ease; }
 .galerie-back img { transform: rotate(90deg); }
 .galerie-forward img { transform: rotate(-90deg); }
