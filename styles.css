@@ -856,7 +856,15 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
      cadre entier sans scroller"), sa largeur réelle peut être bien plus
      petite que ce que vw suppose - un max-height en vw ne rétrécissait
      plus avec elle et débordait de .frame-content sur écran court. */
-  .contact-art { width: auto; max-height: 62cqw; }
+  /* demande explicite : dessin ~1.8x plus grand qu'avant (62cqw -> 112cqw,
+     couplé au resserrement du gap/padding juste en-dessous qui libère la
+     place en plus) - vérifié de 641 à 1920px de large, aucun scroll
+     interne de .frame-content (interdit) sur toute la plage. */
+  .contact-art { width: auto; max-height: 112cqw; }
+  /* resserré (gap 1.3rem -> .5rem, padding-top 2rem -> .8rem) pour
+     redonner cette place au dessin ci-dessus plutôt qu'aux espaces entre
+     les 3 liens de contact. */
+  body.contact-page .frame-content { gap: .5rem; padding-top: .8rem; padding-bottom: .5rem; }
 }
 
 /* page comodoro (mobile) : doit tenir sur un seul écran, sans aucun scroll.
