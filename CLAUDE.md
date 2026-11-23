@@ -34,6 +34,27 @@ Je parle français : réponds-moi en français.
 - Couleurs principales : fond `#f0d5c2`, rouge `--rouge: #7a1414`, fond de l'accueil `#160404`. Police : Georgia.
 - Vérifie chaque changement visuel **sur desktop et sur mobile** (point de rupture principal à 640px).
 
+## Pas de scroll dans la frise sur mobile
+
+- La « frise » est le cadre dessiné des pages secondaires (`.frame-page`, avec le contenu dans `.frame-content`).
+- **En version mobile, on ne doit jamais pouvoir scroller à l'intérieur de la frise.** Le contenu doit tenir dans le cadre : réduis, réorganise ou déplace-le hors du cadre plutôt que de le laisser déborder.
+- Une exception (une page où un scroll interne serait accepté) demande **mon accord explicite**, au cas par cas. Si une modification risque de créer ce scroll, arrête-toi et demande-moi avant.
+- Exception déjà accordée : la page **audio** (lecteur en pleine largeur sur mobile, voir le commentaire dans `styles.css`).
+- Après chaque changement sur une page à frise, vérifie sur mobile que `.frame-content` ne déborde pas (`scrollHeight` ≤ `clientHeight`, ni en largeur). Teste **sans** gouttière de barre de défilement : les téléphones ont des barres superposées, le contenu y est donc plus large que dans un navigateur desktop rétréci.
+
+## Loupe (agrandissement des dessins)
+
+- Quand on agrandit un dessin avec la loupe, il doit s'afficher **au maximum en largeur, bord à bord**, sur desktop comme sur mobile, sans scroll horizontal (scroll vertical permis si le dessin est plus haut que l'écran).
+- Deux systèmes : `lightbox.js` (pages contact, comodoro, codex…) et le diaporama de `comodoro-gallery.js` (galeries, la loupe s'active au clic sur l'image).
+- Pour l'agrandissement, utilise une version haute résolution quand elle existe (attribut `data-full`), pour que le dessin ne soit pas flou en pleine largeur. Elle doit avoir **le même effet jauni** que l'image affichée dans la page.
+- Si aucune version haute résolution n'existe, l'attribut `data-lightbox-native` plafonne l'agrandi à la taille réelle de l'image, pour qu'elle ne soit pas floue (cas de `comodoro-art-bottom.jpg`).
+
+## Effet jauni (patine)
+
+- La plupart des dessins scannés du site ont une patine chaude et jaunie : une courbe de tons par canal R/V/B, appliquée au fichier image (pas en CSS).
+- **Exception : les dessins de la galerie Imagines** (`comodoro-dessin-*`, `contact-crow-gallery*`) restent **sans** patine, au plus près des originaux (ils sont à vendre).
+- La courbe n'est pas stockée telle quelle. Pour la retrouver, on compare un fichier avant/après patine : `comodoro-dessin-6-full.jpg` (sans patine) et sa version au commit `d2ae4f7` (avec patine). Applique-la toujours à l'**original sans patine**, jamais à une image déjà jaunie.
+
 ## Git et publication
 
 - Messages de commit **en anglais**, à l'impératif, courts et descriptifs (ex. « Enlarge the contact page drawing on desktop »).

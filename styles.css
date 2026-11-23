@@ -814,6 +814,24 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
      dépassaient encore légèrement malgré le gap déjà réduit ci-dessus. */
   body.contact-page .content-link { font-size: .85rem; }
 }
+/* contact (mobile) : la taille en vw des liens sociaux suivait la largeur
+   de l'écran, pas celle du cadre (plafonné par la hauteur d'écran, donc
+   souvent bien plus étroit) - l'adresse mail débordait à droite et
+   créait un scroll interne horizontal dans la frise (interdit). Taille
+   en cqw, calée sur la largeur réelle de .frame-content, pour que
+   l'adresse tienne toujours sur une ligne. Doit suivre le bloc ≤360px
+   ci-dessus (même spécificité que body.contact-page .content-link). */
+@media (max-width: 640px) {
+  body.contact-page .social-link { font-size: min(1.6rem, 5.2cqw); }
+}
+/* tout petits écrans (320-360px) : le corbac (max-height 64vw) dépassait
+   encore le bas de la frise de 3 à 30px. Plafond en cqw, proportionnel
+   à la taille réelle du cadre (donc à la hauteur disponible). */
+@media (max-width: 360px) {
+  body.contact-page .contact-art { max-height: min(100cqw, calc(139cqw - 98px)); }
+  /* vidéo : 2px de trop à 320px (texte et paddings en rem fixes). */
+  body.video-page .frame-content { padding-top: .3rem; padding-bottom: .3rem; }
+}
 @media (max-width: 360px) {
   .bcm-cover { width: min(24%, 120px); }
   .bcm-intro { font-size: .56rem; }
@@ -936,7 +954,7 @@ img.lightbox-trigger, .lightbox-trigger { cursor: url('cursor-zoom-in.png?v=2') 
 .lightbox-overlay {
   position: fixed; inset: 0; z-index: 999;
   display: flex; align-items: safe center; justify-content: safe center;
-  padding: 5vmin;
+  padding: 0;
   background: #f0d5c2;
   opacity: 0; pointer-events: none;
   transition: opacity .2s ease;
@@ -949,10 +967,17 @@ img.lightbox-trigger, .lightbox-trigger { cursor: url('cursor-zoom-in.png?v=2') 
      petite que sa taille déjà affichée dans le cadre (bug constaté : le clic
      "rétrécissait" l'image). On ne plafonne que la largeur ; si l'image est
      plus haute que l'écran, l'overlay devient scrollable (overflow: auto). */
-  max-width: 90vw;
+  /* demande explicite : dessin agrandi au maximum en largeur, bord à
+     bord (desktop comme mobile), plus de marge autour (padding 0 sur
+     .lightbox-overlay). width:100% de l'overlay, donc barre de
+     défilement verticale déduite : jamais de scroll horizontal. */
+  width: 100%; max-width: none; height: auto; flex-shrink: 0;
   cursor: url('cursor-zoom-out.png?v=2') 10 10, zoom-out;
-  box-shadow: 0 10px 40px rgba(0,0,0,.5);
 }
+/* exception (demande explicite) : dessin sans version haute résolution
+   (ex. comodoro-art-bottom.jpg, 900px) - plafonné à sa taille réelle
+   pour ne pas être flou, toujours dans la limite de l'écran. */
+.lightbox-img.is-native { width: auto; max-width: 100%; }
 body.lightbox-locked { overflow: hidden; }
 
 /* bande de miniatures sous la frise sur la page comodoro : grille à 3
@@ -1112,7 +1137,11 @@ body.lightbox-locked { overflow: hidden; }
    le détail du trait - même paire de curseurs zoom-in/zoom-out que le
    lightbox.js existant, pour rester cohérent. */
 .comodoro-slider-img { max-width: 90vw; max-height: 85vh; border: 4px solid #000; box-shadow: 0 10px 40px rgba(0,0,0,.5); cursor: url('cursor-zoom-in.png?v=2') 11 11, zoom-in; flex-shrink: 0; }
-.comodoro-slider-img.is-zoomed { max-width: 100%; max-height: none; width: auto; cursor: url('cursor-zoom-out.png?v=2') 10 10, zoom-out; }
+/* loupe activée : dessin au maximum en largeur, bord à bord (demande
+   explicite) - plus de padding autour, la bordure noire incluse dans
+   les 100% (box-sizing) pour ne jamais créer de scroll horizontal. */
+.comodoro-slider-img.is-zoomed { box-sizing: border-box; width: 100%; max-width: none; max-height: none; cursor: url('cursor-zoom-out.png?v=2') 10 10, zoom-out; }
+.comodoro-slider-viewport:has(.is-zoomed) { padding: 0; }
 .comodoro-slider-close, .comodoro-slider-prev, .comodoro-slider-next {
   position: absolute; border: none; background: rgba(0,0,0,.08); color: var(--rouge);
   font-size: 1.6rem; line-height: 1; border-radius: 50%;

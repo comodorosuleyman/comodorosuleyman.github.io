@@ -10,8 +10,11 @@
     overlay.appendChild(img);
     document.body.appendChild(overlay);
 
-    function open(src) {
+    // native : dessin dispo seulement en basse résolution - on plafonne
+    // l'agrandi à sa taille réelle plutôt que de l'étirer (flou).
+    function open(src, native) {
       img.src = src;
+      img.classList.toggle('is-native', !!native);
       overlay.classList.add('is-open');
       document.body.classList.add('lightbox-locked');
     }
@@ -29,7 +32,8 @@
       el.classList.add('lightbox-trigger');
       el.addEventListener('click', function () {
         var target = el.tagName === 'IMG' ? el : el.querySelector('img');
-        open(target.currentSrc || target.src);
+        // data-full : version haute résolution pour l'agrandissement plein écran
+        open(target.dataset.full || target.currentSrc || target.src, target.hasAttribute('data-lightbox-native'));
       });
     });
   }
