@@ -384,98 +384,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 @media (max-width: 640px) {
   .native-audio-tracklist { bottom: 0; gap: .2rem; padding: .7rem 3% .35rem; }
 }
-.native-audio-track { display: flex; flex-direction: column; gap: .1rem; width: 100%; }
-/* .native-audio-wrap .native-audio-title (pas juste .native-audio-title) :
-   .frame-content p (plus haut dans ce fichier) cible aussi ce <p> avec une
-   spécificité plus forte (une classe + un type d'élément) qu'un simple
-   sélecteur de classe - sans ce renfort, font-size/color se faisaient
-   silencieusement écraser (texte en #333 gris au lieu du crème attendu,
-   illisible sur le fond rouge - c'est ce que le retour "gris sur fond
-   noir" pointait vraiment, pas le choix de couleur en soi). */
-.native-audio-wrap .native-audio-title { margin: 0; font-family: Georgia, serif; color: #f0d5c2; font-weight: 700; font-size: clamp(.8rem, 3vw, 1rem); line-height: 1.15; }
-/* lecteur dessiné à la main (player-bar.png / player-knob.png, fournis par
-   l'utilisateur) à la place des contrôles <audio> natifs du navigateur.
-   Positions des zones interactives en % de l'image de la barre (1000x175,
-   ratio conservé depuis le dessin original 3198x560) : triangle play,
-   piste de progression et piste de volume mesurées sur le dessin source. */
-/* 78% (pas 100%) et centré : le dessin de la barre paraissait trop
-   imposant par rapport au titre/compteur (qui gardent leur taille) ;
-   margin-top plus généreux que le gap des autres lignes pour la
-   décaler un peu plus bas sous le titre. */
-.hand-player { position: relative; width: 78%; margin: .45rem auto 0; touch-action: none; }
-@media (max-width: 640px) {
-  /* agrandi jusqu'à la limite de .native-audio-track (toutes les
-     positions internes restent en % de .hand-player, donc l'élargir ne
-     déforme rien). */
-  .hand-player { width: 99%; }
-}
-.hand-player-bar-img { display: block; width: 100%; height: auto; }
-.hand-player audio { display: none; }
-.hand-player-playhit {
-  position: absolute; left: 2.5%; top: 15%; width: 11%; height: 70%;
-  margin: 0; padding: 0; border: 0; background: none; cursor: pointer;
-}
-/* pendant la lecture : un fond rouge recouvre entièrement le triangle
-   "play" dessiné dans la barre (fond transparent dans player-bar.png, pas
-   moyen de l'effacer autrement), par-dessus lequel vient l'icône pause -
-   même zone que .hand-player-playhit, dont elle reprend les dimensions. */
-.hand-player-pause-patch, .hand-player-pause-icon {
-  /* plus petite que .hand-player-playhit (centrée dans la même zone,
-     11%/70% de large/haut) : la cible tactile reste généreuse, mais la
-     taille affichée de l'icône pause est calée sur celle, mesurée sur
-     player-bar.png, du triangle play (~6.7% x ~46% sur le nouveau dessin)
-     pour que les deux icônes paraissent de taille cohérente. */
-  position: absolute; left: 3.9%; top: 30%; width: 6.8%; height: 46%;
-  display: none; pointer-events: none;
-}
-.hand-player-pause-patch { background: #000; border-radius: 15%; }
-.hand-player-pause-icon { object-fit: contain; }
-.hand-player.is-playing .hand-player-pause-patch,
-.hand-player.is-playing .hand-player-pause-icon { display: block; }
-.hand-player-seek, .hand-player-volume {
-  position: absolute; top: 15%; height: 70%; cursor: pointer;
-}
-/* left décalé de 13.5% à 17.5% (16% restait encore trop près du
-   triangle play visuellement). */
-.hand-player-seek { left: 17.5%; width: 41.2%; }
-/* left décalé de 83.5% à 73% (piste + bouton ensemble, pas juste le
-   bouton) : au repos (volume 100%, bouton sur left+width) il chevauchait
-   l'embout droit du cadre, dont le mur intérieur commence vers 90%. */
-.hand-player-volume { left: 73%; width: 12.5%; }
-/* taille du curseur en % de TOUTE la largeur du lecteur (pas de sa piste
-   locale, 41.2% pour le son / 12.5% pour le volume - sinon un même 10%
-   donnerait deux tailles très différentes) : positionné en enfant direct
-   de .hand-player, "left" calculé en JS à partir de la position réelle
-   de chaque piste. "top" mesuré sur le nouveau dessin de la barre
-   (player-bar.png) : centre vertical de chaque piste. */
-/* largeur plafonnée pour qu'au repos (ratio 0, centre du bouton sur le
-   début de la piste à 13.5%) il ne chevauche pas le triangle play (bord
-   droit mesuré à ~10.6%) : rayon max 13.5-10.6=2.9%, donc 5.8% de large. */
-.hand-player-knob {
-  position: absolute; top: 54.6%; width: 5.8%;
-  transform: translate(-50%, -50%); pointer-events: none;
-}
-.hand-player-volume-knob { top: 52.8%; }
-/* .native-audio-wrap .hand-player-time (pas juste .hand-player-time) : même
-   renfort de spécificité que .native-audio-wrap .native-audio-title plus
-   haut, pour ne pas se faire écraser par .frame-content p (texte en #333
-   gris, illisible sur le fond noir du lecteur). */
-.native-audio-wrap .hand-player-time { margin: .02rem 0 0; font-family: Georgia, serif; color: #f0d5c2; font-size: clamp(.68rem, 2.4vw, .8rem); text-align: center; opacity: .85; }
-@media (max-width: 640px) {
-  /* Espagnol ("fragmento") et roumain ("extras") sont plus longs que
-     "excerpt"/"extrait" : ce titre plus petit évite le retour à la ligne
-     qui ferait déborder la boîte à largeur très étroite (320-340px, testé
-     via sweep Playwright). */
-  .native-audio-wrap .native-audio-title { font-size: clamp(.66rem, 2.6vw, .85rem); }
-}
-/* bouton "lire en qualité WAV" (audio-quality.js) : MP3 par défaut (léger,
-   démarre vite), le WAV pèse 10x plus - texte seul plutôt qu'un bouton
-   plein pour rester discret, mais avec le poids affiché pour que
-   l'auditeur sache ce qu'il déclenche avant de cliquer, sur mobile
-   notamment. */
-.native-audio-wav-btn { align-self: center; margin: 0; padding: 0; border: 0; background: none; font-family: Arial, Helvetica, sans-serif; font-size: clamp(.62rem, 2.4vw, .75rem); color: #f0d5c2; text-decoration: underline; opacity: .85; }
-.native-audio-wav-btn:hover, .native-audio-wav-btn:focus-visible { opacity: 1; }
-
 /* nouveau lecteur unifié (panneau dessiné à la main : bouton play/pause
    partagé, 2 pistes avec leur propre barre+compteur, sélecteur MP3/WAV,
    volume partagé) - remplace l'ancien .hand-player par piste. Toutes les
@@ -576,15 +484,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    celle-ci (page créée pour le référencement, pas tirée du dessin
    original) - plaque de texte simple, même rouge/serif que les autres
    titres de contenu plutôt qu'une fausse image à l'encre. */
-.bcm-title { margin: 0; font-family: Georgia, serif; font-weight: 700; color: var(--rouge); font-size: clamp(.95rem, 3.6vw, 1.5rem); text-align: center; line-height: 1.15; }
-.bcm-cover { box-sizing: border-box; display: block; width: min(60%, 320px); height: auto; margin: 0 auto; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
-.bcm-intro { max-width: 36rem; text-align: center; margin: 0 auto; }
-@media (max-width: 640px) {
-  body.bcm-page .frame-content { gap: .35rem; padding-top: .4rem; padding-bottom: .4rem; }
-  .bcm-cover { width: min(36%, 170px); }
-  .bcm-intro { font-size: clamp(.62rem, 2.9vw, .75rem); }
-  body.bcm-page .content-link { font-size: clamp(.72rem, 3.2vw, 1rem); }
-}
 .manuscript-wrap { position: relative; display: block; }
 .manuscript-face-hit { position: absolute; display: block; }
 .manuscript-face-hit::before { content: ''; position: absolute; inset: -14px; }
@@ -670,7 +569,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    garde sa position (calée en haut à droite). */
 .tv-link { display: block; width: 100%; }
 .tv-drawing { display: block; width: 100%; height: auto; transform: scaleX(-1); }
-.tv-caption { font-size: clamp(.55rem, 2.2vw, .85rem); text-align: center; line-height: 1.25; }
 /* les 2 vidéos intégrées individuellement (avant : un seul lien générique
    vers la chaîne) - côte à côte (pas empilées) pour que la paire ne
    prenne qu'une hauteur de rangée dans un cadre déjà chargé. */
@@ -719,9 +617,6 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
    déclarée dès que le contenu total dépasse légèrement - cqw suit la largeur
    réelle du cadre en continu, sans les zones de débordement qui
    apparaissaient aux bords de chaque palier vw fixe. */
-.comodoro-more-row { display: flex; align-items: center; gap: .4rem; align-self: flex-end; }
-.comodoro-more-label { color: var(--rouge); font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: clamp(.7rem, 3.2cqw, 1.1rem); }
-.comodoro-more-arrow { display: block; height: clamp(18px, 6cqw, 46px); width: auto; }
 
 /* page audio : même présentation que le pointeur "Galerie" de la page
    comodoro ("Credits" + petite souris), à côté du lien Bandcamp plutôt
@@ -732,9 +627,6 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
 /* masqué par défaut (desktop/tablette) : les crédits sont déjà visibles
    juste en dessous sans avoir à scroller, le pointeur n'y sert à rien -
    affiché seulement sur mobile, où il indique qu'il faut scroller. */
-.credits-more-row { display: none; align-items: center; gap: .4rem; }
-.credits-more-label { color: var(--rouge); font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: clamp(.7rem, 3.2cqw, 1.1rem); }
-.credits-more-arrow { display: block; height: clamp(18px, 6cqw, 46px); width: auto; }
 
 /* tailles mobiles des illustrations, placées ici (après toutes les règles
    de base ci-dessus) exprès : à spécificité égale, une règle plus tardive
@@ -788,9 +680,6 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
      que les crédits restent atteignables en scrollant - dérogation
      ponctuelle à la règle habituelle "jamais de scroll interne". */
   .bandcamp-wrap { width: 100%; }
-  /* la souris "Credits" n'a d'intérêt que sur mobile, où il faut scroller
-     pour les atteindre (voir règle de base, masquée par défaut). */
-  .credits-more-row { display: flex; }
 }
 /* entre 641 et ~720px, léger scroll interne résiduel (hérité de l'ancien
    réglage) : la règle habituelle "pas de scroll interne" s'applique
@@ -839,12 +728,6 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
   body.contact-page .contact-art { max-height: min(100cqw, calc(139cqw - 98px)); }
   /* vidéo : 2px de trop à 320px (texte et paddings en rem fixes). */
   body.video-page .frame-content { padding-top: .3rem; padding-bottom: .3rem; }
-}
-@media (max-width: 360px) {
-  .bcm-cover { width: min(24%, 120px); }
-  .bcm-intro { font-size: .56rem; }
-  body.bcm-page .frame-content { gap: .18rem; }
-  body.bcm-page .content-link { font-size: .68rem; }
 }
 /* même raison qu'au-dessus (.codex-art-mobile) : sous ~360px, encore 1-2px
    de trop malgré la marge déjà réduite ci-dessus - on la supprime
@@ -980,7 +863,7 @@ img.lightbox-trigger, .lightbox-trigger { cursor: url('cursor-zoom-in.png?v=2') 
      .lightbox-overlay). width:100% de l'overlay, donc barre de
      défilement verticale déduite : jamais de scroll horizontal. */
   width: 100%; max-width: none; height: auto; flex-shrink: 0;
-  cursor: url('cursor-zoom-out.png?v=2') 10 10, zoom-out;
+  cursor: url('cursor-zoom-out.png?v=3') 10 10, zoom-out;
 }
 /* exception (demande explicite) : dessin sans version haute résolution
    (ex. comodoro-art-bottom.jpg, 900px) - plafonné à sa taille réelle
@@ -1148,7 +1031,7 @@ body.lightbox-locked { overflow: hidden; }
 /* loupe activée : dessin au maximum en largeur, bord à bord (demande
    explicite) - plus de padding autour, la bordure noire incluse dans
    les 100% (box-sizing) pour ne jamais créer de scroll horizontal. */
-.comodoro-slider-img.is-zoomed { box-sizing: border-box; width: 100%; max-width: none; max-height: none; cursor: url('cursor-zoom-out.png?v=2') 10 10, zoom-out; }
+.comodoro-slider-img.is-zoomed { box-sizing: border-box; width: 100%; max-width: none; max-height: none; cursor: url('cursor-zoom-out.png?v=3') 10 10, zoom-out; }
 .comodoro-slider-viewport:has(.is-zoomed) { padding: 0; }
 .comodoro-slider-close, .comodoro-slider-prev, .comodoro-slider-next {
   position: absolute; border: none; background: rgba(0,0,0,.08); color: var(--rouge);
@@ -1210,7 +1093,6 @@ html:has(.newhome-stage) { background: #000; }
 .newhome-stage:has(.newhome-zone-diapason:focus-visible) .newhome-glow-diapason { opacity: 1; }
 
 /* ===== brouillon : page galerie (dessins comodoro + corbeau de contact) ===== */
-.galerie-title { margin: 0; font-family: Georgia, serif; font-weight: 700; color: var(--rouge); font-size: clamp(1.4rem, 7cqw, 2.6rem); line-height: 1.1; text-transform: uppercase; letter-spacing: .05em; }
 
 /* brouillon : sur desktop, la partie "musique" (index + sous-pages) ne
    change pas - seul le menu mobile des sous-pages gagne une entrée

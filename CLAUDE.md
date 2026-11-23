@@ -9,7 +9,7 @@ Je parle français : réponds-moi en français.
 
 - Site **statique** en HTML, CSS et JS pur, sans framework, sans build et sans dépendances. Les fichiers sont servis tels quels.
 - Tout le style est dans `styles.css`. Les commentaires du CSS sont en français.
-- Scripts : `new-player.js` (lecteur audio), `lightbox.js`, `comodoro-gallery.js`, `hand-player.js`, `audio-quality.js`.
+- Scripts : `new-player.js` (lecteur audio), `lightbox.js`, `comodoro-gallery.js`.
 - Pour prévisualiser en local : `python3 -m http.server` à la racine, puis ouvrir http://localhost:8000.
 
 ## Pages et langues
