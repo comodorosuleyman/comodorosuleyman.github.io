@@ -942,16 +942,32 @@ body.lightbox-locked { overflow: hidden; }
 .galerie-forward img { transform: rotate(-90deg); }
 .galerie-back:hover img, .galerie-back:focus-visible img,
 .galerie-forward:hover img, .galerie-forward:focus-visible img { opacity: .6; }
-/* logos de contact (mail, Instagram, Facebook) sans texte, glissés
-   ENTRE les souris sur la même ligne : aucune hauteur ajoutée, donc pas
-   de risque de scroll interne dans la frise. Largeur = celle des souris
-   (même expression, redéclarée dans chaque palier mobile plus bas) ;
-   la boîte de la souris fait ~1.54x sa largeur en hauteur, donc des
-   logos carrés de même largeur ne grandissent jamais la rangée. */
-.galerie-social { display: flex; align-items: center; gap: clamp(.6rem, 3cqw, 1.5rem); }
+/* logos de contact (mail, Instagram, Facebook) sans texte, sur leur
+   propre ligne SOUS les souris. Deux exemplaires dans le HTML, comme
+   .galerie-pagenav : -in dans la frise (desktop), -out sous le cadre
+   (mobile). Sur desktop, même largeur que les souris. */
+.galerie-social { display: flex; justify-content: center; align-items: center; gap: clamp(.6rem, 3cqw, 1.5rem); }
+.galerie-social-out { display: none; }
 .galerie-social a { display: block; color: var(--rouge); transition: color .15s ease; }
 .galerie-social a:hover, .galerie-social a:focus-visible { color: #000; }
 .galerie-social svg { display: block; width: clamp(14px, 3.5cqw, 28px); height: auto; aspect-ratio: 1; }
+/* après la règle de base (même spécificité) pour la battre par l'ordre
+   de source : sur mobile, l'exemplaire sous le cadre prend le relais. */
+@media (max-width: 640px) {
+  .galerie-social-in { display: none; }
+  .galerie-social-out { display: flex; gap: 1.1rem; }
+  /* ligne en plus sous les souris : place comptée avant le bandeau,
+     d'où des logos plus petits que les souris sur mobile. */
+  .galerie-social-out svg { width: clamp(14px, 4.6vw, 20px); }
+}
+/* écran trop court pour une ligne de plus (hauteur < ~1.9x largeur :
+   320x568, 375x667...) : les logos se rangent à DROITE des souris, en
+   absolu, pour que les souris ne bougent pas d'un pixel et que la page
+   ne s'allonge pas. */
+.galerie-bottom-out { position: relative; }
+@media (max-width: 640px) and (min-aspect-ratio: 10/19) {
+  .galerie-social-out { position: absolute; top: 50%; left: calc(50% + 2.2rem); transform: translateY(-50%); }
+}
 /* souris de pagination réduites sur mobile : la pleine taille desktop
    (64px + grandes marges) forçait un gros supplément de réserve de
    hauteur sur le plafond du cadre, le rendant nettement plus petit que
@@ -986,13 +1002,13 @@ body.lightbox-locked { overflow: hidden; }
      décomposée). Sous le plancher : écran court, cadre plafonné par la
      hauteur ⇒ marge quasi fixe. Au-delà : cadre à taille fixe (limité
      par la largeur), chaque px de hauteur en plus va dans la marge. */
-  .galerie-back img, .galerie-forward img, .galerie-social svg { width: clamp(12px, calc((100dvh - 169.5px - min(96vw * 1.4131, 100dvh - 230px)) / 1.54), 28px); }
+  .galerie-back img, .galerie-forward img { width: clamp(12px, calc((100dvh - 169.5px - min(96vw * 1.4131, 100dvh - 230px)) / 1.54), 28px); }
 }
 @media (min-width: 320px) and (max-width: 640px) {
-  .galerie-back img, .galerie-forward img, .galerie-social svg { width: clamp(12px, calc((100dvh - 169.5px - min(96vw * 1.4131, 100dvh - 195px)) / 1.54), 28px); }
+  .galerie-back img, .galerie-forward img { width: clamp(12px, calc((100dvh - 169.5px - min(96vw * 1.4131, 100dvh - 195px)) / 1.54), 28px); }
 }
 @media (min-width: 456px) and (max-width: 640px) {
-  .galerie-back img, .galerie-forward img, .galerie-social svg { width: clamp(12px, calc((100dvh - 133.9px - min(96vw * 1.4131, 100dvh - 160px)) / 1.54), 28px); }
+  .galerie-back img, .galerie-forward img { width: clamp(12px, calc((100dvh - 133.9px - min(96vw * 1.4131, 100dvh - 160px)) / 1.54), 28px); }
 }
 
 /* même souris/retour, ancrée au bord gauche du dessin lui-même (pas du
