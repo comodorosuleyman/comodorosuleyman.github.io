@@ -20,6 +20,14 @@ body.home { background: #160404; height: 100vh; height: 100dvh; display: flex; a
 body.home a, body.home button { cursor: url('cursor-hand-white.png?v=3') 9 1, pointer; }
 body.home .scene { width: auto; max-width: 100vw; max-height: 100vh; aspect-ratio: 2296 / 1623; margin: 0; }
 body.home .scene img { height: 100%; }
+/* demande explicite : la souris BACK (88px, calée à gauche) ne doit jamais
+   recouvrir le dessin. Quand l'écran a presque le ratio du dessin (4:3,
+   16:10...), la marge noire à gauche était trop étroite et la souris se
+   posait sur "COMODORO". On réserve 104px de chaque côté (8px de bord +
+   88px de souris + 8px d'air) : le dessin rétrécit un peu sur ces écrans,
+   reste entier et centré. La formule de .index-back (plus bas) suit la
+   même largeur. */
+body.home .scene:has(.index-back) { max-width: calc(100vw - 208px); }
 .visually-hidden { position: absolute; left: -9999px; }
 
 /* accueil mobile : affiche en fond + badges fixes en bas à droite */
@@ -1104,7 +1112,7 @@ body.lightbox-locked { overflow: hidden; }
    ce décalage négatif sortirait entièrement de l'écran. position:fixed
    (plutôt qu'absolute dans .scene) + max() avec la marge réelle,
    calculée comme .scene, évite que la souris disparaisse. */
-.index-back { position: fixed; left: max(.5rem, calc((100vw - min(100vw, 100dvh * 2296 / 1623)) / 2 - 130px)); bottom: 2rem; z-index: 5; display: flex; flex-direction: column; align-items: center; gap: .35rem; }
+.index-back { position: fixed; left: max(.5rem, calc((100vw - min(100vw - 208px, 100dvh * 2296 / 1623)) / 2 - 130px)); bottom: 2rem; z-index: 5; display: flex; flex-direction: column; align-items: center; gap: .35rem; }
 .index-back img { display: block; height: auto; transition: opacity .15s ease; }
 /* spécificité (classe+img) nécessaire pour battre .scene img (ligne ~111,
    width:100%) qui s'applique aussi à ces icônes, nichées dans .scene. */
