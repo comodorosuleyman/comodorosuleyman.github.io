@@ -263,7 +263,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   /* descendu à côté de la 1re flèche de téléchargement, plutôt qu'au
      niveau du dessin agrandi - right devient left (calé sur la position
      réelle de cette flèche, pas sur la marge droite du cadre). */
-  .codex-niu { left: 68%; right: auto; top: 50%; }
+  /* top 55.5% (et non 50%) : centré sur la flèche elle-même - à 50%,
+     le haut du soleil mordait sur la 1re ligne du titre au-dessus. */
+  .codex-niu { left: 68%; right: auto; top: 55.5%; }
 }
 
 /* les liens de contact doivent toujours tenir sur une seule ligne : une
@@ -706,6 +708,9 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
    le bloc ≤640px (même règle de cascade que .comodoro-art ci-dessus). */
 @media (max-width: 360px) {
   .codex-art-mobile { max-height: 27cqw; }
+  /* dessin plus petit ⇒ le contenu remonte : le soleil remonte d'autant
+     pour rester au niveau de la 1re flèche (sinon il touche le 2e titre). */
+  .codex-niu { top: 50.5%; }
   /* dernier cran : sur les tout petits écrans (ex. iPhone SE 1e gén.,
      320px), le plancher de .content-link (1rem) + les 3 liens contact
      dépassaient encore légèrement malgré le gap déjà réduit ci-dessus. */
