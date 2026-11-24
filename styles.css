@@ -183,7 +183,14 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    amputée, pas par rapport à la boîte visible entière, et tout paraît
    décalé à gauche. Réserver l'espace des deux côtés garde le centrage
    correct, scrollbar visible ou non. */
-.frame-content { position: absolute; inset: 13%; overflow: auto; scrollbar-gutter: stable both-edges; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; text-align: center; container-type: inline-size; }
+/* RÈGLE ABSOLUE (demande explicite) : jamais de scroll à l'intérieur de
+   la frise, sur aucune page, mobile comme desktop - overflow:hidden (et
+   non auto) rend tout scroll impossible, même d'un pixel. Le contenu
+   doit donc toujours tenir dans le cadre : un débordement serait rogné,
+   à corriger par la taille du contenu, jamais en rouvrant le scroll.
+   scrollbar-gutter s'applique aussi à overflow:hidden : la mise en page
+   desktop ne bouge pas. */
+.frame-content { position: absolute; inset: 13%; overflow: hidden; scrollbar-gutter: stable both-edges; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; text-align: center; container-type: inline-size; }
 .codex-art-mobile { box-sizing: border-box; display: none; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
 @media (max-width: 640px) {
   /* historiquement flex-start ici : le contenu dépassait souvent la zone
@@ -204,7 +211,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .content-link { font-family: Arial, Helvetica, sans-serif; color: var(--rouge); font-weight: 700; text-decoration: none; font-size: clamp(1rem, 4.8vw, 1.6rem); overflow-wrap: anywhere; }
 .phone { font-family: Arial, Helvetica, sans-serif; color: var(--rouge); font-weight: 700; font-size: clamp(1rem, 4.8vw, 1.6rem); white-space: nowrap; }
 
-.frame-content embed { width: 100%; max-width: 500px; height: clamp(220px, 60vw, 420px); border: 1px solid #ccc; }
+.frame-content embed { box-sizing: border-box; width: 100%; max-width: 500px; height: clamp(220px, 60vw, 420px); border: 1px solid #ccc; }
 
 /* page codex : la flèche download (encre noire, intérieur rempli de blanc
    au pot de peinture) remplace le texte "Download scores in PDF". */
@@ -380,7 +387,9 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   padding: 1.1rem 6% .5rem;
   background: linear-gradient(to top, rgba(0,0,0,.92) 55%, rgba(0,0,0,0));
   max-height: 100%;
-  overflow: auto;
+  /* hidden, pas auto : liste des pistes dans la frise, aucun scroll
+     interne permis (règle absolue, cf. .frame-content). */
+  overflow: hidden;
   box-sizing: border-box;
 }
 @media (max-width: 640px) {
@@ -675,12 +684,11 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
   body.contact-page .frame-content { gap: .3rem; padding-top: .2rem; padding-bottom: .2rem; }
   /* rapproche le lien "Bandcamp" du lecteur agrandi, pour regagner un peu
      de hauteur sur les écrans mobiles les plus courts. */
-  body.audio-page .frame-content { gap: .5rem; padding-top: .4rem; padding-bottom: .4rem; }
-  /* lecteur en pleine largeur sur mobile (demande explicite) : le cadre
-     devient alors trop court pour tout contenir, mais le défilement
-     interne de .frame-content est exceptionnellement autorisé ici pour
-     que les crédits restent atteignables en scrollant - dérogation
-     ponctuelle à la règle habituelle "jamais de scroll interne". */
+  /* marges haut/bas réduites au minimum : sur les écrans courts
+     (320-375px), .4rem débordait encore de 1 à 4px. */
+  body.audio-page .frame-content { gap: .5rem; padding-top: .1rem; padding-bottom: .1rem; }
+  /* lecteur en pleine largeur sur mobile (demande explicite) - il tient
+     dans le cadre, les crédits étant sortis sous la frise (.credits). */
   .bandcamp-wrap { width: 100%; }
 }
 /* entre 641 et ~720px, léger scroll interne résiduel (hérité de l'ancien
@@ -711,6 +719,11 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
   /* dessin plus petit ⇒ le contenu remonte : le soleil remonte d'autant
      pour rester au niveau de la 1re flèche (sinon il touche le 2e titre). */
   .codex-niu { top: 50.5%; }
+  /* 2px de trop à 320px : marges haut/bas supprimées. */
+  body.codex-page .frame-content { padding-top: 0; padding-bottom: 0; }
+  /* galerie : 1 à 3px de trop à 320px, même remède (la page 3 garde
+     ses dessins calés en haut, avec un retrait plus petit). */
+  body.galerie-page .frame-content { padding-top: .2rem; padding-bottom: .2rem; }
   /* dernier cran : sur les tout petits écrans (ex. iPhone SE 1e gén.,
      320px), le plancher de .content-link (1rem) + les 3 liens contact
      dépassaient encore légèrement malgré le gap déjà réduit ci-dessus. */
@@ -725,6 +738,12 @@ body.video-page .frame-content { gap: .75rem; justify-content: flex-start; paddi
    ci-dessus (même spécificité que body.contact-page .content-link). */
 @media (max-width: 640px) {
   body.contact-page .social-link { font-size: min(1.6rem, 5.2cqw); }
+}
+/* desktop : à 641px (cadre étroit), l'adresse dépassait aussi de 2px.
+   5.5cqw ne passe sous 1.6rem que quand le cadre est trop étroit pour
+   elle - ailleurs, taille inchangée. */
+@media (min-width: 641px) {
+  body.contact-page .social-link { font-size: min(1.6rem, 5.5cqw); }
 }
 /* tout petits écrans (320-360px) : le corbac (max-height 64vw) dépassait
    encore le bas de la frise de 3 à 30px. Plafond en cqw, proportionnel

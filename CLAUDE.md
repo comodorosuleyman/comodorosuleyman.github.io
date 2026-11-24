@@ -34,13 +34,13 @@ Je parle français : réponds-moi en français.
 - Couleurs principales : fond `#f0d5c2`, rouge `--rouge: #7a1414`, fond de l'accueil `#160404`. Police : Georgia.
 - Vérifie chaque changement visuel **sur desktop et sur mobile** (point de rupture principal à 640px).
 
-## Pas de scroll dans la frise sur mobile
+## Pas de scroll dans la frise — RÈGLE ABSOLUE
 
 - La « frise » est le cadre dessiné des pages secondaires (`.frame-page`, avec le contenu dans `.frame-content`).
-- **En version mobile, on ne doit jamais pouvoir scroller à l'intérieur de la frise.** Le contenu doit tenir dans le cadre : réduis, réorganise ou déplace-le hors du cadre plutôt que de le laisser déborder.
-- Une exception (une page où un scroll interne serait accepté) demande **mon accord explicite**, au cas par cas. Si une modification risque de créer ce scroll, arrête-toi et demande-moi avant.
-- Exception déjà accordée : la page **audio** (lecteur en pleine largeur sur mobile, voir le commentaire dans `styles.css`).
-- Après chaque changement sur une page à frise, vérifie sur mobile que `.frame-content` ne déborde pas (`scrollHeight` ≤ `clientHeight`, ni en largeur). Teste **sans** gouttière de barre de défilement : les téléphones ont des barres superposées, le contenu y est donc plus large que dans un navigateur desktop rétréci.
+- **On ne doit jamais pouvoir scroller à l'intérieur de la frise, sur aucune page, ni sur mobile ni sur desktop.** Aucune exception (l'ancienne dérogation de la page audio est supprimée).
+- Garde-fou technique : `.frame-content` (et tout bloc scrollable placé dans la frise, ex. `.native-audio-tracklist`) est en `overflow: hidden`. Ne jamais repasser en `auto`/`scroll`. Un contenu trop grand serait rogné : on corrige la taille, la disposition ou on le sort du cadre, jamais en rouvrant le scroll.
+- **À appliquer à tout nouvel ajout ou modification** sur une page à frise. Si un changement ne peut pas tenir dans le cadre, arrête-toi et demande-moi avant.
+- Après chaque changement, vérifie sur toutes les pages à frise (4 langues + galeries), mobile et desktop, que `.frame-content` ne déborde pas : `scrollHeight` ≤ `clientHeight` et `scrollWidth` ≤ `clientWidth`. Tailles minimales à tester : 320×568, 360×640, 375×667, 390×844, 414×896, 600×900 (en émulation mobile), puis 641×900, 768×1024, 1024×768, 1280×720, 1366×768, 1440×900, 1920×1080, 2560×1440. Teste le mobile **sans** gouttière de barre de défilement (barres superposées sur téléphone).
 
 ## Loupe (agrandissement des dessins)
 
