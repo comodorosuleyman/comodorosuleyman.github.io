@@ -987,7 +987,11 @@ body.lightbox-locked { overflow: hidden; }
    ne s'allonge pas. */
 .galerie-bottom-out { position: relative; }
 @media (max-width: 640px) and (min-aspect-ratio: 10/19) {
-  .galerie-social-out { position: absolute; top: 50%; left: calc(50% + 2.2rem); transform: translateY(-50%); }
+  .galerie-social-out { position: absolute; top: 50%; left: calc(50% + 2.2rem); transform: translateY(-50%); gap: .7rem; }
+  /* page 2 : deux souris (retour + suite) au lieu d'une, la souris de
+     droite s'étend plus loin - les logos décalés d'autant pour garder
+     le même écart qu'en page 1 et ne pas empiéter dessus. */
+  .galerie-p2 .galerie-social-out { left: calc(50% + 3.3rem); }
 }
 /* souris de pagination réduites sur mobile : la pleine taille desktop
    (64px + grandes marges) forçait un gros supplément de réserve de
