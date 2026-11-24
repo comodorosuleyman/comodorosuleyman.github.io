@@ -398,7 +398,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    vide dans np-panel.png (zone de l'ancien cadre, effacée). */
 .new-player-playhit1, .new-player-playhit2 {
   position: absolute; width: 7%; height: 16%;
-  margin: 0; padding: 0; border: 0; background: none; cursor: pointer;
+  margin: 0; padding: 0; border: 0; background: none; cursor: url('cursor-hand.png?v=4') 9 1, pointer;
 }
 .new-player-playhit1 { left: 2.5%; top: 8.85%; }
 .new-player-playhit2 { left: 2.5%; top: 39.84%; }
@@ -409,7 +409,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .new-player.is-playing1 .new-player-pause-icon1 { display: block; }
 .new-player.is-playing2 .new-player-play-icon2 { display: none; }
 .new-player.is-playing2 .new-player-pause-icon2 { display: block; }
-.new-player-seek1, .new-player-seek2, .new-player-volume { position: absolute; cursor: pointer; }
+.new-player-seek1, .new-player-seek2, .new-player-volume { position: absolute; cursor: url('cursor-hand.png?v=4') 9 1, pointer; }
 /* zone cliquable agrandie (pas juste le fin trait) pour couvrir tout le
    titre + la piste - toute la ligne sélectionne/joue cette piste. */
 .new-player-seek1 { left: 19.74%; top: 2.21%; width: 66.22%; height: 27.66%; }
@@ -440,7 +440,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    où le motif du cadre empiète - repris en une rangée horizontale en
    bas du lecteur, là où il y a de la place libre. */
 .new-player-mp3, .new-player-wav {
-  position: absolute; margin: 0; padding: 0; border: 0; background: none; cursor: pointer;
+  position: absolute; margin: 0; padding: 0; border: 0; background: none; cursor: url('cursor-hand.png?v=4') 9 1, pointer;
 }
 .new-player-mp3 { left: 7%; top: 84%; width: 19%; height: 11.5%; }
 .new-player-wav { left: 49%; top: 84%; width: 19%; height: 11.5%; }
