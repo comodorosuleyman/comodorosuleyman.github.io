@@ -30,6 +30,7 @@ Je parle français : réponds-moi en français.
 
 - L'univers visuel repose sur des dessins à l'encre scannés. Les titres et les boutons sont des images de lettrage à la main (`titre-*.png`, `glow-*.png`). Ne les remplace pas par du texte.
 - Il existe des variantes allégées : `-full.jpg` pour l'agrandissement, une miniature pour la grille, `-mobile.jpg` pour le mobile. Garde les images lourdes optimisées.
+- Galerie Imagines : chaque dessin a 4 fichiers, tous tirés du `-full.jpg` (2400px, agrandi sur desktop) : la vignette `.jpg` (grille, desktop), `-sm.webp` (vignette mobile, via `srcset`), `-md.jpg` (1400px, agrandi sur mobile, attribut `data-md`). Un dessin ajouté ou retouché doit avoir ses 4 versions.
 - Mets un texte `alt` fidèle au dessin.
 - Couleurs principales : fond `#f0d5c2`, rouge `--rouge: #7a1414`, fond de l'accueil `#160404`. Police : Georgia.
 - Vérifie chaque changement visuel **sur desktop et sur mobile** (point de rupture principal à 640px).

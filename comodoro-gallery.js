@@ -17,13 +17,30 @@
   var btnPrev = slider.querySelector('.comodoro-slider-prev');
   var btnNext = slider.querySelector('.comodoro-slider-next');
 
+  // mobile : version 1400px (data-md) plutôt que la 2400px - un écran de
+  // téléphone n'affiche pas plus de ~1300 pixels réels de large, même
+  // loupe activée (pleine largeur) : aussi net à l'écran, 2 fois plus léger.
+  var mobile = window.matchMedia('(max-width: 640px)').matches;
   var sources = [];
   var alts = [];
+  var thumbs = [];
   items.forEach(function (btn) {
     var img = btn.querySelector('img');
-    sources.push(btn.dataset.full || img.currentSrc || img.src);
+    sources.push((mobile && btn.dataset.md) || btn.dataset.full || img.currentSrc || img.src);
     alts.push(img.alt);
+    thumbs.push(img);
   });
+
+  // grandes images déjà demandées (préchargement) : gardées en mémoire
+  // pour que le navigateur ne les abandonne pas en cours de route.
+  var loaders = {};
+  function load(index) {
+    if (!loaders[index]) {
+      loaders[index] = new Image();
+      loaders[index].src = sources[index];
+    }
+    return loaders[index];
+  }
 
   var current = 0;
   var lastFocused = null;
@@ -38,10 +55,43 @@
       return;
     }
     current = (index + sources.length) % sources.length;
-    sliderImg.src = sources[current];
+    var shown = current;
     sliderImg.alt = alts[current];
     sliderImg.classList.remove('is-zoomed');
     count.textContent = (current + 1) + ' / ' + sources.length;
+
+    var full = load(current);
+    if (full.complete && full.naturalWidth) {
+      setFull();
+    } else {
+      // en attendant la grande image : jamais l'image précédente (bug :
+      // l'agrandi précédent restait affiché le temps du chargement). On
+      // montre tout de suite la vignette déjà chargée de la page, étirée
+      // à la taille finale, puis on la remplace dès que la grande arrive.
+      var thumb = thumbs[current];
+      if (thumb.complete && thumb.naturalWidth) {
+        var ratio = thumb.naturalWidth / thumb.naturalHeight;
+        var w = Math.min(window.innerWidth * 0.9, window.innerHeight * 0.85 * ratio);
+        sliderImg.style.width = w + 'px';
+        sliderImg.style.height = (w / ratio) + 'px';
+        sliderImg.style.visibility = '';
+        sliderImg.src = thumb.currentSrc || thumb.src;
+      } else {
+        sliderImg.style.visibility = 'hidden';
+        sliderImg.removeAttribute('src');
+      }
+      full.onload = full.onerror = function () { if (current === shown) setFull(); };
+    }
+
+    function setFull() {
+      sliderImg.src = full.src;
+      sliderImg.style.width = '';
+      sliderImg.style.height = '';
+      sliderImg.style.visibility = '';
+      // précharge les voisines pour une navigation sans attente
+      if (current + 1 < sources.length) load(current + 1);
+      if (current > 0) load(current - 1);
+    }
   }
 
   function open(index) {
@@ -68,6 +118,8 @@
 
   sliderImg.addEventListener('click', function (e) {
     e.stopPropagation();
+    sliderImg.style.width = '';
+    sliderImg.style.height = '';
     sliderImg.classList.toggle('is-zoomed');
   });
 
