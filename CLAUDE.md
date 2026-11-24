@@ -61,6 +61,7 @@ Je parle français : réponds-moi en français.
 - On travaille directement sur `master`.
 - **Ne jamais faire de `git push` sans mon accord explicite** : un push met le site en ligne immédiatement.
 - Ne pas toucher à `CNAME`, `.nojekyll`, `robots.txt` ni au fichier de vérification Google (`google*.html`) sans raison.
+- `affiche_comodoro.svg` est mon ébauche d'affiche (A2) : aucune page ne l'utilise, mais **ne pas la supprimer** lors d'un nettoyage.
 
 ## Mes préférences
 
