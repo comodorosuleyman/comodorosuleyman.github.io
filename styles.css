@@ -886,11 +886,31 @@ body.lightbox-locked { overflow: hidden; }
 .comodoro-gallery-item { min-width: 0; max-width: none; padding: 0; border: none; background: none; }
 .comodoro-gallery-item img { display: block; width: 100%; height: auto; border: 2px solid #000; border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,.25); transition: transform .15s ease; }
 .comodoro-gallery-item:hover img, .comodoro-gallery-item:focus-visible img { transform: translateY(-3px); }
+/* dessins horizontaux : le poisson (galerie-2) sur la largeur de deux
+   vignettes, le papillon, très allongé (galerie-3), sur toute la largeur
+   de la grille, pour rester lisibles. */
+.comodoro-gallery-item-wide { grid-column: span 2; }
+.comodoro-gallery-item-full { grid-column: 1 / -1; }
+/* dessins mis en avant (corbeau, page 1 ; portrait violet, page 3) : le
+   double des autres, sur 2 colonnes et 2 rangées (la place de 4
+   vignettes). Dans le HTML, ils viennent juste après une vignette de
+   début de rangée pour que la grille ne dépasse pas 3 rangées. */
+.comodoro-gallery-item-big { grid-column: span 2; grid-row: span 2; }
+/* page 3 : le portrait violet descend sur 3 rangées pour que la colonne
+   de gauche (14, 15, puis Ochii din umbră réduit) tienne à côté de lui,
+   et que le papillon garde toute la largeur en dessous, sans déborder
+   de la frise. */
+.galerie-p3 .comodoro-gallery-item-big { grid-row: span 3; }
+/* page 3, colonne de gauche : le dessin 15 un peu réduit et Ochii din
+   umbră réduit davantage (plus allongé), pour qu'ils aient la même hauteur
+   et que la colonne tienne à côté du portrait violet. */
+.comodoro-gallery-item-reduced { width: 90%; justify-self: center; }
+.comodoro-gallery-item-small { width: 74%; justify-self: center; }
 
-/* galerie.html / galerie-2.html : sur desktop, pas de grand bandeau de
+/* galerie.html à galerie-3.html : sur desktop, pas de grand bandeau de
    liens (ce n'est pas une sous-page "musique") - juste la souris
-   rouge. .galerie-pagenav regroupe retour (gauche) et, sur la page 1
-   seulement, suite (droite, même souris en miroir - la forme est
+   rouge. .galerie-pagenav regroupe retour (gauche) et, sauf sur la
+   dernière page, suite (droite, même souris en miroir - la forme est
    symétrique donc rotate(-90deg) EST le miroir de rotate(90deg), pas
    besoin de scaleX). Sur mobile en revanche on repasse au bandeau
    habituel (nav.menu) - la souris disparaît, et comme le
@@ -930,13 +950,14 @@ body.lightbox-locked { overflow: hidden; }
   .galerie-page:has(nav.menu) { padding-bottom: 110px; }
 }
 
-/* le dessin de la page 2 reste en haut à gauche du cadre (voulu). */
-.galerie-p2 .frame-content { justify-content: flex-start; padding-top: 4%; }
-/* le dessin de la page 2 reste calé en haut (flex-start ci-dessus),
+/* page 3 (moins remplie) : les dessins restent en haut à gauche du cadre
+   (voulu). La page 2, pleine (3 rangées), se comporte comme la page 1. */
+.galerie-p3 .frame-content { justify-content: flex-start; padding-top: 4%; }
+/* les dessins de la page 3 restent calés en haut (flex-start ci-dessus),
    mais la souris doit rester en bas de la frise comme sur la page 1 -
    margin-top:auto pousse ce dernier enfant flex tout en bas, sans
    toucher à la position du dessin au-dessus. */
-.galerie-p2 .galerie-pagenav-in { margin-top: auto; }
+.galerie-p3 .galerie-pagenav-in { margin-top: auto; }
 .galerie-back img, .galerie-forward img { display: block; width: clamp(14px, 3.5cqw, 28px); height: auto; transition: opacity .15s ease; }
 .galerie-back img { transform: rotate(90deg); }
 .galerie-forward img { transform: rotate(-90deg); }
@@ -981,9 +1002,9 @@ body.lightbox-locked { overflow: hidden; }
      desktop uniquement (le mobile a sa propre structure plate, bandeau
      + badges). Inutile sur mobile : la retirer libère une icône entière
      et simplifie la page 1 à une seule souris (suite, vers la page 2).
-     La souris de la page 2 (retour vers la page 1) reste, elle sert
-     vraiment. :not(.galerie-p2) cible donc seulement la page 1. */
-  .galerie-page:not(.galerie-p2) .galerie-back { display: none; }
+     Les souris de retour des pages 2 et 3 restent, elles servent
+     vraiment. Les :not() ciblent donc seulement la page 1. */
+  .galerie-page:not(.galerie-p2):not(.galerie-p3) .galerie-back { display: none; }
   /* la marge basse propre de .frame-page (1rem, ligne ~141) mangeait à
      elle seule une bonne partie du peu de place disponible sous le
      cadre avant le bandeau fixe - la réduire ici redonne cette place à
