@@ -12,7 +12,7 @@
 
   var viewport = slider.querySelector('.comodoro-slider-viewport');
   var sliderImg = document.getElementById('comodoro-slider-img');
-  var count = document.getElementById('comodoro-slider-count');
+  var caption = document.getElementById('comodoro-slider-caption');
   var btnClose = slider.querySelector('.comodoro-slider-close');
   var btnPrev = slider.querySelector('.comodoro-slider-prev');
   var btnNext = slider.querySelector('.comodoro-slider-next');
@@ -23,11 +23,14 @@
   var mobile = window.matchMedia('(max-width: 640px)').matches;
   var sources = [];
   var alts = [];
+  var captions = [];
   var thumbs = [];
   items.forEach(function (btn) {
     var img = btn.querySelector('img');
     sources.push((mobile && btn.dataset.md) || btn.dataset.full || img.currentSrc || img.src);
     alts.push(img.alt);
+    // technique et dimensions (data-caption), en bas de l'agrandi
+    captions.push(btn.dataset.caption || '');
     thumbs.push(img);
   });
 
@@ -58,7 +61,8 @@
     var shown = current;
     sliderImg.alt = alts[current];
     sliderImg.classList.remove('is-zoomed');
-    count.textContent = (current + 1) + ' / ' + sources.length;
+    caption.textContent = captions[current];
+    caption.hidden = !captions[current];
 
     var full = load(current);
     if (full.complete && full.naturalWidth) {
