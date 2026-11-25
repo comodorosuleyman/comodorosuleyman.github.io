@@ -43,14 +43,23 @@ body.home .scene:has(.index-back) { max-width: calc(100vw - 208px); }
      de visages à gauche. */
   .mobile-title-link { position: fixed; left: 5%; top: 1.5%; width: 90%; height: 11%; z-index: 10; }
   .mobile-title-img { display: block; width: 100%; height: 100%; object-fit: contain; }
-  .mobile-badges { position: fixed; right: .8rem; bottom: .8rem; z-index: 10; display: flex; flex-direction: column; align-items: flex-end; gap: .55rem; }
+  .mobile-badges { position: fixed; right: .8rem; bottom: .8rem; z-index: 10; display: flex; flex-direction: column; align-items: flex-end; gap: .45rem; }
   .mobile-badges a { display: block; text-decoration: none; transition: opacity .2s ease; }
-  .mobile-badges a img { height: 44px; width: auto; display: block; filter: grayscale(1) contrast(10) brightness(1.1); }
-  /* cet asset est bien plus large que les autres cartouches (ratio ~4.75
-     contre ~3.5) : le plafonner en hauteur seule le laissait quand même
-     plus large que tous ses voisins (180px vs 157px max) - on plafonne
-     plutôt en largeur, pour matcher le gabarit du plus large des autres. */
-  .mobile-badges a img[src^="titre-imagines-mobile"] { height: auto; width: 150px; }
+  /* badge-*.png : cartouches dédiées au mobile, tirées des titre-*.png
+     (inchangés sur ordinateur) - déjà en noir et blanc, recadrées sur le
+     mot avec la même marge pour toutes (plus de rognage CSS qui laissait
+     des vides inégaux entre les panneaux), traits parasites retirés et
+     rendues à 3x leur taille d'affichage pour rester nettes sur les
+     écrans de téléphone. Largeur = taille d'affichage (fichier / 3),
+     taille des lettres identique à avant. */
+  .mobile-badges a img { display: block; height: auto; }
+  .mobile-badges a img[src^="badge-audio"] { width: 83px; }
+  .mobile-badges a img[src^="badge-video"] { width: 84.33px; }
+  .mobile-badges a img[src^="badge-codex"] { width: 101px; }
+  .mobile-badges a img[src^="badge-argumentum"] { width: 156px; }
+  .mobile-badges a img[src^="badge-agenda"] { width: 109px; }
+  .mobile-badges a img[src^="badge-contact"] { width: 127.67px; }
+  .mobile-badges a img[src^="badge-imagines"] { width: 153.33px; }
   .mobile-badges a:hover, .mobile-badges a:focus-visible { opacity: .7; }
 }
 
@@ -100,19 +109,6 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
   body:has(nav.menu) { padding-bottom: 110px; }
 }
 
-@media (max-width: 640px) {
-  /* les cartouches encrées contiennent quelques traits/taches qui ne font
-     pas partie du mot (bavures, soulignés, marques parasites) : une fois
-     réduits en noir et blanc pur, ces traits ressortent en blanc. On les
-     rogne pour ne garder que l'écriture, sans toucher aux images d'origine
-     (toujours utilisées telles quelles sur la version ordinateur). */
-  .mobile-badges a img[src^="titre-audio"] { clip-path: inset(32% 0 22% 0); }
-  .mobile-badges a img[src^="titre-video"] { clip-path: inset(36% 10% 0 0); }
-  .mobile-badges a img[src^="titre-codex"] { clip-path: inset(32% 9% 0 0); }
-  .mobile-badges a img[src^="titre-argumentum"] { clip-path: inset(21% 0 31% 0); }
-  .mobile-badges a img[src^="titre-agenda"] { clip-path: inset(0 22% 0 0); }
-  .mobile-badges a img[src^="titre-contact"] { clip-path: inset(0 0 37% 0); }
-}
 
 /* page d'accueil : image interactive */
 .scene { position: relative; max-width: 1600px; margin: 0 auto; }
