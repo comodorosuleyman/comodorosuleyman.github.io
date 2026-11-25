@@ -1000,7 +1000,7 @@ body.lightbox-locked { overflow: hidden; }
    cadre dessiné, irrégulier, mordait dessus) : écart souris/logos
    resserré et marge sous les logos, en cqw pour suivre la taille du cadre. */
 .galerie-pagenav-in { margin-bottom: clamp(.3rem, 1.2cqw, 1rem); }
-.galerie-social-in { margin-bottom: clamp(.5rem, 3cqw, 2.4rem); }
+.galerie-social-in { margin-bottom: clamp(.3rem, 1.2cqw, 1rem); }
 .galerie-social a { display: block; color: var(--rouge); transition: color .15s ease; }
 .galerie-social a:hover, .galerie-social a:focus-visible { color: #000; }
 .galerie-social svg { display: block; width: clamp(14px, 3.5cqw, 28px); height: auto; aspect-ratio: 1; }
