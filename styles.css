@@ -979,7 +979,7 @@ body.lightbox-locked { overflow: hidden; }
 
 /* page 3 (moins remplie) : les dessins restent en haut à gauche du cadre
    (voulu). La page 2, pleine (3 rangées), se comporte comme la page 1. */
-.galerie-p3 .frame-content { justify-content: flex-start; padding-top: 4%; }
+.galerie-p3 .frame-content { justify-content: flex-start; padding-top: 1%; }
 /* les dessins de la page 3 restent calés en haut (flex-start ci-dessus),
    mais la souris doit rester en bas de la frise comme sur la page 1 -
    margin-top:auto pousse ce dernier enfant flex tout en bas, sans
@@ -996,6 +996,11 @@ body.lightbox-locked { overflow: hidden; }
    (mobile). Sur desktop, même largeur que les souris. */
 .galerie-social { display: flex; justify-content: center; align-items: center; gap: clamp(.6rem, 3cqw, 1.5rem); }
 .galerie-social-out { display: none; }
+/* desktop : logos remontés (demande explicite - trop bas, le bas du
+   cadre dessiné, irrégulier, mordait dessus) : écart souris/logos
+   resserré et marge sous les logos, en cqw pour suivre la taille du cadre. */
+.galerie-pagenav-in { margin-bottom: clamp(.3rem, 1.2cqw, 1rem); }
+.galerie-social-in { margin-bottom: clamp(.5rem, 3cqw, 2.4rem); }
 .galerie-social a { display: block; color: var(--rouge); transition: color .15s ease; }
 .galerie-social a:hover, .galerie-social a:focus-visible { color: #000; }
 .galerie-social svg { display: block; width: clamp(14px, 3.5cqw, 28px); height: auto; aspect-ratio: 1; }
