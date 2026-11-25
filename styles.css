@@ -1098,12 +1098,14 @@ body.lightbox-locked { overflow: hidden; }
    rester fixés à l'écran (bug constaté : le compteur "1/5" se retrouvait
    au milieu du dessin après un scroll en zoom). Le viewport porte le
    scroll, .comodoro-slider (non-scrollable) porte les contrôles. */
-.comodoro-slider-viewport { position: absolute; inset: 0; display: flex; align-items: safe center; justify-content: safe center; padding: 5vmin; overflow: auto; }
+.comodoro-slider-viewport { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: safe center; justify-content: safe center; padding: 5vmin; overflow: auto; }
 /* loupe : cliquer l'image bascule entre "tenir dans l'écran" et sa
    pleine résolution (comodoro-dessin-N-full.jpg, 2400px) pour examiner
    le détail du trait - même paire de curseurs zoom-in/zoom-out que le
    lightbox.js existant, pour rester cohérent. */
-.comodoro-slider-img { max-width: 90vw; max-height: 85vh; border: 4px solid #000; box-shadow: 0 10px 40px rgba(0,0,0,.5); cursor: url('cursor-zoom-in.png?v=2') 11 11, zoom-in; flex-shrink: 0; }
+/* border-box : la bordure comprise dans les 90vw, sinon 8px de scroll
+   horizontal sur mobile (90vw + bordure + padding 5vmin x2 > 100vw). */
+.comodoro-slider-img { box-sizing: border-box; max-width: 90vw; max-height: 85vh; border: 4px solid #000; box-shadow: 0 10px 40px rgba(0,0,0,.5); cursor: url('cursor-zoom-in.png?v=2') 11 11, zoom-in; flex-shrink: 0; }
 /* loupe activée : dessin au maximum en largeur, bord à bord (demande
    explicite) - plus de padding autour, la bordure noire incluse dans
    les 100% (box-sizing) pour ne jamais créer de scroll horizontal. */
@@ -1121,8 +1123,10 @@ body.lightbox-locked { overflow: hidden; }
 .comodoro-slider-prev { left: 1rem; top: 50%; transform: translateY(-50%); }
 .comodoro-slider-next { right: 1rem; top: 50%; transform: translateY(-50%); }
 /* légende (technique + dimensions, data-caption) à la place de l'ancien
-   compteur "1 / 6", jugé inutile. */
-.comodoro-slider-caption { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); margin: 0; font-size: .85rem; color: var(--rouge); font-weight: 700; white-space: nowrap; }
+   compteur "1 / 6", jugé inutile : collée sous le dessin (dans le flux
+   du viewport, en colonne), en noir. */
+.comodoro-slider-caption { margin: .5rem 0 0; font-size: .85rem; color: #000; font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+.comodoro-slider-caption[hidden] { display: none; }
 
 /* ===== accueil desktop (index.html, .scene équivalent) : plume + diapason
    (accueil-nouvelle.svg) ===== deux dessins sur fond noir ; chacun a une
