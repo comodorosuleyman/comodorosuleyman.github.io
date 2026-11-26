@@ -302,4 +302,17 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://comodorosuleyman.com/comodoro.html"/>
   </url>
 
+  <url>
+    <loc>https://comodorosuleyman.com/galerie.html</loc>
+    <lastmod>2026-11-26</lastmod>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.com/galerie-2.html</loc>
+    <lastmod>2026-11-26</lastmod>
+  </url>
+  <url>
+    <loc>https://comodorosuleyman.com/galerie-3.html</loc>
+    <lastmod>2026-11-26</lastmod>
+  </url>
+
 </urlset>
