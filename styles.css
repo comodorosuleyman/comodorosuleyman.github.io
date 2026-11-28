@@ -596,9 +596,11 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    ne sort de la zone noire, à plusieurs largeurs. */
 /* agrandies (demande explicite) : 24% au lieu de 21.7%, le maximum
    (~24.6%) calculé au pixel près pour deux écrans 16:9 entièrement dans
-   le noir (marge de sécurité de 6px de l'image) sans se chevaucher,
-   en gardant le léger décalage vertical d'origine. */
-.video-embed { position: absolute; width: 24%; top: 40.2%; }
+   le noir (marge de sécurité de 5px de l'image) sans se chevaucher.
+   Descendues autant que le noir le permet (demande explicite : trop
+   haut) : la 2e est déjà au plus bas (une pointe du dessin juste en
+   dessous), seule la 1re descend - décalage vertical désormais inversé. */
+.video-embed { position: absolute; width: 24%; top: 44.6%; }
 .video-embed:nth-child(1) { left: 30.1%; }
 .video-embed:nth-child(2) { left: 55.6%; top: 42.7%; }
 .video-embed-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; box-sizing: border-box; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); overflow: hidden; }
