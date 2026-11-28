@@ -2,11 +2,11 @@
 
 /* curseurs : 24px maximum (taille de curseur par défaut sous Linux/GNOME :
    au-delà, Chrome et Firefox y coupent le curseur - la patte apparaissait
-   coupée en bas), tirés de la photo des dessins originaux, + version 2x
-   (48px) pour les écrans haute densité. Point de clic : bout du majeur /
+   coupée en bas), tirés de la photo des dessins originaux, + versions 2x
+   (48px) et 3x (72px) pour les écrans haute densité. Point de clic : bout du majeur /
    rond d'où partent les moustaches. */
-html, body { margin: 0; background: #f0d5c2; font-family: Georgia, serif; cursor: url('cursor-arrow-24.png?v=1') 6 6, auto; cursor: -webkit-image-set(url('cursor-arrow-24.png?v=1') 1x, url('cursor-arrow-48.png?v=1') 2x) 6 6, auto; cursor: image-set(url('cursor-arrow-24.png?v=1') 1x, url('cursor-arrow-48.png?v=1') 2x) 6 6, auto; }
-a, button { cursor: url('cursor-hand-24.png?v=1') 6 0, pointer; cursor: -webkit-image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x) 6 0, pointer; cursor: image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x) 6 0, pointer; }
+html, body { margin: 0; background: #f0d5c2; font-family: Georgia, serif; cursor: url('cursor-arrow-24.png?v=1') 6 6, auto; cursor: -webkit-image-set(url('cursor-arrow-24.png?v=1') 1x, url('cursor-arrow-48.png?v=1') 2x, url('cursor-arrow-72.png?v=1') 3x) 6 6, auto; cursor: image-set(url('cursor-arrow-24.png?v=1') 1x, url('cursor-arrow-48.png?v=1') 2x, url('cursor-arrow-72.png?v=1') 3x) 6 6, auto; }
+a, button { cursor: url('cursor-hand-24.png?v=1') 6 0, pointer; cursor: -webkit-image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x, url('cursor-hand-72.png?v=1') 3x) 6 0, pointer; cursor: image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x, url('cursor-hand-72.png?v=1') 3x) 6 0, pointer; }
 /* Mesuré empiriquement (badges desktop agrandis à 50/104px, voir plus bas) :
    la nav (position:fixed) mesure jusqu'à 255px sur 641-799px (pire cas :
    comodoro/video/audio à 700px), 196px sur 800-1399px, puis 136px au-delà
@@ -21,8 +21,8 @@ body:has(nav.menu) { padding-bottom: 280px; }
   body:has(nav.menu) { padding-bottom: 160px; }
 }
 html:has(body.home) { height: 100%; overflow: hidden; }
-body.home { background: #160404; height: 100vh; height: 100dvh; display: flex; align-items: center; justify-content: center; overflow: hidden; position: fixed; inset: 0; width: 100%; cursor: url('cursor-arrow-white-24.png?v=1') 6 6, auto; cursor: -webkit-image-set(url('cursor-arrow-white-24.png?v=1') 1x, url('cursor-arrow-white-48.png?v=1') 2x) 6 6, auto; cursor: image-set(url('cursor-arrow-white-24.png?v=1') 1x, url('cursor-arrow-white-48.png?v=1') 2x) 6 6, auto; }
-body.home a, body.home button { cursor: url('cursor-hand-white-24.png?v=1') 6 0, pointer; cursor: -webkit-image-set(url('cursor-hand-white-24.png?v=1') 1x, url('cursor-hand-white-48.png?v=1') 2x) 6 0, pointer; cursor: image-set(url('cursor-hand-white-24.png?v=1') 1x, url('cursor-hand-white-48.png?v=1') 2x) 6 0, pointer; }
+body.home { background: #160404; height: 100vh; height: 100dvh; display: flex; align-items: center; justify-content: center; overflow: hidden; position: fixed; inset: 0; width: 100%; cursor: url('cursor-arrow-white-24.png?v=1') 6 6, auto; cursor: -webkit-image-set(url('cursor-arrow-white-24.png?v=1') 1x, url('cursor-arrow-white-48.png?v=1') 2x, url('cursor-arrow-white-72.png?v=1') 3x) 6 6, auto; cursor: image-set(url('cursor-arrow-white-24.png?v=1') 1x, url('cursor-arrow-white-48.png?v=1') 2x, url('cursor-arrow-white-72.png?v=1') 3x) 6 6, auto; }
+body.home a, body.home button { cursor: url('cursor-hand-white-24.png?v=1') 6 0, pointer; cursor: -webkit-image-set(url('cursor-hand-white-24.png?v=1') 1x, url('cursor-hand-white-48.png?v=1') 2x, url('cursor-hand-white-72.png?v=1') 3x) 6 0, pointer; cursor: image-set(url('cursor-hand-white-24.png?v=1') 1x, url('cursor-hand-white-48.png?v=1') 2x, url('cursor-hand-white-72.png?v=1') 3x) 6 0, pointer; }
 body.home .scene { width: auto; max-width: 100vw; max-height: 100vh; aspect-ratio: 2296 / 1623; margin: 0; }
 body.home .scene img { height: 100%; }
 /* demande explicite : la souris BACK (88px, calée à gauche) ne doit jamais
@@ -410,7 +410,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    vide dans np-panel.png (zone de l'ancien cadre, effacée). */
 .new-player-playhit1, .new-player-playhit2 {
   position: absolute; width: 7%; height: 16%;
-  margin: 0; padding: 0; border: 0; background: none; cursor: url('cursor-hand-24.png?v=1') 6 0, pointer; cursor: -webkit-image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x) 6 0, pointer; cursor: image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x) 6 0, pointer;
+  margin: 0; padding: 0; border: 0; background: none; cursor: url('cursor-hand-24.png?v=1') 6 0, pointer; cursor: -webkit-image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x, url('cursor-hand-72.png?v=1') 3x) 6 0, pointer; cursor: image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x, url('cursor-hand-72.png?v=1') 3x) 6 0, pointer;
 }
 .new-player-playhit1 { left: 2.5%; top: 8.85%; }
 .new-player-playhit2 { left: 2.5%; top: 39.84%; }
@@ -421,7 +421,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
 .new-player.is-playing1 .new-player-pause-icon1 { display: block; }
 .new-player.is-playing2 .new-player-play-icon2 { display: none; }
 .new-player.is-playing2 .new-player-pause-icon2 { display: block; }
-.new-player-seek1, .new-player-seek2, .new-player-volume { position: absolute; cursor: url('cursor-hand-24.png?v=1') 6 0, pointer; cursor: -webkit-image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x) 6 0, pointer; cursor: image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x) 6 0, pointer; }
+.new-player-seek1, .new-player-seek2, .new-player-volume { position: absolute; cursor: url('cursor-hand-24.png?v=1') 6 0, pointer; cursor: -webkit-image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x, url('cursor-hand-72.png?v=1') 3x) 6 0, pointer; cursor: image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x, url('cursor-hand-72.png?v=1') 3x) 6 0, pointer; }
 /* zone cliquable agrandie (pas juste le fin trait) pour couvrir tout le
    titre + la piste - toute la ligne sélectionne/joue cette piste. */
 .new-player-seek1 { left: 19.74%; top: 2.21%; width: 66.22%; height: 27.66%; }
@@ -452,7 +452,7 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    où le motif du cadre empiète - repris en une rangée horizontale en
    bas du lecteur, là où il y a de la place libre. */
 .new-player-mp3, .new-player-wav {
-  position: absolute; margin: 0; padding: 0; border: 0; background: none; cursor: url('cursor-hand-24.png?v=1') 6 0, pointer; cursor: -webkit-image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x) 6 0, pointer; cursor: image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x) 6 0, pointer;
+  position: absolute; margin: 0; padding: 0; border: 0; background: none; cursor: url('cursor-hand-24.png?v=1') 6 0, pointer; cursor: -webkit-image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x, url('cursor-hand-72.png?v=1') 3x) 6 0, pointer; cursor: image-set(url('cursor-hand-24.png?v=1') 1x, url('cursor-hand-48.png?v=1') 2x, url('cursor-hand-72.png?v=1') 3x) 6 0, pointer;
 }
 .new-player-mp3 { left: 7%; top: 84%; width: 19%; height: 11.5%; }
 .new-player-wav { left: 49%; top: 84%; width: 19%; height: 11.5%; }
