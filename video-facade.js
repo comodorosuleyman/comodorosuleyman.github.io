@@ -24,7 +24,10 @@
     frame.parentNode.replaceChild(btn, frame);
     btn.addEventListener('click', function () {
       frame.removeAttribute('loading');
-      frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+      // domaine youtube.com (pas youtube-nocookie, source connue d'"erreur
+      // 153 / vidéo non disponible") + site déclaré explicitement.
+      frame.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&origin=' +
+        encodeURIComponent(location.origin) + '&widget_referrer=' + encodeURIComponent(location.href);
       btn.parentNode.replaceChild(frame, btn);
     });
   });
