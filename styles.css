@@ -594,9 +594,13 @@ nav.menu a:hover, nav.menu a:focus-visible { opacity: .6; }
    opaque de l'image (calculé par programme, pas estimé à l'œil) + marge
    de sécurité supplémentaire - vérifié ensuite pixel par pixel que rien
    ne sort de la zone noire, à plusieurs largeurs. */
-.video-embed { position: absolute; width: 21.7%; top: 37.79%; }
-.video-embed:nth-child(1) { left: 31.59%; }
-.video-embed:nth-child(2) { left: 53.77%; top: 42.77%; }
+/* agrandies (demande explicite) : 24% au lieu de 21.7%, le maximum
+   (~24.6%) calculé au pixel près pour deux écrans 16:9 entièrement dans
+   le noir (marge de sécurité de 6px de l'image) sans se chevaucher,
+   en gardant le léger décalage vertical d'origine. */
+.video-embed { position: absolute; width: 24%; top: 40.2%; }
+.video-embed:nth-child(1) { left: 30.1%; }
+.video-embed:nth-child(2) { left: 55.6%; top: 42.7%; }
 .video-embed-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; box-sizing: border-box; border: 3px solid #000; box-shadow: 0 4px 14px rgba(0,0,0,.25); overflow: hidden; }
 .video-embed-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 /* façade desktop (video-facade.js) : image de la vidéo + flèche rouge
